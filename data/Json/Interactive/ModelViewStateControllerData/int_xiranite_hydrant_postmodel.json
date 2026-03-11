@@ -1,0 +1,1393 @@
+{
+  "modelId": "int_xiranite_hydrant_postmodel",
+  "clipAssetInfos": [
+    {
+      "animationClipName": "A_anm_map02_pool+1_003_01_closeidle_01",
+      "animationClipHash": 58029209656875891,
+      "animationGuid": {
+        "val0": 3970677030,
+        "val1": 1261391138,
+        "val2": 455727762,
+        "val3": 2244789085
+      },
+      "subClipNameHash": -598628388
+    },
+    {
+      "animationClipName": "A_anm_map02_pool+1_003_01_open_01",
+      "animationClipHash": 394457553805859973,
+      "animationGuid": {
+        "val0": 3970677030,
+        "val1": 1261391138,
+        "val2": 455727762,
+        "val3": 2244789085
+      },
+      "subClipNameHash": 51165747
+    },
+    {
+      "animationClipName": "A_anm_map02_pool+1_003_01_openidle_01",
+      "animationClipHash": 674705281435534669,
+      "animationGuid": {
+        "val0": 3970677030,
+        "val1": 1261391138,
+        "val2": 455727762,
+        "val3": 2244789085
+      },
+      "subClipNameHash": 1191208101
+    },
+    {
+      "animationClipName": "A_anm_map02_pool+1_003_01_close_01",
+      "animationClipHash": 933824540325601867,
+      "animationGuid": {
+        "val0": 3970677030,
+        "val1": 1261391138,
+        "val2": 455727762,
+        "val3": 2244789085
+      },
+      "subClipNameHash": 926135330
+    }
+  ],
+  "emissiveConfigHashes": [
+    45509677811683174,
+    367726622296899561
+  ],
+  "cameraSignalSourceAssetHashes": [],
+  "modelAnimatorDatas": [
+    {
+      "modelName": "int_xiranite_hydrant_postmodel",
+      "layerFsmDatas": [
+        {
+          "hasAnimClip": false,
+          "index": 0,
+          "weight": 1.0,
+          "layerName": "BaseLayer",
+          "stateDatas": [
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "Idle",
+              "isHaveClip": false,
+              "totalTime": 0.5,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": true,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEmissiveBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Emissive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "emissiveNodeName": "P_igroup_map02_pool+1_003_02",
+                  "emissiveConfigHash": 45509677811683174,
+                  "isBlend": false,
+                  "isColorBlend": false,
+                  "blendTime": 0.0
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": true,
+                  "innerId": 0,
+                  "effectNodeName": "",
+                  "effectId": "P_fxint_l_xiaofangshuan_02",
+                  "followRot": false,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "unlocked_Idle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 1
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                },
+                {
+                  "targetStateName": "broken",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "LockedByGameplayLock",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                },
+                {
+                  "targetStateName": "locked_Idle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "LockedByGameplayLock",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "unlocked_Idle",
+              "isHaveClip": false,
+              "totalTime": 0.1666666716337204,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCSetActiveBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "SetActive",
+                  "canLoopActive": false,
+                  "needForceExecute": true,
+                  "gameObjName": "fixed",
+                  "active": true
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCSetActiveBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "SetActive",
+                  "canLoopActive": false,
+                  "needForceExecute": true,
+                  "gameObjName": "abandoned",
+                  "active": false
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEmissiveBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Emissive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "emissiveNodeName": "P_igroup_map02_pool+1_003_02",
+                  "emissiveConfigHash": 45509677811683174,
+                  "isBlend": false,
+                  "isColorBlend": false,
+                  "blendTime": 0.5
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "working_4m",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "IsAbilityActive",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "Distance",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 4
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                },
+                {
+                  "targetStateName": "working_6m",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "IsAbilityActive",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "Distance",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 6
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                },
+                {
+                  "targetStateName": "working_40m",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "IsAbilityActive",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "Distance",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 50
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                },
+                {
+                  "targetStateName": "working",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "IsAbilityActive",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "Distance",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 12
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "working_4m",
+              "isHaveClip": false,
+              "totalTime": 0.1666666716337204,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEmissiveBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Emissive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "emissiveNodeName": "P_igroup_map02_pool+1_003_02",
+                  "emissiveConfigHash": 367726622296899561,
+                  "isBlend": false,
+                  "isColorBlend": false,
+                  "blendTime": 0.0
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": false,
+                  "innerId": 0,
+                  "effectNodeName": "",
+                  "effectId": "P_fxint_l_xiaofangshuan_02_4m",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": false,
+                  "innerId": 0,
+                  "effectNodeName": "",
+                  "effectId": "P_fxint_l_hydrantbase_xirang_highlight_801",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": -976676038
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": true,
+                  "transitionTime": 500
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "unlocked_Idle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "IsAbilityActive",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "working_6m",
+              "isHaveClip": false,
+              "totalTime": 0.1666666716337204,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEmissiveBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Emissive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "emissiveNodeName": "P_igroup_map02_pool+1_003_02",
+                  "emissiveConfigHash": 367726622296899561,
+                  "isBlend": false,
+                  "isColorBlend": false,
+                  "blendTime": 0.0
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": false,
+                  "innerId": 0,
+                  "effectNodeName": "",
+                  "effectId": "P_fxint_l_xiaofangshuan_02_6m",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": false,
+                  "innerId": 0,
+                  "effectNodeName": "",
+                  "effectId": "P_fxint_l_hydrantbase_xirang_highlight_801",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": -976676038
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": true,
+                  "transitionTime": 500
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "unlocked_Idle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "IsAbilityActive",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "working_40m",
+              "isHaveClip": false,
+              "totalTime": 0.25,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEmissiveBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Emissive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "emissiveNodeName": "P_igroup_map02_pool+1_003_02",
+                  "emissiveConfigHash": 367726622296899561,
+                  "isBlend": false,
+                  "isColorBlend": false,
+                  "blendTime": 0.0
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": false,
+                  "innerId": 0,
+                  "effectNodeName": "",
+                  "effectId": "P_fxint_l_hydrantbase_xirang_highlight_801",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": false,
+                  "innerId": 0,
+                  "effectNodeName": "",
+                  "effectId": "P_fxint_l_xiaofangshuan_02_noring",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": -976676038
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": true,
+                  "transitionTime": 500
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "unlocked_Idle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "IsAbilityActive",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "working",
+              "isHaveClip": false,
+              "totalTime": 0.1666666716337204,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEmissiveBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Emissive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "emissiveNodeName": "P_igroup_map02_pool+1_003_02",
+                  "emissiveConfigHash": 367726622296899561,
+                  "isBlend": false,
+                  "isColorBlend": false,
+                  "blendTime": 0.0
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": false,
+                  "innerId": 0,
+                  "effectNodeName": "",
+                  "effectId": "P_fxint_l_xiaofangshuan_02",
+                  "followRot": true,
+                  "active": true,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": false,
+                  "innerId": 0,
+                  "effectNodeName": "",
+                  "effectId": "P_fxint_l_hydrantbase_xirang_highlight_801",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": -976676038
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": true,
+                  "transitionTime": 500
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "unlocked_Idle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "IsAbilityActive",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "broken",
+              "isHaveClip": false,
+              "totalTime": 0.1666666716337204,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCSetActiveBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "SetActive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "gameObjName": "fixed",
+                  "active": false
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "locked_Idle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "LockedByGameplayLock",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "locked_Idle",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCSetActiveBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "SetActive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "gameObjName": "fixed",
+                  "active": false
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": false,
+                  "innerId": 0,
+                  "effectNodeName": "",
+                  "effectId": "P_fxint_l_hydrantbase_xirang_lowlight_801",
+                  "followRot": false,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "unlock",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 1
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "unlock",
+              "isHaveClip": false,
+              "totalTime": 1.5,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCSetActiveBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "SetActive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "gameObjName": "fixed",
+                  "active": true
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCSetActiveBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "SetActive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "gameObjName": "abandoned",
+                  "active": false
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": false,
+                  "innerId": 0,
+                  "effectNodeName": "",
+                  "effectId": "P_fxint_l_hydrantbase_xirang_switch_801",
+                  "followRot": false,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": -1895999576
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": false,
+                  "transitionTime": 200
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "unlocked_Idle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": true,
+                    "exitTime": 1.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelName": "P_anm_map02_pool+1_003_01a",
+      "layerFsmDatas": [
+        {
+          "hasAnimClip": true,
+          "index": 0,
+          "weight": 1.0,
+          "layerName": "Anim",
+          "stateDatas": [
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "Idle",
+              "isHaveClip": true,
+              "totalTime": 0.03333333507180214,
+              "animationClipName": "A_anm_map02_pool+1_003_01_closeidle_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": true,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "IdleToWorking",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 1
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "IsAbilityActive",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "IdleToWorking",
+              "isHaveClip": true,
+              "totalTime": 2.766666889190674,
+              "animationClipName": "A_anm_map02_pool+1_003_01_open_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": 2137722285
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": false,
+                  "transitionTime": 200
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "working",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": true,
+                    "exitTime": 1.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "working",
+              "isHaveClip": true,
+              "totalTime": 11.733333587646484,
+              "animationClipName": "A_anm_map02_pool+1_003_01_openidle_01",
+              "isEmpty": false,
+              "isLoop": true,
+              "isStartingNode": false,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "WorkingToIdle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "IsAbilityActive",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "WorkingToIdle",
+              "isHaveClip": true,
+              "totalTime": 2.133334159851074,
+              "animationClipName": "A_anm_map02_pool+1_003_01_close_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": 1390874209
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": false,
+                  "transitionTime": 200
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "Idle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": true,
+                    "exitTime": 1.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "effectIds": [
+    "P_fxint_l_xiaofangshuan_02",
+    "P_fxint_l_xiaofangshuan_02_4m",
+    "P_fxint_l_hydrantbase_xirang_highlight_801",
+    "P_fxint_l_xiaofangshuan_02_6m",
+    "P_fxint_l_xiaofangshuan_02_noring",
+    "P_fxint_l_hydrantbase_xirang_lowlight_801",
+    "P_fxint_l_hydrantbase_xirang_switch_801"
+  ]
+}

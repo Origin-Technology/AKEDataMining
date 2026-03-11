@@ -1,0 +1,505 @@
+{
+  "modelId": "int_system_spaceship_room_clue_door_postmodel",
+  "clipAssetInfos": [
+    {
+      "animationClipName": "A_anm_base01_zmddoor+1_001_03_closeidle_01",
+      "animationClipHash": 701477542843300268,
+      "animationGuid": {
+        "val0": 3042103534,
+        "val1": 1138940684,
+        "val2": 2003856816,
+        "val3": 1594131545
+      },
+      "subClipNameHash": 0
+    },
+    {
+      "animationClipName": "A_anm_base01_zmddoor+1_001_03_open_01",
+      "animationClipHash": 831516662373240888,
+      "animationGuid": {
+        "val0": 3895058648,
+        "val1": 1251347234,
+        "val2": 3978634629,
+        "val3": 230322382
+      },
+      "subClipNameHash": 0
+    },
+    {
+      "animationClipName": "A_anm_base01_zmddoor+1_001_03_openidle_01",
+      "animationClipHash": 255799320322839530,
+      "animationGuid": {
+        "val0": 3227362733,
+        "val1": 1255294762,
+        "val2": 3335186077,
+        "val3": 1775523453
+      },
+      "subClipNameHash": 0
+    },
+    {
+      "animationClipName": "A_anm_base01_zmddoor+1_001_03_close_01",
+      "animationClipHash": 303713803826492522,
+      "animationGuid": {
+        "val0": 1253439307,
+        "val1": 1320824141,
+        "val2": 3548391296,
+        "val3": 918364866
+      },
+      "subClipNameHash": 0
+    }
+  ],
+  "emissiveConfigHashes": [],
+  "cameraSignalSourceAssetHashes": [],
+  "modelAnimatorDatas": [
+    {
+      "modelName": "int_system_spaceship_room_clue_door_postmodel",
+      "layerFsmDatas": [
+        {
+          "hasAnimClip": true,
+          "index": 0,
+          "weight": 1.0,
+          "layerName": "MVSCAnimFsmGraph",
+          "stateDatas": [
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "start",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": true,
+              "isLoop": false,
+              "isStartingNode": true,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "locked",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "Unlock",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                },
+                {
+                  "targetStateName": "unlocked",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "Unlock",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "Active",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                },
+                {
+                  "targetStateName": "built",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "Active",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "locked",
+              "isHaveClip": true,
+              "totalTime": 0.03333333507180214,
+              "animationClipName": "A_anm_base01_zmddoor+1_001_03_closeidle_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAINavMeshCtrlBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "AINavMeshCtrl",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "ctrlType": "AddDynamicObstacle",
+                  "localCenter": {
+                    "x": -0.038790225982666016,
+                    "y": 2.0,
+                    "z": -0.009569019079208374
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "size": {
+                    "x": 4.53078556060791,
+                    "y": 3.8915367126464844,
+                    "z": 0.7116393446922302
+                  }
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "unlocked",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "Unlock",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "unlocked",
+              "isHaveClip": true,
+              "totalTime": 0.03333333507180214,
+              "animationClipName": "A_anm_base01_zmddoor+1_001_03_closeidle_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAINavMeshCtrlBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "AINavMeshCtrl",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "ctrlType": "AddDynamicObstacle",
+                  "localCenter": {
+                    "x": 0.0,
+                    "y": 2.0,
+                    "z": 0.0
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "size": {
+                    "x": 3.1485044956207275,
+                    "y": 3.8915367126464844,
+                    "z": 0.40386107563972473
+                  }
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "unlocked_to_built",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "Active",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "unlocked_to_built",
+              "isHaveClip": true,
+              "totalTime": 2.0,
+              "animationClipName": "A_anm_base01_zmddoor+1_001_03_open_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": 1839667111
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": false,
+                  "transitionTime": 200
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "built",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "built",
+              "isHaveClip": true,
+              "totalTime": 0.03333333507180214,
+              "animationClipName": "A_anm_base01_zmddoor+1_001_03_openidle_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAINavMeshCtrlBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "AINavMeshCtrl",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "ctrlType": "RemoveDynamicObstacle",
+                  "localCenter": {
+                    "x": 0.0,
+                    "y": 2.0,
+                    "z": 0.0
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "size": {
+                    "x": 3.1485044956207275,
+                    "y": 3.8915367126464844,
+                    "z": 0.40386107563972473
+                  }
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "built_to_unlocked",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "Active",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "built_to_unlocked",
+              "isHaveClip": true,
+              "totalTime": 2.0,
+              "animationClipName": "A_anm_base01_zmddoor+1_001_03_close_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": -901119379
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": false,
+                  "transitionTime": 200
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "unlocked",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "effectIds": []
+}

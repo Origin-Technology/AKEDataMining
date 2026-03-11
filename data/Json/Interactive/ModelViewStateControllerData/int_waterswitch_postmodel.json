@@ -1,0 +1,1062 @@
+{
+  "modelId": "int_waterswitch_postmodel",
+  "clipAssetInfos": [
+    {
+      "animationClipName": "A_fx_interactive_switch_water_green_end",
+      "animationClipHash": 29098741773968128,
+      "animationGuid": {
+        "val0": 423493532,
+        "val1": 1188167121,
+        "val2": 2831412666,
+        "val3": 3404166577
+      },
+      "subClipNameHash": 0
+    },
+    {
+      "animationClipName": "A_fx_interactive_switch_water_unavailable_loop",
+      "animationClipHash": 460611610736421196,
+      "animationGuid": {
+        "val0": 2400360834,
+        "val1": 1218142789,
+        "val2": 1984556439,
+        "val3": 3284130820
+      },
+      "subClipNameHash": 0
+    },
+    {
+      "animationClipName": "A_fx_interactive_switch_water_green_star",
+      "animationClipHash": 102902479531707215,
+      "animationGuid": {
+        "val0": 2620296339,
+        "val1": 1281308669,
+        "val2": 796837797,
+        "val3": 655926455
+      },
+      "subClipNameHash": 0
+    }
+  ],
+  "emissiveConfigHashes": [],
+  "cameraSignalSourceAssetHashes": [],
+  "modelAnimatorDatas": [
+    {
+      "modelName": "P_fxint_s_map02_common_switch_01",
+      "layerFsmDatas": [
+        {
+          "hasAnimClip": true,
+          "index": 0,
+          "weight": 1.0,
+          "layerName": "base",
+          "stateDatas": [
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "unlocked",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": true,
+              "isLoop": false,
+              "isStartingNode": true,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "lock_transition",
+                  "conditionGroup": {
+                    "logic": "OR",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "LockedByGameplayLock",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "is_locked",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "lock_transition",
+              "isHaveClip": true,
+              "totalTime": 1.0,
+              "animationClipName": "A_fx_interactive_switch_water_green_end",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": 447394358
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": false,
+                  "transitionTime": 200
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "locked",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.15000000596046448,
+                    "hasExitTime": true,
+                    "exitTime": 0.8500000238418579,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "locked",
+              "isHaveClip": true,
+              "totalTime": 1.0,
+              "animationClipName": "A_fx_interactive_switch_water_unavailable_loop",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "unlock_transition",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "LockedByGameplayLock",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "is_locked",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "unlock_transition",
+              "isHaveClip": true,
+              "totalTime": 1.0,
+              "animationClipName": "A_fx_interactive_switch_water_green_star",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": -1105508681
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": false,
+                  "transitionTime": 200
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "unlocked",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.15000000596046448,
+                    "hasExitTime": true,
+                    "exitTime": 0.8500000238418579,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "hasAnimClip": false,
+          "index": 0,
+          "weight": 1.0,
+          "layerName": "vfx",
+          "stateDatas": [
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "conduit",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": true,
+              "isLoop": false,
+              "isStartingNode": true,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "closeidle",
+                  "conditionGroup": {
+                    "logic": "OR",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 2
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 4
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 6
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 8
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                },
+                {
+                  "targetStateName": "openidle",
+                  "conditionGroup": {
+                    "logic": "OR",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 1
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 3
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 5
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 7
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 9
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "closeidle",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": true,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "open",
+                  "conditionGroup": {
+                    "logic": "OR",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 1
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 3
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 5
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 7
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 9
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "open",
+              "isHaveClip": false,
+              "totalTime": 0.550000011920929,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": -929688815
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": false,
+                  "transitionTime": 200
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "openidle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": true,
+                    "exitTime": 1.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "openidle",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": true,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "close",
+                  "conditionGroup": {
+                    "logic": "OR",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 2
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 4
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 6
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 8
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "close",
+              "isHaveClip": false,
+              "totalTime": 0.6000000238418579,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": -929688815
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": false,
+                  "transitionTime": 200
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "closeidle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": true,
+                    "exitTime": 1.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "hasAnimClip": false,
+          "index": 0,
+          "weight": 1.0,
+          "layerName": "returnZeroVfx",
+          "stateDatas": [
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "AnimNode State",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": true,
+              "isLoop": false,
+              "isStartingNode": true,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "Init",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                },
+                {
+                  "targetStateName": "Closed",
+                  "conditionGroup": {
+                    "logic": "OR",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 2
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 4
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 6
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 8
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "Init",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": true,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "Closed",
+                  "conditionGroup": {
+                    "logic": "OR",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 2
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 4
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 6
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 8
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "Closed",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": true,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "close",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.20000000298023224,
+              "stateName": "close",
+              "isHaveClip": false,
+              "totalTime": 0.6000000238418579,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": "0",
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": -929688815
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": false,
+                  "transitionTime": 200
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "Init",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": true,
+                    "exitTime": 1.0,
+                    "offset": 0.0,
+                    "easeType": "Linear"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "effectIds": []
+}
