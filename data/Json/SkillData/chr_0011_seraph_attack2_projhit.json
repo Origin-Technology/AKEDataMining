@@ -70,7 +70,7 @@
         "_sequenceActionData": {
           "actionData": [
             {
-              "$type": "Beyond.Gameplay.Core.DamageAction.DamageActionData",
+              "$type": "Beyond.Gameplay.Core.DamageAction+DamageActionData, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
@@ -137,6 +137,8 @@
                   "damageVisualCoalitionGroupKey": "Team",
                   "alwaysStartNewCoalition": false,
                   "alwaysEndCoalition": false,
+                  "updatePositionOnCoalition": true,
+                  "enablePoiseBreakTimeDilation": true,
                   "hidePoiseUIEffect": false,
                   "hideMainCharHpScreenEffect": false,
                   "damageDecorateMask": "NormalAttack",
@@ -157,29 +159,43 @@
                     "fxType": "Normal",
                     "effectName": "P_seraph_attack_01_hit",
                     "guardEffect": true,
-                    "forceGuardEffect": false,
                     "isCenterChangeLod": false,
+                    "useScaleBB": false,
                     "scale": {
                       "x": 1.0,
                       "y": 1.0,
                       "z": 1.0
+                    },
+                    "scaleBB": {
+                      "x": {
+                        "useBlackboardKey": true,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "y": {
+                        "useBlackboardKey": true,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "z": {
+                        "useBlackboardKey": true,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      }
                     },
                     "releaseByAction": false,
                     "ignoreOwnerTimeScale": false,
                     "interruptTime": 0.0,
                     "terrainPrefab": false,
                     "effectPosData": [],
-                    "centerOffset": {
-                      "x": 0.0,
-                      "y": 0.0,
-                      "z": 0.0
-                    },
                     "isShowInDialog": false,
                     "isLimitEffectCount": false,
                     "limitCount": 0,
                     "protectTime": 0.0,
                     "limitTime": 0.0,
                     "limitKey": "",
+                    "assetOnlyAffectModelRoot": false,
+                    "isUltimateShow": false,
                     "moveType": "Stationary",
                     "positionRef": "Target",
                     "grounded": false,
@@ -189,15 +205,34 @@
                     "useWeaponMountPoint": false,
                     "mountPoint": "VBHit",
                     "useAccurateMp": false,
+                    "isClothMountPoint": false,
                     "weaponIndex": 0,
                     "weaponMountPoint": "Root",
                     "showHideWithWeapon": false,
                     "offsetDir": "Self",
                     "offsetDirRevert": false,
+                    "usePositionOffsetBB": false,
                     "positionOffset": {
                       "x": 0.0,
                       "y": 0.0,
                       "z": 0.0
+                    },
+                    "positionOffsetBB": {
+                      "x": {
+                        "useBlackboardKey": true,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "y": {
+                        "useBlackboardKey": true,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "z": {
+                        "useBlackboardKey": true,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      }
                     },
                     "useTargetRotation": true,
                     "scaleWithTargetSize": false,
@@ -212,10 +247,28 @@
                     "rotWeaponIndex": 0,
                     "rotWeaponMountPoint": "Root",
                     "revertDir": true,
+                    "useSelfRotationBB": false,
                     "selfRotation": {
                       "x": 0.0,
                       "y": 0.0,
                       "z": 0.0
+                    },
+                    "selfRotationBB": {
+                      "x": {
+                        "useBlackboardKey": true,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "y": {
+                        "useBlackboardKey": true,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "z": {
+                        "useBlackboardKey": true,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      }
                     },
                     "lockYRotation": true,
                     "unpackRotDelayFrame": 0,
@@ -251,7 +304,7 @@
               "hitEnvironment": true,
               "hitEnvData": {
                 "valueCalculation": {
-                  "$type": "Beyond.Gameplay.Core.DefiniteValueCalculation",
+                  "$type": "Beyond.Gameplay.Core.DefiniteValueCalculation, Gameplay.Beyond",
                   "value": {
                     "useBlackboardKey": false,
                     "value": 10.0,
@@ -270,7 +323,7 @@
               }
             },
             {
-              "$type": "Beyond.Gameplay.Core.EnemyHurtAnimAction.Data",
+              "$type": "Beyond.Gameplay.Core.EnemyHurtAnimAction+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
@@ -328,6 +381,7 @@
               "hurtAnim": "LightTurn",
               "additiveShaking": true,
               "shakeIntensity": "Mild",
+              "randFrameWhenZeroTimeScale": false,
               "faceToAttacker": true,
               "faceDirectionSettings": {
                 "directionType": "TargetToSource",
@@ -341,7 +395,7 @@
               "overrideTransitionTime": false,
               "transitionTime": {
                 "useBlackboardKey": false,
-                "value": 0.10000000149011612,
+                "value": 0.1,
                 "blackboardKey": ""
               },
               "weakImmobilizedTime": {
@@ -361,9 +415,7 @@
                 "blackboardKey": ""
               },
               "distanceCurveEnabled": true,
-              "distanceCurve": {
-                "Ptr": 2767980864
-              },
+              "distanceCurve": {},
               "distanceUseScale": true,
               "immobilizedTimeUseScale": false,
               "unmovableTimeUseScale": false,
@@ -378,7 +430,7 @@
               "overrideSuperArmorLimit": -1
             },
             {
-              "$type": "Beyond.Gameplay.Core.IfElseAction.IfElseActionData",
+              "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
@@ -386,7 +438,7 @@
               "conditionAction": {
                 "actionData": [
                   {
-                    "$type": "Beyond.Gameplay.Core.Conditions.CheckMainCharacterCondition.Data",
+                    "$type": "Beyond.Gameplay.Core.Conditions.CheckMainCharacterCondition+Data, Gameplay.Beyond",
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
@@ -418,7 +470,7 @@
                     }
                   },
                   {
-                    "$type": "Beyond.Gameplay.Core.Conditions.CheckEntityNum.Data",
+                    "$type": "Beyond.Gameplay.Core.Conditions.CheckEntityNum+Data, Gameplay.Beyond",
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
@@ -460,7 +512,7 @@
               "succeedActions": {
                 "actionData": [
                   {
-                    "$type": "Beyond.Gameplay.Core.ObtainCostAction.Data",
+                    "$type": "Beyond.Gameplay.Core.ObtainCostAction+Data, Gameplay.Beyond",
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,

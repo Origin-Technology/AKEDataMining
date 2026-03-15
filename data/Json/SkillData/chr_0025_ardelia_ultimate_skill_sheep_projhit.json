@@ -70,7 +70,7 @@
         "_sequenceActionData": {
           "actionData": [
             {
-              "$type": "Beyond.Gameplay.Core.FindTargetAction.FindTargetActionData",
+              "$type": "Beyond.Gameplay.Core.FindTargetAction+FindTargetActionData, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
@@ -85,12 +85,12 @@
               "selectorOwnerContextKey": "",
               "selectorData": {
                 "finderData": {
-                  "$type": "Beyond.Gameplay.Core.Selector.HitBoxFinder.Data",
+                  "$type": "Beyond.Gameplay.Core.Selector+HitBoxFinder+Data, Gameplay.Beyond",
                   "checkAlive": true,
                   "autoSetTargetFaction": true,
                   "containsUnMarkable": false,
                   "factionTarget": "Anti",
-                  "targetFactionType": "0",
+                  "targetFactionType": 0,
                   "targetObjectType": "Normal",
                   "checkIntUnSelectableTag": true,
                   "shapeList": [
@@ -213,25 +213,27 @@
         "_sequenceActionData": {
           "actionData": [
             {
-              "$type": "Beyond.Gameplay.Core.Conditions.Probablity.Data",
+              "$type": "Beyond.Gameplay.Core.Conditions.Probablity+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
               "serverActionIndex": 1,
               "prob": {
                 "useBlackboardKey": true,
-                "value": 0.09000000357627869,
+                "value": 0.09,
                 "blackboardKey": "effect_prob"
               }
             },
             {
-              "$type": "Beyond.Gameplay.Core.SpawnAbilityEntity.Data",
+              "$type": "Beyond.Gameplay.Core.SpawnAbilityEntity+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
               "serverActionIndex": 2,
               "abilityEntityId": "abilityentity_chr_0025_ardelia_remain_loop",
               "abilityEntitySkillId": "chr_0025_ardelia_remain_loop_sheep",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
               "bornAt": {
                 "targetSource": "Target",
                 "targetGroupKey": "",
@@ -242,7 +244,7 @@
                 "centerToGround": true,
                 "selectorData": {
                   "finderData": {
-                    "$type": "Beyond.Gameplay.Core.Selector.FixedPointFinder.Data",
+                    "$type": "Beyond.Gameplay.Core.Selector+FixedPointFinder+Data, Gameplay.Beyond",
                     "positionOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -350,7 +352,7 @@
         "_sequenceActionData": {
           "actionData": [
             {
-              "$type": "Beyond.Gameplay.Core.ForEachAction.Data",
+              "$type": "Beyond.Gameplay.Core.ForEachAction+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
@@ -383,7 +385,7 @@
               "action": {
                 "actionData": [
                   {
-                    "$type": "Beyond.Gameplay.Core.Conditions.CheckTimedMarkerCondition.Data",
+                    "$type": "Beyond.Gameplay.Core.Conditions.CheckTimedMarkerCondition+Data, Gameplay.Beyond",
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
@@ -417,7 +419,7 @@
                     "returnTrueIfNotExists": true
                   },
                   {
-                    "$type": "Beyond.Gameplay.Core.DamageAction.DamageActionData",
+                    "$type": "Beyond.Gameplay.Core.DamageAction+DamageActionData, Gameplay.Beyond",
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
@@ -484,6 +486,8 @@
                         "damageVisualCoalitionGroupKey": "",
                         "alwaysStartNewCoalition": false,
                         "alwaysEndCoalition": false,
+                        "updatePositionOnCoalition": true,
+                        "enablePoiseBreakTimeDilation": true,
                         "hidePoiseUIEffect": false,
                         "hideMainCharHpScreenEffect": false,
                         "damageDecorateMask": "UltimateSkill, CanBreakWeakness",
@@ -504,29 +508,43 @@
                           "fxType": "Normal",
                           "effectName": "",
                           "guardEffect": false,
-                          "forceGuardEffect": false,
                           "isCenterChangeLod": false,
+                          "useScaleBB": false,
                           "scale": {
                             "x": 1.0,
                             "y": 1.0,
                             "z": 1.0
+                          },
+                          "scaleBB": {
+                            "x": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
+                            "y": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
+                            "z": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            }
                           },
                           "releaseByAction": false,
                           "ignoreOwnerTimeScale": false,
                           "interruptTime": 0.0,
                           "terrainPrefab": false,
                           "effectPosData": [],
-                          "centerOffset": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                          },
                           "isShowInDialog": false,
                           "isLimitEffectCount": false,
                           "limitCount": 0,
                           "protectTime": 0.0,
                           "limitTime": 0.0,
                           "limitKey": "",
+                          "assetOnlyAffectModelRoot": false,
+                          "isUltimateShow": false,
                           "moveType": "Stationary",
                           "positionRef": "Target",
                           "grounded": false,
@@ -536,15 +554,34 @@
                           "useWeaponMountPoint": false,
                           "mountPoint": "None",
                           "useAccurateMp": false,
+                          "isClothMountPoint": false,
                           "weaponIndex": 0,
                           "weaponMountPoint": "Root",
                           "showHideWithWeapon": false,
                           "offsetDir": "Self",
                           "offsetDirRevert": false,
+                          "usePositionOffsetBB": false,
                           "positionOffset": {
                             "x": 0.0,
                             "y": 0.0,
                             "z": 0.0
+                          },
+                          "positionOffsetBB": {
+                            "x": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
+                            "y": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
+                            "z": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            }
                           },
                           "useTargetRotation": false,
                           "scaleWithTargetSize": false,
@@ -559,10 +596,28 @@
                           "rotWeaponIndex": 0,
                           "rotWeaponMountPoint": "Root",
                           "revertDir": false,
+                          "useSelfRotationBB": false,
                           "selfRotation": {
                             "x": 0.0,
                             "y": 0.0,
                             "z": 0.0
+                          },
+                          "selfRotationBB": {
+                            "x": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
+                            "y": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
+                            "z": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            }
                           },
                           "lockYRotation": true,
                           "unpackRotDelayFrame": 0,
@@ -597,6 +652,8 @@
                         "damageVisualCoalitionGroupKey": "",
                         "alwaysStartNewCoalition": false,
                         "alwaysEndCoalition": false,
+                        "updatePositionOnCoalition": true,
+                        "enablePoiseBreakTimeDilation": true,
                         "hidePoiseUIEffect": false,
                         "hideMainCharHpScreenEffect": false,
                         "damageDecorateMask": "None",
@@ -610,7 +667,7 @@
                         "takeAtkSnapshot": false,
                         "damageProcessors": [],
                         "poiseCalculation": {
-                          "$type": "Beyond.Gameplay.Core.DefiniteValueCalculation",
+                          "$type": "Beyond.Gameplay.Core.DefiniteValueCalculation, Gameplay.Beyond",
                           "value": {
                             "useBlackboardKey": true,
                             "value": 0.0,
@@ -631,29 +688,43 @@
                           "fxType": "Normal",
                           "effectName": "",
                           "guardEffect": false,
-                          "forceGuardEffect": false,
                           "isCenterChangeLod": false,
+                          "useScaleBB": false,
                           "scale": {
                             "x": 1.0,
                             "y": 1.0,
                             "z": 1.0
+                          },
+                          "scaleBB": {
+                            "x": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
+                            "y": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
+                            "z": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            }
                           },
                           "releaseByAction": false,
                           "ignoreOwnerTimeScale": false,
                           "interruptTime": 0.0,
                           "terrainPrefab": false,
                           "effectPosData": [],
-                          "centerOffset": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0
-                          },
                           "isShowInDialog": false,
                           "isLimitEffectCount": false,
                           "limitCount": 0,
                           "protectTime": 0.0,
                           "limitTime": 0.0,
                           "limitKey": "",
+                          "assetOnlyAffectModelRoot": false,
+                          "isUltimateShow": false,
                           "moveType": "Stationary",
                           "positionRef": "Target",
                           "grounded": false,
@@ -663,15 +734,34 @@
                           "useWeaponMountPoint": false,
                           "mountPoint": "None",
                           "useAccurateMp": false,
+                          "isClothMountPoint": false,
                           "weaponIndex": 0,
                           "weaponMountPoint": "Root",
                           "showHideWithWeapon": false,
                           "offsetDir": "Self",
                           "offsetDirRevert": false,
+                          "usePositionOffsetBB": false,
                           "positionOffset": {
                             "x": 0.0,
                             "y": 0.0,
                             "z": 0.0
+                          },
+                          "positionOffsetBB": {
+                            "x": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
+                            "y": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
+                            "z": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            }
                           },
                           "useTargetRotation": false,
                           "scaleWithTargetSize": false,
@@ -686,10 +776,28 @@
                           "rotWeaponIndex": 0,
                           "rotWeaponMountPoint": "Root",
                           "revertDir": false,
+                          "useSelfRotationBB": false,
                           "selfRotation": {
                             "x": 0.0,
                             "y": 0.0,
                             "z": 0.0
+                          },
+                          "selfRotationBB": {
+                            "x": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
+                            "y": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
+                            "z": {
+                              "useBlackboardKey": true,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            }
                           },
                           "lockYRotation": true,
                           "unpackRotDelayFrame": 0,
@@ -719,7 +827,7 @@
                     "hitEnvironment": false,
                     "hitEnvData": {
                       "valueCalculation": {
-                        "$type": "Beyond.Gameplay.Core.DefiniteValueCalculation",
+                        "$type": "Beyond.Gameplay.Core.DefiniteValueCalculation, Gameplay.Beyond",
                         "value": {
                           "useBlackboardKey": false,
                           "value": 0.0,
@@ -738,7 +846,7 @@
                     }
                   },
                   {
-                    "$type": "Beyond.Gameplay.Core.EnemyHurtAnimAction.Data",
+                    "$type": "Beyond.Gameplay.Core.EnemyHurtAnimAction+Data, Gameplay.Beyond",
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
@@ -796,6 +904,7 @@
                     "hurtAnim": "LightTurn",
                     "additiveShaking": false,
                     "shakeIntensity": "Mild",
+                    "randFrameWhenZeroTimeScale": false,
                     "faceToAttacker": true,
                     "faceDirectionSettings": {
                       "directionType": "TargetToSource",
@@ -809,7 +918,7 @@
                     "overrideTransitionTime": false,
                     "transitionTime": {
                       "useBlackboardKey": false,
-                      "value": 0.10000000149011612,
+                      "value": 0.1,
                       "blackboardKey": ""
                     },
                     "weakImmobilizedTime": {
@@ -829,9 +938,7 @@
                       "blackboardKey": ""
                     },
                     "distanceCurveEnabled": false,
-                    "distanceCurve": {
-                      "Ptr": 2708202128
-                    },
+                    "distanceCurve": {},
                     "distanceUseScale": true,
                     "immobilizedTimeUseScale": true,
                     "unmovableTimeUseScale": true,
@@ -846,7 +953,7 @@
                     "overrideSuperArmorLimit": -1
                   },
                   {
-                    "$type": "Beyond.Gameplay.Core.CreateTimedMarker.Data",
+                    "$type": "Beyond.Gameplay.Core.CreateTimedMarker+Data, Gameplay.Beyond",
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
@@ -910,7 +1017,7 @@
         "_sequenceActionData": {
           "actionData": [
             {
-              "$type": "Beyond.Gameplay.Core.CameraImpulseAction.CameraImpulseActionData",
+              "$type": "Beyond.Gameplay.Core.CameraImpulseAction+CameraImpulseActionData, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
@@ -955,27 +1062,21 @@
                 "impulseChannel": 1,
                 "impulseType": "Legacy",
                 "impulseShape": "Custom",
-                "customImpulseShape": {
-                  "Ptr": 2708203104
-                },
-                "impulseDuration": 0.20000000298023224,
+                "customImpulseShape": {},
+                "impulseDuration": 0.2,
                 "rawSignalPath": "Assets/Beyond/DynamicAssets/GameData/SkillData/Curve/FixedSignal_CamShake_SinY.asset",
-                "amplitudeGain": 0.009999999776482582,
+                "amplitudeGain": 0.01,
                 "frequencyGain": 10.0,
                 "repeatMode": "Loop",
                 "randomize": true,
                 "timeEnvelope": {
-                  "AttackShape": {
-                    "Ptr": 2708203264
-                  },
-                  "DecayShape": {
-                    "Ptr": 2708203424
-                  },
-                  "AttackTime": 0.0,
-                  "SustainTime": 0.10000000149011612,
-                  "DecayTime": 0.10000000149011612,
-                  "ScaleWithImpact": false,
-                  "HoldForever": false
+                  "m_AttackShape": {},
+                  "m_DecayShape": {},
+                  "m_AttackTime": 0.0,
+                  "m_SustainTime": 0.1,
+                  "m_DecayTime": 0.1,
+                  "m_ScaleWithImpact": false,
+                  "m_HoldForever": false
                 },
                 "dissipationDistance": 60.0,
                 "dissipationRate": 0.0,
@@ -1002,12 +1103,11 @@
         "_sequenceActionData": {
           "actionData": [
             {
-              "$type": "Beyond.Gameplay.Core.EffectAction.EffectActionData",
+              "$type": "Beyond.Gameplay.Core.EffectAction+EffectActionData, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
               "serverActionIndex": 9,
-              "showDetail": false,
               "targetSettings": {
                 "targetSource": "Target",
                 "targetGroupKey": "",
@@ -1018,7 +1118,7 @@
                 "centerToGround": true,
                 "selectorData": {
                   "finderData": {
-                    "$type": "Beyond.Gameplay.Core.Selector.FixedPointFinder.Data",
+                    "$type": "Beyond.Gameplay.Core.Selector+FixedPointFinder+Data, Gameplay.Beyond",
                     "positionOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -1087,29 +1187,43 @@
                 "fxType": "Normal",
                 "effectName": "P_fxbat_ardelia_skill_ult_fly_range",
                 "guardEffect": false,
-                "forceGuardEffect": false,
                 "isCenterChangeLod": false,
+                "useScaleBB": false,
                 "scale": {
                   "x": 1.0,
                   "y": 1.0,
                   "z": 1.0
+                },
+                "scaleBB": {
+                  "x": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "y": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "z": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  }
                 },
                 "releaseByAction": false,
                 "ignoreOwnerTimeScale": false,
                 "interruptTime": 0.0,
                 "terrainPrefab": false,
                 "effectPosData": [],
-                "centerOffset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
                 "isShowInDialog": false,
                 "isLimitEffectCount": false,
                 "limitCount": 0,
                 "protectTime": 0.0,
                 "limitTime": 0.0,
                 "limitKey": "",
+                "assetOnlyAffectModelRoot": false,
+                "isUltimateShow": false,
                 "moveType": "Stationary",
                 "positionRef": "Target",
                 "grounded": false,
@@ -1119,15 +1233,34 @@
                 "useWeaponMountPoint": false,
                 "mountPoint": "None",
                 "useAccurateMp": false,
+                "isClothMountPoint": false,
                 "weaponIndex": 0,
                 "weaponMountPoint": "Root",
                 "showHideWithWeapon": false,
                 "offsetDir": "Self",
                 "offsetDirRevert": false,
+                "usePositionOffsetBB": false,
                 "positionOffset": {
                   "x": 0.0,
                   "y": 0.0,
                   "z": 0.0
+                },
+                "positionOffsetBB": {
+                  "x": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "y": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "z": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  }
                 },
                 "useTargetRotation": false,
                 "scaleWithTargetSize": false,
@@ -1142,10 +1275,28 @@
                 "rotWeaponIndex": 0,
                 "rotWeaponMountPoint": "Root",
                 "revertDir": false,
+                "useSelfRotationBB": false,
                 "selfRotation": {
                   "x": 0.0,
                   "y": 0.0,
                   "z": 0.0
+                },
+                "selfRotationBB": {
+                  "x": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "y": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "z": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  }
                 },
                 "lockYRotation": true,
                 "unpackRotDelayFrame": 0,
