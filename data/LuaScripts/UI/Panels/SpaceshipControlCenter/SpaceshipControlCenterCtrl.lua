@@ -40,6 +40,7 @@ local HelpedStateByRoomType = {
 
 
 
+
 SpaceshipControlCenterCtrl = HL.Class('SpaceshipControlCenterCtrl', uiCtrl.UICtrl)
 
 
@@ -113,10 +114,11 @@ SpaceshipControlCenterCtrl.OnCreate = HL.Override(HL.Any) << function(self, arg)
         self.m_visitorHelpBindingId = self:BindInputPlayerAction("ss_help_friend_room", function()
             if self.m_nowNaviRoomCell then
                 AudioManager.PostEvent("Au_UI_Button_Produce")
-                self.m_nowNaviRoomCell.visitorsNode.helpBtn.onClick:Invoke()
+                GameInstance.player.spaceship:SpaceshipHelpRoom(self.m_nowNaviRoomCell.roomId)
             end
         end)
     end
+    self:SetNaviTarget()
     self.view.controllerHintPlaceholder:InitControllerHintPlaceholder({self.view.inputGroup.groupId})
 end
 
@@ -130,6 +132,18 @@ end
 
 SpaceshipControlCenterCtrl.OnShow = HL.Override() << function(self)
 end
+
+
+
+
+SpaceshipControlCenterCtrl.SetNaviTarget = HL.Method() << function(self)
+    if not GameInstance.player.spaceship.isViewingFriend then
+        InputManagerInst.controllerNaviManager:SetTarget(self.view.control_center.ownerButton)
+    else
+        InputManagerInst.controllerNaviManager:SetTarget(self.view.control_center.visitorsNodeInputBindingGroupNaviDecorator)
+    end
+end
+
 
 
 

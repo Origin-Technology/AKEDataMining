@@ -318,20 +318,18 @@ DomainMainCtrl.InitUI = HL.Method() << function(self)
             return
         end
         self:_ShowBulletin(false)
+        self.m_phase.hasJumpedToOtherPhase = false
         PhaseManager:OpenPhase(PhaseId.SettlementSwitchRegionPopup, {
             curDomainId = self.m_curDomainId,
             unlockedDomainIds = self.m_unlockDomainIds,
             regionRedDot = "DomainSingleMap",
             onConfirm = function(newDomainId)
                 if self.m_curDomainId ~= newDomainId then
+                    self.m_phase.hasJumpedToOtherPhase = true
                     self.m_curDomainId = newDomainId
                     self:UpdateData()
                     self:RefreshAllUI()
                     self:_RequireBulletinData()
-                    local wrapper = self.animationWrapper
-                    wrapper:PlayInAnimation(function()
-                        self:_TryShowDomainVersionDiff()
-                    end)
                 end
             end
         })
@@ -626,10 +624,20 @@ end
 
 DomainMainCtrl._TryShowDomainVersionDiff = HL.Method() << function(self)
     logger.info("尝试显示版本差异信息：", self.m_curDomainId)
+    if UIManager:IsOpen(PanelId.DomainVersionInfoPopup) then
+        return
+    end
     local domainMaxLvHasDiff = domainDevelopmentSystem:DomainMaxLevelHasVersionDiff(self.m_curDomainId)
     if domainMaxLvHasDiff then
-        UIManager:Open(PanelId.DomainVersionInfoPopup, self.m_curDomainId)
+        UIManager:Open(PanelId.DomainVersionInfoPopup, {
+            domainId = self.m_curDomainId,
+            onClose = function()
+                CS.Beyond.Gameplay.Conditions.CheckIsOpenDomainMain.Trigger()
+            end
+        })
         domainDevelopmentSystem:SendRecordCurVersionInfo(self.m_curDomainId)
+    else
+        CS.Beyond.Gameplay.Conditions.CheckIsOpenDomainMain.Trigger()
     end
 end
 

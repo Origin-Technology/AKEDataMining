@@ -198,7 +198,7 @@ WatchCtrl.BuildData = HL.Method() << function(self)
             view = self.view.wikiBtnShadow,
             phaseId = PhaseId.Wiki,
             needRefreshUnlock = true,
-            needShowRedDot = true,
+            needShowRedDot = false,
             column = 4,
         },
         [BTN_CONST.RIGHT.VALUABLE_INVENTORY] = {
@@ -804,7 +804,7 @@ end
 WatchCtrl._SetCameraCfg = HL.Method() << function(self)
     CameraManager:SetUICameraPostProcess(true)
     CameraManager:AddUICamCullingMaskConfig("Watch", UIConst.LAYERS.UIPP)
-    UIManager:TryToggleMainCamera(self.panelCfg, true)
+    UIManager:ChangeHideCameraPanelState(self.panelId, UIConst.HIDE_CAMERA_PANEL_STATE.In) 
 end
 
 
@@ -931,7 +931,6 @@ WatchCtrl._OnPanelInputBlocked = HL.Override(HL.Boolean) << function(self, activ
     if active then
         if DeviceInfo.usingController then
             UIUtils.setAsNaviTarget(self.cacheNaviTarget and self.cacheNaviTarget or self.view.buttonCharInfo.btn)
-            InputManagerInst.controllerNaviManager:SetNaviBindingType(CS.UnityEngine.UI.NavigationBindingType.AllDirections)
             self.view.scrollViewScrollRect.verticalNormalizedPosition = self.cacheNaviTarget and self.view.scrollViewScrollRect.verticalNormalizedPosition or 1
         end
     else

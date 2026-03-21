@@ -125,6 +125,7 @@ ActivityWeeklyTaskCtrl._GetTaskInfo = HL.Method() << function(self)
     local tasks = {}
     for id, task in pairs(self.m_activity.taskInfo) do
         local success, taskInfo = Tables.activityWeeklyTaskTable:TryGetValue(id)
+        
         local progress = math.floor(task.Item2 * taskInfo.displayFactor + 1e-6)
         local progressToCompare = math.floor(taskInfo.progressToCompare * taskInfo.displayFactor + 1e-6)
         if success then

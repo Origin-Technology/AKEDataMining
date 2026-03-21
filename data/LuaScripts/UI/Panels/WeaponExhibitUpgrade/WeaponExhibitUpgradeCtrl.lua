@@ -82,6 +82,7 @@ local PANEL_ID = PanelId.WeaponExhibitUpgrade
 
 
 
+
 WeaponExhibitUpgradeCtrl = HL.Class('WeaponExhibitUpgradeCtrl', uiCtrl.UICtrl)
 
 
@@ -269,9 +270,11 @@ WeaponExhibitUpgradeCtrl.OnWeaponGainExp = HL.Method(HL.Table) << function(self,
             self.view.animation:Play("weaponexhibitupgrade_scroll_in")
         end
 
+        self.view.luaPanel:BlockAllInput()
         coroutine.wait(0.3) 
         self:_RefreshUpgradeInformation(weaponInfo.weaponInstId, weaponInfo.weaponTemplateId, hadLevelUp)
         coroutine.wait(1.2) 
+        self.view.luaPanel:RecoverAllInput()
         self:ShowRewardsPopup()
 
         if newLv >= expInfo.stageLv then
@@ -390,6 +393,14 @@ WeaponExhibitUpgradeCtrl.OnShow = HL.Override() << function(self)
     else
         self:_RefreshUpgradePanel(weaponInstId, weaponTemplateId)
     end
+end
+
+
+
+
+WeaponExhibitUpgradeCtrl._OnPanelInputBlocked = HL.Override(HL.Boolean) << function(self, active)
+    self.view.addKeyHint.gameObject:SetActive(active)
+    self.view.reduceKeyHint.gameObject:SetActive(active)
 end
 
 
@@ -777,6 +788,7 @@ WeaponExhibitUpgradeCtrl._RefreshCostItemCell = HL.Method(HL.Any, HL.Table, HL.A
 
     cell.itemBlack.gameObject:SetActive(not isEmpty)
     cell.emptyNode.gameObject:SetActive(isEmpty)
+    cell.addNode.gameObject:SetActive(isEmpty)
     cell.selectNode.gameObject:SetActive(false)
     cell.multiSelectNode.gameObject:SetActive(false)
     cell.button.onClick:RemoveAllListeners()

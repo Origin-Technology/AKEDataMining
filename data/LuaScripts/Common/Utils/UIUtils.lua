@@ -933,7 +933,7 @@ end
 function UIUtils.checkInputValid(value)
     
     return true
-     
+    
 end
 
 function UIUtils.getStringLength(str)
@@ -1675,7 +1675,7 @@ end
 
 function UIUtils.usingBlockTransition()
     local BlockGlitchTransition = require_ex("UI/Panels/BlockGlitchTransition/BlockGlitchTransitionCtrl")
-    return BlockGlitchTransition.BlockGlitchTransitionCtrl.s_renderTexture ~= nil
+    return BlockGlitchTransition.BlockGlitchTransitionCtrl.s_renderTextureHandle ~= nil
 end
 
 function UIUtils.getTextShowDuration(text, tSpeed)
@@ -2135,6 +2135,7 @@ function UIUtils.showItemSideTips(itemCell, tipsPosType, tipsPosTransform)
             tipsPosTransform = tipsPosTransform or itemCell.transform,
             isSideTips = true,
         }
+        itemCell:SetExtraInfo({ isSideTips = DeviceInfo.usingController })
     end
     itemCell:ShowTips(posInfo)
 end
@@ -2343,6 +2344,35 @@ end
 
 function UIUtils.isUIGOActive(go)
     return go.activeInHierarchy and go.layer ~= UIConst.HIDE_LAYER
+end
+
+function UIUtils.getSerialNum(intNum)
+    
+    local romanNumerals = {
+        {1000, "M"},
+        {900, "CM"},
+        {500, "D"},
+        {400, "CD"},
+        {100, "C"},
+        {90, "XC"},
+        {50, "L"},
+        {40, "XL"},
+        {10, "X"},
+        {9, "IX"},
+        {5, "V"},
+        {4, "IV"},
+        {1, "I"}
+    }
+    local result = ""
+    for _, pair in ipairs(romanNumerals) do
+        local value = pair[1]
+        local numeral = pair[2]
+        while intNum >= value do
+            result = result .. numeral
+            intNum = intNum - value
+        end
+    end
+    return result
 end
 
 

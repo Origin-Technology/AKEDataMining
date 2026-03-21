@@ -147,6 +147,10 @@ CharFormationCtrl.m_weekRaidArg = HL.Field(HL.Table)
 CharFormationCtrl.m_curSelectTakeItemCount = HL.Field(HL.Number) << 0
 
 
+CharFormationCtrl.m_fromDialog = HL.Field(HL.Boolean) << false
+
+
+
 
 
 
@@ -155,6 +159,9 @@ CharFormationCtrl.m_curSelectTakeItemCount = HL.Field(HL.Number) << 0
 
 
 CharFormationCtrl.OnCreate = HL.Override(HL.Any) << function(self, args)
+    if type(args) == "table" and args.fromDialog == true then
+        self.m_fromDialog = true
+    end
     self:_ProcessArgs(args)
     self:_InitController()
     self:_UpdateWeekRaid()
@@ -690,14 +697,11 @@ CharFormationCtrl._Init = HL.Method() << function(self)
     self.view.btnClose.onClick:RemoveAllListeners()
     self.view.btnClose.onClick:AddListener(function()
         local isOpen, phase = PhaseManager:IsOpen(PhaseId.Dialog)
-        if isOpen then
+        if isOpen and self.m_fromDialog then
             Notify(MessageConst.DIALOG_CLOSE_UI, { PANEL_ID, PhaseId.CharFormation, 0 })
         else
             self.m_phase:OnCommonBackClicked()
         end
-    end)
-    self:BindInputPlayerAction("common_close_team_panel", function()
-        PhaseManager:PopPhase(PhaseId.CharFormation)
     end)
 
     self.view.btnBack.onClick:RemoveAllListeners()
@@ -934,6 +938,9 @@ end
 CharFormationCtrl._OnActiveSquadChange = HL.Method(HL.Table) << function(self, args)
     local curTeamIndex = unpack(args)
     self:UpdateTeamSet()
+    if not string.isEmpty(self.m_dungeonId) or self.m_weekRaidArg then
+        return
+    end
     self:_StartCoroutine(function()
         self.view.bannerMidNode.gameObject:SetActive(true)
         self.view.bannerMidNode.numTxt.text = string.format("0%d", LuaIndex(curTeamIndex))
@@ -955,7 +962,9 @@ CharFormationCtrl._EnterDungeon = HL.Method(HL.String, HL.Opt(HL.Table)) << func
     end
     if entered then
         
-        self:Notify(MessageConst.DIALOG_CLOSE_UI, { nil, nil, 0 })
+        if self.m_fromDialog then
+            self:Notify(MessageConst.DIALOG_CLOSE_UI, { nil, nil, 0 })
+        end
         if self.m_enterDungeonCallback then
             self.m_enterDungeonCallback(dungeonId)
         end

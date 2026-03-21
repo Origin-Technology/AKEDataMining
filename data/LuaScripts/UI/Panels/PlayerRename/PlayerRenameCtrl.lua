@@ -151,13 +151,7 @@ PlayerRenameCtrl.OnCreate = HL.Override(HL.Any) << function(self, arg)
     end
 
     self.view.sureSecondBtn.onClick:AddListener(function()
-        if DeviceInfo.usingController and not UNITY_PS5 and not DeviceInfo.isMobile then
-            GameInstance.player.playerInfoSystem:SetPlayerName(
-                string.gsub(string.gsub(string.gsub(self.view.userRoleInputField.textComponent.text, "​", ""),"<u>",""),"</u>",""))
-        else
-            GameInstance.player.playerInfoSystem:SetPlayerName(
-                self.m_input)
-        end
+        GameInstance.player.playerInfoSystem:SetPlayerName(self.m_input)
     end)
 
     if UNITY_PS4 or UNITY_PS5 or RENAME_PS_DEBUG or (DeviceInfo.isMobile and DeviceInfo.usingController) then
@@ -313,13 +307,7 @@ end
 PlayerRenameCtrl._OnSureBtnClicked = HL.Method() << function(self)
     local count = UIUtils.getStringLength(self.m_input)
     if self.m_isValid and count > 0 then
-        if DeviceInfo.usingController and not UNITY_PS5 and not DeviceInfo.isMobile then
-            GameInstance.player.playerInfoSystem:CheckPlayerName(
-                string.gsub(string.gsub(string.gsub(self.view.userRoleInputField.textComponent.text, "​", ""),"<u>",""),"</u>",""))
-        else
-            GameInstance.player.playerInfoSystem:CheckPlayerName(
-                self.m_input)
-        end
+        GameInstance.player.playerInfoSystem:CheckPlayerName(self.m_input)
     end
 end
 

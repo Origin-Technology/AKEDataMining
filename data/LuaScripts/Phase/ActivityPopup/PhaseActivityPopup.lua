@@ -31,7 +31,7 @@ PhaseActivityPopup.s_messages = HL.StaticField(HL.Table) << {
 
 PhaseActivityPopup._OnInit = HL.Override() << function(self)
     PhaseActivityPopup.Super._OnInit(self)
-    UIManager:ToggleBlockObtainWaysJump("PhaseActivityPopup", true, true)
+    UIManager:ToggleBlockObtainWaysJump("PhaseActivityPopup", true, {})
 end
 
 
@@ -69,7 +69,7 @@ PhaseActivityPopup._OnDestroy = HL.Override() << function(self)
     if self.arg and self.arg.closeCallback then
         self.arg.closeCallback()
     end
-    UIManager:ToggleBlockObtainWaysJump("PhaseActivityPopup", false, true)
+    UIManager:ToggleBlockObtainWaysJump("PhaseActivityPopup", false)
 end
 
 

@@ -29,80 +29,7 @@ RewardsPopUpForBlackBoxCtrl = HL.Class('RewardsPopUpForBlackBoxCtrl', uiCtrl.UIC
 
 
 RewardsPopUpForBlackBoxCtrl.OnShowBlackboxResult = HL.StaticMethod(HL.Any) << function(args)
-    if string.isEmpty(GameWorld.worldInfo.curSubGameId) then
-        
-        
-        local firstPassRewardPack = GameInstance.player.inventory:ConsumeLatestRewardPackOfType(RewardSourceType.DungeonFirstPass)
-        local items = {}
-        if firstPassRewardPack and firstPassRewardPack.rewardSourceType == RewardSourceType.DungeonFirstPass then
-            for _, itemBundle in pairs(firstPassRewardPack.itemBundleList) do
-                local _, itemCfg = Tables.itemTable:TryGetValue(itemBundle.id)
-                if itemCfg then
-                    
-                    
-                    
-                    
-                    
-                    
-                    table.insert(items, { id = itemBundle.id,
-                                          count = itemBundle.count,
-                                          sortId1 = itemCfg.sortId1,
-                                          sortId2 = itemCfg.sortId2 })
-                end
-            end
-
-        end
-
-        local extraRewardPack = GameInstance.player.inventory:ConsumeLatestRewardPackOfType(RewardSourceType.DungeonExtraReward)
-        if extraRewardPack and extraRewardPack.rewardSourceType == RewardSourceType.DungeonExtraReward then
-            for _, itemBundle in pairs(extraRewardPack.itemBundleList) do
-                local _, itemCfg = Tables.itemTable:TryGetValue(itemBundle.id)
-                if itemCfg then
-                    
-                    
-                    
-                    
-                    
-                    
-                    if #items > 0 then
-                        local cacheExitItem
-                        for _, exitItem in ipairs(items) do
-                            if exitItem.id == itemBundle.id then
-                                cacheExitItem = exitItem
-                                break
-                            end
-                        end
-
-                        if cacheExitItem ~= nil then
-                            local curCount = cacheExitItem.count
-                            cacheExitItem.count = curCount + itemBundle.count
-                        else
-                            table.insert(items, {id = itemBundle.id,
-                                                 count = itemBundle.count,
-                                                 sortId1 = itemCfg.sortId1,
-                                                 sortId2 = itemCfg.sortId2,})
-                        end
-                    else
-                        table.insert(items, {id = itemBundle.id,
-                                             count = itemBundle.count,
-                                             sortId1 = itemCfg.sortId1,
-                                             sortId2 = itemCfg.sortId2,})
-                    end
-                end
-            end
-        end
-        
-        
-        
-        table.sort(items, Utils.genSortFunction(UIConst.COMMON_ITEM_SORT_KEYS))
-        Notify(MessageConst.SHOW_SYSTEM_REWARDS, {
-            
-            items = items,
-        })
-    else
-        UIManager:AutoOpen(PANEL_ID, args)
-    end
-
+    UIManager:AutoOpen(PANEL_ID, args)
     
     GameInstance.player.systemActionConflictManager:OnSystemActionEnd(SystemActionConflictId)
 end
@@ -333,7 +260,7 @@ end
 
 RewardsPopUpForBlackBoxCtrl._OnClickRestartDungeonBtn = HL.Method() << function(self)
     self:PlayAnimationOutWithCallback(function()
-        GameInstance.dungeonManager:RestartDungeon(self.m_dungeonId)
+        GameWorld.worldInfo.subGame:SendReStart(true)
         self:Close()
     end)
 end

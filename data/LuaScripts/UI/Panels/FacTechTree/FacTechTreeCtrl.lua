@@ -110,6 +110,7 @@ local UnhiddenClipName = {
 
 
 
+
 FacTechTreeCtrl = HL.Class('FacTechTreeCtrl', uiCtrl.UICtrl)
 
 
@@ -156,6 +157,9 @@ FacTechTreeCtrl.m_targetCells = HL.Field(HL.Forward("UIListCache"))
 
 
 FacTechTreeCtrl.m_unhiddenCategoryBgCells = HL.Field(HL.Forward("UIListCache"))
+
+
+FacTechTreeCtrl.m_normalLayerCutLineCells = HL.Field(HL.Forward("UIListCache"))
 
 
 FacTechTreeCtrl.m_getRewardCell = HL.Field(HL.Function)
@@ -276,6 +280,7 @@ FacTechTreeCtrl.OnCreate = HL.Override(HL.Any) << function(self, arg)
     self.m_categoryTabCells = UIUtils.genCellCache(self.view.categoryTabCell)
     self.m_categoryLineCells = UIUtils.genCellCache(self.view.facTechTreeCategoryLineCell)
     self.m_unhiddenCategoryBgCells = UIUtils.genCellCache(self.view.unhiddenCategoryBgCell)
+    self.m_normalLayerCutLineCells = UIUtils.genCellCache(self.view.normalCutLineCell)
 
     self.m_showUnhiddenCategoryQueue = {}
     self.m_showUnhiddenTechQueue = {}
@@ -718,6 +723,16 @@ FacTechTreeCtrl._BuildPanel = HL.Method() << function(self)
                                       function()
                                           self:_OnClickLayer(layerList[index].layerId)
                                       end)
+    end)
+
+    
+    local x = self.view.normalCutLineCell.rectTransform.anchoredPosition.x
+    local y = 0
+    self.m_normalLayerCutLineCells:Refresh(#layerList, function(cell, index)
+        local layerVO = layerList[index]
+        cell.gameObject.name = "NormalCutLineCell-" .. layerVO.layerId
+        cell.rectTransform.anchoredPosition = Vector2(x, y)
+        y = y - layerVO.sizeY
     end)
 
     

@@ -40,13 +40,14 @@ PhaseDungeonWeeklyRaid._OnInteractWeekRaidEntry = HL.StaticMethod() << function(
 end
 
 
-PhaseDungeonWeeklyRaid._OnWeekRaidGameEntry = HL.StaticMethod() << function()
-    UIManager:ToggleBlockObtainWaysJump("WeeklyRaidGame", true, true)
+
+PhaseDungeonWeeklyRaid._OnWeekRaidGameEntry = HL.StaticMethod(HL.Any) << function(arg)
+    UIManager:ToggleBlockObtainWaysJump("WeeklyRaidGame", true, {})
 end
 
 
 PhaseDungeonWeeklyRaid._OnWeekRaidGameQuit = HL.StaticMethod() << function()
-    UIManager:ToggleBlockObtainWaysJump("WeeklyRaidGame", false, true)
+    UIManager:ToggleBlockObtainWaysJump("WeeklyRaidGame", false)
 end
 
 
@@ -126,7 +127,9 @@ PhaseDungeonWeeklyRaid.TryCloseTopPanel = HL.Method() << function(self)
     if self.m_panelStack:Count() == 1 then
         PhaseManager:PopPhase(PHASE_ID)
         local panelId = self.m_panelStack:Pop()
-        Notify(MessageConst.DIALOG_CLOSE_UI, {panelId, PHASE_ID, 0})
+        if type(self.arg) == "table" and self.arg.fromDialog then
+            Notify(MessageConst.DIALOG_CLOSE_UI, {panelId, PHASE_ID, 0})
+        end
         return
     end
 

@@ -2,11 +2,22 @@
 local uiCtrl = require_ex('UI/Panels/Base/UICtrl')
 local PANEL_ID = PanelId.ShopToken
 
-local VERTICAL_TAB_ICON = {
-    "item_gachabyproducts_charticket",
-    "item_gachabyproducts_weaponticket",
-    "item_gachabyproducts_potentialticket",
+local TAB_CONFIG = {
+    
+    shop_pay_green_1 = {
+        icon = "item_gachabyproducts_weaponticket",
+        checkPotentialExchangeRedDot = true,
+    },
+    
+    shop_pay_yellow_1 = {
+        icon = "item_gachabyproducts_charticket",
+    },
+    
+    shop_pay_purple_1 = {
+        icon = "item_gachabyproducts_potentialticket",
+    },
 }
+
 
 
 
@@ -135,6 +146,13 @@ ShopTokenCtrl.OnShow = HL.Override() << function(self)
             ""
         )
     end
+end
+
+
+
+ShopTokenCtrl.OnClose = HL.Override() << function(self)
+    self:_UpdateSeeGoods()
+    self:_SetCurrGoodsRead()
 end
 
 
@@ -300,7 +318,8 @@ ShopTokenCtrl._InitTabList = HL.Method() << function(self)
         cell.cellNameTxt.text = shopData.shopName
         cell.cellNameShadownTxt.text = shopData.shopName
         cell.stateController:SetState("Icon")
-        cell.iconImg:LoadSprite(UIConst.UI_SPRITE_ITEM, VERTICAL_TAB_ICON[LuaIndex(index)])
+        local tabCfg = TAB_CONFIG[shopData.shopId]
+        cell.iconImg:LoadSprite(UIConst.UI_SPRITE_ITEM, tabCfg.icon)
 
         local shop = self.m_shopSystem:GetShopData(shopData.shopId)
         self.m_currShopId = shopData.shopId
@@ -309,7 +328,11 @@ ShopTokenCtrl._InitTabList = HL.Method() << function(self)
         for _, goodsData in pairs(goodList) do
             table.insert(goodsIds, goodsData.goodsId)
         end
-        cell.redDot:InitRedDot("CashShopToken", goodsIds)
+        local redDotArg = {
+            goodsIds = goodsIds,
+            checkPotentialExchange = tabCfg.checkPotentialExchangeRedDot
+        }
+        cell.redDot:InitRedDot("CashShopToken", redDotArg)
 
         cell.toggle.onValueChanged:RemoveAllListeners()
         cell.toggle.onValueChanged:AddListener(function(isOn)
@@ -336,6 +359,7 @@ ShopTokenCtrl._InitUICallback = HL.Method() << function(self)
     exchangeMaterialBtn.onClick:AddListener(function()
         CashShopUtils.TryOpenShopTokenExchangePopUpPanel()
     end)
+    self.view.redemptionVoucherNode.redDot:InitRedDot("CashShopHaveCharPotentialExchange")
     self.view.tokensInfo.tipsButton.onClick:AddListener(function()
         UIManager:Open(PanelId.InstructionBook, "ShopToken_" .. self.m_currShopId)
     end)

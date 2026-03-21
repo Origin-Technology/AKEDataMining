@@ -11,6 +11,7 @@ local UIWidgetBase = require_ex('Common/Core/UIWidgetBase')
 
 
 
+
 ContactFriendCell = HL.Class('ContactFriendCell', UIWidgetBase)
 
 
@@ -67,8 +68,38 @@ ContactFriendCell.InitContactFriendCell = HL.Method(HL.Number, HL.Any, HL.Number
             onClickFun(csIndex)
         end
     end)
-
 end
+
+
+
+
+
+
+ContactFriendCell.InitLoadingFriendCell = HL.Method(HL.Number, HL.Number, HL.Function) << function(self, roleId, csIndex, onClickFun)
+    self.view.noDataState.gameObject:SetActive(true)
+    self.view.noDataBgDecoMask.gameObject:SetActive(true)
+    self.view.noDataDeco01.gameObject:SetActive(true)
+    self.view.noDataText.text = Language.LUA_SPACESHIP_SETTLEMENT_LOADING_TEXT
+
+    self.view.playerHead.gameObject:SetActive(false)
+    self.view.pcIcon.gameObject:SetActive(false)
+    self.view.psIcon.gameObject:SetActive(false)
+    self.view.themeBgImg.gameObject:SetActive(false)
+
+    self.view.onlineState.gameObject:SetActive(false)
+    self.view.offlineTimeTxt.text = ""
+    self.view.onlineTimeTxt.text = ""
+    self.view.tileTxt.text = ""
+
+    self.view.button.onClick:RemoveAllListeners()
+    self.view.button.onClick:AddListener(function()
+        if onClickFun ~= nil then
+            onClickFun(csIndex)
+        end
+    end)
+    self.view.redDotLayout.gameObject:SetActive(false)
+end
+
 
 
 
@@ -77,6 +108,9 @@ end
 
 ContactFriendCell.InitEmptyFriendCell = HL.Method(HL.Number, HL.Number, HL.Function) << function(self, roleId, csIndex, onClickFun)
     self.view.noDataState.gameObject:SetActive(true)
+    self.view.noDataBgDecoMask.gameObject:SetActive(true)
+    self.view.noDataDeco01.gameObject:SetActive(true)
+    self.view.noDataText.text = Language.ui_friend_account_deactivated
 
     self.view.playerHead.gameObject:SetActive(false)
     self.view.pcIcon.gameObject:SetActive(false)

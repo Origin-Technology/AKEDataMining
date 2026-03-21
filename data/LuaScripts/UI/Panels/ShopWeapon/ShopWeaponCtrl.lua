@@ -48,6 +48,7 @@ local PERMANENT_GOODS_CELL_REFRESH_WAIT_TIME = 0.05
 
 
 
+
 ShopWeaponCtrl = HL.Class('ShopWeaponCtrl', uiCtrl.UICtrl)
 
 
@@ -95,6 +96,9 @@ ShopWeaponCtrl.m_currNaviCol = HL.Field(HL.Int) << 1
 
 
 ShopWeaponCtrl.m_haveSeenLines = HL.Field(HL.Table)
+
+
+ShopWeaponCtrl.m_weeklyTimer = HL.Field(HL.Any)
 
 
 
@@ -227,6 +231,10 @@ ShopWeaponCtrl.OnClose = HL.Override() << function(self)
             end
         end
         GameInstance.player.shopSystem:SetGoodsIdSee()
+    end
+
+    if self.m_weeklyTimer and self.m_weeklyTimer > 0 then
+        self:_ClearTimer(self.m_weeklyTimer)
     end
 end
 
@@ -587,6 +595,31 @@ ShopWeaponCtrl.UpdateTimeLimitWeapons = HL.Method() << function(self)
         end
         weeklyTime.text = string.format(Language.LUA_SHOP_WEAPON_WEEKLY_TIME_LIMIT,
             Utils.appendUTC(Utils.timestampToDateYMDHM(weeklyEndTime + now)))
+        
+        if weeklyGoods.Count >= 1 then
+            local firstWeeklyGoodsData = weeklyGoodsInfo[1].goodsData
+            local closeTime = firstWeeklyGoodsData.closeTimeStamp
+            local remainTime = closeTime - DateTimeUtils.GetCurrentTimestampBySeconds()
+            logger.info("[ShopWeaponCtrl] 创建周刷新倒计时: " .. remainTime)
+            if self.m_weeklyTimer and self.m_weeklyTimer > 0 then
+                self:_ClearTimer(self.m_weeklyTimer)
+            end
+            self.m_weeklyTimer = self:_StartTimer(remainTime, function()
+                logger.info("[ShopWeaponCtrl] 因为周刷新倒计时手动发送 MessageConst.ON_SHOP_REFRESH")
+                Notify(MessageConst.ON_SHOP_REFRESH)
+            end, true)
+        end
+        if BEYOND_DEBUG then
+            local weeklyGoodsNames = {}
+            for _, weeklyGood in pairs(weeklyGoods) do
+                local goodsTableData = Tables.shopGoodsTable[weeklyGood.goodsTemplateId]
+                local displayItem = UIUtils.getRewardFirstItem(goodsTableData.rewardId)
+                local itemId = displayItem.id
+                local _, itemData = Tables.itemTable:TryGetValue(itemId)
+                table.insert(weeklyGoodsNames, itemData.name)
+            end
+            logger.info("[ShopWeaponCtrl] 周商品名字: " .. table.concat(weeklyGoodsNames, ", "))
+        end
     else
         weeklyCell.shopWeaponCell.gameObject:SetActive(false)
         weeklyCell.shopWeaponCell02.gameObject:SetActive(false)
@@ -618,6 +651,17 @@ ShopWeaponCtrl.UpdateTimeLimitWeapons = HL.Method() << function(self)
         local dailyEndTime = GameInstance.player.shopSystem:GetWeaponGoodsTimeLimit(dailyGoods[0]) + 1
         dailyTime.text = string.format(Language.LUA_SHOP_WEAPON_DAILY_TIME_LIMIT,
             Utils.appendUTC(Utils.timestampToDateYMDHM(dailyEndTime + now)))
+        if BEYOND_DEBUG then
+            local dailyGoodsNames = {}
+            for _, dailyGood in pairs(dailyGoods) do
+                local goodsTableData = Tables.shopGoodsTable[dailyGood.goodsTemplateId]
+                local displayItem = UIUtils.getRewardFirstItem(goodsTableData.rewardId)
+                local itemId = displayItem.id
+                local _, itemData = Tables.itemTable:TryGetValue(itemId)
+                table.insert(dailyGoodsNames, itemData.name)
+            end
+            logger.info("[ShopWeaponCtrl] 日商品名字: " .. table.concat(dailyGoodsNames, ", "))
+        end
     else
         for i = 1, 3 do
             local goodsCell = dailyCell["shopWeaponCell0" .. i]

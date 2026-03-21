@@ -84,7 +84,6 @@ local PHASE_ITEMS = {
 
 
 
-
 PhaseWeaponInfo = HL.Class('PhaseWeaponInfo', phaseBase.PhaseBase)
 
 PhaseWeaponInfo.m_weaponExhibitInfo = HL.Field(HL.Table)
@@ -355,7 +354,6 @@ end
 
 PhaseWeaponInfo.OnGemAttach = HL.Method(HL.Table) << function(self, arg)
     self:_ReloadWeaponEffect()
-    PhaseWeaponInfo._FixWeaponVFXRender(arg)
 end
 
 
@@ -363,7 +361,6 @@ end
 
 PhaseWeaponInfo.OnGemDetach = HL.Method(HL.Table) << function(self, arg)
     self:_ReloadWeaponEffect()
-    PhaseWeaponInfo._FixWeaponVFXRender(arg)
 end
 
 
@@ -704,33 +701,6 @@ PhaseWeaponInfo._RefreshWeaponDecoEffect = HL.Method(HL.Userdata, HL.Number) << 
     self.m_weaponDecoBundleList = self.m_weaponDecoBundleList or {}
     local weaponDecoBundle = CS.Beyond.Gameplay.WeaponUtil.SetWeaponDecoEffect(weaponGo.transform, decoDataList)
     table.insert(self.m_weaponDecoBundleList, weaponDecoBundle)
-end
-
-
-
-PhaseWeaponInfo._FixWeaponVFXRender = HL.StaticMethod(HL.Table) << function(args)
-    local instId = unpack(args)
-    CoroutineManager:StartCoroutine(function()
-        coroutine.step()
-        coroutine.step()
-        local wpnInst = CharInfoUtils.getWeaponByInstId(instId)
-        if not wpnInst then
-            return
-        end
-        local charInstId = wpnInst.equippedCharServerId
-        if not charInstId or charInstId <= 0 then
-            return
-        end
-        local entity = GameWorld.worldInfo:GetCharacterByInstId(wpnInst.equippedCharServerId)
-        if entity == nil or entity.weaponCom == nil or entity.weaponCom.weaponBundles == nil then
-            return
-        end
-        for _, bundle in pairs(entity.weaponCom.weaponBundles) do
-            if not bundle.isStaticWeapon and bundle.part ~= nil and bundle.part.entityRenderHelper ~= nil then
-                bundle.part.entityRenderHelper:ReFindRenderersInChildren()
-            end
-        end
-    end)
 end
 
 

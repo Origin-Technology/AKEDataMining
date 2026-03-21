@@ -139,11 +139,10 @@ function CashShopUtils.TryAddMonthlyPassToMainHUDQueue()
                         table.insert(needShowTimeStampsTable, ts)
                     end
                     
-                    
-                    
                     local success = PhaseManager:OpenPhaseFast(PhaseId.ShopMonthlyPassPopUp, {
                         ShowTimeStamps = needShowTimeStampsTable,
                         EndCallback = function()
+                            Notify(MessageConst.ON_ONE_MAIN_HUD_ACTION_FINISHED, "MonthlyPassPopup")
                         end
                     })
                     if not success then
@@ -266,7 +265,8 @@ function CashShopUtils.showOrderSettle(orderSettle, onClose, interrupt)
                 if onClose then
                     onClose()
                 end
-            end
+            end,
+            interrupt = interrupt,
         })
     end
 
@@ -320,7 +320,8 @@ function CashShopUtils.showOrderSettleList(orderSettleList, onClose, webTips, in
                     if onClose then
                         onClose()
                     end
-                end
+                end,
+                interrupt = interrupt,
             })
         end
 
@@ -423,7 +424,8 @@ end
 
 
 
-function CashShopUtils.tryShowRemainOrderList(endCallback)
+
+function CashShopUtils.tryShowRemainOrderList(endCallback, interrupt)
     
     local remainOrders = GameInstance.player.cashShopSystem.remindOrderList
     local normalOrders = {}
@@ -436,13 +438,17 @@ function CashShopUtils.tryShowRemainOrderList(endCallback)
             table.insert(normalOrders, orderSettle)
         end
     end
-    local interrupt = {
-        interruptMessage = { MessageConst.INTERRUPT_MAIN_HUD_ACTION_QUEUE },
-    }
+
+    local function endCallbackWrap()
+        Notify(MessageConst.TOGGLE_IN_MAIN_HUD_STATE, { key = CashShopConst.RemainOrderMainHudKey, isInMainHud = true })
+        endCallback()
+    end
+    Notify(MessageConst.TOGGLE_IN_MAIN_HUD_STATE, { key = CashShopConst.RemainOrderMainHudKey, isInMainHud = false })
+
     
     CashShopUtils.showNormalOrderSettles(normalOrders, function()
         
-        CashShopUtils.showWebOrderSettles(webOrders, endCallback, interrupt)
+        CashShopUtils.showWebOrderSettles(webOrders, endCallbackWrap, interrupt)
     end, interrupt)
 end
 
@@ -540,7 +546,7 @@ function CashShopUtils.GetCashGoodsStartDateAndTime(id)
     if ts == 0 then
         return nil, nil
     end
-    local dateTime = DateTimeUtils.TimeStamp2LocalTime(ts)
+    local dateTime = DateTimeUtils.TimeStamp2ServerTime(ts)
     return string.format("%s/%s", dateTime.Month, dateTime.Day),
         dateTime:ToString("HH:mm")
 end
@@ -551,7 +557,7 @@ function CashShopUtils.GetCashGoodsEndDateAndTime(id)
     if ts == 0 then
         return nil, nil
     end
-    local dateTime = DateTimeUtils.TimeStamp2LocalTime(ts)
+    local dateTime = DateTimeUtils.TimeStamp2ServerTime(ts)
     return string.format("%s/%s", dateTime.Month, dateTime.Day),
         dateTime:ToString("HH:mm")
 end
@@ -633,7 +639,7 @@ function CashShopUtils.GetAllGiftPackGoodsByGroup()
             
             local shopData = GameInstance.player.cashShopSystem:GetShopData(cashShopId)
             if shopData ~= nil and shopData:IsOpen() then
-                local goodsList = shopData:GetGoodsList()
+                local goodsList = GameInstance.player.cashShopSystem:GetGoodsList(shopData)
                 local goodsInfos = {}
                 local canBuyGoodsCount = 0  
                 for i = 0, goodsList.Count - 1 do
@@ -660,28 +666,6 @@ function CashShopUtils.GetAllGiftPackGoodsByGroup()
                         clientShowData = showData,
                         goodsInfos = goodsInfos,
                     })
-                end
-            end
-        end
-    end
-    return ret
-end
-
-
-function CashShopUtils.GetAllGiftPackGoods()
-    local ret = {}
-    
-    for cashShopId, showData in pairs(Tables.GiftpackCashShopClientShowDataTable) do
-        if cashShopId ~= "BP" then
-            local shopData = GameInstance.player.cashShopSystem:GetShopData(cashShopId)
-            if shopData ~= nil and shopData:IsOpen() then
-                local goodsList = shopData:GetGoodsList()
-                for i = 0, goodsList.Count - 1 do
-                    local goodsInfo = {
-                        goodsId = goodsList[i].goodsId,
-                        goodsData = goodsList[i],
-                    }
-                    table.insert(ret, goodsInfo)
                 end
             end
         end
@@ -754,7 +738,7 @@ function CashShopUtils.CheckHaveSpecialGiftShop()
     
     local cashShopData = GameInstance.player.cashShopSystem:GetShopData(specialShopId)
     if cashShopData ~= nil and cashShopData:IsOpen() then
-        local goodsList = cashShopData:GetGoodsList()
+        local goodsList = GameInstance.player.cashShopSystem:GetGoodsList(cashShopData)
         
         for _, goodsData in pairs(goodsList) do
             if goodsData:IsOpen() then
@@ -902,7 +886,7 @@ end
 
 function CashShopUtils.TryGetBuyGachaWeaponGoodsCostInfo(shopId, goodsId)
     local buyCount = 1  
-    local _, goodsCfg = Tables.shopGoodsTable:TryGetValue(goodsId);
+    local _, goodsCfg = Tables.shopGoodsTable:TryGetValue(goodsId)
     local hasGachaCfg, weaponGachaCfg = Tables.gachaWeaponPoolTable:TryGetValue(goodsCfg.weaponGachaPoolId)
     if not hasGachaCfg then
         return nil
@@ -1052,7 +1036,7 @@ function CashShopUtils.GetGachaWeaponPoolCloseTimeInfo(poolId)
         
         local goodsData = box[i]
         local goodsId = goodsData.goodsTemplateId
-        local _, goodsCfg = Tables.shopGoodsTable:TryGetValue(goodsId);
+        local _, goodsCfg = Tables.shopGoodsTable:TryGetValue(goodsId)
         local _, weaponGachaCfg = Tables.gachaWeaponPoolTable:TryGetValue(goodsCfg.weaponGachaPoolId)
         curIndex = math.max(curIndex, weaponGachaCfg.index)
     end
@@ -1104,6 +1088,28 @@ function CashShopUtils.GetAllTokenGoods()
 end
 
 
+function CashShopUtils.HaveCharPotentialExchange()
+    local charList = GameInstance.player.charBag.charList
+    for _, charInfo in pairs(charList) do
+        local templateId = charInfo.templateId
+        local currentPotentialLevel = charInfo.potentialLevel
+        local _, characterPotentialList = Tables.characterPotentialTable:TryGetValue(templateId)
+        
+        local maxPotentialLevel = characterPotentialList.potentialUnlockBundle.Count
+        local materialId = characterPotentialList.firstItemId
+        local getCount = Utils.getItemCount(materialId)
+        
+        local redundant = currentPotentialLevel + getCount - maxPotentialLevel
+        
+        if redundant > 0 then
+            return true
+        end
+    end
+
+    return false
+end
+
+
 function CashShopUtils.TryOpenShopTokenExchangePopUpPanel()
     local redundantItemInfo = {}
     
@@ -1114,7 +1120,7 @@ function CashShopUtils.TryOpenShopTokenExchangePopUpPanel()
         local currentPotentialLevel = charInfo.potentialLevel
         local succ, characterPotentialList = Tables.characterPotentialTable:TryGetValue(templateId)
         
-        local maxPotentialLevel = characterPotentialList.potentialUnlockBundle.Count;
+        local maxPotentialLevel = characterPotentialList.potentialUnlockBundle.Count
         
         local unlockData = characterPotentialList.potentialUnlockBundle[0]
         local materialId = unlockData.itemIds[0]
@@ -1122,7 +1128,7 @@ function CashShopUtils.TryOpenShopTokenExchangePopUpPanel()
         
         local redundant = currentPotentialLevel + getCount - maxPotentialLevel
         
-        if currentPotentialLevel >= maxPotentialLevel and redundant > 0 then
+        if redundant > 0 then
             logger.info(string.format("%s已满潜,itemID:%s,多出来%s个",
                 templateId, materialId, redundant))
             local getItemDataSucc, itemData = Tables.itemTable:TryGetValue(materialId)
@@ -1254,14 +1260,34 @@ function CashShopUtils.InitCategoryTypeList()
 
     
     if CS.Beyond.GlobalOptions.instance.auditing then
-        ret = {
+        if not GameInstance.player.mission:IsMissionCompleted("e0m0") then
             
-            CashShopConst.CashShopCategoryType.Recharge,
+            ret = {
+                
+                CashShopConst.CashShopCategoryType.Recharge,
+                
+                
+                
+                
+            }
+        else
             
-            
-            
-            
-        }
+            ret = {
+                
+                CashShopConst.CashShopCategoryType.Recharge,
+                CashShopConst.CashShopCategoryType.Pack,
+                
+                
+                
+            }
+        end
+
+        
+        if CashShopUtils.IsPS() then
+            table.insert(ret, CashShopConst.CashShopCategoryType.Weapon)
+            table.insert(ret, CashShopConst.CashShopCategoryType.Token)
+            table.insert(ret, CashShopConst.CashShopCategoryType.Credit)
+        end
     end
 
     if ret == nil then

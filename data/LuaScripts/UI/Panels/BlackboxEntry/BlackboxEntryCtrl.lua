@@ -2,12 +2,7 @@
 local uiCtrl = require_ex('UI/Panels/Base/UICtrl')
 local PANEL_ID = PanelId.BlackboxEntry
 local PHASE_ID = PhaseId.BlackboxEntry
-
-local CANT_DIRECTLY_GET_REWARD_BLACKBOX_ID_LIST = {
-    "dung_blackbox_miner_1",
-    "dung_blackbox_winder_1",
-    "dung_blackbox_xiraniteoven_1",
-}
+local RewardSourceType = CS.Beyond.GEnums.RewardSourceType
 
 
 
@@ -94,7 +89,7 @@ BlackboxEntryCtrl.m_filterArgs = HL.Field(HL.Table)
 
 
 BlackboxEntryCtrl.s_messages = HL.StaticField(HL.Table) << {
-    [MessageConst.ON_SHOW_BLACKBOX_RESULT] = 'OnShowBlackboxResult',
+    [MessageConst.ON_BLACKBOX_DIRECTLY_GET_REWARD] = 'OnBlackboxDirectlyGetReward',
 }
 
 
@@ -221,6 +216,9 @@ BlackboxEntryCtrl._RefreshDetails = HL.Method() << function(self)
     self.view.positionTxt.text = DungeonUtils.getEntryLocation(dungeonCfg.levelId, false)
     self.view.positionNode.gameObject:SetActiveIfNecessary(not isActive)
 
+    local manuallyPassed = dungeonMgr:IsDungeonManuallyPassed(self.m_curSelectedBlackboxId)
+    self.view.titleCompleteNodeState:SetState(manuallyPassed and "ManuallyPassed" or "NotManuallyPassed")
+
     if not isUnlock then
         local conditionId = gameMechanicData.conditionIds[0]
         local conditionData = Tables.gameMechanicConditionTable[conditionId]
@@ -307,11 +305,21 @@ BlackboxEntryCtrl._RefreshDetails = HL.Method() << function(self)
         end)
     end
 
+    local dungeonFactoryCfg = Tables.dungeonFactoryTable[self.m_curSelectedBlackboxId]
+    local canDirectlyGetReward = dungeonFactoryCfg.canDirectlyGetRewardForBlackbox
     local hasFirstPassReward = not string.isEmpty(dungeonCfg.firstPassRewardId)
     local hasExtraPassReward = not string.isEmpty(dungeonCfg.extraRewardId)
-    local canDirectlyGetReward = lume.find(CANT_DIRECTLY_GET_REWARD_BLACKBOX_ID_LIST, self.m_curSelectedBlackboxId) == nil
-            and (hasFirstPassReward and not mainRewardGained or hasExtraPassReward and not extraRewardGained)
-    self.view.detailsContent:SetState(canDirectlyGetReward and "DirectlyGetReward" or "Normal")
+
+    local state
+    if not canDirectlyGetReward and not manuallyPassed then
+        state = "CantDirectlyGetReward"
+    elseif hasFirstPassReward and not mainRewardGained or
+            hasExtraPassReward and not extraRewardGained then
+        state = "CanDirectlyGetReward"
+    else
+        state = "Normal"
+    end
+    self.view.detailsContent:SetState(state)
 end
 
 
@@ -484,9 +492,7 @@ BlackboxEntryCtrl._OnClickDirectlyGetRewardBtn = HL.Method() << function(self)
     self:Notify(MessageConst.SHOW_POP_UP, {
         content = hintText,
         onConfirm = function()
-            
-            
-            GameInstance.player.subGameSys:TryObtainReward(self.m_curSelectedBlackboxId, true)
+            GameInstance.dungeonManager:SendReqBlackboxDirectlyGetReward(self.m_curSelectedBlackboxId)
         end,
     })
 end
@@ -653,7 +659,7 @@ end
 
 
 
-BlackboxEntryCtrl.OnShowBlackboxResult = HL.Method(HL.Table) << function(self, arg)
+BlackboxEntryCtrl.OnBlackboxDirectlyGetReward = HL.Method(HL.Table) << function(self, arg)
     self:_RefreshDetails()
 
     local curSelectLuaIndex
@@ -671,11 +677,89 @@ BlackboxEntryCtrl.OnShowBlackboxResult = HL.Method(HL.Table) << function(self, a
     end
 
     
+    local isOpen, ctr = UIManager:IsOpen(PanelId.AdventureBlackbox)
+    if isOpen then
+        ctr:_RefreshAllUI()
+    end
+
+    local firstPassRewardPack = GameInstance.player.inventory:ConsumeLatestRewardPackOfType(RewardSourceType.DungeonFirstPass)
+    local items = {}
+    local needTriggerSysBlueprint = false
+    if firstPassRewardPack and firstPassRewardPack.rewardSourceType == RewardSourceType.DungeonFirstPass then
+        for _, itemBundle in pairs(firstPassRewardPack.itemBundleList) do
+            local _, itemCfg = Tables.itemTable:TryGetValue(itemBundle.id)
+            if itemCfg then
+                
+                
+                
+                
+                
+                
+                table.insert(items, { id = itemBundle.id,
+                                      count = itemBundle.count,
+                                      sortId1 = itemCfg.sortId1,
+                                      sortId2 = itemCfg.sortId2 })
+                if itemCfg.type == GEnums.ItemType.SysBluePrint then
+                    needTriggerSysBlueprint = true
+                end
+            end
+        end
+    end
+
+    local extraRewardPack = GameInstance.player.inventory:ConsumeLatestRewardPackOfType(RewardSourceType.DungeonExtraReward)
+    if extraRewardPack and extraRewardPack.rewardSourceType == RewardSourceType.DungeonExtraReward then
+        for _, itemBundle in pairs(extraRewardPack.itemBundleList) do
+            local _, itemCfg = Tables.itemTable:TryGetValue(itemBundle.id)
+            if itemCfg then
+                
+                
+                
+                
+                
+                
+                if #items > 0 then
+                    local cacheExitItem
+                    for _, exitItem in ipairs(items) do
+                        if exitItem.id == itemBundle.id then
+                            cacheExitItem = exitItem
+                            break
+                        end
+                    end
+
+                    if cacheExitItem ~= nil then
+                        local curCount = cacheExitItem.count
+                        cacheExitItem.count = curCount + itemBundle.count
+                    else
+                        table.insert(items, { id = itemBundle.id,
+                                              count = itemBundle.count,
+                                              sortId1 = itemCfg.sortId1,
+                                              sortId2 = itemCfg.sortId2, })
+                    end
+                else
+                    table.insert(items, { id = itemBundle.id,
+                                          count = itemBundle.count,
+                                          sortId1 = itemCfg.sortId1,
+                                          sortId2 = itemCfg.sortId2, })
+                end
+            end
+        end
+    end
     
     
     
-    
-    
+    table.sort(items, Utils.genSortFunction(UIConst.COMMON_ITEM_SORT_KEYS))
+    Notify(MessageConst.SHOW_SYSTEM_REWARDS, {
+        
+        items = items,
+        onGraduallyShowFinishItemList = function()
+            local succ, dungeonFactoryCfg = Tables.dungeonFactoryTable:TryGetValue(self.m_curSelectedBlackboxId)
+            if needTriggerSysBlueprint and succ and not string.isEmpty(dungeonFactoryCfg.afterDirectlyGetRewardGuideGroupId) then
+                
+                
+                GameAction.ManuallyStartGuideGroup(dungeonFactoryCfg.afterDirectlyGetRewardGuideGroupId)
+            end
+        end
+    })
 end
 
 

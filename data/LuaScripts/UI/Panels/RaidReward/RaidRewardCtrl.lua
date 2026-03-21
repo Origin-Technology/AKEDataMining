@@ -49,7 +49,7 @@ RaidRewardCtrl.OnCreate = HL.Override(HL.Any) << function(self, arg)
             return
         end
         local isOpen, phase = PhaseManager:IsOpen(PhaseId.Dialog)
-        if isOpen then
+        if isOpen and type(arg) == "table" and arg.fromDialog then
             self:PlayAnimationOutWithCallback(function()
                 Notify(MessageConst.DIALOG_CLOSE_UI, { PANEL_ID, PhaseId.DungeonWeeklyRaid, 0 })
             end)
@@ -77,6 +77,9 @@ RaidRewardCtrl.OnCreate = HL.Override(HL.Any) << function(self, arg)
     self.view.controllerHintPlaceholder:InitControllerHintPlaceholder({ self.view.inputGroup.groupId })
 
     self.m_system = GameInstance.player.weekRaidSystem
+
+    
+    self.m_system:SetBattlePassVersionRead()
 end
 
 

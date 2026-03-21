@@ -181,6 +181,14 @@ CommonMoneyExchangeCtrl.Refresh = HL.Method(HL.Opt(HL.Any)) << function(self, ar
         end
     end)
 
+    
+    if targetId == Tables.globalConst.gachaWeaponItemId then
+        self.view.numberSelector.view.maxButton.transform:GetComponent("CustomUIStyle").overrideValidState = CS.Beyond.UI.CustomUIStyle.OverrideValidState.ForceNotValid
+        self.view.numberSelector.view.minButton.transform:GetComponent("CustomUIStyle").overrideValidState = CS.Beyond.UI.CustomUIStyle.OverrideValidState.ForceNotValid
+    else
+        self.view.numberSelector.view.maxButton.transform:GetComponent("CustomUIStyle").overrideValidState = CS.Beyond.UI.CustomUIStyle.OverrideValidState.None
+        self.view.numberSelector.view.minButton.transform:GetComponent("CustomUIStyle").overrideValidState = CS.Beyond.UI.CustomUIStyle.OverrideValidState.None
+    end
 end
 
 

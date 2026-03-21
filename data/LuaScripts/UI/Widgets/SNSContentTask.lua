@@ -40,6 +40,7 @@ SNSContentTask._OnSNSContentInit = HL.Override() << function(self)
             return
         end
 
+        Notify(MessageConst.ON_SNS_CONTENT_WIDGET_CLICK)
         
         local missionState = GameInstance.player.mission:GetMissionState(missionId)
         local otherCaseHintText = missionRuntimeAsset.missionType == MissionType.Misc and

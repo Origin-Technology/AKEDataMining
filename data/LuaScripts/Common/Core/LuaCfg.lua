@@ -76,13 +76,21 @@ local function I18nGetText(id, text)
     elseif id == 0 then
         return ''
     else
-        local foundHotfix, i18NHotfixDataList = Tables.i18nHotFix:TryGetValue(id)
-        if foundHotfix then
-            local hotfixText = ''
+        local hotfixText = CS.Beyond.I18n.I18nHotfixManager.instance:GetHotFixText(id)
+        if hotfixText ~= '' then
+            if BEYOND_DEBUG_COMMAND then
+                Notify(MessageConst.SHOW_TOAST, string.format("使用了RemoteConfig里的热更文本 id(%d)text(%s)", id, hotfixText))
+            end
+            return hotfixText
+        end
+
+        local foundPatch, i18NHotfixDataList = Tables.i18nHotFix:TryGetValue(id)
+        if foundPatch then
+            local patchText = ''
             for i = 1, #i18NHotfixDataList.list do
                 local data = i18NHotfixDataList.list[CSIndex(i)]
                 if data.type:GetHashCode() == hg.curEnvLang and data.platform == GEnums.I18nPlatform.DF then
-                    hotfixText = data.text
+                    patchText = data.text
                     break
                 end
             end
@@ -90,7 +98,7 @@ local function I18nGetText(id, text)
                 for i = 1, #i18NHotfixDataList.list do
                     local data = i18NHotfixDataList.list[CSIndex(i)]
                     if data.type:GetHashCode() == hg.curEnvLang and data.platform == GEnums.I18nPlatform.MB then
-                        hotfixText = data.text
+                        patchText = data.text
                         break
                     end
                 end
@@ -98,13 +106,16 @@ local function I18nGetText(id, text)
                 for i = 1, #i18NHotfixDataList.list do
                     local data = i18NHotfixDataList.list[CSIndex(i)]
                     if data.type:GetHashCode() == hg.curEnvLang and data.platform == GEnums.I18nPlatform.CT then
-                        hotfixText = data.text
+                        patchText = data.text
                         break
                     end
                 end
             end
-            if hotfixText ~= '' then
-                return hotfixText
+            if patchText ~= '' then
+                if BEYOND_DEBUG_COMMAND then
+                    Notify(MessageConst.SHOW_TOAST, string.format("使用了文本热更表里的热更文本 id(%d)text(%s)", id, patchText))
+                end
+                return patchText
             end
         end
 

@@ -790,7 +790,7 @@ end
 
 
 ShopTradeItemCtrl._NormalizePriceValues = HL.Method(HL.Number, HL.Any)
-    .Return(HL.Table, HL.Number, HL.Number)
+                                            .Return(HL.Table, HL.Number, HL.Number)
     << function(self, base, numbers)
     local minValue = math.huge
     local maxValue = -math.huge

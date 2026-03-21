@@ -101,7 +101,6 @@ FacTopViewBuildingInfoCtrl.OnCreate = HL.Override(HL.Any) << function(self, arg)
     end
 
     self.m_iconCache = LuaNodeCache(self.view.productCell, self.view.main)
-    self.m_iconCache:Cache(self.view.productCell) 
 
     self.m_padding = CSFactoryUtil.Padding(self.view.config.PADDING_TOP, self.view.config.PADDING_LEFT,
             self.view.config.PADDING_RIGHT, self.view.config.PADDING_BOTTOM)
@@ -110,6 +109,9 @@ end
 
 
 FacTopViewBuildingInfoCtrl.OnShow = HL.Override() << function(self)
+    if UIManager:IsOpen(PanelId.GeneralTracker) then
+        UIManager:SetTopOrder(PanelId.GeneralTracker)
+    end
     if self.m_isShowing then 
         self:_UpdateInfos()
     end

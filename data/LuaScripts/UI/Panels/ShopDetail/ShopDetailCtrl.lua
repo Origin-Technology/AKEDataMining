@@ -18,6 +18,7 @@ local PANEL_ID = PanelId.ShopDetail
 
 
 
+
 ShopDetailCtrl = HL.Class('ShopDetailCtrl', uiCtrl.UICtrl)
 
 
@@ -29,7 +30,7 @@ ShopDetailCtrl = HL.Class('ShopDetailCtrl', uiCtrl.UICtrl)
 ShopDetailCtrl.s_messages = HL.StaticField(HL.Table) << {
     [MessageConst.ON_BUY_ITEM_SUCC] = 'OnBuyItemSucc',
     [MessageConst.ON_SHOP_GOODS_CONDITION_REFRESH] = '_OnCloseShopDetailPanel',
-    [MessageConst.ON_SHOP_REFRESH] = '_OnShopRefresh',
+    [MessageConst.ON_SHOP_REFRESH] = '_OnHandleShopRefresh',
     [MessageConst.ON_CLOSE_SHOP_DETAIL_PANEL] = '_OnCloseShopDetailPanel'
 }
 
@@ -165,6 +166,12 @@ ShopDetailCtrl.OnCreate = HL.Override(HL.Any) << function(self, arg)
     GameInstance.player.shopSystem:SetSingleGoodsIdSee(goodsId)
 end
 
+
+
+ShopDetailCtrl._OnHandleShopRefresh = HL.Method() << function(self)
+    
+    self:_OnShopRefresh()   
+end
 
 
 
