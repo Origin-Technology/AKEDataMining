@@ -8,6 +8,7 @@
     "onlyShowForMainCharacter": false,
     "blinkInMainCharHpBar": false,
     "showProgressInHpBar": true,
+    "showProgressInNormalSkillButton": false,
     "iconStyleInSquad": "Default",
     "abnormalColorType": "Physical",
     "_orderPriorityConfig": {
@@ -20,6 +21,7 @@
     "hasCharHpBarVfxType": false,
     "charHpBarVfxType": "Fire"
   },
+  "hasIcon": true,
   "ignoreTagImmune": false,
   "useTimeDilationDt": false,
   "finishOnRepatriate": false,
@@ -160,8 +162,6 @@
                     "buffSettings": {
                       "checkType": "Id",
                       "buffIdList": [
-                        "buff_chr_0030_zhuangfy_ult_hide_model",
-                        "buff_chr_0030_zhuangfy_ult_hide_model_holder",
                         "buff_chr_0030_zhuangfy_ult_base"
                       ],
                       "tagQuery": {
@@ -202,6 +202,7 @@
                       "targetContextKey": ""
                     },
                     "isFinishedEarly": false,
+                    "isAbsorbed": false,
                     "finishSource": {
                       "targetSource": "Source",
                       "targetGroupKey": "",
@@ -641,6 +642,12 @@
               },
               "skillSlot": "NormalSkill",
               "targetSkillId": "chr_0030_zhuangfy_normal_skill_ult",
+              "overrideCacheTime": false,
+              "cacheTime": {
+                "useBlackboardKey": false,
+                "value": 0.1,
+                "blackboardKey": ""
+              },
               "lifeTimeType": "FinishByAction",
               "duration": {
                 "useBlackboardKey": false,
@@ -684,6 +691,12 @@
               },
               "skillSlot": "ComboSkill",
               "targetSkillId": "chr_0030_zhuangfy_combo_skill_ult",
+              "overrideCacheTime": false,
+              "cacheTime": {
+                "useBlackboardKey": false,
+                "value": 0.1,
+                "blackboardKey": ""
+              },
               "lifeTimeType": "FinishByAction",
               "duration": {
                 "useBlackboardKey": false,
@@ -854,13 +867,13 @@
               "succeedActions": {
                 "actionData": [
                   {
-                    "$type": "Beyond.Gameplay.Core.IFixAction1+Data, Gameplay.Beyond",
+                    "$type": "Beyond.Gameplay.Core.ChangeSkillType+Data, Gameplay.Beyond",
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
                     "serverActionIndex": 19,
-                    "tar1": {
-                      "targetSource": "Target",
+                    "target": {
+                      "targetSource": "Owner",
                       "targetGroupKey": "",
                       "selectorOwner": "ActionOwner",
                       "ownerContextKey": "",
@@ -884,86 +897,12 @@
                       "target": "ActionSource",
                       "targetContextKey": ""
                     },
-                    "tar2": {
-                      "targetSource": "Target",
-                      "targetGroupKey": "",
-                      "selectorOwner": "ActionOwner",
-                      "ownerContextKey": "",
-                      "centerType": "ActionSource",
-                      "centerContextKey": "",
-                      "centerToGround": false,
-                      "selectorData": {
-                        "validatorData": [],
-                        "postProcessorData": []
-                      },
-                      "enableAdvancedDirection": false,
-                      "advancedDirection": {
-                        "directionType": "SourceForward",
-                        "sourceMountPoint": "None",
-                        "targetMountPoint": "None",
-                        "customSourceAndTarget": false,
-                        "clampToXZ": true,
-                        "invertDirection": false
-                      },
-                      "selectorDirection": "SourceForward",
-                      "target": "ActionSource",
-                      "targetContextKey": ""
-                    },
-                    "tar3": {
-                      "targetSource": "Target",
-                      "targetGroupKey": "",
-                      "selectorOwner": "ActionOwner",
-                      "ownerContextKey": "",
-                      "centerType": "ActionSource",
-                      "centerContextKey": "",
-                      "centerToGround": false,
-                      "selectorData": {
-                        "validatorData": [],
-                        "postProcessorData": []
-                      },
-                      "enableAdvancedDirection": false,
-                      "advancedDirection": {
-                        "directionType": "SourceForward",
-                        "sourceMountPoint": "None",
-                        "targetMountPoint": "None",
-                        "customSourceAndTarget": false,
-                        "clampToXZ": true,
-                        "invertDirection": false
-                      },
-                      "selectorDirection": "SourceForward",
-                      "target": "ActionSource",
-                      "targetContextKey": ""
-                    },
-                    "double1": {
+                    "skillId": {
                       "useBlackboardKey": false,
-                      "value": 0.0,
+                      "value": "chr_0030_zhuangfy_ultimate_skill_end",
                       "blackboardKey": ""
                     },
-                    "double2": {
-                      "useBlackboardKey": false,
-                      "value": 0.0,
-                      "blackboardKey": ""
-                    },
-                    "double3": {
-                      "useBlackboardKey": false,
-                      "value": 0.0,
-                      "blackboardKey": ""
-                    },
-                    "string1": {
-                      "useBlackboardKey": false,
-                      "value": "",
-                      "blackboardKey": ""
-                    },
-                    "string2": {
-                      "useBlackboardKey": false,
-                      "value": "",
-                      "blackboardKey": ""
-                    },
-                    "string3": {
-                      "useBlackboardKey": false,
-                      "value": "",
-                      "blackboardKey": ""
-                    }
+                    "skillType": "AttachSkill"
                   },
                   {
                     "$type": "Beyond.Gameplay.Core.EffectAction+EffectActionData, Gameplay.Beyond",
@@ -1076,7 +1015,6 @@
                       "visibleWithEntity": true,
                       "visibleWithEntityType": "Source",
                       "moveType": "Stationary",
-                      "isOnlyFollowBattleCamera": false,
                       "positionRef": "Target",
                       "grounded": false,
                       "followGrounded": false,

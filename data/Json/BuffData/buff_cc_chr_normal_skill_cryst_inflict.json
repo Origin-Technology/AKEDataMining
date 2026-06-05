@@ -1,0 +1,553 @@
+{
+  "id": "buff_cc_chr_normal_skill_cryst_inflict",
+  "iconConfig": {
+    "_spritePath": "",
+    "showInHeadBarCommon": false,
+    "showInHeadBarAttached": false,
+    "showInSquadIcon": false,
+    "onlyShowForMainCharacter": false,
+    "blinkInMainCharHpBar": false,
+    "showProgressInHpBar": false,
+    "showProgressInNormalSkillButton": false,
+    "iconStyleInSquad": "Default",
+    "abnormalColorType": "Physical",
+    "_orderPriorityConfig": {
+      "useDirectoryValue": false,
+      "priorityValue": 0,
+      "priorityEnum": "CommonCharBuff"
+    },
+    "showWarningBackground": false,
+    "playStrongInAnimation": false,
+    "hasCharHpBarVfxType": false,
+    "charHpBarVfxType": "Fire"
+  },
+  "hasIcon": false,
+  "ignoreTagImmune": false,
+  "useTimeDilationDt": false,
+  "finishOnRepatriate": false,
+  "hasAddingCooldown": false,
+  "addingCooldown": {
+    "useBlackboardKey": false,
+    "value": 0.0,
+    "blackboardKey": ""
+  },
+  "ignoreCooldownWhenAdding": false,
+  "attributeModifier": {
+    "isConvertedAttribute": false,
+    "attributeModifiers": []
+  },
+  "damageModifier": [],
+  "healModifier": [],
+  "poiseModifier": [],
+  "globalModifier": [],
+  "shieldConfigs": [],
+  "applyTags": [],
+  "tagsAfterTriggerExtendBuffAction": [],
+  "lifeType": "Infinity",
+  "duration": {
+    "useBlackboardKey": true,
+    "value": 3.0,
+    "blackboardKey": "speed_duration"
+  },
+  "triggerInterval": {
+    "useBlackboardKey": false,
+    "value": -1.0,
+    "blackboardKey": ""
+  },
+  "waitFirstTriggerInterval": false,
+  "maxTriggerCnt": {
+    "useBlackboardKey": false,
+    "value": -1,
+    "blackboardKey": ""
+  },
+  "stackingSettings": {
+    "identifierType": "Id",
+    "stackingType": "Unlimited",
+    "stackingKey": "",
+    "usePriorityKey": false,
+    "priorityKey": "",
+    "negatePriority": false,
+    "priority": 0.0,
+    "useMaxStackCntKey": false,
+    "maxStackCntKey": "",
+    "maxStackCnt": 1,
+    "isNeedStackEffect": false,
+    "stackEffects": []
+  },
+  "dispelConfig": {
+    "canBeDispelled": false,
+    "dispelledLevel": "Default"
+  },
+  "buffEventAction": [],
+  "abilityEventAction": [
+    {
+      "abilityEvent": "OnAfterSkillApplyCost",
+      "actions": [
+        {
+          "actionData": [
+            {
+              "$type": "Beyond.Gameplay.Core.Conditions.CheckSkillType+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 0,
+              "checkTargetCurSkill": false,
+              "skillOwner": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "mustBeforeExclusiveTime": false,
+              "skillTypeList": [
+                "NormalSkill"
+              ],
+              "attackTypeMask": "All"
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.Conditions.CheckTimedMarkerCondition+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 1,
+              "checkTarget": {
+                "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "id": "buff_cc_chr_normal_skill_cryst_inflict",
+              "blackboardKey": "",
+              "useBlackboardKey": false,
+              "returnTrueIfNotExists": true
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.SimpleCalcBBAction+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 2,
+              "key": "d_times",
+              "value1": {
+                "useBlackboardKey": true,
+                "value": 0.0,
+                "blackboardKey": "times"
+              },
+              "operation": "Add",
+              "value2": {
+                "useBlackboardKey": false,
+                "value": -1.0,
+                "blackboardKey": ""
+              }
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 3,
+              "conditionAction": {
+                "actionData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.CheckBuffStackNumAdvanced+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 4,
+                    "checkTarget": {
+                      "targetSource": "MainCharacter",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "buffSettings": {
+                      "checkType": "Id",
+                      "buffIdList": [
+                        "buff_cc_chr_normal_skill_cryst_inflict_stack"
+                      ],
+                      "tagQuery": {
+                        "queryType": "HasAny",
+                        "tags": []
+                      }
+                    },
+                    "buffStackNumType": "BuffCount",
+                    "compareType": "GE",
+                    "value": {
+                      "useBlackboardKey": true,
+                      "value": 0.0,
+                      "blackboardKey": "d_times"
+                    },
+                    "limitSkillCastId": false
+                  }
+                ],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              },
+              "succeedActions": {
+                "actionData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.SpellInflictionOnChar+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 5,
+                    "source": {
+                      "targetSource": "Owner",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "target": {
+                      "targetSource": "MainCharacter",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "inflictionType": "Cryst",
+                    "directToTriggerred": false,
+                    "inflictionCount": 1,
+                    "inflictionCountBlackboardKey": "",
+                    "useInflictionCountBlackboardKey": false,
+                    "ignoreImmuneLevel": "IgnoreWeakImmune"
+                  },
+                  {
+                    "$type": "Beyond.Gameplay.Core.CreateTimedMarker+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 6,
+                    "targetSettings": {
+                      "targetSource": "Owner",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "markerId": {
+                      "useBlackboardKey": false,
+                      "value": "buff_cc_chr_normal_skill_cryst_inflict",
+                      "blackboardKey": ""
+                    },
+                    "duration": {
+                      "useBlackboardKey": true,
+                      "value": 0.0,
+                      "blackboardKey": "cd"
+                    },
+                    "autoFinishByAction": false,
+                    "useTimeDilationDt": false
+                  },
+                  {
+                    "$type": "Beyond.Gameplay.Core.FinishBuffAdvanced+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 7,
+                    "buffOwner": {
+                      "targetSource": "MainCharacter",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "buffSettings": {
+                      "checkType": "Id",
+                      "buffIdList": [
+                        "buff_cc_chr_normal_skill_cryst_inflict_stack"
+                      ],
+                      "tagQuery": {
+                        "queryType": "HasAny",
+                        "tags": []
+                      }
+                    },
+                    "finishAll": true,
+                    "finishLayerCnt": {
+                      "useBlackboardKey": false,
+                      "value": 1.0,
+                      "blackboardKey": ""
+                    },
+                    "limitSource": false,
+                    "buffSource": {
+                      "targetSource": "Source",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "isFinishedEarly": false,
+                    "isAbsorbed": false,
+                    "finishSource": {
+                      "targetSource": "Source",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    }
+                  }
+                ],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              },
+              "failActions": {
+                "actionData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.CreateBuffAction+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 8,
+                    "buffs": [
+                      {
+                        "buffId": "buff_cc_chr_normal_skill_cryst_inflict_stack",
+                        "assignBlackboard": false,
+                        "assignItems": [],
+                        "readIdFromBlackboard": false,
+                        "buffIdKey": ""
+                      }
+                    ],
+                    "count": {
+                      "useBlackboardKey": false,
+                      "value": 1.0,
+                      "blackboardKey": ""
+                    },
+                    "targetSettings": {
+                      "targetSource": "MainCharacter",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "buffSource": "ActionSource",
+                    "contextKey": "",
+                    "autoFinishByAction": false,
+                    "inheritSkillIdList": [],
+                    "asChildBuff": false,
+                    "inheritSourceSkillCastId": false,
+                    "inheritSourceSkillCastInfo": true,
+                    "isExtra": false,
+                    "overrideBuffIconDuration": false,
+                    "buffIconDurationSource": {
+                      "durationSourceType": "AbilityEntity",
+                      "timedMarkerId": ""
+                    }
+                  }
+                ],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              },
+              "alwaysNext": true
+            }
+          ],
+          "onlyExecuteWhenSourceIsMainChar": false,
+          "onlyExecuteWhenSourceIsGuard": false
+        }
+      ]
+    }
+  ],
+  "igniteEventAction": [],
+  "timelineActions": [],
+  "blackboard": [
+    {
+      "key": "d_times",
+      "valueDouble": 0.0,
+      "valueStr": "",
+      "isDynamic": true
+    },
+    {
+      "key": "times",
+      "valueDouble": 1.0,
+      "valueStr": "",
+      "isDynamic": false
+    },
+    {
+      "key": "cd",
+      "valueDouble": 3.0,
+      "valueStr": "",
+      "isDynamic": false
+    }
+  ]
+}

@@ -570,7 +570,6 @@
                           "visibleWithEntity": true,
                           "visibleWithEntityType": "Source",
                           "moveType": "Stationary",
-                          "isOnlyFollowBattleCamera": false,
                           "positionRef": "Target",
                           "grounded": false,
                           "followGrounded": false,
@@ -819,7 +818,10 @@
                           },
                           "inflictionType": "Fire",
                           "directToTriggerred": true,
-                          "inflictionCount": 2
+                          "inflictionCount": 2,
+                          "inflictionCountBlackboardKey": "",
+                          "useInflictionCountBlackboardKey": false,
+                          "ignoreImmuneLevel": "Default"
                         },
                         {
                           "$type": "Beyond.Gameplay.Core.BlowOffCharacterAction+Data, Gameplay.Beyond",
@@ -908,7 +910,12 @@
                             "blackboardKey": ""
                           },
                           "turnTargetToAttacker": true,
-                          "overrideSuperArmorLimit": -1
+                          "overrideSuperArmorLimit": -1,
+                          "rootMotionScaleWhenEnd": {
+                            "useBlackboardKey": false,
+                            "value": 1.0,
+                            "blackboardKey": ""
+                          }
                         }
                       ],
                       "onlyExecuteWhenSourceIsMainChar": false,
@@ -974,7 +981,10 @@
                           },
                           "inflictionType": "Fire",
                           "directToTriggerred": false,
-                          "inflictionCount": 2
+                          "inflictionCount": 2,
+                          "inflictionCountBlackboardKey": "",
+                          "useInflictionCountBlackboardKey": false,
+                          "ignoreImmuneLevel": "Default"
                         },
                         {
                           "$type": "Beyond.Gameplay.Core.BlowOffCharacterAction+Data, Gameplay.Beyond",
@@ -1063,7 +1073,12 @@
                             "blackboardKey": ""
                           },
                           "turnTargetToAttacker": true,
-                          "overrideSuperArmorLimit": -1
+                          "overrideSuperArmorLimit": -1,
+                          "rootMotionScaleWhenEnd": {
+                            "useBlackboardKey": false,
+                            "value": 1.0,
+                            "blackboardKey": ""
+                          }
                         }
                       ],
                       "onlyExecuteWhenSourceIsMainChar": false,
@@ -1251,7 +1266,13 @@
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "deadOption": "AllValid"
+              "deadOption": "AllValid",
+              "forceMoveColliderToGround": false,
+              "modelHeightRecoverTime": {
+                "useBlackboardKey": false,
+                "value": 0.0,
+                "blackboardKey": ""
+              }
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -1403,6 +1424,7 @@
                 "targetContextKey": ""
               },
               "isFinishedEarly": false,
+              "isAbsorbed": false,
               "finishSource": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -1489,7 +1511,7 @@
               },
               "damageUnits": [
                 {
-                  "damageType": "Real",
+                  "damageType": "LifeDrain",
                   "damageAttributeType": "Hp",
                   "onlyEnableForMainChar": false,
                   "damageVisualImportance": "Hidden",
@@ -1581,7 +1603,6 @@
                     "visibleWithEntity": true,
                     "visibleWithEntityType": "Source",
                     "moveType": "Stationary",
-                    "isOnlyFollowBattleCamera": false,
                     "positionRef": "Target",
                     "grounded": false,
                     "followGrounded": false,
@@ -1829,8 +1850,7 @@
                 "isUltimateShow": false,
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
-                "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
+                "moveType": "FollowTarget",
                 "positionRef": "Source",
                 "grounded": true,
                 "followGrounded": false,
@@ -1870,12 +1890,12 @@
                     "blackboardKey": ""
                   }
                 },
-                "useTargetRotation": true,
+                "useTargetRotation": false,
                 "scaleWithTargetSize": false,
                 "fxSize": 0.0,
-                "unpackPosDelayFrame": 15,
-                "unpackFollowTargetOnRelease": false,
-                "rotType": "FollowTarget",
+                "unpackPosDelayFrame": 0,
+                "unpackFollowTargetOnRelease": true,
+                "rotType": "Stationary",
                 "rotRef": "Source",
                 "directionRef": "Source",
                 "rotUseWeaponMountPoint": false,
@@ -1907,8 +1927,8 @@
                   }
                 },
                 "lockYRotation": true,
-                "unpackRotDelayFrame": 15,
-                "unpackFollowTargetRotOnRelease": false,
+                "unpackRotDelayFrame": 0,
+                "unpackFollowTargetRotOnRelease": true,
                 "weaponVfxKey": "",
                 "weaponVfxIndex": -1,
                 "weaponVfxPersistent": false,
@@ -2052,7 +2072,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -2274,7 +2293,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -2496,7 +2514,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -2826,7 +2843,11 @@
       "selectorDirection": "SourceForward",
       "target": "ActionSource",
       "targetContextKey": ""
-    }
+    },
+    "asSkillCast": true
   },
-  "dontInterruptCombo": false
+  "dontInterruptCombo": false,
+  "needEnemyOutOfScreenWarning": true,
+  "overrideNeedEnemyOutOfScreenWarning": false,
+  "needEnemyOutOfScreenWarningOverrideValue": false
 }

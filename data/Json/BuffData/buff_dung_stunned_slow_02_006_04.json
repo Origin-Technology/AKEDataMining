@@ -8,6 +8,7 @@
     "onlyShowForMainCharacter": false,
     "blinkInMainCharHpBar": false,
     "showProgressInHpBar": false,
+    "showProgressInNormalSkillButton": false,
     "iconStyleInSquad": "Default",
     "abnormalColorType": "Physical",
     "_orderPriorityConfig": {
@@ -20,6 +21,7 @@
     "hasCharHpBarVfxType": false,
     "charHpBarVfxType": "Fire"
   },
+  "hasIcon": false,
   "ignoreTagImmune": false,
   "useTimeDilationDt": false,
   "finishOnRepatriate": false,
@@ -42,16 +44,6 @@
           "value": 0.1,
           "blackboardKey": "slow_scale_now"
         }
-      },
-      {
-        "modifyAttributeType": "Specific",
-        "attributeType": "InAirMoveSpeedScalar",
-        "formulaItem": "BaseFinalMultiplier",
-        "param": {
-          "useBlackboardKey": true,
-          "value": 0.1,
-          "blackboardKey": "slow_scale_now"
-        }
       }
     ]
   },
@@ -60,7 +52,16 @@
   "poiseModifier": [],
   "globalModifier": [],
   "shieldConfigs": [],
-  "applyTags": [],
+  "applyTags": [
+    {
+      "tagName": "Status/DisableDash",
+      "tagId": -1601691447
+    },
+    {
+      "tagName": "Status/Unjumpable",
+      "tagId": 2002680355
+    }
+  ],
   "tagsAfterTriggerExtendBuffAction": [],
   "lifeType": "Limited",
   "duration": {
@@ -125,6 +126,30 @@
                     {
                       "targetKey": "slow_scale_end",
                       "inputValueKey": "slow_scale_end",
+                      "useDirectValue": false,
+                      "directValueType": "Numeric",
+                      "numericValue": 0.0,
+                      "stringValue": ""
+                    },
+                    {
+                      "targetKey": "slow_duration_fadeout",
+                      "inputValueKey": "slow_duration_fadeout",
+                      "useDirectValue": false,
+                      "directValueType": "Numeric",
+                      "numericValue": 0.0,
+                      "stringValue": ""
+                    },
+                    {
+                      "targetKey": "slow_scale_fadeout_start",
+                      "inputValueKey": "slow_scale_fadeout_start",
+                      "useDirectValue": false,
+                      "directValueType": "Numeric",
+                      "numericValue": 0.0,
+                      "stringValue": ""
+                    },
+                    {
+                      "targetKey": "slow_scale_now",
+                      "inputValueKey": "slow_scale_now",
                       "useDirectValue": false,
                       "directValueType": "Numeric",
                       "numericValue": 0.0,
@@ -204,131 +229,17 @@
               "priorityLevel": "Default",
               "priorityOffset": 0,
               "serverActionIndex": 1,
-              "key": "param_1",
+              "key": "slow_duration_now",
               "value1": {
-                "useBlackboardKey": false,
-                "value": -1.0,
-                "blackboardKey": ""
-              },
-              "operation": "Multiply",
-              "value2": {
                 "useBlackboardKey": true,
                 "value": 0.0,
-                "blackboardKey": "slow_scale_end"
-              }
-            },
-            {
-              "$type": "Beyond.Gameplay.Core.SimpleCalcBBAction+Data, Gameplay.Beyond",
-              "isEnable": true,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 2,
-              "key": "param_1",
-              "value1": {
-                "useBlackboardKey": false,
-                "value": 1.0,
-                "blackboardKey": ""
-              },
-              "operation": "Add",
-              "value2": {
-                "useBlackboardKey": true,
-                "value": 0.0,
-                "blackboardKey": "param_1"
-              }
-            },
-            {
-              "$type": "Beyond.Gameplay.Core.SimpleCalcBBAction+Data, Gameplay.Beyond",
-              "isEnable": true,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 3,
-              "key": "param_2",
-              "value1": {
-                "useBlackboardKey": true,
-                "value": 1.0,
-                "blackboardKey": "param_1"
+                "blackboardKey": "slow_duration_fadeout"
               },
               "operation": "Multiply",
               "value2": {
                 "useBlackboardKey": false,
                 "value": 0.2,
-                "blackboardKey": "slow_scale_end"
-              }
-            },
-            {
-              "$type": "Beyond.Gameplay.Core.SimpleCalcBBAction+Data, Gameplay.Beyond",
-              "isEnable": true,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 4,
-              "key": "param_3",
-              "value1": {
-                "useBlackboardKey": true,
-                "value": 0.0,
-                "blackboardKey": "param_2"
-              },
-              "operation": "Multiply",
-              "value2": {
-                "useBlackboardKey": true,
-                "value": 0.0,
-                "blackboardKey": "slow_stage"
-              }
-            },
-            {
-              "$type": "Beyond.Gameplay.Core.SimpleCalcBBAction+Data, Gameplay.Beyond",
-              "isEnable": true,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 5,
-              "key": "param_4",
-              "value1": {
-                "useBlackboardKey": true,
-                "value": 0.5,
-                "blackboardKey": "slow_scale_end"
-              },
-              "operation": "Add",
-              "value2": {
-                "useBlackboardKey": true,
-                "value": 0.0,
-                "blackboardKey": "param_3"
-              }
-            },
-            {
-              "$type": "Beyond.Gameplay.Core.SimpleCalcBBAction+Data, Gameplay.Beyond",
-              "isEnable": true,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 6,
-              "key": "param_4",
-              "value1": {
-                "useBlackboardKey": true,
-                "value": 0.0,
-                "blackboardKey": "param_4"
-              },
-              "operation": "Multiply",
-              "value2": {
-                "useBlackboardKey": false,
-                "value": -1.0,
                 "blackboardKey": ""
-              }
-            },
-            {
-              "$type": "Beyond.Gameplay.Core.SimpleCalcBBAction+Data, Gameplay.Beyond",
-              "isEnable": true,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 7,
-              "key": "slow_scale_now",
-              "value1": {
-                "useBlackboardKey": false,
-                "value": 1.0,
-                "blackboardKey": ""
-              },
-              "operation": "Add",
-              "value2": {
-                "useBlackboardKey": true,
-                "value": 0.0,
-                "blackboardKey": "param_4"
               }
             },
             {
@@ -336,7 +247,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 8,
+              "serverActionIndex": 2,
               "logType": "BlackboardItem",
               "target": {
                 "targetSource": "Target",
@@ -363,8 +274,325 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "bbKey": "slow_scale_now",
-              "identifier": "Default"
+              "bbKey": "slow_duration_now",
+              "identifier": "slow_duration_now"
+            }
+          ],
+          "onlyExecuteWhenSourceIsMainChar": false,
+          "onlyExecuteWhenSourceIsGuard": false
+        },
+        {
+          "actionData": [
+            {
+              "$type": "Beyond.Gameplay.Core.SimpleCalcBBAction+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 3,
+              "key": "param_1",
+              "value1": {
+                "useBlackboardKey": true,
+                "value": 0.0,
+                "blackboardKey": "slow_scale_fadeout_start"
+              },
+              "operation": "Multiply",
+              "value2": {
+                "useBlackboardKey": false,
+                "value": -1.0,
+                "blackboardKey": ""
+              }
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.SimpleCalcBBAction+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 4,
+              "key": "param_2",
+              "value1": {
+                "useBlackboardKey": true,
+                "value": 0.0,
+                "blackboardKey": "slow_scale_end"
+              },
+              "operation": "Add",
+              "value2": {
+                "useBlackboardKey": true,
+                "value": 0.0,
+                "blackboardKey": "param_1"
+              }
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.SimpleCalcBBAction+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 5,
+              "key": "param_3",
+              "value1": {
+                "useBlackboardKey": true,
+                "value": 0.0,
+                "blackboardKey": "param_2"
+              },
+              "operation": "Multiply",
+              "value2": {
+                "useBlackboardKey": false,
+                "value": 0.2,
+                "blackboardKey": ""
+              }
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.SimpleCalcBBAction+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 6,
+              "key": "param_4",
+              "value1": {
+                "useBlackboardKey": true,
+                "value": 0.0,
+                "blackboardKey": "param_3"
+              },
+              "operation": "Multiply",
+              "value2": {
+                "useBlackboardKey": true,
+                "value": 0.0,
+                "blackboardKey": "slow_stage"
+              }
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.SimpleCalcBBAction+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 7,
+              "key": "slow_scale_now",
+              "value1": {
+                "useBlackboardKey": true,
+                "value": 0.0,
+                "blackboardKey": "slow_scale_fadeout_start"
+              },
+              "operation": "Add",
+              "value2": {
+                "useBlackboardKey": true,
+                "value": 0.0,
+                "blackboardKey": "param_4"
+              }
+            }
+          ],
+          "onlyExecuteWhenSourceIsMainChar": false,
+          "onlyExecuteWhenSourceIsGuard": false
+        }
+      ]
+    },
+    {
+      "buffEvent": "DuringBuffEnable",
+      "actions": [
+        {
+          "actionData": [
+            {
+              "$type": "Beyond.Gameplay.Core.EffectAction+EffectActionData, Gameplay.Beyond",
+              "isEnable": false,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 8,
+              "targetSettings": {
+                "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "effectSource": {
+                "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "isMainCharacterActive": false,
+              "isTargetMainCharacterActive": false,
+              "isShowBigEffect": false,
+              "bigEffectName": "",
+              "playOnHittableObjects": false,
+              "effectActionCfg": {
+                "fxType": "Normal",
+                "effectName": "P_common_enemy_move_speed_down",
+                "guardEffect": false,
+                "isCenterChangeLod": false,
+                "useScaleBB": false,
+                "scale": {
+                  "x": 1.0,
+                  "y": 1.0,
+                  "z": 1.0
+                },
+                "scaleBB": {
+                  "x": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "y": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "z": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  }
+                },
+                "useLengthBB": false,
+                "lengthBB": {
+                  "useBlackboardKey": false,
+                  "value": 0.0,
+                  "blackboardKey": ""
+                },
+                "releaseByAction": true,
+                "ignoreOwnerTimeScale": false,
+                "interruptTime": 0.0,
+                "terrainPrefab": false,
+                "effectPosData": [],
+                "isShowInDialog": false,
+                "isLimitEffectCount": false,
+                "limitCount": 0,
+                "protectTime": 0.0,
+                "limitTime": 0.0,
+                "limitKey": "",
+                "assetOnlyAffectModelRoot": false,
+                "isUltimateShow": false,
+                "visibleWithEntity": true,
+                "visibleWithEntityType": "Source",
+                "moveType": "FollowTarget",
+                "positionRef": "Target",
+                "grounded": false,
+                "followGrounded": false,
+                "followGroundedMaxDistance": 3.0,
+                "followHideTarget": false,
+                "visibleWhenHideTarget": false,
+                "slotIndex": 0,
+                "useWeaponMountPoint": false,
+                "mountPoint": "None",
+                "useAccurateMp": false,
+                "isClothMountPoint": false,
+                "weaponIndex": 0,
+                "weaponMountPoint": "Root",
+                "showHideWithWeapon": false,
+                "offsetDir": "Self",
+                "offsetDirRevert": false,
+                "usePositionOffsetBB": false,
+                "positionOffset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "positionOffsetBB": {
+                  "x": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "y": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "z": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  }
+                },
+                "useTargetRotation": false,
+                "scaleWithTargetSize": false,
+                "fxSize": 0.0,
+                "unpackPosDelayFrame": 0,
+                "unpackFollowTargetOnRelease": false,
+                "rotType": "FollowTarget",
+                "rotRef": "Target",
+                "directionRef": "Target",
+                "rotUseWeaponMountPoint": false,
+                "rotMountPoint": "None",
+                "rotWeaponIndex": 0,
+                "rotWeaponMountPoint": "Root",
+                "revertDir": false,
+                "useSelfRotationBB": false,
+                "selfRotation": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "selfRotationBB": {
+                  "x": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "y": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "z": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  }
+                },
+                "lockYRotation": true,
+                "unpackRotDelayFrame": 0,
+                "unpackFollowTargetRotOnRelease": false,
+                "weaponVfxKey": "",
+                "weaponVfxIndex": -1,
+                "weaponVfxPersistent": false,
+                "alertType": "Decal",
+                "animateAlert": false,
+                "alertAnimateDuration": 0.0,
+                "isAlertAnimateReverse": false,
+                "angle": 0.0,
+                "hollow": 0.0,
+                "modifyType": "StartLifeTime",
+                "value": 0.0
+              },
+              "saveEffectIdToBlackboard": "",
+              "forceMainBody": false,
+              "isCreateWithSourceModelActive": false
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -409,13 +637,13 @@
     },
     {
       "key": "slow_duration_now",
-      "valueDouble": 0.2,
+      "valueDouble": 0.15,
       "valueStr": "",
       "isDynamic": true
     },
     {
       "key": "slow_stage",
-      "valueDouble": 3.0,
+      "valueDouble": 4.0,
       "valueStr": "",
       "isDynamic": false
     },
@@ -442,6 +670,18 @@
       "valueDouble": 0.0,
       "valueStr": "",
       "isDynamic": true
+    },
+    {
+      "key": "slow_duration_fadeout",
+      "valueDouble": 2.0,
+      "valueStr": "",
+      "isDynamic": false
+    },
+    {
+      "key": "slow_scale_fadeout_start",
+      "valueDouble": 0.0,
+      "valueStr": "",
+      "isDynamic": false
     }
   ]
 }

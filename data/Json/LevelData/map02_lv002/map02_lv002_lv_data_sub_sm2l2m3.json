@@ -8,7 +8,7 @@
       "levelLogicId": 22800140003,
       "entityType": "Interactive",
       "entityDataIdKey": "int_erosion_sludge_core",
-      "createState": "EnableAndShow",
+      "createState": "Disable",
       "position": {
         "x": -1306.80078,
         "y": 273.1655,
@@ -39,7 +39,19 @@
         "compareOperator": "Equal",
         "compareTarget": "Completed"
       },
-      "properties": [],
+      "properties": [
+        {
+          "key": "destroy_self",
+          "value": {
+            "type": "Bool",
+            "valueArray": [
+              {
+                "valueBit64": 0
+              }
+            ]
+          }
+        }
+      ],
       "mapProperties": [
         {
           "key": "state",
@@ -47,7 +59,7 @@
             "type": "Int",
             "valueArray": [
               {
-                "valueBit64": 0
+                "valueBit64": 1
               }
             ]
           }
@@ -57,21 +69,7 @@
         1,
         35
       ],
-      "componentProperties": {
-        "Hittable": [
-          {
-            "key": "bomb_check_ignore_raycast",
-            "value": {
-              "type": "Bool",
-              "valueArray": [
-                {
-                  "valueBit64": 0
-                }
-              ]
-            }
-          }
-        ]
-      }
+      "componentProperties": {}
     }
   ],
   "interactiveLockData": [],
@@ -421,6 +419,17 @@
       "maxStage": 2,
       "properties": [
         {
+          "key": "lt:p:1cb4d0b2:c8723b18",
+          "value": {
+            "type": "Int",
+            "valueArray": [
+              {
+                "valueBit64": 0
+              }
+            ]
+          }
+        },
+        {
           "key": "lt:p:1cb4d0b2:92dbda0c",
           "value": {
             "type": "Int",
@@ -432,7 +441,29 @@
           }
         },
         {
-          "key": "lt:p:cc35ec4c:96a6c4ff",
+          "key": "lt:p:1cb4d0b2:adcd91e5",
+          "value": {
+            "type": "Int",
+            "valueArray": [
+              {
+                "valueBit64": 0
+              }
+            ]
+          }
+        },
+        {
+          "key": "lt:p:385831b7:53bfd993",
+          "value": {
+            "type": "Int",
+            "valueArray": [
+              {
+                "valueBit64": 0
+              }
+            ]
+          }
+        },
+        {
+          "key": "lt:mp:1cb4d0b2:c8723b18",
           "value": {
             "type": "Int",
             "valueArray": [
@@ -454,7 +485,18 @@
           }
         },
         {
-          "key": "lt:mp:cc35ec4c:96a6c4ff",
+          "key": "lt:mp:1cb4d0b2:adcd91e5",
+          "value": {
+            "type": "Int",
+            "valueArray": [
+              {
+                "valueBit64": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "lt:mp:385831b7:53bfd993",
           "value": {
             "type": "Int",
             "valueArray": [
@@ -467,9 +509,13 @@
       ],
       "propertyIdToKeyMap": {
         "1": "lt:p:1cb4d0b2:92dbda0c",
-        "3": "lt:p:cc35ec4c:96a6c4ff",
+        "5": "lt:p:1cb4d0b2:c8723b18",
+        "7": "lt:p:1cb4d0b2:adcd91e5",
+        "9": "lt:p:385831b7:53bfd993",
         "1026": "lt:mp:1cb4d0b2:92dbda0c",
-        "1028": "lt:mp:cc35ec4c:96a6c4ff"
+        "1030": "lt:mp:1cb4d0b2:c8723b18",
+        "1032": "lt:mp:1cb4d0b2:adcd91e5",
+        "1034": "lt:mp:385831b7:53bfd993"
       }
     }
   },
@@ -734,7 +780,8 @@
               "movementStyle": "Walk",
               "overrideSpeed": false,
               "overrideSpeedValue": 4.0,
-              "radius": 0.0
+              "radius": 0.0,
+              "npcPlayAnimationTimeEndForceToIdle": false
             },
             {
               "type": "PlayAnimation",
@@ -762,7 +809,8 @@
               "movementStyle": "Walk",
               "overrideSpeed": false,
               "overrideSpeedValue": 4.0,
-              "radius": 0.0
+              "radius": 0.0,
+              "npcPlayAnimationTimeEndForceToIdle": false
             }
           ]
         }
@@ -812,7 +860,8 @@
               "movementStyle": "Walk",
               "overrideSpeed": false,
               "overrideSpeedValue": 4.0,
-              "radius": 0.0
+              "radius": 0.0,
+              "npcPlayAnimationTimeEndForceToIdle": false
             },
             {
               "type": "Wait",
@@ -840,7 +889,8 @@
               "movementStyle": "Walk",
               "overrideSpeed": false,
               "overrideSpeedValue": 4.0,
-              "radius": 0.0
+              "radius": 0.0,
+              "npcPlayAnimationTimeEndForceToIdle": false
             }
           ]
         },
@@ -878,7 +928,8 @@
               "movementStyle": "Walk",
               "overrideSpeed": false,
               "overrideSpeedValue": 4.0,
-              "radius": 0.0
+              "radius": 0.0,
+              "npcPlayAnimationTimeEndForceToIdle": false
             },
             {
               "type": "Wait",
@@ -906,7 +957,8 @@
               "movementStyle": "Walk",
               "overrideSpeed": false,
               "overrideSpeedValue": 4.0,
-              "radius": 0.0
+              "radius": 0.0,
+              "npcPlayAnimationTimeEndForceToIdle": false
             }
           ]
         }
@@ -1159,20 +1211,8 @@
   "functionArea": {
     "ranges": [],
     "baseData": [],
-    "repatriateZoneData": [],
-    "cameraVolumeData": [],
-    "radioTriggerZoneData": [],
-    "cameraLookAtData": [],
-    "cameraAddControlStateData": [],
-    "ambienceCameraData": [],
-    "storySafeZones": [],
-    "sceneToast": [],
-    "blockAIBarkData": [],
-    "isolateEntityZoneData": [],
-    "ditherFactoryZoneData": [],
-    "functionAreaConditions": [],
-    "carryTagZones": [],
-    "visitLocStats": []
+    "specificDatas": [],
+    "functionAreaConditions": []
   },
   "doodadGroup": [],
   "mapVolumeDatas": [],

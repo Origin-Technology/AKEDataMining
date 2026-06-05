@@ -445,6 +445,7 @@
               "minNum": 1,
               "containsHittableTarget": false,
               "compareType": "GE",
+              "excludeDeadEntity": false,
               "storeKey": ""
             },
             {
@@ -802,12 +803,15 @@
                     "fitByCameraPos": false,
                     "followPosition": true,
                     "followRotation": true,
+                    "easeIn": false,
+                    "easeInTime": -1.0,
                     "easeOut": true,
                     "easeOutTime": 0.6,
                     "hideAllRendererEffect": true,
                     "affectedByTimeScale": false,
                     "checkCollisionOnEnd": false,
-                    "checkCollisionTime": -1.0
+                    "checkCollisionTime": -1.0,
+                    "endByInput": false
                   },
                   {
                     "$type": "Beyond.Gameplay.Core.EffectAction+EffectActionData, Gameplay.Beyond",
@@ -920,7 +924,6 @@
                       "visibleWithEntity": true,
                       "visibleWithEntityType": "Source",
                       "moveType": "Stationary",
-                      "isOnlyFollowBattleCamera": false,
                       "positionRef": "Target",
                       "grounded": false,
                       "followGrounded": false,
@@ -1459,21 +1462,24 @@
                     "serverActionIndex": 23,
                     "cameraAnimKey": "UltimateSkillCamera",
                     "duration": 2.033,
-                    "horizontalInheritType": "Custom",
+                    "horizontalInheritType": "PreviousLevelCamera",
                     "outRelativeHorizontalAngle": -20.0,
-                    "verticalInheritType": "CurrentAnimatedCamera",
+                    "verticalInheritType": "PreviousLevelCamera",
                     "outVerticalValue": 0.5,
-                    "zoomScaleInheritType": "Custom",
+                    "zoomScaleInheritType": "PreviousLevelCamera",
                     "outZoomScale": 0.8,
                     "fitByCameraPos": false,
                     "followPosition": true,
                     "followRotation": true,
-                    "easeOut": true,
+                    "easeIn": false,
+                    "easeInTime": -1.0,
+                    "easeOut": false,
                     "easeOutTime": 0.6,
                     "hideAllRendererEffect": true,
                     "affectedByTimeScale": false,
                     "checkCollisionOnEnd": false,
-                    "checkCollisionTime": -1.0
+                    "checkCollisionTime": -1.0,
+                    "endByInput": false
                   },
                   {
                     "$type": "Beyond.Gameplay.Core.EffectAction+EffectActionData, Gameplay.Beyond",
@@ -1586,7 +1592,6 @@
                       "visibleWithEntity": true,
                       "visibleWithEntityType": "Source",
                       "moveType": "Stationary",
-                      "isOnlyFollowBattleCamera": false,
                       "positionRef": "Target",
                       "grounded": false,
                       "followGrounded": false,
@@ -1710,9 +1715,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 25,
               "abilityEntityId": "abilityentity_chr_0017_yvonne_ultimate_skill",
-              "abilityEntitySkillId": "chr_0017_yvonne_ultimate_skill_abilityentity",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionOwner",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -1745,15 +1776,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": -1.324218,
                 "y": 0.5999601,
                 "z": -0.1865895
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
-              "bornRotation": "SameWithSource",
+              "bornRotation": "SourceForward",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -1762,42 +1805,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionOwner",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "chr_0017_yvonne_ultimate_skill_abilityentity",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -1813,9 +1830,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 26,
               "abilityEntityId": "abilityentity_chr_0017_yvonne_ultimate_skill2",
-              "abilityEntitySkillId": "chr_0017_yvonne_ultimate_skill_abilityentity",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionOwner",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -1848,15 +1891,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": -0.746722,
                 "y": 0.549356,
                 "z": -1.078521
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
-              "bornRotation": "SameWithSource",
+              "bornRotation": "SourceForward",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -1865,42 +1920,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionOwner",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "chr_0017_yvonne_ultimate_skill_abilityentity",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -1916,9 +1945,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 27,
               "abilityEntityId": "abilityentity_chr_0017_yvonne_ultimate_skill3",
-              "abilityEntitySkillId": "chr_0017_yvonne_ultimate_skill_abilityentity",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionOwner",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -1951,15 +2006,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.8414935,
                 "y": 0.5000816,
                 "z": -0.8414581
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
-              "bornRotation": "SameWithSource",
+              "bornRotation": "SourceForward",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -1968,42 +2035,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionOwner",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "chr_0017_yvonne_ultimate_skill_abilityentity",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -2036,7 +2077,7 @@
               "serverActionIndex": 28,
               "buffs": [
                 {
-                  "buffId": "buff_common_damage_immune_medium",
+                  "buffId": "buff_common_damage_immune_ult_skill",
                   "assignBlackboard": false,
                   "assignItems": [],
                   "readIdFromBlackboard": false,
@@ -2089,50 +2130,6 @@
                 "durationSourceType": "AbilityEntity",
                 "timedMarkerId": ""
               }
-            },
-            {
-              "$type": "Beyond.Gameplay.Core.SetSuperArmorAction+Data, Gameplay.Beyond",
-              "isEnable": true,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 29,
-              "targetSettings": {
-                "targetSource": "Source",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "superArmorValue": {
-                "useBlackboardKey": false,
-                "value": 35,
-                "blackboardKey": "",
-                "useCustomValue": false
-              },
-              "impactResistance": {
-                "useBlackboardKey": false,
-                "value": 100,
-                "blackboardKey": "",
-                "useCustomValue": false
-              }
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -2155,7 +2152,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 30,
+              "serverActionIndex": 29,
               "weaponIndex": 0,
               "overrideIdleMountPoint": false,
               "idleMountPoint": "None",
@@ -2167,7 +2164,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 31,
+              "serverActionIndex": 30,
               "weaponIndex": 1,
               "overrideIdleMountPoint": false,
               "idleMountPoint": "None",
@@ -2195,7 +2192,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 32,
+              "serverActionIndex": 31,
               "onlyBlockInput": false
             }
           ],
@@ -2219,7 +2216,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 33,
+              "serverActionIndex": 32,
               "timeScale": 0.0,
               "timeDilationPriority": {
                 "tagName": "TimeDilation/Priority/UltiSkill",
@@ -2248,7 +2245,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 34
+              "serverActionIndex": 33
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -2271,7 +2268,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 35,
+              "serverActionIndex": 34,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -2377,7 +2374,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -2493,7 +2489,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 36,
+              "serverActionIndex": 35,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -2599,7 +2595,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -2715,7 +2710,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 37,
+              "serverActionIndex": 36,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -2821,7 +2816,227 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
+                "positionRef": "Target",
+                "grounded": false,
+                "followGrounded": false,
+                "followGroundedMaxDistance": 3.0,
+                "followHideTarget": false,
+                "visibleWhenHideTarget": false,
+                "slotIndex": 0,
+                "useWeaponMountPoint": false,
+                "mountPoint": "None",
+                "useAccurateMp": false,
+                "isClothMountPoint": false,
+                "weaponIndex": 0,
+                "weaponMountPoint": "Root",
+                "showHideWithWeapon": false,
+                "offsetDir": "Self",
+                "offsetDirRevert": false,
+                "usePositionOffsetBB": false,
+                "positionOffset": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "positionOffsetBB": {
+                  "x": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "y": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "z": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  }
+                },
+                "useTargetRotation": true,
+                "scaleWithTargetSize": false,
+                "fxSize": 0.0,
+                "unpackPosDelayFrame": 0,
+                "unpackFollowTargetOnRelease": false,
+                "rotType": "Stationary",
+                "rotRef": "Target",
+                "directionRef": "Target",
+                "rotUseWeaponMountPoint": false,
+                "rotMountPoint": "None",
+                "rotWeaponIndex": 0,
+                "rotWeaponMountPoint": "Root",
+                "revertDir": false,
+                "useSelfRotationBB": false,
+                "selfRotation": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "selfRotationBB": {
+                  "x": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "y": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "z": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  }
+                },
+                "lockYRotation": true,
+                "unpackRotDelayFrame": 0,
+                "unpackFollowTargetRotOnRelease": false,
+                "weaponVfxKey": "",
+                "weaponVfxIndex": -1,
+                "weaponVfxPersistent": false,
+                "alertType": "Decal",
+                "animateAlert": false,
+                "alertAnimateDuration": 0.0,
+                "isAlertAnimateReverse": false,
+                "angle": 0.0,
+                "hollow": 0.0,
+                "modifyType": "StartLifeTime",
+                "value": 0.0
+              },
+              "saveEffectIdToBlackboard": "",
+              "forceMainBody": false,
+              "isCreateWithSourceModelActive": false
+            }
+          ],
+          "onlyExecuteWhenSourceIsMainChar": false,
+          "onlyExecuteWhenSourceIsGuard": false
+        },
+        "forceSyncAnimData": {
+          "forceSync": false,
+          "montageName": "",
+          "targetFrame": 0,
+          "playbackSpeed": 0.0
+        }
+      },
+      {
+        "_startFrame": 0,
+        "_endFrame": 61,
+        "_sequenceActionData": {
+          "actionData": [
+            {
+              "$type": "Beyond.Gameplay.Core.EffectAction+EffectActionData, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 37,
+              "targetSettings": {
+                "targetSource": "Source",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "effectSource": {
+                "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "isMainCharacterActive": false,
+              "isTargetMainCharacterActive": false,
+              "isShowBigEffect": false,
+              "bigEffectName": "",
+              "playOnHittableObjects": false,
+              "effectActionCfg": {
+                "fxType": "Normal",
+                "effectName": "P_yvonne_ultskill_camera",
+                "guardEffect": false,
+                "isCenterChangeLod": false,
+                "useScaleBB": false,
+                "scale": {
+                  "x": 1.0,
+                  "y": 1.0,
+                  "z": 1.0
+                },
+                "scaleBB": {
+                  "x": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "y": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  },
+                  "z": {
+                    "useBlackboardKey": true,
+                    "value": 0.0,
+                    "blackboardKey": ""
+                  }
+                },
+                "useLengthBB": false,
+                "lengthBB": {
+                  "useBlackboardKey": false,
+                  "value": 0.0,
+                  "blackboardKey": ""
+                },
+                "releaseByAction": false,
+                "ignoreOwnerTimeScale": false,
+                "interruptTime": 0.0,
+                "terrainPrefab": false,
+                "effectPosData": [],
+                "isShowInDialog": false,
+                "isLimitEffectCount": false,
+                "limitCount": 0,
+                "protectTime": 0.0,
+                "limitTime": 0.0,
+                "limitKey": "",
+                "assetOnlyAffectModelRoot": false,
+                "isUltimateShow": false,
+                "visibleWithEntity": true,
+                "visibleWithEntityType": "Source",
+                "moveType": "FollowCamera",
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -2995,228 +3210,6 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
-                "effectName": "P_yvonne_ultskill_camera",
-                "guardEffect": false,
-                "isCenterChangeLod": false,
-                "useScaleBB": false,
-                "scale": {
-                  "x": 1.0,
-                  "y": 1.0,
-                  "z": 1.0
-                },
-                "scaleBB": {
-                  "x": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
-                  },
-                  "y": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
-                  },
-                  "z": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
-                  }
-                },
-                "useLengthBB": false,
-                "lengthBB": {
-                  "useBlackboardKey": false,
-                  "value": 0.0,
-                  "blackboardKey": ""
-                },
-                "releaseByAction": false,
-                "ignoreOwnerTimeScale": false,
-                "interruptTime": 0.0,
-                "terrainPrefab": false,
-                "effectPosData": [],
-                "isShowInDialog": false,
-                "isLimitEffectCount": false,
-                "limitCount": 0,
-                "protectTime": 0.0,
-                "limitTime": 0.0,
-                "limitKey": "",
-                "assetOnlyAffectModelRoot": false,
-                "isUltimateShow": false,
-                "visibleWithEntity": true,
-                "visibleWithEntityType": "Source",
-                "moveType": "FollowCamera",
-                "isOnlyFollowBattleCamera": false,
-                "positionRef": "Target",
-                "grounded": false,
-                "followGrounded": false,
-                "followGroundedMaxDistance": 3.0,
-                "followHideTarget": false,
-                "visibleWhenHideTarget": false,
-                "slotIndex": 0,
-                "useWeaponMountPoint": false,
-                "mountPoint": "None",
-                "useAccurateMp": false,
-                "isClothMountPoint": false,
-                "weaponIndex": 0,
-                "weaponMountPoint": "Root",
-                "showHideWithWeapon": false,
-                "offsetDir": "Self",
-                "offsetDirRevert": false,
-                "usePositionOffsetBB": false,
-                "positionOffset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "positionOffsetBB": {
-                  "x": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
-                  },
-                  "y": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
-                  },
-                  "z": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
-                  }
-                },
-                "useTargetRotation": true,
-                "scaleWithTargetSize": false,
-                "fxSize": 0.0,
-                "unpackPosDelayFrame": 0,
-                "unpackFollowTargetOnRelease": false,
-                "rotType": "Stationary",
-                "rotRef": "Target",
-                "directionRef": "Target",
-                "rotUseWeaponMountPoint": false,
-                "rotMountPoint": "None",
-                "rotWeaponIndex": 0,
-                "rotWeaponMountPoint": "Root",
-                "revertDir": false,
-                "useSelfRotationBB": false,
-                "selfRotation": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "selfRotationBB": {
-                  "x": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
-                  },
-                  "y": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
-                  },
-                  "z": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
-                  }
-                },
-                "lockYRotation": true,
-                "unpackRotDelayFrame": 0,
-                "unpackFollowTargetRotOnRelease": false,
-                "weaponVfxKey": "",
-                "weaponVfxIndex": -1,
-                "weaponVfxPersistent": false,
-                "alertType": "Decal",
-                "animateAlert": false,
-                "alertAnimateDuration": 0.0,
-                "isAlertAnimateReverse": false,
-                "angle": 0.0,
-                "hollow": 0.0,
-                "modifyType": "StartLifeTime",
-                "value": 0.0
-              },
-              "saveEffectIdToBlackboard": "",
-              "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
-            }
-          ],
-          "onlyExecuteWhenSourceIsMainChar": false,
-          "onlyExecuteWhenSourceIsGuard": false
-        },
-        "forceSyncAnimData": {
-          "forceSync": false,
-          "montageName": "",
-          "targetFrame": 0,
-          "playbackSpeed": 0.0
-        }
-      },
-      {
-        "_startFrame": 0,
-        "_endFrame": 61,
-        "_sequenceActionData": {
-          "actionData": [
-            {
-              "$type": "Beyond.Gameplay.Core.EffectAction+EffectActionData, Gameplay.Beyond",
-              "isEnable": true,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 39,
-              "targetSettings": {
-                "targetSource": "Source",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "effectSource": {
-                "targetSource": "Owner",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "isMainCharacterActive": false,
-              "isTargetMainCharacterActive": false,
-              "isShowBigEffect": false,
-              "bigEffectName": "",
-              "playOnHittableObjects": false,
-              "effectActionCfg": {
-                "fxType": "Normal",
                 "effectName": "P_yvonne_ultskill_start",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3265,7 +3258,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -3381,7 +3373,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 40,
+              "serverActionIndex": 39,
               "includeAllWeapons": false,
               "weaponIndex": 0,
               "visible": true,
@@ -3429,7 +3421,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 41,
+              "serverActionIndex": 40,
               "includeAllWeapons": false,
               "weaponIndex": 1,
               "visible": true,
@@ -3477,7 +3469,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 42,
+              "serverActionIndex": 41,
               "_triggerKey": "combat_skill_ultimate",
               "_speakerType": "Characters",
               "_canInterruptTimeMs": 0,
@@ -3528,7 +3520,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 43,
+              "serverActionIndex": 42,
               "_soundEvent": "au_chr_0017_yvonne_ultimate_skill",
               "_stopOnEnd": false,
               "_stopFadeDurationMs": 100,
@@ -3747,7 +3739,11 @@
       "selectorDirection": "SourceForward",
       "target": "ActionSource",
       "targetContextKey": ""
-    }
+    },
+    "asSkillCast": true
   },
-  "dontInterruptCombo": false
+  "dontInterruptCombo": false,
+  "needEnemyOutOfScreenWarning": true,
+  "overrideNeedEnemyOutOfScreenWarning": false,
+  "needEnemyOutOfScreenWarningOverrideValue": false
 }

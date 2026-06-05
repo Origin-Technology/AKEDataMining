@@ -8,6 +8,7 @@
     "onlyShowForMainCharacter": false,
     "blinkInMainCharHpBar": false,
     "showProgressInHpBar": false,
+    "showProgressInNormalSkillButton": false,
     "iconStyleInSquad": "Default",
     "abnormalColorType": "Physical",
     "_orderPriorityConfig": {
@@ -20,6 +21,7 @@
     "hasCharHpBarVfxType": false,
     "charHpBarVfxType": "Fire"
   },
+  "hasIcon": true,
   "ignoreTagImmune": false,
   "useTimeDilationDt": false,
   "finishOnRepatriate": false,
@@ -438,7 +440,6 @@
                     "visibleWithEntity": true,
                     "visibleWithEntityType": "Source",
                     "moveType": "Stationary",
-                    "isOnlyFollowBattleCamera": false,
                     "positionRef": "Target",
                     "grounded": false,
                     "followGrounded": false,
@@ -779,7 +780,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -1009,18 +1009,31 @@
           "onlyExecuteWhenSourceIsGuard": false
         },
         {
-          "actionData": [],
-          "onlyExecuteWhenSourceIsMainChar": false,
-          "onlyExecuteWhenSourceIsGuard": false
-        },
-        {
           "actionData": [
+            {
+              "$type": "Beyond.Gameplay.Core.CompareFloat+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 10,
+              "valueA": {
+                "useBlackboardKey": true,
+                "value": 0.0,
+                "blackboardKey": "ignore_hit_effect"
+              },
+              "compare": "LT",
+              "valueB": {
+                "useBlackboardKey": false,
+                "value": 0.5,
+                "blackboardKey": ""
+              }
+            },
             {
               "$type": "Beyond.Gameplay.Core.SwitchAction+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 10,
+              "serverActionIndex": 11,
               "choice": {
                 "useBlackboardKey": true,
                 "value": 0.0,
@@ -1040,7 +1053,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 11,
+                        "serverActionIndex": 12,
                         "realCameraShake2D": false,
                         "targetSettings": {
                           "targetSource": "Target",
@@ -1110,7 +1123,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 12,
+                        "serverActionIndex": 13,
                         "layer": "Entity",
                         "slot": {
                           "tagName": "TimeDilation/Layer/Entity/HitStop",
@@ -1207,7 +1220,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 13,
+                        "serverActionIndex": 14,
                         "realCameraShake2D": false,
                         "targetSettings": {
                           "targetSource": "Target",
@@ -1277,7 +1290,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 14,
+                        "serverActionIndex": 15,
                         "layer": "Entity",
                         "slot": {
                           "tagName": "TimeDilation/Layer/Entity/HitStop",
@@ -1374,7 +1387,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 15,
+                        "serverActionIndex": 16,
                         "realCameraShake2D": false,
                         "targetSettings": {
                           "targetSource": "Target",
@@ -1444,7 +1457,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 16,
+                        "serverActionIndex": 17,
                         "layer": "Entity",
                         "slot": {
                           "tagName": "TimeDilation/Layer/Entity/HitStop",
@@ -1541,7 +1554,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 17,
+                        "serverActionIndex": 18,
                         "realCameraShake2D": false,
                         "targetSettings": {
                           "targetSource": "Target",
@@ -1611,7 +1624,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 18,
+                        "serverActionIndex": 19,
                         "layer": "Entity",
                         "slot": {
                           "tagName": "TimeDilation/Layer/Entity/HitStop",
@@ -1708,7 +1721,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 19,
+                        "serverActionIndex": 20,
                         "realCameraShake2D": false,
                         "targetSettings": {
                           "targetSource": "Target",
@@ -1778,7 +1791,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 20,
+                        "serverActionIndex": 21,
                         "layer": "Entity",
                         "slot": {
                           "tagName": "TimeDilation/Layer/Entity/HitStop",
@@ -1897,6 +1910,12 @@
     {
       "key": "dmg_multiplier",
       "valueDouble": 1.0,
+      "valueStr": "",
+      "isDynamic": false
+    },
+    {
+      "key": "ignore_hit_effect",
+      "valueDouble": 0.0,
       "valueStr": "",
       "isDynamic": false
     }

@@ -2721,7 +2721,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -2906,6 +2905,7 @@
                 "targetContextKey": ""
               },
               "isFinishedEarly": false,
+              "isAbsorbed": false,
               "finishSource": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3059,7 +3059,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -3281,7 +3280,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -3503,7 +3501,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -3725,7 +3722,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -3947,7 +3943,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -4169,7 +4164,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -4391,7 +4385,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -4613,7 +4606,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -4835,7 +4827,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -5057,7 +5048,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -5279,7 +5269,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -5501,7 +5490,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -9647,7 +9635,6 @@
                           "visibleWithEntity": true,
                           "visibleWithEntityType": "Source",
                           "moveType": "Stationary",
-                          "isOnlyFollowBattleCamera": false,
                           "positionRef": "Target",
                           "grounded": false,
                           "followGrounded": false,
@@ -9856,7 +9843,12 @@
                       "blackboardKey": ""
                     },
                     "turnTargetToAttacker": true,
-                    "overrideSuperArmorLimit": 40
+                    "overrideSuperArmorLimit": 40,
+                    "rootMotionScaleWhenEnd": {
+                      "useBlackboardKey": false,
+                      "value": 1.0,
+                      "blackboardKey": ""
+                    }
                   },
                   {
                     "$type": "Beyond.Gameplay.Core.PlaySoundAction+PlaySoundActionData, Gameplay.Beyond",
@@ -9965,7 +9957,10 @@
                     },
                     "inflictionType": "Fire",
                     "directToTriggerred": false,
-                    "inflictionCount": 2
+                    "inflictionCount": 2,
+                    "inflictionCountBlackboardKey": "",
+                    "useInflictionCountBlackboardKey": false,
+                    "ignoreImmuneLevel": "Default"
                   },
                   {
                     "$type": "Beyond.Gameplay.Core.Conditions.CheckMainCharacterCondition+Data, Gameplay.Beyond",
@@ -10110,7 +10105,6 @@
                       "visibleWithEntity": true,
                       "visibleWithEntityType": "Source",
                       "moveType": "FollowTarget",
-                      "isOnlyFollowBattleCamera": false,
                       "positionRef": "Target",
                       "grounded": false,
                       "followGrounded": false,
@@ -10767,9 +10761,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 83,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -10837,15 +10857,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -10854,42 +10886,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -10994,9 +11000,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 85,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -11064,15 +11096,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -11081,42 +11125,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -11221,9 +11239,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 87,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -11291,15 +11335,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -11308,42 +11364,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -11448,9 +11478,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 89,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -11518,15 +11574,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -11535,42 +11603,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -11706,7 +11748,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -11928,7 +11969,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -12150,7 +12190,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -12410,6 +12449,7 @@
                 "targetContextKey": ""
               },
               "isFinishedEarly": false,
+              "isAbsorbed": false,
               "finishSource": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -13055,7 +13095,6 @@
                           "visibleWithEntity": true,
                           "visibleWithEntityType": "Source",
                           "moveType": "Stationary",
-                          "isOnlyFollowBattleCamera": false,
                           "positionRef": "Target",
                           "grounded": false,
                           "followGrounded": false,
@@ -13270,7 +13309,12 @@
                       "blackboardKey": ""
                     },
                     "turnTargetToAttacker": true,
-                    "overrideSuperArmorLimit": -1
+                    "overrideSuperArmorLimit": -1,
+                    "rootMotionScaleWhenEnd": {
+                      "useBlackboardKey": false,
+                      "value": 1.0,
+                      "blackboardKey": ""
+                    }
                   },
                   {
                     "$type": "Beyond.Gameplay.Core.HitStopAction+Data, Gameplay.Beyond",
@@ -13396,7 +13440,10 @@
                     },
                     "inflictionType": "Fire",
                     "directToTriggerred": false,
-                    "inflictionCount": 1
+                    "inflictionCount": 1,
+                    "inflictionCountBlackboardKey": "",
+                    "useInflictionCountBlackboardKey": false,
+                    "ignoreImmuneLevel": "Default"
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -13616,7 +13663,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Source",
                 "grounded": true,
                 "followGrounded": false,
@@ -13838,7 +13884,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Source",
                 "grounded": true,
                 "followGrounded": false,
@@ -14482,9 +14527,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 113,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -14552,15 +14623,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -14569,42 +14652,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -14709,9 +14766,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 115,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -14779,15 +14862,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -14796,42 +14891,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -14936,9 +15005,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 117,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -15006,15 +15101,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -15023,42 +15130,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -15163,9 +15244,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 119,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -15233,15 +15340,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -15250,42 +15369,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -15390,9 +15483,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 121,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -15460,15 +15579,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -15477,42 +15608,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -15617,9 +15722,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 123,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -15687,15 +15818,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -15704,42 +15847,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -15844,9 +15961,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 125,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -15914,15 +16057,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -15931,42 +16086,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -16071,9 +16200,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 127,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos2",
@@ -16141,15 +16296,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -16158,42 +16325,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -16298,9 +16439,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 129,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos2",
@@ -16368,15 +16535,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -16385,42 +16564,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -16525,9 +16678,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 131,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos2",
@@ -16595,15 +16774,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -16612,42 +16803,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -16752,9 +16917,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 133,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos2",
@@ -16822,15 +17013,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -16839,42 +17042,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -16979,9 +17156,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 135,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos2",
@@ -17049,15 +17252,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -17066,42 +17281,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -17206,9 +17395,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 137,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos2",
@@ -17276,15 +17491,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -17293,42 +17520,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -17433,9 +17634,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 139,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos2",
@@ -17503,15 +17730,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -17520,42 +17759,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -17660,9 +17873,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 141,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -17730,15 +17969,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -17747,42 +17998,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -17887,9 +18112,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 143,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -17957,15 +18208,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -17974,42 +18237,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -18114,9 +18351,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 145,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -18184,15 +18447,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -18201,42 +18476,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -18341,9 +18590,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 147,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -18411,15 +18686,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -18428,42 +18715,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -18568,9 +18829,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 149,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -18638,15 +18925,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -18655,42 +18954,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -18795,9 +19068,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 151,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -18865,15 +19164,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -18882,42 +19193,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -19022,9 +19307,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 153,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -19092,15 +19403,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -19109,42 +19432,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -19249,9 +19546,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 155,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -19319,15 +19642,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -19336,42 +19671,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -19476,9 +19785,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 157,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -19546,15 +19881,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -19563,42 +19910,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -19703,9 +20024,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 159,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -19773,15 +20120,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -19790,42 +20149,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -19930,9 +20263,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 161,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos1",
@@ -20000,15 +20359,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -20017,42 +20388,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -20157,9 +20502,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 163,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos2",
@@ -20227,15 +20598,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -20244,42 +20627,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -20384,9 +20741,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 165,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos2",
@@ -20454,15 +20837,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -20471,42 +20866,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -20611,9 +20980,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 167,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos2",
@@ -20681,15 +21076,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -20698,42 +21105,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -20838,9 +21219,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 169,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos2",
@@ -20908,15 +21315,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -20925,42 +21344,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -21065,9 +21458,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 171,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos2",
@@ -21135,15 +21554,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -21152,42 +21583,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -21292,9 +21697,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 173,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos2",
@@ -21362,15 +21793,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -21379,42 +21822,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -21519,9 +21936,35 @@
               "priorityOffset": 0,
               "serverActionIndex": 175,
               "abilityEntityId": "abilityentity_eny_0079_nefarp2_ground_fire",
-              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
+              "setAbilityEntitySource": true,
+              "abilityEntitySource": "ActionSource",
+              "abilityEntitySourceContextKey": "",
+              "setAbilityEntityTarget": false,
+              "abilityEntityTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "bornAt": {
                 "targetSource": "Context",
                 "targetGroupKey": "randpos2",
@@ -21589,15 +22032,27 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "attachToClosestMeshPoint": false,
+              "bornMountPoint": "None",
               "bornPosOffset": {
                 "x": 0.0,
                 "y": 0.0,
                 "z": -10.0
               },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": false,
               "yRotateFromBoneToCurPos": false,
               "bornRotation": "Default",
               "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
               "clampToXZPlane": false,
               "applyBornRotationOffset": false,
               "bornRotationOffset": {
@@ -21606,42 +22061,16 @@
                 "z": 0.0,
                 "w": 1.0
               },
-              "setAbilityEntitySource": true,
-              "abilityEntitySource": "ActionSource",
-              "abilityEntitySourceContextKey": "",
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
+              "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0079_nefarp2_skill07_abilityrange",
               "overrideDuration": false,
               "duration": {
                 "useBlackboardKey": false,
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "setAbilityEntityTarget": false,
-              "abilityEntityTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "assignBlackboard": true,
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": false,
@@ -22015,7 +22444,11 @@
       "selectorDirection": "SourceForward",
       "target": "ActionSource",
       "targetContextKey": ""
-    }
+    },
+    "asSkillCast": true
   },
-  "dontInterruptCombo": false
+  "dontInterruptCombo": false,
+  "needEnemyOutOfScreenWarning": true,
+  "overrideNeedEnemyOutOfScreenWarning": false,
+  "needEnemyOutOfScreenWarningOverrideValue": false
 }

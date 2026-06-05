@@ -570,7 +570,6 @@
                           "visibleWithEntity": true,
                           "visibleWithEntityType": "Source",
                           "moveType": "Stationary",
-                          "isOnlyFollowBattleCamera": false,
                           "positionRef": "Target",
                           "grounded": false,
                           "followGrounded": false,
@@ -838,7 +837,12 @@
                       "blackboardKey": ""
                     },
                     "turnTargetToAttacker": true,
-                    "overrideSuperArmorLimit": -1
+                    "overrideSuperArmorLimit": -1,
+                    "rootMotionScaleWhenEnd": {
+                      "useBlackboardKey": false,
+                      "value": 1.0,
+                      "blackboardKey": ""
+                    }
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -1020,7 +1024,13 @@
                 "value": 0.0,
                 "blackboardKey": ""
               },
-              "deadOption": "AllValid"
+              "deadOption": "AllValid",
+              "forceMoveColliderToGround": false,
+              "modelHeightRecoverTime": {
+                "useBlackboardKey": false,
+                "value": 0.0,
+                "blackboardKey": ""
+              }
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -1158,7 +1168,7 @@
               },
               "damageUnits": [
                 {
-                  "damageType": "Real",
+                  "damageType": "LifeDrain",
                   "damageAttributeType": "Hp",
                   "onlyEnableForMainChar": false,
                   "damageVisualImportance": "Level1",
@@ -1250,7 +1260,6 @@
                     "visibleWithEntity": true,
                     "visibleWithEntityType": "Source",
                     "moveType": "Stationary",
-                    "isOnlyFollowBattleCamera": false,
                     "positionRef": "Target",
                     "grounded": false,
                     "followGrounded": false,
@@ -1498,8 +1507,7 @@
                 "isUltimateShow": false,
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
-                "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
+                "moveType": "FollowTarget",
                 "positionRef": "Source",
                 "grounded": true,
                 "followGrounded": false,
@@ -1539,12 +1547,12 @@
                     "blackboardKey": ""
                   }
                 },
-                "useTargetRotation": true,
+                "useTargetRotation": false,
                 "scaleWithTargetSize": false,
                 "fxSize": 0.0,
-                "unpackPosDelayFrame": 15,
-                "unpackFollowTargetOnRelease": false,
-                "rotType": "FollowTarget",
+                "unpackPosDelayFrame": 0,
+                "unpackFollowTargetOnRelease": true,
+                "rotType": "Stationary",
                 "rotRef": "Source",
                 "directionRef": "Source",
                 "rotUseWeaponMountPoint": false,
@@ -1576,8 +1584,8 @@
                   }
                 },
                 "lockYRotation": true,
-                "unpackRotDelayFrame": 15,
-                "unpackFollowTargetRotOnRelease": false,
+                "unpackRotDelayFrame": 0,
+                "unpackFollowTargetRotOnRelease": true,
                 "weaponVfxKey": "",
                 "weaponVfxIndex": -1,
                 "weaponVfxPersistent": false,
@@ -1721,7 +1729,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -1943,7 +1950,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -2165,7 +2171,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -2495,7 +2500,11 @@
       "selectorDirection": "SourceForward",
       "target": "ActionSource",
       "targetContextKey": ""
-    }
+    },
+    "asSkillCast": true
   },
-  "dontInterruptCombo": false
+  "dontInterruptCombo": false,
+  "needEnemyOutOfScreenWarning": true,
+  "overrideNeedEnemyOutOfScreenWarning": false,
+  "needEnemyOutOfScreenWarningOverrideValue": false
 }

@@ -220,6 +220,7 @@
               "minNum": 1,
               "containsHittableTarget": false,
               "compareType": "GE",
+              "excludeDeadEntity": false,
               "storeKey": ""
             },
             {
@@ -637,6 +638,7 @@
                     "minNum": 0,
                     "containsHittableTarget": false,
                     "compareType": "LE",
+                    "excludeDeadEntity": false,
                     "storeKey": ""
                   },
                   {
@@ -707,6 +709,7 @@
                     "minNum": 1,
                     "containsHittableTarget": false,
                     "compareType": "GE",
+                    "excludeDeadEntity": false,
                     "storeKey": ""
                   },
                   {
@@ -802,6 +805,7 @@
                                 "minNum": 1,
                                 "containsHittableTarget": false,
                                 "compareType": "GE",
+                                "excludeDeadEntity": false,
                                 "storeKey": ""
                               }
                             ],
@@ -1020,6 +1024,7 @@
                                       "minNum": 1,
                                       "containsHittableTarget": false,
                                       "compareType": "GE",
+                                      "excludeDeadEntity": false,
                                       "storeKey": ""
                                     }
                                   ],
@@ -1246,12 +1251,15 @@
                     "fitByCameraPos": false,
                     "followPosition": true,
                     "followRotation": true,
+                    "easeIn": false,
+                    "easeInTime": -1.0,
                     "easeOut": true,
                     "easeOutTime": 1.0,
                     "hideAllRendererEffect": true,
                     "affectedByTimeScale": false,
                     "checkCollisionOnEnd": false,
-                    "checkCollisionTime": -1.0
+                    "checkCollisionTime": -1.0,
+                    "endByInput": false
                   },
                   {
                     "$type": "Beyond.Gameplay.Core.EffectAction+EffectActionData, Gameplay.Beyond",
@@ -1364,7 +1372,6 @@
                       "visibleWithEntity": true,
                       "visibleWithEntityType": "Source",
                       "moveType": "Stationary",
-                      "isOnlyFollowBattleCamera": false,
                       "positionRef": "Target",
                       "grounded": false,
                       "followGrounded": false,
@@ -1809,7 +1816,6 @@
                     "visibleWithEntity": true,
                     "visibleWithEntityType": "Source",
                     "moveType": "Stationary",
-                    "isOnlyFollowBattleCamera": false,
                     "positionRef": "Target",
                     "grounded": false,
                     "followGrounded": false,
@@ -2001,7 +2007,6 @@
                     "visibleWithEntity": true,
                     "visibleWithEntityType": "Source",
                     "moveType": "Stationary",
-                    "isOnlyFollowBattleCamera": false,
                     "positionRef": "Target",
                     "grounded": false,
                     "followGrounded": false,
@@ -2348,7 +2353,6 @@
                                 "visibleWithEntity": true,
                                 "visibleWithEntityType": "Source",
                                 "moveType": "Stationary",
-                                "isOnlyFollowBattleCamera": false,
                                 "positionRef": "Target",
                                 "grounded": false,
                                 "followGrounded": false,
@@ -2736,12 +2740,15 @@
                     "fitByCameraPos": false,
                     "followPosition": true,
                     "followRotation": true,
+                    "easeIn": false,
+                    "easeInTime": -1.0,
                     "easeOut": false,
                     "easeOutTime": 1.0,
                     "hideAllRendererEffect": true,
                     "affectedByTimeScale": false,
                     "checkCollisionOnEnd": false,
-                    "checkCollisionTime": -1.0
+                    "checkCollisionTime": -1.0,
+                    "endByInput": false
                   },
                   {
                     "$type": "Beyond.Gameplay.Core.EffectAction+EffectActionData, Gameplay.Beyond",
@@ -2854,7 +2861,6 @@
                       "visibleWithEntity": true,
                       "visibleWithEntityType": "Source",
                       "moveType": "Stationary",
-                      "isOnlyFollowBattleCamera": false,
                       "positionRef": "Target",
                       "grounded": false,
                       "followGrounded": false,
@@ -3005,6 +3011,7 @@
               "minNum": 1,
               "containsHittableTarget": false,
               "compareType": "GE",
+              "excludeDeadEntity": false,
               "storeKey": ""
             },
             {
@@ -3301,7 +3308,7 @@
               "serverActionIndex": 48,
               "buffs": [
                 {
-                  "buffId": "buff_common_damage_immune_medium",
+                  "buffId": "buff_common_damage_immune_ult_skill",
                   "assignBlackboard": false,
                   "assignItems": [],
                   "readIdFromBlackboard": false,
@@ -3354,50 +3361,6 @@
                 "durationSourceType": "AbilityEntity",
                 "timedMarkerId": ""
               }
-            },
-            {
-              "$type": "Beyond.Gameplay.Core.SetSuperArmorAction+Data, Gameplay.Beyond",
-              "isEnable": true,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 49,
-              "targetSettings": {
-                "targetSource": "Source",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "superArmorValue": {
-                "useBlackboardKey": false,
-                "value": 35,
-                "blackboardKey": "",
-                "useCustomValue": false
-              },
-              "impactResistance": {
-                "useBlackboardKey": false,
-                "value": 100,
-                "blackboardKey": "",
-                "useCustomValue": false
-              }
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3420,7 +3383,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 50,
+              "serverActionIndex": 49,
               "onlyBlockInput": false
             }
           ],
@@ -3444,7 +3407,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 51,
+              "serverActionIndex": 50,
               "timeScale": 0.0,
               "timeDilationPriority": {
                 "tagName": "TimeDilation/Priority/UltiSkill",
@@ -3473,7 +3436,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 52
+              "serverActionIndex": 51
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3496,7 +3459,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 53,
+              "serverActionIndex": 52,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3602,7 +3565,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -3718,7 +3680,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 54,
+              "serverActionIndex": 53,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3824,7 +3786,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -3940,7 +3901,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 55,
+              "serverActionIndex": 54,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -4046,7 +4007,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -4162,7 +4122,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 56,
+              "serverActionIndex": 55,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -4268,7 +4228,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -4384,7 +4343,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 57,
+              "serverActionIndex": 56,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -4490,7 +4449,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "Stationary",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -4606,7 +4564,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 58,
+              "serverActionIndex": 57,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -4712,7 +4670,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowCamera",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -4828,7 +4785,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 59,
+              "serverActionIndex": 58,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -4934,7 +4891,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowCamera",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -5050,7 +5006,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 60,
+              "serverActionIndex": 59,
               "includeAllWeapons": false,
               "weaponIndex": 0,
               "visible": false,
@@ -5098,7 +5054,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 61,
+              "serverActionIndex": 60,
               "includeAllWeapons": false,
               "weaponIndex": 0,
               "visible": true,
@@ -5146,7 +5102,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 62,
+              "serverActionIndex": 61,
               "_triggerKey": "combat_skill_ultimate",
               "_speakerType": "Characters",
               "_canInterruptTimeMs": 0,
@@ -5197,7 +5153,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 63,
+              "serverActionIndex": 62,
               "_soundEvent": "au_chr_0002_endminm_ultimate_skill",
               "_stopOnEnd": false,
               "_stopFadeDurationMs": 100,
@@ -5262,7 +5218,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 64,
+              "serverActionIndex": 63,
               "_soundEvent": "au_chr_0002_endminm_ultimate_skill_foley",
               "_stopOnEnd": true,
               "_stopFadeDurationMs": 100,
@@ -5327,7 +5283,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 65,
+              "serverActionIndex": 64,
               "_soundEvent": "au_chr_0002_endminm_ultimate_skill_exp",
               "_stopOnEnd": false,
               "_stopFadeDurationMs": 500,
@@ -5528,7 +5484,11 @@
       "selectorDirection": "SourceForward",
       "target": "ActionSource",
       "targetContextKey": ""
-    }
+    },
+    "asSkillCast": true
   },
-  "dontInterruptCombo": false
+  "dontInterruptCombo": false,
+  "needEnemyOutOfScreenWarning": true,
+  "overrideNeedEnemyOutOfScreenWarning": false,
+  "needEnemyOutOfScreenWarningOverrideValue": false
 }

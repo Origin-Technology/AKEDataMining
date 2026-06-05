@@ -569,6 +569,7 @@
                             "targetContextKey": ""
                           },
                           "isFinishedEarly": false,
+                          "isAbsorbed": false,
                           "finishSource": {
                             "targetSource": "Source",
                             "targetGroupKey": "",
@@ -1359,7 +1360,6 @@
                           "visibleWithEntity": true,
                           "visibleWithEntityType": "Source",
                           "moveType": "Stationary",
-                          "isOnlyFollowBattleCamera": false,
                           "positionRef": "Target",
                           "grounded": false,
                           "followGrounded": false,
@@ -1585,7 +1585,10 @@
                           },
                           "inflictionType": "Fire",
                           "directToTriggerred": false,
-                          "inflictionCount": 2
+                          "inflictionCount": 2,
+                          "inflictionCountBlackboardKey": "",
+                          "useInflictionCountBlackboardKey": false,
+                          "ignoreImmuneLevel": "Default"
                         },
                         {
                           "$type": "Beyond.Gameplay.Core.CharHurtAnimAction+Data, Gameplay.Beyond",
@@ -1706,6 +1709,7 @@
                                 "minNum": 1,
                                 "containsHittableTarget": false,
                                 "compareType": "GE",
+                                "excludeDeadEntity": false,
                                 "storeKey": ""
                               }
                             ],
@@ -1908,7 +1912,10 @@
                           },
                           "inflictionType": "Fire",
                           "directToTriggerred": false,
-                          "inflictionCount": 1
+                          "inflictionCount": 1,
+                          "inflictionCountBlackboardKey": "",
+                          "useInflictionCountBlackboardKey": false,
+                          "ignoreImmuneLevel": "Default"
                         },
                         {
                           "$type": "Beyond.Gameplay.Core.CharHurtAnimAction+Data, Gameplay.Beyond",
@@ -2029,6 +2036,7 @@
                                 "minNum": 1,
                                 "containsHittableTarget": false,
                                 "compareType": "GE",
+                                "excludeDeadEntity": false,
                                 "storeKey": ""
                               }
                             ],
@@ -2705,7 +2713,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -2927,7 +2934,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
@@ -3149,7 +3155,6 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "moveType": "FollowTarget",
-                "isOnlyFollowBattleCamera": false,
                 "positionRef": "Source",
                 "grounded": false,
                 "followGrounded": false,
@@ -3353,60 +3358,9 @@
               "priorityOffset": 0,
               "serverActionIndex": 44,
               "abilityEntityId": "abilityentity_eny_0047_firebat_skill04_hard",
-              "abilityEntitySkillId": "eny_0047_firebat_skill04_abilityrange_left_hard",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
-              "bornAt": {
-                "targetSource": "Source",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "attachToClosestMeshPoint": true,
-              "bornPosOffset": {
-                "x": 0.75,
-                "y": 0.0,
-                "z": 0.0
-              },
-              "yRotateFromBoneToCurPos": false,
-              "bornRotation": "SameWithSource",
-              "bornRotationContextTarget": "",
-              "clampToXZPlane": false,
-              "applyBornRotationOffset": true,
-              "bornRotationOffset": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0,
-                "w": 1.0
-              },
               "setAbilityEntitySource": true,
               "abilityEntitySource": "ActionSource",
               "abilityEntitySourceContextKey": "",
-              "overrideDuration": false,
-              "duration": {
-                "useBlackboardKey": false,
-                "value": 0.0,
-                "blackboardKey": ""
-              },
               "setAbilityEntityTarget": false,
               "abilityEntityTarget": {
                 "targetSource": "Target",
@@ -3433,7 +3387,70 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
+              "bornAt": {
+                "targetSource": "Source",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "bornMountPoint": "None",
+              "bornPosOffset": {
+                "x": 0.75,
+                "y": 0.0,
+                "z": 0.0
+              },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": true,
+              "yRotateFromBoneToCurPos": false,
+              "bornRotation": "SourceForward",
+              "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
+              "clampToXZPlane": false,
+              "applyBornRotationOffset": true,
+              "bornRotationOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+              },
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
               "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0047_firebat_skill04_abilityrange_left_hard",
+              "overrideDuration": false,
+              "duration": {
+                "useBlackboardKey": false,
+                "value": 0.0,
+                "blackboardKey": ""
+              },
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": true,
@@ -3465,60 +3482,9 @@
               "priorityOffset": 0,
               "serverActionIndex": 45,
               "abilityEntityId": "abilityentity_eny_0047_firebat_skill04_hard",
-              "abilityEntitySkillId": "eny_0047_firebat_skill04_abilityrange_left_hard",
-              "assignEntityBlackboard": false,
-              "assignPairs": [],
-              "bornAt": {
-                "targetSource": "Source",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "attachToClosestMeshPoint": true,
-              "bornPosOffset": {
-                "x": 0.75,
-                "y": 0.0,
-                "z": 0.0
-              },
-              "yRotateFromBoneToCurPos": false,
-              "bornRotation": "SameWithSource",
-              "bornRotationContextTarget": "",
-              "clampToXZPlane": false,
-              "applyBornRotationOffset": true,
-              "bornRotationOffset": {
-                "x": 0.0,
-                "y": 0.0,
-                "z": 0.0,
-                "w": 1.0
-              },
               "setAbilityEntitySource": true,
               "abilityEntitySource": "ActionSource",
               "abilityEntitySourceContextKey": "",
-              "overrideDuration": false,
-              "duration": {
-                "useBlackboardKey": false,
-                "value": 0.0,
-                "blackboardKey": ""
-              },
               "setAbilityEntityTarget": false,
               "abilityEntityTarget": {
                 "targetSource": "Target",
@@ -3545,7 +3511,70 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
+              "bornAt": {
+                "targetSource": "Source",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "bornMountPoint": "None",
+              "bornPosOffset": {
+                "x": 0.75,
+                "y": 0.0,
+                "z": 0.0
+              },
+              "checkNavmeshAreaName": false,
+              "forbiddenAreaNames": [],
+              "attachToClosestMeshPoint": true,
+              "yRotateFromBoneToCurPos": false,
+              "bornRotation": "SourceForward",
+              "bornRotationContextTarget": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedDirectionSetting": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
+              "clampToXZPlane": false,
+              "applyBornRotationOffset": true,
+              "bornRotationOffset": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0,
+                "w": 1.0
+              },
+              "assignEntityBlackboard": false,
+              "assignPairs": [],
               "assignBlackboard": true,
+              "abilityEntitySkillId": "eny_0047_firebat_skill04_abilityrange_left_hard",
+              "overrideDuration": false,
+              "duration": {
+                "useBlackboardKey": false,
+                "value": 0.0,
+                "blackboardKey": ""
+              },
               "saveToContext": false,
               "contextKey": "",
               "pauseEffectOnEnd": true,
@@ -6664,7 +6693,11 @@
       "selectorDirection": "SourceForward",
       "target": "ActionSource",
       "targetContextKey": ""
-    }
+    },
+    "asSkillCast": true
   },
-  "dontInterruptCombo": false
+  "dontInterruptCombo": false,
+  "needEnemyOutOfScreenWarning": true,
+  "overrideNeedEnemyOutOfScreenWarning": false,
+  "needEnemyOutOfScreenWarningOverrideValue": false
 }
