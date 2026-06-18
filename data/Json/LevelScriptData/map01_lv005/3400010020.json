@@ -1,0 +1,179 @@
+{
+  "scriptId": 3400010020,
+  "allowTick": false,
+  "allowStartOnTravelPole": false,
+  "startType": "Manual",
+  "endType": "Manual",
+  "resetModeWhenActive": "None",
+  "resetModeWhenEnd": "None",
+  "activeShapeList": [
+    {
+      "type": "SPHERE",
+      "offset": {
+        "x": 688.450256,
+        "y": 101.493889,
+        "z": -199.374542
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "size": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "radius": 62.87664
+    }
+  ],
+  "actionMap": {
+    "paramBlackboard": {
+      "value": []
+    },
+    "dataMap": {
+      "headerList": [
+        {
+          "$type": "Beyond.Gameplay.Actions.LevelEvent.OnEnemyInFight, Gameplay.Beyond",
+          "_ID": 0,
+          "_nextID": 1,
+          "_filterMode": true,
+          "_validate": {
+            "constValue": true
+          },
+          "_uid": "7e24d910",
+          "_entityFilter": {
+            "paramSource": 200,
+            "path": "enemy"
+          },
+          "_entityOutput": {
+            "path": "$0@_entityOutput"
+          }
+        }
+      ],
+      "actionList": [
+        {
+          "$type": "Beyond.Gameplay.Actions.RepeatAction, Gameplay.Beyond",
+          "_ID": 1,
+          "_uid": "545fc36a",
+          "_repeatIndex": {
+            "path": "$1@_repeatIndex"
+          },
+          "_repeatTimes": {
+            "paramSource": -1,
+            "constValue": 1,
+            "idRef": 4
+          },
+          "_doID": 2
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.PlayAudioOnTarget, Gameplay.Beyond",
+          "_ID": 2,
+          "_uid": "738992dd",
+          "useCurrentScope": true,
+          "_target": {
+            "paramSource": -1,
+            "constValue": {
+              "useSlotId": false,
+              "logicId": 0,
+              "slotId": 0
+            },
+            "idRef": 3
+          },
+          "_audioKey": {
+            "constValue": "au_global_trigger_eny_hound"
+          },
+          "_audioPlayingId": {
+            "path": "$2@_audioPlayingId"
+          },
+          "_stopOnRelease": {
+            "constValue": true
+          }
+        }
+      ],
+      "getterList": [
+        {
+          "$type": "Beyond.Gameplay.Actions.ListGetLengthEntityPtr, Gameplay.Beyond",
+          "_ID": 4,
+          "_uid": "c163eff5",
+          "_list": {
+            "paramSource": 200,
+            "path": "enemy"
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.ListGetValueEntityPtr, Gameplay.Beyond",
+          "_ID": 3,
+          "_uid": "a28bac96",
+          "_list": {
+            "paramSource": 200,
+            "path": "enemy"
+          },
+          "_index": {
+            "paramSource": 100,
+            "path": "$1@_repeatIndex",
+            "constValue": 0
+          }
+        }
+      ]
+    }
+  },
+  "modules": {},
+  "enemies": {},
+  "interactives": {},
+  "npcs": {},
+  "interactiveLocks": {},
+  "triggerVolumes": {
+    "80001": {
+      "isImportant": false,
+      "waitSrvRes": false,
+      "enterCheckOnGround": false,
+      "triggerOnPole": false,
+      "slotId": 80001,
+      "triggerCountLimit": 0,
+      "exitShapeStartIndex": 1,
+      "shapeList": [
+        {
+          "position": {
+            "x": 686.526,
+            "y": 101.96389,
+            "z": -189.554
+          },
+          "shapeType": "Box",
+          "radius": 10.0,
+          "size": {
+            "x": 28.0,
+            "y": 30.0,
+            "z": 27.0
+          },
+          "rotation": {
+            "x": 0.0,
+            "y": 45.0000038,
+            "z": 0.0
+          },
+          "polyLinePoints": []
+        },
+        {
+          "position": {
+            "x": 686.526,
+            "y": 101.96389,
+            "z": -189.554
+          },
+          "shapeType": "Box",
+          "radius": 3.0,
+          "size": {
+            "x": 34.0,
+            "y": 36.0,
+            "z": 33.0
+          },
+          "rotation": {
+            "x": 0.0,
+            "y": 45.0000038,
+            "z": 0.0
+          },
+          "polyLinePoints": []
+        }
+      ]
+    }
+  }
+}

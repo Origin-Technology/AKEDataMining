@@ -1,0 +1,209 @@
+{
+  "scriptId": 34400000003,
+  "allowTick": false,
+  "allowStartOnTravelPole": false,
+  "startType": "Manual",
+  "endType": "Manual",
+  "resetModeWhenActive": "None",
+  "resetModeWhenEnd": "None",
+  "activeShapeList": [
+    {
+      "type": "SPHERE",
+      "offset": {
+        "x": -10.6,
+        "y": 0.0,
+        "z": -21.5
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "size": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "radius": 200.0
+    }
+  ],
+  "actionMap": {
+    "paramBlackboard": {
+      "value": []
+    },
+    "dataMap": {
+      "headerList": [
+        {
+          "$type": "Beyond.Gameplay.Actions.ScriptEvent.OnScriptActive, Gameplay.Beyond",
+          "_ID": 6,
+          "_nextID": 7,
+          "_validate": {
+            "constValue": true
+          },
+          "_uid": "0c988f2a"
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.LevelEvent.OnQuestStateChanged, Gameplay.Beyond",
+          "_ID": 13,
+          "_nextID": 8,
+          "_filterMode": true,
+          "_validate": {
+            "constValue": true
+          },
+          "_uid": "fa3de3fb",
+          "_filtedQuestId": {
+            "constValue": "c31m2d3_q#3"
+          },
+          "_filtedNewState": {
+            "constValue": "Completed"
+          }
+        }
+      ],
+      "actionList": [
+        {
+          "$type": "Beyond.Gameplay.Actions.AddBuffsToTargetsFromGodEntity, Gameplay.Beyond",
+          "_ID": 7,
+          "_nextID": 9,
+          "_uid": "2da8b8cd",
+          "useCurrentScope": true,
+          "_targets": {
+            "paramSource": -1,
+            "idRef": 12
+          },
+          "_buffId": {
+            "constValue": "buff_common_undeadable"
+          },
+          "_useBlackboard": {
+            "constValue": false
+          },
+          "_buffs": {
+            "path": "$7@_buffs"
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.AddBuffsToTargetsFromGodEntity, Gameplay.Beyond",
+          "_ID": 9,
+          "_nextID": 10,
+          "_uid": "85a4fa81",
+          "useCurrentScope": true,
+          "_targets": {
+            "paramSource": -1,
+            "idRef": 14
+          },
+          "_buffId": {
+            "constValue": "buff_chr_0031_mifu_chrdg_addusp"
+          },
+          "_useBlackboard": {
+            "constValue": true
+          },
+          "_blackboardKVPairList": {
+            "constValue": [
+              {
+                "key": "usp_scalar",
+                "valueFloat": 1.2,
+                "useString": false
+              },
+              {
+                "key": "cd_scale",
+                "valueFloat": 0.7,
+                "useString": false
+              }
+            ]
+          },
+          "_buffs": {
+            "path": "$9@_buffs"
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.SwitchAIBarkEnable, Gameplay.Beyond",
+          "_ID": 10,
+          "_nextID": 11,
+          "_uid": "af6a130f",
+          "useCurrentScope": true,
+          "_enable": {
+            "constValue": false
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.PostMusicEvent, Gameplay.Beyond",
+          "_ID": 11,
+          "_uid": "efd0b777",
+          "useCurrentScope": true,
+          "_musicEvent": {
+            "constValue": "au_music_dung02_rdg004_c31m2_explore"
+          },
+          "_musicEventType": {
+            "constValue": "NORMAL"
+          },
+          "_playingId": {
+            "path": "$11@_playingId"
+          },
+          "_musicEventOnRelease": {}
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.FinishBuffs, Gameplay.Beyond",
+          "_ID": 8,
+          "_uid": "b7d5ba6a",
+          "useCurrentScope": true,
+          "_buffs": {
+            "paramSource": 100,
+            "path": "$7@_buffs"
+          }
+        }
+      ],
+      "getterList": [
+        {
+          "$type": "Beyond.Gameplay.Actions.GetSquadMembers, Gameplay.Beyond",
+          "_ID": 12,
+          "_uid": "e5b63e20",
+          "containMainCharacter": {
+            "constValue": true
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.GetSquadMembers, Gameplay.Beyond",
+          "_ID": 14,
+          "_uid": "778e2836",
+          "containMainCharacter": {
+            "constValue": true
+          }
+        }
+      ]
+    }
+  },
+  "taskMap": {
+    "6c00d9d1": {
+      "conditionDict": {
+        "5189452d": {
+          "isMainObjective": true,
+          "objectiveEnum": "Objective1",
+          "condition": {
+            "$type": "Beyond.Gameplay.CheckQuestState, Gameplay.Beyond",
+            "uniqueId": "5189452d",
+            "useCurrentScope": false,
+            "scopeMask": "Main",
+            "useGraphScope": true,
+            "_questId": {
+              "constValue": "c31m2d3_q#3"
+            },
+            "_comparer": {
+              "constValue": "Equal"
+            },
+            "_targetQuestState": {
+              "constValue": "Completed"
+            }
+          }
+        }
+      },
+      "taskType": "None",
+      "needManualCheck": false,
+      "canBeTracked": false
+    }
+  },
+  "modules": {},
+  "enemies": {},
+  "interactives": {},
+  "npcs": {},
+  "interactiveLocks": {},
+  "triggerVolumes": {}
+}
