@@ -1,0 +1,132 @@
+{
+  "AI/Enemy/BB/Battle": {
+    "graph": {
+      "$type": "Beyond.Gameplay.AI.EnemyBattleGraph+EnemyBattleGraphData, Gameplay.Beyond",
+      "tickInterval": 0.1,
+      "canvasGraph": {
+        "$type": "NodeCanvas.BehaviourTrees.BehaviourTree, ParadoxNotion"
+      },
+      "entityMode": "Battle",
+      "soundName": "au_eny_find_target",
+      "alertRange": 9.0,
+      "setWaitTime": false,
+      "waitTime": 1.0,
+      "useCommonBehavior": true,
+      "enterConfrontDis": 3.0,
+      "enemySR": {
+        "cfg": [
+          {
+            "finishCount": 0,
+            "stimulusCfg": {
+              "stimulusData": {
+                "$type": "Beyond.Gameplay.AI.EnemyBattleEventStimulus+EnemyBattleEventStimulusData, Gameplay.Beyond",
+                "eventType": "OnTakeDamage",
+                "buffId": "",
+                "filterDamageDecorate": true,
+                "checkType": "ExceptAny",
+                "damageDecorateMask": 936378424
+              }
+            },
+            "stimulusConditionCfg": {
+              "stimulusConditionData": [
+                {
+                  "$type": "Beyond.Gameplay.AI.EnemyCheckAngleToSource+EnemyCheckAngleToSourceData, Gameplay.Beyond",
+                  "revert": false,
+                  "angle": 150.0
+                },
+                {
+                  "$type": "Beyond.Gameplay.AI.EnemyCheckBuffStackNum+EnemyCheckBuffStackNumData, Gameplay.Beyond",
+                  "buffId": "buff_eny_0074_lbshield_shield_broken_mark",
+                  "compareType": "Equals",
+                  "layerCount": 0
+                },
+                {
+                  "$type": "Beyond.Gameplay.AI.EnemyCheckAIMarker+EnemyCheckAIMarkerData, Gameplay.Beyond",
+                  "checkMarkerType": "And",
+                  "markerInfo": [
+                    {
+                      "invert": true,
+                      "marker": {
+                        "tagName": "AI/Marker/lbshield/CastingSkill",
+                        "tagId": 1939585514
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "responseCfg": {
+              "responseData": {
+                "$type": "Beyond.Gameplay.AI.EnemyCastSkillResponse+EnemyCastSkillResponseData, Gameplay.Beyond",
+                "tickInterval": 0.1,
+                "skillId": "eny_0074_lbshield_skill4_f",
+                "skillTarget": "Source",
+                "interruptSkill": true
+              }
+            }
+          },
+          {
+            "finishCount": 0,
+            "stimulusCfg": {
+              "stimulusData": {
+                "$type": "Beyond.Gameplay.AI.EnemyBattleEventStimulus+EnemyBattleEventStimulusData, Gameplay.Beyond",
+                "eventType": "OnTakeDamage",
+                "buffId": "",
+                "filterDamageDecorate": true,
+                "checkType": "ExceptAny",
+                "damageDecorateMask": 936378424
+              }
+            },
+            "stimulusConditionCfg": {
+              "stimulusConditionData": [
+                {
+                  "$type": "Beyond.Gameplay.AI.EnemyCheckAngleToSource+EnemyCheckAngleToSourceData, Gameplay.Beyond",
+                  "revert": true,
+                  "angle": 150.0
+                },
+                {
+                  "$type": "Beyond.Gameplay.AI.EnemyCheckBuffStackNum+EnemyCheckBuffStackNumData, Gameplay.Beyond",
+                  "buffId": "buff_eny_0074_lbshield_shield_broken_mark",
+                  "compareType": "Equals",
+                  "layerCount": 0
+                },
+                {
+                  "$type": "Beyond.Gameplay.AI.EnemyCheckAIMarker+EnemyCheckAIMarkerData, Gameplay.Beyond",
+                  "checkMarkerType": "And",
+                  "markerInfo": [
+                    {
+                      "invert": true,
+                      "marker": {
+                        "tagName": "AI/Marker/lbshield/CastingSkill",
+                        "tagId": 1939585514
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "responseCfg": {
+              "responseData": {
+                "$type": "Beyond.Gameplay.AI.EnemyCastSkillResponse+EnemyCastSkillResponseData, Gameplay.Beyond",
+                "tickInterval": 0.1,
+                "skillId": "eny_0074_lbshield_skill4_b",
+                "skillTarget": "Source",
+                "interruptSkill": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "AI/Enemy/BB/AttackBuilding": {
+    "graph": {
+      "$type": "Beyond.Gameplay.AI.EnemyAttackBuildingGraph+EnemyAttackBuildingGraphDatta, Gameplay.Beyond",
+      "tickInterval": 0.1,
+      "skillId": "eny_0074_lbshield_skill1",
+      "skillRange": 2.3,
+      "changeCD": false,
+      "cd": 0.0
+    }
+  }
+}

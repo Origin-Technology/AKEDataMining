@@ -1,0 +1,114 @@
+{
+  "AI/Enemy/BB/Battle": {
+    "graph": {
+      "$type": "Beyond.Gameplay.AI.EnemyBattleGraph+EnemyBattleGraphData, Gameplay.Beyond",
+      "tickInterval": 0.1,
+      "canvasGraph": {
+        "$type": "NodeCanvas.BehaviourTrees.BehaviourTree, ParadoxNotion"
+      },
+      "entityMode": "Battle",
+      "soundName": "au_eny_find_target",
+      "alertRange": 9.0,
+      "setWaitTime": false,
+      "waitTime": 0.0,
+      "useCommonBehavior": false,
+      "enterConfrontDis": 3.0,
+      "enemySR": {
+        "cfg": [
+          {
+            "finishCount": 0,
+            "stimulusCfg": {
+              "stimulusData": {
+                "$type": "Beyond.Gameplay.AI.EnemyBattleEventStimulus+EnemyBattleEventStimulusData, Gameplay.Beyond",
+                "eventType": "OnPartsDisable",
+                "buffId": "",
+                "filterDamageDecorate": false,
+                "checkType": "HasAll",
+                "damageDecorateMask": 0
+              }
+            },
+            "stimulusConditionCfg": {
+              "stimulusConditionData": [
+                {
+                  "$type": "Beyond.Gameplay.AI.EnemyCheckHP+EnemyCheckHPData, Gameplay.Beyond",
+                  "targetType": "Source",
+                  "checkType": "GreaterThan",
+                  "hpPct": 0.0
+                },
+                {
+                  "$type": "Beyond.Gameplay.AI.EnemyCheckGameplayTag+EnemyCheckGameplayTagData, Gameplay.Beyond",
+                  "targetType": "Source",
+                  "checkTagType": "And",
+                  "tagInfo": [
+                    {
+                      "invert": false,
+                      "tag": {
+                        "tagName": "Skill/Enemy/eny_0077_agshield/WeakExposure",
+                        "tagId": 641136588
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "responseCfg": {
+              "responseData": {
+                "$type": "Beyond.Gameplay.AI.EnemyCastSkillResponse+EnemyCastSkillResponseData, Gameplay.Beyond",
+                "tickInterval": 0.1,
+                "skillId": "eny_0077_agshield_skill01_succeed",
+                "skillTarget": "Target",
+                "interruptSkill": true
+              }
+            }
+          },
+          {
+            "finishCount": 0,
+            "stimulusCfg": {
+              "stimulusData": {
+                "$type": "Beyond.Gameplay.AI.EnemyBattleEventStimulus+EnemyBattleEventStimulusData, Gameplay.Beyond",
+                "eventType": "OnPartsDisable",
+                "buffId": "",
+                "filterDamageDecorate": false,
+                "checkType": "HasAll",
+                "damageDecorateMask": 0
+              }
+            },
+            "stimulusConditionCfg": {
+              "stimulusConditionData": [
+                {
+                  "$type": "Beyond.Gameplay.AI.EnemyCheckHP+EnemyCheckHPData, Gameplay.Beyond",
+                  "targetType": "Source",
+                  "checkType": "EqualTo",
+                  "hpPct": 0.0
+                },
+                {
+                  "$type": "Beyond.Gameplay.AI.EnemyCheckGameplayTag+EnemyCheckGameplayTagData, Gameplay.Beyond",
+                  "targetType": "Source",
+                  "checkTagType": "And",
+                  "tagInfo": [
+                    {
+                      "invert": false,
+                      "tag": {
+                        "tagName": "Skill/Enemy/eny_0077_agshield/WeakExposure",
+                        "tagId": 641136588
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "responseCfg": {
+              "responseData": {
+                "$type": "Beyond.Gameplay.AI.EnemyCastSkillResponse+EnemyCastSkillResponseData, Gameplay.Beyond",
+                "tickInterval": 0.1,
+                "skillId": "eny_0077_agshield_skill01_poise",
+                "skillTarget": "Self",
+                "interruptSkill": true
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

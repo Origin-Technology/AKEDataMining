@@ -1,0 +1,138 @@
+{
+  "baseCfg": false,
+  "desc": "",
+  "mode": {
+    "AI/Enemy/BB/Atmospheric": {
+      "registerSystem": [
+        "EnemyPatrol",
+        "EnemySensor"
+      ],
+      "blackBoard": {},
+      "graph": {
+        "tag": {
+          "tagName": "AI/Enemy/BB/Atmospheric",
+          "tagId": 294730105
+        }
+      },
+      "behavior": {
+        "AI/Enemy/Behavior/GroupPatrol": {
+          "tag": {
+            "tagName": "AI/Enemy/BB/Atmospheric/GroupPatrol",
+            "tagId": 1430136440
+          }
+        },
+        "AI/Enemy/Behavior/SinglePatrol": {
+          "tag": {
+            "tagName": "AI/Enemy/BB/Atmospheric/SinglePatrol",
+            "tagId": -1956524220
+          }
+        },
+        "AI/Enemy/Behavior/RandomWalk": {
+          "tag": {
+            "tagName": "AI/Enemy/BB/Atmospheric/RandomWalk",
+            "tagId": -636258984
+          }
+        },
+        "AI/Enemy/Behavior/Escape": {
+          "tag": {
+            "tagName": "AI/Enemy/BB/Atmospheric/Escape",
+            "tagId": 1767473111
+          }
+        }
+      }
+    }
+  },
+  "graph": {
+    "AI/Enemy/BB/Atmospheric": {
+      "graph": {
+        "$type": "Beyond.Gameplay.AI.EnemyDogGraph+EnemyDogGraphData, Gameplay.Beyond",
+        "tickInterval": 0.5,
+        "singlePatrol": {
+          "tag": {
+            "tagName": "AI/Enemy/Behavior/SinglePatrol",
+            "tagId": -154101709
+          }
+        },
+        "groupPatrol": {
+          "tag": {
+            "tagName": "AI/Enemy/Behavior/GroupPatrol",
+            "tagId": -470294281
+          }
+        },
+        "randomWalk": {
+          "tag": {
+            "tagName": "AI/Enemy/Behavior/RandomWalk",
+            "tagId": 1979238247
+          }
+        },
+        "escape": {
+          "tag": {
+            "tagName": "AI/Enemy/Behavior/Escape",
+            "tagId": 755984521
+          }
+        }
+      }
+    }
+  },
+  "behavior": {
+    "AI/Enemy/BB/Atmospheric/GroupPatrol": {
+      "dataList": [
+        {
+          "$type": "Beyond.Gameplay.AI.EnemyGroupPatrolBehavior+EnemyGroupPatrolBehaviorData, Gameplay.Beyond",
+          "tickInterval": 0.3,
+          "clampRatio": 0.1
+        }
+      ]
+    },
+    "AI/Enemy/BB/Atmospheric/SinglePatrol": {
+      "dataList": [
+        {
+          "$type": "Beyond.Gameplay.AI.EnemySinglePatrolBehavior+EnemySinglePatrolBehaviorData, Gameplay.Beyond",
+          "tickInterval": 0.3,
+          "enterRestart": false,
+          "moveMode": "NavMesh",
+          "reachDis": 0.2,
+          "reachRunDis": 1.0,
+          "entityModeId": "Patrol",
+          "entityRunModeId": "PatrolRun"
+        }
+      ]
+    },
+    "AI/Enemy/BB/Atmospheric/RandomWalk": {
+      "dataList": [
+        {
+          "$type": "Beyond.Gameplay.AI.EnemyRandomWalkBehavior+EnemyRandomWalkBehaviorData, Gameplay.Beyond",
+          "tickInterval": 0.3,
+          "entityModeId": "Patrol",
+          "radius": 4.0,
+          "angle": 150.0,
+          "idleTime": {
+            "x": 3.0,
+            "y": 5.0
+          },
+          "distance": {
+            "x": 2.0,
+            "y": 4.0
+          },
+          "tryCount": 3
+        }
+      ]
+    },
+    "AI/Enemy/BB/Atmospheric/Escape": {
+      "dataList": [
+        {
+          "$type": "Beyond.Gameplay.AI.EnemyDogEscapeBehavior+EnemyDogEscapeBehaviorData, Gameplay.Beyond",
+          "tickInterval": 0.1,
+          "skillId": "eny_0057_dog_battleact",
+          "skillCastChance": 0.4,
+          "calcTargetInterval": 20.0,
+          "forgetTargetTime": 2.0,
+          "escapeAngleRange": 45.0,
+          "escapeStepDis": 12.0,
+          "escapeArrivalDis": 2.0,
+          "escapeMaxRadius": 40.0
+        }
+      ]
+    }
+  }
+}

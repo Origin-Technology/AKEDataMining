@@ -1,0 +1,75 @@
+{
+  "AI/Enemy/BB/Battle": {
+    "graph": {
+      "$type": "Beyond.Gameplay.AI.EnemyBattleGraph+EnemyBattleGraphData, Gameplay.Beyond",
+      "tickInterval": 0.1,
+      "canvasGraph": {
+        "$type": "NodeCanvas.BehaviourTrees.BehaviourTree, ParadoxNotion"
+      },
+      "entityMode": "Battle",
+      "soundName": "au_eny_find_target",
+      "alertRange": 9.0,
+      "setWaitTime": false,
+      "waitTime": 1.0,
+      "useCommonBehavior": true,
+      "enterConfrontDis": 3.0,
+      "enemySR": {
+        "cfg": [
+          {
+            "finishCount": 0,
+            "stimulusCfg": {
+              "stimulusData": {
+                "$type": "Beyond.Gameplay.AI.EnemyBattleEventStimulus+EnemyBattleEventStimulusData, Gameplay.Beyond",
+                "eventType": "OnBeforeTakeDamage",
+                "buffId": "",
+                "filterDamageDecorate": false,
+                "checkType": "HasAll",
+                "damageDecorateMask": 0
+              }
+            },
+            "stimulusConditionCfg": {
+              "stimulusConditionData": [
+                {
+                  "$type": "Beyond.Gameplay.AI.EnemyCheckCanInterruptCurSkill+EnemyCheckCanInterruptCurSkillData, Gameplay.Beyond"
+                },
+                {
+                  "$type": "Beyond.Gameplay.AI.EnemyCheckGameplayTag+EnemyCheckGameplayTagData, Gameplay.Beyond",
+                  "targetType": "Self",
+                  "checkTagType": "And",
+                  "tagInfo": [
+                    {
+                      "invert": true,
+                      "tag": {
+                        "tagName": "Skill/Enemy/eny_0075_lbroshan/Skill5_CD",
+                        "tagId": -1645046823
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            "responseCfg": {
+              "responseData": {
+                "$type": "Beyond.Gameplay.AI.EnemyCastSkillResponse+EnemyCastSkillResponseData, Gameplay.Beyond",
+                "tickInterval": 0.1,
+                "skillId": "eny_0075_lbroshan_skill5",
+                "skillTarget": "Target",
+                "interruptSkill": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "AI/Enemy/BB/AttackBuilding": {
+    "graph": {
+      "$type": "Beyond.Gameplay.AI.EnemyAttackBuildingGraph+EnemyAttackBuildingGraphDatta, Gameplay.Beyond",
+      "tickInterval": 0.1,
+      "skillId": "eny_0075_lbroshan_skill1",
+      "skillRange": 5.0,
+      "changeCD": false,
+      "cd": 0.0
+    }
+  }
+}
