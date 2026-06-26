@@ -28,6 +28,10 @@
     "dung02_rdg004": [
       "dung02_rdg004_normal"
     ],
+    "dung02_rdg005": [
+      "dung02_rdg005_environmental",
+      "dung02_rdg005_normal"
+    ],
     "dung02_rdg006": [
       "dung02_rdg006_normal"
     ],
@@ -50,6 +54,7 @@
       "map01_lv001_custom_0",
       "map01_lv001_custom_1",
       "map01_lv001_custom_2",
+      "map01_lv001_custom_3",
       "map01_lv001_custom_7",
       "map01_lv001_normal"
     ],
@@ -236,6 +241,12 @@
     "dung02_rdg004_normal": [
       "dung02_rdg004_normal_v1d3d0_001"
     ],
+    "dung02_rdg005_environmental": [
+      "dung02_rdg005_environmental_v1d3d0_001"
+    ],
+    "dung02_rdg005_normal": [
+      "dung02_rdg005_normal_v1d3d0_001"
+    ],
     "dung02_rdg006_normal": [
       "dung02_rdg006_normal_v1d3d0_002",
       "dung02_rdg006_normal_v1d3d0_001",
@@ -281,6 +292,9 @@
     "map01_lv001_custom_2": [
       "map01_lv001_custom_2_001"
     ],
+    "map01_lv001_custom_3": [
+      "map01_lv001_custom_3_001"
+    ],
     "map01_lv001_custom_7": [
       "map01_lv001_custom_7_001"
     ],
@@ -290,7 +304,8 @@
       "map01_lv001_normal_stage3",
       "map01_lv001_normal_stage4",
       "map01_lv001_normal_stage5",
-      "map01_lv001_normal_stage6"
+      "map01_lv001_normal_stage6",
+      "map01_lv001_normal_v1d3d0_001"
     ],
     "map01_lv002_custom_0": [
       "map01_lv002_custom_0_001"
@@ -1325,6 +1340,52 @@
         "compareTarget": "Completed"
       }
     },
+    "dung02_rdg005_environmental_v1d3d0_001": {
+      "switcherId": "dung02_rdg005_environmental",
+      "levelId": "dung02_rdg005",
+      "mapId": "dung02_rdg005",
+      "groupId": "dung02_rdg005_environmental_v1d3d0_001",
+      "switcherType": "Environmental",
+      "condition": {
+        "$type": "Beyond.Gameplay.SimpleConditionCheckGlobalVar, Gameplay.Beyond",
+        "globalVarName": "always_true",
+        "compareOperator": "Equal",
+        "compareTarget": 1
+      }
+    },
+    "dung02_rdg005_normal_v1d3d0_001": {
+      "switcherId": "dung02_rdg005_normal",
+      "levelId": "dung02_rdg005",
+      "mapId": "dung02_rdg005",
+      "groupId": "dung02_rdg005_normal_v1d3d0_001",
+      "switcherType": "Normal",
+      "condition": {
+        "$type": "Beyond.Gameplay.CombinedConditionRuntime, Gameplay.Beyond",
+        "conditionOperator": "And",
+        "reverse": false,
+        "subConditions": [
+          {
+            "$type": "Beyond.Gameplay.SimpleConditionCheckQuestState, Gameplay.Beyond",
+            "questId": "c33m2_q#51",
+            "compareOperator": "Equal",
+            "compareTarget": "Completed"
+          },
+          {
+            "$type": "Beyond.Gameplay.CombinedConditionRuntime, Gameplay.Beyond",
+            "conditionOperator": "And",
+            "reverse": true,
+            "subConditions": [
+              {
+                "$type": "Beyond.Gameplay.SimpleConditionCheckQuestState, Gameplay.Beyond",
+                "questId": "c33m2_q#29",
+                "compareOperator": "Equal",
+                "compareTarget": "Completed"
+              }
+            ]
+          }
+        ]
+      }
+    },
     "dung02_rdg006_normal_v1d3d0_001": {
       "switcherId": "dung02_rdg006_normal",
       "levelId": "dung02_rdg006",
@@ -1990,6 +2051,19 @@
         ]
       }
     },
+    "map01_lv001_custom_3_001": {
+      "switcherId": "map01_lv001_custom_3",
+      "levelId": "map01_lv001",
+      "mapId": "map01",
+      "groupId": "map01_lv001_custom_3_001",
+      "switcherType": "Custom",
+      "condition": {
+        "$type": "Beyond.Gameplay.SimpleConditionCheckMissionState, Gameplay.Beyond",
+        "missionId": "c33m1",
+        "compareOperator": "Equal",
+        "compareTarget": "Processing"
+      }
+    },
     "map01_lv001_custom_7_001": {
       "switcherId": "map01_lv001_custom_7",
       "levelId": "map01_lv001",
@@ -2199,6 +2273,19 @@
         "missionId": "e3m5",
         "compareOperator": "Equal",
         "compareTarget": "Completed"
+      }
+    },
+    "map01_lv001_normal_v1d3d0_001": {
+      "switcherId": "map01_lv001_normal",
+      "levelId": "map01_lv001",
+      "mapId": "map01",
+      "groupId": "map01_lv001_normal_v1d3d0_001",
+      "switcherType": "Normal",
+      "condition": {
+        "$type": "Beyond.Gameplay.SimpleConditionCheckMissionState, Gameplay.Beyond",
+        "missionId": "c33m1",
+        "compareOperator": "Equal",
+        "compareTarget": "Processing"
       }
     },
     "map01_lv002_custom_0_001": {
