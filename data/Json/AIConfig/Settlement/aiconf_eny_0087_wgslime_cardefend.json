@@ -1,0 +1,253 @@
+{
+  "attackRangeType": "Melee",
+  "groundRaycastDis": -1.0,
+  "hateProbLevel": "Middle",
+  "overrideHateProb": false,
+  "overrideHateProbWithoutDefender": 0.0,
+  "overrideHateProbWithDefender": 0.0,
+  "needAtkIdentity": true,
+  "needMergedSlot": false,
+  "mergedSlotCfgPath": "",
+  "forceConstrainToNavMesh": true,
+  "overrideNavAgent": false,
+  "navAgentRadius": 0.0,
+  "navAgentHeight": 0.0,
+  "overrideRvoAgent": false,
+  "rvoAgentRadius": 0.0,
+  "rvoAgentHeight": 0.0,
+  "defaultMode": "Battle",
+  "brainConfig": {
+    "mode": {
+      "Battle": {
+        "tag": {
+          "tagName": "AI/Enemy/BB/Battle",
+          "tagId": -1340223560
+        }
+      }
+    }
+  },
+  "aiBB": {
+    "baseCfg": false,
+    "desc": "塔防玩法怪物",
+    "parent": {
+      "baseCfg": false,
+      "desc": "防御玩法怪物",
+      "canvasBB": {},
+      "mode": {
+        "AI/Enemy/BB/Battle": {
+          "registerSystem": [
+            "EnemyBattle"
+          ],
+          "blackBoard": {},
+          "graph": {
+            "tag": {
+              "tagName": "AI/Enemy/BB/Battle",
+              "tagId": -1340223560
+            }
+          },
+          "behavior": {
+            "AI/Enemy/Behavior/CastSkillToPosition": {
+              "tag": {
+                "tagName": "AI/Enemy/BB/Battle/CastSkillToPosition",
+                "tagId": 1044645798
+              }
+            },
+            "AI/Enemy/Behavior/SinglePatrol": {
+              "tag": {
+                "tagName": "AI/Enemy/BB/Battle/Patrol",
+                "tagId": 1865064928
+              }
+            },
+            "AI/Enemy/Behavior/SimpleCastSeqSkill": {
+              "tag": {
+                "tagName": "AI/Enemy/BB/Battle/SimpleCastSeqSkill",
+                "tagId": 1103082666
+              }
+            },
+            "AI/Enemy/Behavior/CastSequenceSkill": {
+              "tag": {
+                "tagName": "AI/Enemy/BB/Battle/CastSequenceSkill",
+                "tagId": 1958633708
+              }
+            },
+            "AI/Enemy/Behavior/Pause": {
+              "tag": {
+                "tagName": "AI/Enemy/BB/Battle/Pause",
+                "tagId": 1840301044
+              }
+            },
+            "AI/Enemy/Behavior/ConfrontMove": {
+              "tag": {
+                "tagName": "AI/Enemy/BB/Battle/ConfrontMove",
+                "tagId": 136808462
+              }
+            },
+            "AI/Enemy/Behavior/Idle": {
+              "tag": {
+                "tagName": "AI/Enemy/BB/Battle/Idle",
+                "tagId": 641968609
+              }
+            },
+            "AI/Enemy/Behavior/Immobilized": {
+              "tag": {
+                "tagName": "AI/Enemy/BB/Battle/Immobilized",
+                "tagId": -1006553729
+              }
+            },
+            "AI/Enemy/Behavior/CastSkillInRange": {
+              "tag": {
+                "tagName": "AI/Enemy/BB/Battle/CastSkillInRange",
+                "tagId": 1741165667
+              }
+            },
+            "AI/Enemy/Behavior/FormationMove": {
+              "tag": {
+                "tagName": "AI/Enemy/BB/Battle/FormationMove",
+                "tagId": -1356785106
+              }
+            },
+            "AI/Enemy/Behavior/SimpleAttack": {
+              "tag": {
+                "tagName": "AI/Enemy/BB/Battle/SimpleAttack",
+                "tagId": -1267943985
+              }
+            }
+          }
+        }
+      },
+      "graph": {},
+      "behavior": {
+        "AI/Enemy/BB/Battle/Patrol": {
+          "dataList": [
+            {
+              "$type": "Beyond.Gameplay.AI.EnemySinglePatrolBehavior+EnemySinglePatrolBehaviorData, Gameplay.Beyond",
+              "tickInterval": 0.1,
+              "enterRestart": false,
+              "moveMode": "NavMesh",
+              "reachDis": 1.0,
+              "reachRunDis": 1.5,
+              "entityModeId": "Settlement",
+              "entityRunModeId": "Settlement"
+            }
+          ]
+        },
+        "AI/Enemy/BB/Battle/FormationMove": {
+          "dataList": [
+            {
+              "$type": "Beyond.Gameplay.AI.EnemyFormationMoveBehavior+EnemyFormationMoveBehaviorData, Gameplay.Beyond",
+              "tickInterval": 0.1,
+              "timeout": 5.0,
+              "soundName": "combat_fighting",
+              "delayEnd": {
+                "x": 2.0,
+                "y": 2.5
+              }
+            }
+          ]
+        },
+        "AI/Enemy/BB/Battle/CastSkillInRange": {
+          "dataList": [
+            {
+              "$type": "Beyond.Gameplay.AI.EnemyCastSkillInRangeBehavior+EnemyCastSkillInRangeBehaviorData, Gameplay.Beyond",
+              "tickInterval": 0.1
+            }
+          ]
+        },
+        "AI/Enemy/BB/Battle/Immobilized": {
+          "dataList": [
+            {
+              "$type": "Beyond.Gameplay.AI.EnemyImmobilizedBehavior+EnemyImmobilizedBehaviorData, Gameplay.Beyond",
+              "tickInterval": 0.0
+            }
+          ]
+        },
+        "AI/Enemy/BB/Battle/CastSkillToPosition": {
+          "dataList": [
+            {
+              "$type": "Beyond.Gameplay.AI.EnemyCastSkillInRangeBehavior+EnemyCastSkillInRangeBehaviorData, Gameplay.Beyond",
+              "tickInterval": 0.1
+            }
+          ]
+        },
+        "AI/Enemy/BB/Battle/Idle": {
+          "dataList": [
+            {
+              "$type": "Beyond.Gameplay.AI.EnemyBattleIdleBehavior+EnemyBattleIdleBehaviorData, Gameplay.Beyond",
+              "tickInterval": 0.1
+            }
+          ]
+        },
+        "AI/Enemy/BB/Battle/ConfrontMove": {
+          "dataList": [
+            {
+              "$type": "Beyond.Gameplay.AI.EnemyConfrontMoveBehavior+EnemyConfrontMoveBehaviorData, Gameplay.Beyond",
+              "tickInterval": 0.1,
+              "timeout": 3.0
+            }
+          ]
+        },
+        "AI/Enemy/BB/Battle/Pause": {
+          "dataList": [
+            {
+              "$type": "Beyond.Gameplay.AI.EnemyPauseBehavior+EnemyPauseBehaviorData, Gameplay.Beyond",
+              "tickInterval": 0.1
+            }
+          ]
+        },
+        "AI/Enemy/BB/Battle/CastSequenceSkill": {
+          "dataList": [
+            {
+              "$type": "Beyond.Gameplay.AI.EnemyCastSequenceSkillBehavior+EnemyCastSequenceSkillBehaviorData, Gameplay.Beyond",
+              "tickInterval": 0.0
+            }
+          ]
+        },
+        "AI/Enemy/BB/Battle/SimpleCastSeqSkill": {
+          "dataList": [
+            {
+              "$type": "Beyond.Gameplay.AI.EnemySimpleCastSequenceSkillBehavior+EnemySimpleCastSequenceSkillBehaviorData, Gameplay.Beyond",
+              "tickInterval": 0.0
+            }
+          ]
+        }
+      }
+    },
+    "canvasBB": {},
+    "mode": {},
+    "graph": {
+      "AI/Enemy/BB/Battle": {
+        "graph": {
+          "$type": "Beyond.Gameplay.AI.EnemyDefendBattleGraph+EnemyDefendBattleGraphData, Gameplay.Beyond",
+          "tickInterval": 0.1,
+          "canvasGraph": {
+            "$type": "NodeCanvas.BehaviourTrees.BehaviourTree, ParadoxNotion"
+          },
+          "useCommonBehavior": true,
+          "enterConfrontDis": 3.0,
+          "searchRadius": 8.0,
+          "searchHeight": 8.0,
+          "searchMode": "BeAttack",
+          "onHitTimeout": 10.0,
+          "enemySR": {
+            "cfg": []
+          }
+        }
+      }
+    },
+    "behavior": {
+      "AI/Enemy/BB/Battle/SimpleAttack": {
+        "dataList": [
+          {
+            "$type": "Beyond.Gameplay.AI.EnemySimpleAttackBehavior+EnemySimpleAttackBehaviorData, Gameplay.Beyond",
+            "tickInterval": 0.1,
+            "skillData": {
+              "skillId": "eny_0087_wgslime_skill02",
+              "skillRange": 2.5
+            }
+          }
+        ]
+      }
+    }
+  },
+  "idleBreakAnimations": []
+}

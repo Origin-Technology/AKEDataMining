@@ -1,0 +1,69 @@
+{
+  "AI/Enemy/BB/Battle": {
+    "graph": {
+      "$type": "Beyond.Gameplay.AI.EnemySettlementBattleGraph+EnemySettlementBattleGraphData, Gameplay.Beyond",
+      "tickInterval": 0.3,
+      "canvasGraph": {
+        "$type": "NodeCanvas.BehaviourTrees.BehaviourTree, ParadoxNotion"
+      },
+      "battleTag": {
+        "tag": {
+          "tagName": "AI/Enemy/Behavior/Battle",
+          "tagId": 461295411
+        }
+      },
+      "patrolTag": {
+        "tag": {
+          "tagName": "AI/Enemy/Behavior/SinglePatrol",
+          "tagId": -154101709
+        }
+      },
+      "searchCoreRadius": 8.0,
+      "searchCoreHeight": 8.0,
+      "searchMode": "None",
+      "onHitTimeout": 5.0,
+      "sightRadius": 5.0,
+      "sightAngle": 60.0,
+      "leaveDis": 10.0,
+      "exAction": {
+        "actionData": []
+      },
+      "enemySR": {
+        "cfg": [
+          {
+            "finishCount": 0,
+            "stimulusCfg": {
+              "stimulusData": {
+                "$type": "Beyond.Gameplay.AI.EnemyBattleEventStimulus+EnemyBattleEventStimulusData, Gameplay.Beyond",
+                "eventType": "OnTakeDamage",
+                "buffId": "",
+                "filterDamageDecorate": false,
+                "checkType": "HasAll",
+                "damageDecorateMask": 0
+              }
+            },
+            "stimulusConditionCfg": {
+              "stimulusConditionData": [
+                {
+                  "$type": "Beyond.Gameplay.AI.EnemyCheckBuffStackNum+EnemyCheckBuffStackNumData, Gameplay.Beyond",
+                  "buffId": "buff_eny_0055_hscrane_settlement",
+                  "compareType": "LT",
+                  "layerCount": 1
+                }
+              ]
+            },
+            "responseCfg": {
+              "responseData": {
+                "$type": "Beyond.Gameplay.AI.EnemyCastSkillResponse+EnemyCastSkillResponseData, Gameplay.Beyond",
+                "tickInterval": 0.1,
+                "skillId": "eny_0055_hscrane_settlement",
+                "skillTarget": "Self",
+                "interruptSkill": false
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
