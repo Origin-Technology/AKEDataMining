@@ -1,0 +1,346 @@
+{
+  "templateId": "LST_BubbleLockedChest_Graph",
+  "maxStage": 1,
+  "actionMap": {
+    "paramBlackboard": {
+      "value": [
+        {
+          "key": "unlockCount",
+          "value": {
+            "type": "Int",
+            "valueArray": [
+              {
+                "valueBit64": 0,
+                "valueString": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "dataMap": {
+      "headerList": [
+        {
+          "$type": "Beyond.Gameplay.Actions.LevelEvent.OnSpecificEntityListDie, Gameplay.Beyond",
+          "_ID": 0,
+          "_nextID": 1,
+          "_validate": {
+            "constValue": true
+          },
+          "_uid": "5473c82c",
+          "_filterEntityList": {
+            "paramSource": 200,
+            "path": "BubbleList"
+          },
+          "_entity": {
+            "path": "$0@_entity"
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.ScriptEvent.OnScriptComplete, Gameplay.Beyond",
+          "_ID": 15,
+          "_nextID": 16,
+          "_validate": {
+            "constValue": true
+          },
+          "_uid": "6e3001f6"
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.ScriptEvent.OnScriptActive, Gameplay.Beyond",
+          "_ID": 24,
+          "_nextID": 25,
+          "_validate": {
+            "constValue": true
+          },
+          "_uid": "155e6e5e"
+        }
+      ],
+      "actionList": [
+        {
+          "$type": "Beyond.Gameplay.Actions.RaiseCustomEntityEvent, Gameplay.Beyond",
+          "_ID": 1,
+          "_nextID": 2,
+          "_uid": "c9e5971b",
+          "useCurrentScope": true,
+          "_eventKey": {
+            "constValue": "on_condition_count_changed"
+          },
+          "_eventArgsPtr": {
+            "constValue": {}
+          },
+          "_receiver": {
+            "paramSource": 200,
+            "path": "Chest",
+            "constValue": {
+              "useSlotId": false,
+              "logicId": 0,
+              "slotId": 0
+            }
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.SetInt, Gameplay.Beyond",
+          "_ID": 2,
+          "_nextID": 3,
+          "_uid": "2011e873",
+          "useCurrentScope": true,
+          "_key": {
+            "paramSource": 100,
+            "path": "unlockCount",
+            "constValue": 0
+          },
+          "_value": {
+            "paramSource": -1,
+            "constValue": 0,
+            "idRef": 20
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.IfElseAction, Gameplay.Beyond",
+          "_ID": 3,
+          "_uid": "4b59e274",
+          "_condition": {
+            "paramSource": -1,
+            "constValue": true,
+            "idRef": 22
+          },
+          "_onTrueID": 4,
+          "_onFalseID": 0
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.WaitForSeconds, Gameplay.Beyond",
+          "_ID": 4,
+          "_nextID": 5,
+          "_uid": "8f15834e",
+          "useCurrentScope": true,
+          "_seconds": {
+            "constValue": 1.5
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.CallServer, Gameplay.Beyond",
+          "_ID": 5,
+          "_uid": "6ec42719",
+          "useCurrentScope": true,
+          "_eventName": {
+            "constValue": "#6ec42719"
+          },
+          "_eventArgsPtr": {
+            "constValue": {
+              "key": "event_args"
+            }
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.DebugLogAction, Gameplay.Beyond",
+          "_ID": 16,
+          "_nextID": 17,
+          "_uid": "3aa0fdca",
+          "useCurrentScope": true,
+          "_info": {
+            "constValue": "wytest: on chest unlock, start blend camera"
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.Split, Gameplay.Beyond",
+          "_ID": 17,
+          "_uid": "77b0e065",
+          "_idList": [
+            18
+          ]
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.BlendToCameraTransformWithTime, Gameplay.Beyond",
+          "_ID": 18,
+          "_uid": "dbb40390",
+          "useCurrentScope": true,
+          "pos": {
+            "paramSource": 200,
+            "path": "CameraPos",
+            "constValue": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "rot": {
+            "paramSource": 200,
+            "path": "CameraRot",
+            "constValue": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "fov": {
+            "constValue": -1.0
+          },
+          "useBlackScreen": {
+            "constValue": true
+          },
+          "tweenTime": {
+            "constValue": 0.5
+          },
+          "duration": {
+            "constValue": 2.0
+          },
+          "overrideBlend": {
+            "constValue": false
+          },
+          "blendStyle": {
+            "constValue": "EaseInOut"
+          },
+          "useYawCheck": {
+            "constValue": false
+          },
+          "_needInterruptMainHudAction": {
+            "constValue": true
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.RaiseCustomEntityEvent, Gameplay.Beyond",
+          "_ID": 25,
+          "_uid": "c48a1477",
+          "useCurrentScope": true,
+          "_eventKey": {
+            "constValue": "on_condition_count_reset"
+          },
+          "_eventArgsPtr": {
+            "constValue": {}
+          },
+          "_receiver": {
+            "paramSource": 200,
+            "path": "Chest",
+            "constValue": {
+              "useSlotId": false,
+              "logicId": 0,
+              "slotId": 0
+            }
+          }
+        }
+      ],
+      "getterList": [
+        {
+          "$type": "Beyond.Gameplay.Actions.IntGetterPlus, Gameplay.Beyond",
+          "_ID": 20,
+          "_uid": "d80ee981",
+          "_valueA": {
+            "paramSource": 100,
+            "path": "unlockCount",
+            "constValue": 0
+          },
+          "_valueB": {
+            "constValue": 1
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.IntCompare, Gameplay.Beyond",
+          "_ID": 22,
+          "_uid": "5ddd4116",
+          "_comparer": {
+            "constValue": "GreaterEqual"
+          },
+          "_valueA": {
+            "paramSource": -1,
+            "constValue": 0,
+            "idRef": 23
+          },
+          "_valueB": {
+            "paramSource": -1,
+            "constValue": 0,
+            "idRef": 21
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.GetterInt, Gameplay.Beyond",
+          "_ID": 23,
+          "_uid": "7ed6d56a",
+          "_value": {
+            "paramSource": 100,
+            "path": "unlockCount",
+            "constValue": 0
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.ListGetLengthEntityPtr, Gameplay.Beyond",
+          "_ID": 21,
+          "_uid": "047e9147",
+          "_list": {
+            "paramSource": 200,
+            "path": "BubbleList"
+          }
+        }
+      ]
+    }
+  },
+  "properties": [
+    {
+      "key": "BubbleList",
+      "value": {
+        "type": "EntityPtrList",
+        "valueArray": [
+          {
+            "valueBit64": 0
+          },
+          {
+            "valueBit64": 0
+          },
+          {
+            "valueBit64": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "Chest",
+      "value": {
+        "type": "EntityPtr",
+        "valueArray": [
+          {
+            "valueBit64": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "CameraPos",
+      "value": {
+        "type": "Vector3",
+        "valueArray": [
+          {
+            "valueBit64": 0
+          },
+          {
+            "valueBit64": 0
+          },
+          {
+            "valueBit64": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "CameraRot",
+      "value": {
+        "type": "Vector3",
+        "valueArray": [
+          {
+            "valueBit64": 0
+          },
+          {
+            "valueBit64": 0
+          },
+          {
+            "valueBit64": 0
+          }
+        ]
+      }
+    }
+  ],
+  "propertyIdToKeyMap": {
+    "1025": "BubbleList",
+    "1026": "Chest",
+    "1027": "CameraPos",
+    "1028": "CameraRot"
+  }
+}
