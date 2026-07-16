@@ -35,6 +35,8 @@
   },
   "durationFrame": 180,
   "exclusiveFrame": 180,
+  "useAIExclusiveFrame": false,
+  "aiExclusiveFrame": 0,
   "offsetRecordFrame": 0,
   "selectStrategy": "NoTarget",
   "smartTargetSelectStrategy": "SelectComboSkillTarget",
@@ -133,6 +135,32 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
+              "useGuardLodSourceOverride": false,
+              "guardLodSource": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "isMainCharacterActive": false,
               "isTargetMainCharacterActive": false,
               "isShowBigEffect": false,
@@ -172,6 +200,12 @@
                   "value": 0.0,
                   "blackboardKey": ""
                 },
+                "useDurationScaleBB": false,
+                "durationScaleBB": {
+                  "useBlackboardKey": false,
+                  "value": 0.0,
+                  "blackboardKey": ""
+                },
                 "releaseByAction": true,
                 "ignoreOwnerTimeScale": false,
                 "interruptTime": 0.0,
@@ -187,11 +221,23 @@
                 "isUltimateShow": false,
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
+                "ignoreEntityDither": false,
                 "moveType": "FollowTarget",
+                "useCameraViewportAnchor": false,
+                "cameraViewportPosition": {
+                  "x": 0.5,
+                  "y": 0.5
+                },
+                "cameraAnchorDistance": 1.0,
+                "cameraScreenSizeScaleMode": "None",
+                "cameraReferenceFov": 58.0,
+                "cameraReferenceAspect": 1.0,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
                 "followGroundedMaxDistance": 3.0,
+                "lerpToTargetTrans": false,
+                "lerpDuration": 0.0,
                 "followHideTarget": false,
                 "visibleWhenHideTarget": false,
                 "slotIndex": 0,
@@ -299,93 +345,11 @@
         "_sequenceActionData": {
           "actionData": [
             {
-              "$type": "Beyond.Gameplay.Core.ModifyDynamicBlackboard+Data, Gameplay.Beyond",
-              "isEnable": true,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 1,
-              "key": "move_speed_scalar",
-              "operation": "Add",
-              "directValue": true,
-              "value": {
-                "useBlackboardKey": false,
-                "value": -1.0,
-                "blackboardKey": ""
-              },
-              "calculationTarget": {
-                "targetSource": "Owner",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "calculateType": "HpRatio"
-            },
-            {
-              "$type": "Beyond.Gameplay.Core.ModifyDynamicBlackboard+Data, Gameplay.Beyond",
-              "isEnable": true,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 2,
-              "key": "move_speed_scalar",
-              "operation": "Multiply",
-              "directValue": true,
-              "value": {
-                "useBlackboardKey": false,
-                "value": -1.0,
-                "blackboardKey": ""
-              },
-              "calculationTarget": {
-                "targetSource": "Owner",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "calculateType": "HpRatio"
-            },
-            {
               "$type": "Beyond.Gameplay.Core.AuraAction+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 3,
+              "serverActionIndex": 1,
               "auraDebugName": "aglina_ultimate_aura",
               "auraType": "RangedAura",
               "auraRoot": {
@@ -451,6 +415,8 @@
                 "autoSetTargetFaction": true,
                 "factionTarget": "Anti",
                 "targetFactionType": 0,
+                "filterObjectType": false,
+                "objectType": "All",
                 "filterSlot": false,
                 "slotIndex": 0,
                 "filterGameplayTag": false,
@@ -508,27 +474,13 @@
                       "directValueType": "Numeric",
                       "numericValue": 0.0,
                       "stringValue": ""
-                    }
-                  ]
-                },
-                {
-                  "buffId": "buff_common_affixes_slow",
-                  "assignBlackboard": true,
-                  "assignItems": [
+                    },
                     {
-                      "targetKey": "rate",
+                      "targetKey": "move_speed_scalar",
                       "inputValueKey": "move_speed_scalar",
                       "useDirectValue": false,
                       "directValueType": "Numeric",
                       "numericValue": 0.0,
-                      "stringValue": ""
-                    },
-                    {
-                      "targetKey": "duration",
-                      "inputValueKey": "",
-                      "useDirectValue": true,
-                      "directValueType": "Numeric",
-                      "numericValue": -1.0,
                       "stringValue": ""
                     }
                   ]
@@ -572,7 +524,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 4,
+              "serverActionIndex": 2,
               "_soundEvent": "au_chr_0013_aglina_ultimate_skill_end",
               "_stopOnEnd": false,
               "_stopFadeDurationMs": 100,
@@ -581,7 +533,7 @@
               "_jumpToWhenPlayMs": 0,
               "_useTempEmitter": false,
               "targetSettings": {
-                "targetSource": "Context",
+                "targetSource": "Owner",
                 "targetGroupKey": "tar",
                 "selectorOwner": "ActionOwner",
                 "ownerContextKey": "",
@@ -637,7 +589,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 5,
+              "serverActionIndex": 3,
               "_soundEvent": "au_chr_0013_aglina_ultimate_skill_pad",
               "_stopOnEnd": false,
               "_stopFadeDurationMs": 100,

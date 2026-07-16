@@ -9,6 +9,9 @@
     "blinkInMainCharHpBar": false,
     "showProgressInHpBar": false,
     "showProgressInNormalSkillButton": false,
+    "useWeakProgressInNormalSkillButton": false,
+    "showProgressInUltimateSkillButton": false,
+    "forceRaiseIconEvent": false,
     "iconStyleInSquad": "Default",
     "abnormalColorType": "Physical",
     "_orderPriorityConfig": {
@@ -24,6 +27,7 @@
   "hasIcon": false,
   "ignoreTagImmune": false,
   "useTimeDilationDt": false,
+  "onlyUseSelfTimeDilation": false,
   "finishOnRepatriate": false,
   "hasAddingCooldown": false,
   "addingCooldown": {
@@ -69,12 +73,12 @@
           "modifyTargetSide": "Defender",
           "modifier": {
             "modifyAttributeType": "Specific",
-            "attributeType": "FireDamageTakenScalar",
+            "attributeType": "FireResistance",
             "formulaItem": "BaseAddition",
             "param": {
               "useBlackboardKey": true,
               "value": 0.0,
-              "blackboardKey": "ignore"
+              "blackboardKey": "ignore_resist"
             }
           }
         }
@@ -122,7 +126,38 @@
     "canBeDispelled": false,
     "dispelledLevel": "Default"
   },
-  "buffEventAction": [],
+  "buffEventAction": [
+    {
+      "buffEvent": "OnBuffStart",
+      "actions": [
+        {
+          "actionData": [
+            {
+              "$type": "Beyond.Gameplay.Core.SimpleCalcBBAction+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 1,
+              "key": "ignore_resist",
+              "value1": {
+                "useBlackboardKey": true,
+                "value": 0.0,
+                "blackboardKey": "ignore"
+              },
+              "operation": "Multiply",
+              "value2": {
+                "useBlackboardKey": false,
+                "value": -1.0,
+                "blackboardKey": ""
+              }
+            }
+          ],
+          "onlyExecuteWhenSourceIsMainChar": false,
+          "onlyExecuteWhenSourceIsGuard": false
+        }
+      ]
+    }
+  ],
   "abilityEventAction": [],
   "igniteEventAction": [],
   "timelineActions": [],
@@ -138,6 +173,12 @@
       "valueDouble": 0.0,
       "valueStr": "",
       "isDynamic": false
+    },
+    {
+      "key": "ignore_resist",
+      "valueDouble": 0.0,
+      "valueStr": "",
+      "isDynamic": true
     }
   ]
 }

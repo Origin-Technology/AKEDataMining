@@ -2,13 +2,16 @@
   "id": "buff_common_natural_natural_corrupt_triggered",
   "iconConfig": {
     "_spritePath": "",
-    "showInHeadBarCommon": true,
+    "showInHeadBarCommon": false,
     "showInHeadBarAttached": false,
     "showInSquadIcon": false,
     "onlyShowForMainCharacter": false,
     "blinkInMainCharHpBar": false,
     "showProgressInHpBar": false,
     "showProgressInNormalSkillButton": false,
+    "useWeakProgressInNormalSkillButton": false,
+    "showProgressInUltimateSkillButton": false,
+    "forceRaiseIconEvent": false,
     "iconStyleInSquad": "Default",
     "abnormalColorType": "Physical",
     "_orderPriorityConfig": {
@@ -24,6 +27,7 @@
   "hasIcon": false,
   "ignoreTagImmune": false,
   "useTimeDilationDt": false,
+  "onlyUseSelfTimeDilation": false,
   "finishOnRepatriate": false,
   "hasAddingCooldown": false,
   "addingCooldown": {
@@ -242,7 +246,7 @@
               "priorityLevel": "Default",
               "priorityOffset": 0,
               "serverActionIndex": 2,
-              "key": "start_def_decrease",
+              "key": "max_def_decrease",
               "operation": "Multiply",
               "directValue": true,
               "value": {
@@ -283,7 +287,7 @@
               "priorityLevel": "Default",
               "priorityOffset": 0,
               "serverActionIndex": 3,
-              "key": "max_def_decrease",
+              "key": "start_def_decrease",
               "operation": "Multiply",
               "directValue": true,
               "value": {
@@ -366,7 +370,6 @@
                         "queryType": "HasAny",
                         "tags": [
                           {
-                            "tagName": "Skill/Character/Common/SpellStatus/Corrupt",
                             "tagId": -421286163
                           }
                         ]
@@ -425,7 +428,6 @@
                         "queryType": "HasAny",
                         "tags": [
                           {
-                            "tagName": "Skill/Character/Common/SpellStatus/Corrupt",
                             "tagId": -421286163
                           }
                         ]
@@ -497,8 +499,24 @@
                       "stringValue": ""
                     },
                     {
-                      "targetKey": "extra_scaling",
-                      "inputValueKey": "extra_scaling",
+                      "targetKey": "consumed_type",
+                      "inputValueKey": "consumed_type",
+                      "useDirectValue": false,
+                      "directValueType": "Numeric",
+                      "numericValue": 0.0,
+                      "stringValue": ""
+                    },
+                    {
+                      "targetKey": "consumed_layer",
+                      "inputValueKey": "consumed_layer",
+                      "useDirectValue": false,
+                      "directValueType": "Numeric",
+                      "numericValue": 0.0,
+                      "stringValue": ""
+                    },
+                    {
+                      "targetKey": "count",
+                      "inputValueKey": "count",
                       "useDirectValue": false,
                       "directValueType": "Numeric",
                       "numericValue": 0.0,
@@ -543,10 +561,12 @@
               "contextKey": "",
               "autoFinishByAction": false,
               "inheritSkillIdList": [],
+              "finishWithNextSkillIfNotInherited": true,
               "asChildBuff": false,
               "inheritSourceSkillCastId": false,
               "inheritSourceSkillCastInfo": true,
               "isExtra": false,
+              "passTargetGroupsToBuff": false,
               "overrideBuffIconDuration": false,
               "buffIconDurationSource": {
                 "durationSourceType": "AbilityEntity",
@@ -616,10 +636,22 @@
       "key": "count",
       "valueDouble": 1.0,
       "valueStr": "",
-      "isDynamic": false
+      "isDynamic": true
     },
     {
       "key": "start_def_decrease",
+      "valueDouble": 0.0,
+      "valueStr": "",
+      "isDynamic": true
+    },
+    {
+      "key": "consumed_type",
+      "valueDouble": 3.0,
+      "valueStr": "",
+      "isDynamic": true
+    },
+    {
+      "key": "consumed_layer",
       "valueDouble": 0.0,
       "valueStr": "",
       "isDynamic": true

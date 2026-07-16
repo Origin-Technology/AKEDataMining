@@ -9,6 +9,9 @@
     "blinkInMainCharHpBar": false,
     "showProgressInHpBar": false,
     "showProgressInNormalSkillButton": false,
+    "useWeakProgressInNormalSkillButton": false,
+    "showProgressInUltimateSkillButton": false,
+    "forceRaiseIconEvent": false,
     "iconStyleInSquad": "Default",
     "abnormalColorType": "Physical",
     "_orderPriorityConfig": {
@@ -24,6 +27,7 @@
   "hasIcon": false,
   "ignoreTagImmune": false,
   "useTimeDilationDt": false,
+  "onlyUseSelfTimeDilation": false,
   "finishOnRepatriate": false,
   "hasAddingCooldown": false,
   "addingCooldown": {
@@ -61,7 +65,7 @@
     "blackboardKey": ""
   },
   "stackingSettings": {
-    "identifierType": "StackingKey",
+    "identifierType": "Id",
     "stackingType": "Unlimited",
     "stackingKey": "spawn",
     "usePriorityKey": false,
@@ -113,7 +117,6 @@
                     "queryType": "HasAny",
                     "tags": [
                       {
-                        "tagName": "Skill/Enemy/eny_0081_ruanyi/rytokenw",
                         "tagId": 1012080771
                       }
                     ]
@@ -160,7 +163,6 @@
                     "queryType": "HasAny",
                     "tags": [
                       {
-                        "tagName": "Skill/Enemy/eny_0081_ruanyi/ruanyi",
                         "tagId": 1987514642
                       }
                     ]
@@ -240,11 +242,9 @@
             "serverActionIndex": 3,
             "layer": "Entity",
             "slot": {
-              "tagName": "TimeDilation/Layer/Entity/Frozen",
               "tagId": -1855252810
             },
             "timeDilationPriority": {
-              "tagName": "TimeDilation/Priority/Frozen",
               "tagId": -361293424
             },
             "duration": {
@@ -438,6 +438,7 @@
               "value": 0.0,
               "blackboardKey": ""
             },
+            "keepAdditiveParamOnLeave": false,
             "useMinZoom": true,
             "minZoom": {
               "useBlackboardKey": false,
@@ -613,95 +614,11 @@
             "overrideLowerParamsToDefault": false,
             "angleThreshold": 180.0,
             "forceFollowMainChar": true,
-            "overrideTarget1": true,
-            "targetSettings": {
-              "targetSource": "MainCharacter",
-              "targetGroupKey": "",
-              "selectorOwner": "ActionOwner",
-              "ownerContextKey": "",
-              "centerType": "ActionSource",
-              "centerContextKey": "",
-              "centerToGround": false,
-              "selectorData": {
-                "validatorData": [],
-                "postProcessorData": []
-              },
-              "enableAdvancedDirection": false,
-              "advancedDirection": {
-                "directionType": "SourceForward",
-                "sourceMountPoint": "None",
-                "targetMountPoint": "None",
-                "customSourceAndTarget": false,
-                "clampToXZ": true,
-                "invertDirection": false
-              },
-              "selectorDirection": "SourceForward",
-              "target": "ActionSource",
-              "targetContextKey": ""
-            },
-            "useMainCharYForTarget1": false,
-            "mountPoint1": "None",
-            "overrideLookAtOffset": false,
-            "lookAtOffset": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "overrideTarget2": true,
-            "targetSettings2": {
-              "targetSource": "Context",
-              "targetGroupKey": "rytokenw_center",
-              "selectorOwner": "ActionOwner",
-              "ownerContextKey": "",
-              "centerType": "ActionSource",
-              "centerContextKey": "",
-              "centerToGround": false,
-              "selectorData": {
-                "validatorData": [],
-                "postProcessorData": []
-              },
-              "enableAdvancedDirection": false,
-              "advancedDirection": {
-                "directionType": "SourceForward",
-                "sourceMountPoint": "None",
-                "targetMountPoint": "None",
-                "customSourceAndTarget": false,
-                "clampToXZ": true,
-                "invertDirection": false
-              },
-              "selectorDirection": "SourceForward",
-              "target": "ActionSource",
-              "targetContextKey": ""
-            },
-            "useMainCharYForTarget2": false,
-            "mountPoint2": "None",
-            "overrideLookAt2Offset": false,
-            "lookAt2Offset": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "lookAt2OffsetWhenNoOverride": {
-              "x": 0.0,
-              "y": 1.4,
-              "z": 0.0
-            },
-            "targetAlpha": 1.0,
             "blendInStyle": "Linear",
-            "blendInCustomCurve": {
-              "$type": "Beyond.FAnimationCurve, Common.Beyond",
-              "keys": [],
-              "preWrapMode": "ClampForever",
-              "postWrapMode": "ClampForever"
-            },
+            "blendInCustomCurve": {},
             "blendInTime": 0.5,
             "blendOutStyle": "Linear",
-            "blendOutCustomCurve": {
-              "$type": "Beyond.FAnimationCurve, Common.Beyond",
-              "keys": [],
-              "preWrapMode": "ClampForever",
-              "postWrapMode": "ClampForever"
-            },
+            "blendOutCustomCurve": {},
             "blendOutTime": 0.7,
             "horizontalBaseAngleMin": 0.0,
             "horizontalBaseAngleMinBB": {
@@ -741,6 +658,7 @@
             "verticalTweenSpeed": 1.0,
             "allowAimZones": false,
             "useExitParam": false,
+            "exitParamOnlyOnComplete": false,
             "exitParam": {
               "applyHorizontalAngle": false,
               "horizontalAngleRelativeToCharacter": false,
@@ -750,13 +668,86 @@
               "applyZoomScale": false,
               "zoomScale": 0.0
             },
-            "exitParamOnlyOnComplete": false,
             "disablePlayerInputOnBlendIn": false,
             "disablePlayerInputOnBlendOut": false,
             "disablePlayerInputInState": false,
             "cancelOnDrag": false,
             "cancelOnBeHit": false,
-            "cancelOnMove": false
+            "cancelOnMove": false,
+            "overrideTarget1": true,
+            "useMainCharYForTarget1": false,
+            "targetSettings": {
+              "targetSource": "MainCharacter",
+              "targetGroupKey": "",
+              "selectorOwner": "ActionOwner",
+              "ownerContextKey": "",
+              "centerType": "ActionSource",
+              "centerContextKey": "",
+              "centerToGround": false,
+              "selectorData": {
+                "validatorData": [],
+                "postProcessorData": []
+              },
+              "enableAdvancedDirection": false,
+              "advancedDirection": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
+              "selectorDirection": "SourceForward",
+              "target": "ActionSource",
+              "targetContextKey": ""
+            },
+            "mountPoint1": "None",
+            "overrideLookAtOffset": false,
+            "lookAtOffset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "overrideTarget2": true,
+            "useMainCharYForTarget2": false,
+            "targetSettings2": {
+              "targetSource": "Context",
+              "targetGroupKey": "rytokenw_center",
+              "selectorOwner": "ActionOwner",
+              "ownerContextKey": "",
+              "centerType": "ActionSource",
+              "centerContextKey": "",
+              "centerToGround": false,
+              "selectorData": {
+                "validatorData": [],
+                "postProcessorData": []
+              },
+              "enableAdvancedDirection": false,
+              "advancedDirection": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
+              "selectorDirection": "SourceForward",
+              "target": "ActionSource",
+              "targetContextKey": ""
+            },
+            "mountPoint2": "None",
+            "overrideLookAt2Offset": false,
+            "lookAt2Offset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "lookAt2OffsetWhenNoOverride": {
+              "x": 0.0,
+              "y": 1.4,
+              "z": 0.0
+            },
+            "targetAlpha": 1.0
           }
         ],
         "onlyExecuteWhenSourceIsMainChar": false,
@@ -784,95 +775,11 @@
             "overrideLowerParamsToDefault": false,
             "angleThreshold": 180.0,
             "forceFollowMainChar": true,
-            "overrideTarget1": true,
-            "targetSettings": {
-              "targetSource": "MainCharacter",
-              "targetGroupKey": "",
-              "selectorOwner": "ActionOwner",
-              "ownerContextKey": "",
-              "centerType": "ActionSource",
-              "centerContextKey": "",
-              "centerToGround": false,
-              "selectorData": {
-                "validatorData": [],
-                "postProcessorData": []
-              },
-              "enableAdvancedDirection": false,
-              "advancedDirection": {
-                "directionType": "SourceForward",
-                "sourceMountPoint": "None",
-                "targetMountPoint": "None",
-                "customSourceAndTarget": false,
-                "clampToXZ": true,
-                "invertDirection": false
-              },
-              "selectorDirection": "SourceForward",
-              "target": "ActionSource",
-              "targetContextKey": ""
-            },
-            "useMainCharYForTarget1": false,
-            "mountPoint1": "None",
-            "overrideLookAtOffset": false,
-            "lookAtOffset": {
-              "x": 0.0,
-              "y": 0.0,
-              "z": 0.0
-            },
-            "overrideTarget2": true,
-            "targetSettings2": {
-              "targetSource": "Context",
-              "targetGroupKey": "ruanyi",
-              "selectorOwner": "ActionOwner",
-              "ownerContextKey": "",
-              "centerType": "ActionSource",
-              "centerContextKey": "",
-              "centerToGround": false,
-              "selectorData": {
-                "validatorData": [],
-                "postProcessorData": []
-              },
-              "enableAdvancedDirection": false,
-              "advancedDirection": {
-                "directionType": "SourceForward",
-                "sourceMountPoint": "None",
-                "targetMountPoint": "None",
-                "customSourceAndTarget": false,
-                "clampToXZ": true,
-                "invertDirection": false
-              },
-              "selectorDirection": "SourceForward",
-              "target": "ActionSource",
-              "targetContextKey": ""
-            },
-            "useMainCharYForTarget2": false,
-            "mountPoint2": "None",
-            "overrideLookAt2Offset": true,
-            "lookAt2Offset": {
-              "x": 0.0,
-              "y": 1.4,
-              "z": 0.0
-            },
-            "lookAt2OffsetWhenNoOverride": {
-              "x": 0.0,
-              "y": 1.4,
-              "z": 0.0
-            },
-            "targetAlpha": 1.0,
             "blendInStyle": "EaseOut",
-            "blendInCustomCurve": {
-              "$type": "Beyond.FAnimationCurve, Common.Beyond",
-              "keys": [],
-              "preWrapMode": "ClampForever",
-              "postWrapMode": "ClampForever"
-            },
+            "blendInCustomCurve": {},
             "blendInTime": 0.7,
             "blendOutStyle": "Linear",
-            "blendOutCustomCurve": {
-              "$type": "Beyond.FAnimationCurve, Common.Beyond",
-              "keys": [],
-              "preWrapMode": "ClampForever",
-              "postWrapMode": "ClampForever"
-            },
+            "blendOutCustomCurve": {},
             "blendOutTime": 0.5,
             "horizontalBaseAngleMin": 0.0,
             "horizontalBaseAngleMinBB": {
@@ -912,6 +819,7 @@
             "verticalTweenSpeed": 1.0,
             "allowAimZones": false,
             "useExitParam": false,
+            "exitParamOnlyOnComplete": false,
             "exitParam": {
               "applyHorizontalAngle": false,
               "horizontalAngleRelativeToCharacter": false,
@@ -921,13 +829,86 @@
               "applyZoomScale": false,
               "zoomScale": 0.0
             },
-            "exitParamOnlyOnComplete": false,
             "disablePlayerInputOnBlendIn": false,
             "disablePlayerInputOnBlendOut": false,
             "disablePlayerInputInState": false,
             "cancelOnDrag": false,
             "cancelOnBeHit": false,
-            "cancelOnMove": false
+            "cancelOnMove": false,
+            "overrideTarget1": true,
+            "useMainCharYForTarget1": false,
+            "targetSettings": {
+              "targetSource": "MainCharacter",
+              "targetGroupKey": "",
+              "selectorOwner": "ActionOwner",
+              "ownerContextKey": "",
+              "centerType": "ActionSource",
+              "centerContextKey": "",
+              "centerToGround": false,
+              "selectorData": {
+                "validatorData": [],
+                "postProcessorData": []
+              },
+              "enableAdvancedDirection": false,
+              "advancedDirection": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
+              "selectorDirection": "SourceForward",
+              "target": "ActionSource",
+              "targetContextKey": ""
+            },
+            "mountPoint1": "None",
+            "overrideLookAtOffset": false,
+            "lookAtOffset": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "overrideTarget2": true,
+            "useMainCharYForTarget2": false,
+            "targetSettings2": {
+              "targetSource": "Context",
+              "targetGroupKey": "ruanyi",
+              "selectorOwner": "ActionOwner",
+              "ownerContextKey": "",
+              "centerType": "ActionSource",
+              "centerContextKey": "",
+              "centerToGround": false,
+              "selectorData": {
+                "validatorData": [],
+                "postProcessorData": []
+              },
+              "enableAdvancedDirection": false,
+              "advancedDirection": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
+              "selectorDirection": "SourceForward",
+              "target": "ActionSource",
+              "targetContextKey": ""
+            },
+            "mountPoint2": "None",
+            "overrideLookAt2Offset": true,
+            "lookAt2Offset": {
+              "x": 0.0,
+              "y": 1.4,
+              "z": 0.0
+            },
+            "lookAt2OffsetWhenNoOverride": {
+              "x": 0.0,
+              "y": 1.4,
+              "z": 0.0
+            },
+            "targetAlpha": 1.0
           }
         ],
         "onlyExecuteWhenSourceIsMainChar": false,

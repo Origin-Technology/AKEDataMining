@@ -53,17 +53,35 @@
         },
         {
           "$type": "Beyond.Gameplay.Actions.ScriptEvent.OnLeaderLeaveTriggerVolume, Gameplay.Beyond",
-          "_ID": 18,
-          "_nextID": 11,
+          "_ID": 20,
+          "_nextID": 14,
           "_filterMode": true,
           "_validate": {
             "paramSource": -1,
             "constValue": true,
-            "idRef": 17
+            "idRef": 19
           },
           "_uid": "672e86a7",
           "_triggerSlotIdFilter": {
             "constValue": 80001
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.ScriptEvent.OnPropertyChanged, Gameplay.Beyond",
+          "_ID": 26,
+          "_nextID": 27,
+          "_validate": {
+            "constValue": true
+          },
+          "_uid": "4b6b0ffd",
+          "_propertyKey": {
+            "constValue": "isFinished"
+          },
+          "_value": {
+            "path": "$26@_value"
+          },
+          "_oldValue": {
+            "path": "$26@_oldValue"
           }
         }
       ],
@@ -132,6 +150,12 @@
             }
           },
           "alpha": {
+            "constValue": 0.0
+          },
+          "flattenLookAt": {
+            "constValue": false
+          },
+          "lookAtHeight": {
             "constValue": 0.0
           },
           "horizontalBaseAngle": {
@@ -236,6 +260,69 @@
               "key": "event_args"
             }
           }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.RemoveCameraControlState, Gameplay.Beyond",
+          "_ID": 14,
+          "_nextID": 15,
+          "_uid": "6f4d6654",
+          "useCurrentScope": true,
+          "_controlState": {
+            "paramSource": 100,
+            "path": "$9@controlState"
+          },
+          "_controlStateId": {
+            "constValue": 0
+          },
+          "_overrideBlend": {
+            "constValue": true
+          },
+          "_blendStyle": {
+            "constValue": "EaseInOut"
+          },
+          "_blendTime": {
+            "constValue": 1.5
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.CallServer, Gameplay.Beyond",
+          "_ID": 15,
+          "_uid": "84ac0c8a",
+          "useCurrentScope": true,
+          "_eventName": {
+            "constValue": "#84ac0c8a"
+          },
+          "_eventArgsPtr": {
+            "constValue": {
+              "key": "event_args"
+            }
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.CheckBoolIfTrue, Gameplay.Beyond",
+          "_ID": 27,
+          "_nextID": 28,
+          "_uid": "e3950a7d",
+          "useCurrentScope": true,
+          "_value": {
+            "paramSource": -1,
+            "constValue": false,
+            "idRef": 29
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.CallServer, Gameplay.Beyond",
+          "_ID": 28,
+          "_uid": "ae0bf1e2",
+          "useCurrentScope": true,
+          "_eventName": {
+            "constValue": "#ae0bf1e2"
+          },
+          "_eventArgsPtr": {
+            "constValue": {
+              "key": "event_args"
+            }
+          }
         }
       ],
       "getterList": [
@@ -265,12 +352,12 @@
         },
         {
           "$type": "Beyond.Gameplay.Actions.IntEqual, Gameplay.Beyond",
-          "_ID": 17,
+          "_ID": 19,
           "_uid": "5e227976",
           "_valueA": {
             "paramSource": -1,
             "constValue": 0,
-            "idRef": 16
+            "idRef": 18
           },
           "_valueB": {
             "constValue": 0
@@ -278,13 +365,29 @@
         },
         {
           "$type": "Beyond.Gameplay.Actions.GetLevelScriptStage, Gameplay.Beyond",
-          "_ID": 16,
+          "_ID": 18,
           "_uid": "19325706",
           "_scriptPtr": {
             "paramSource": 1002,
             "constValue": {
               "scriptId": 0
             }
+          }
+        },
+        {
+          "$type": "Beyond.Gameplay.Actions.BooleanCompare, Gameplay.Beyond",
+          "_ID": 29,
+          "_uid": "29d677f3",
+          "_comparer": {
+            "constValue": "Equal"
+          },
+          "_valueA": {
+            "paramSource": 100,
+            "path": "$26@_value",
+            "constValue": false
+          },
+          "_valueB": {
+            "constValue": true
           }
         }
       ]
@@ -297,6 +400,7 @@
   "interactiveLocks": {},
   "triggerVolumes": {
     "80001": {
+      "$type": "Beyond.Gameplay.LevelScriptTriggerVolumeDataForLeader, Gameplay.Beyond",
       "isImportant": false,
       "waitSrvRes": false,
       "enterCheckOnGround": false,

@@ -35,6 +35,8 @@
   },
   "durationFrame": 161,
   "exclusiveFrame": 38,
+  "useAIExclusiveFrame": false,
+  "aiExclusiveFrame": 0,
   "offsetRecordFrame": 0,
   "selectStrategy": "SelectSmartObject",
   "smartTargetSelectStrategy": "SelectComboSkillTarget",
@@ -88,9 +90,17 @@
               "blendOut": 0.0,
               "duration": 5.366667,
               "playbackSpeed": 1.0,
+              "useStartTimeBlackboardKey": false,
               "startTime": 0.0,
+              "startTimeBlackboardKey": "",
               "exitToIdle": false,
-              "blendOutNextStateHash": 0
+              "blendOutNextStateHash": 0,
+              "onEndAction": {
+                "actionData": [],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              },
+              "executeOnNormalEndOnly": false
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -355,47 +365,6 @@
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
                           "serverActionIndex": 9,
-                          "key": "extrashelter",
-                          "operation": "Multiply",
-                          "directValue": true,
-                          "value": {
-                            "useBlackboardKey": false,
-                            "value": -1.0,
-                            "blackboardKey": "extrashelter"
-                          },
-                          "calculationTarget": {
-                            "targetSource": "Owner",
-                            "targetGroupKey": "",
-                            "selectorOwner": "ActionOwner",
-                            "ownerContextKey": "",
-                            "centerType": "ActionSource",
-                            "centerContextKey": "",
-                            "centerToGround": false,
-                            "selectorData": {
-                              "validatorData": [],
-                              "postProcessorData": []
-                            },
-                            "enableAdvancedDirection": false,
-                            "advancedDirection": {
-                              "directionType": "SourceForward",
-                              "sourceMountPoint": "None",
-                              "targetMountPoint": "None",
-                              "customSourceAndTarget": false,
-                              "clampToXZ": true,
-                              "invertDirection": false
-                            },
-                            "selectorDirection": "SourceForward",
-                            "target": "ActionSource",
-                            "targetContextKey": ""
-                          },
-                          "calculateType": "HpRatio"
-                        },
-                        {
-                          "$type": "Beyond.Gameplay.Core.ModifyDynamicBlackboard+Data, Gameplay.Beyond",
-                          "isEnable": true,
-                          "priorityLevel": "Default",
-                          "priorityOffset": 0,
-                          "serverActionIndex": 10,
                           "key": "shelterrate",
                           "operation": "Add",
                           "directValue": true,
@@ -447,7 +416,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 11,
+                    "serverActionIndex": 10,
                     "buffs": [
                       {
                         "buffId": "buff_chr_0009_azrila_normal_skill_shelter",
@@ -508,10 +477,12 @@
                     "contextKey": "",
                     "autoFinishByAction": true,
                     "inheritSkillIdList": [],
+                    "finishWithNextSkillIfNotInherited": true,
                     "asChildBuff": false,
                     "inheritSourceSkillCastId": false,
                     "inheritSourceSkillCastInfo": true,
                     "isExtra": false,
+                    "passTargetGroupsToBuff": false,
                     "overrideBuffIconDuration": false,
                     "buffIconDurationSource": {
                       "durationSourceType": "AbilityEntity",
@@ -550,7 +521,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 12,
+              "serverActionIndex": 11,
               "conditionAction": {
                 "actionData": [
                   {
@@ -558,7 +529,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 13,
+                    "serverActionIndex": 12,
                     "checkTarget": {
                       "targetSource": "Source",
                       "targetGroupKey": "",
@@ -596,7 +567,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 14,
+                    "serverActionIndex": 13,
                     "dir1Source": {
                       "targetSource": "Source",
                       "targetGroupKey": "",
@@ -723,7 +694,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 15,
+                    "serverActionIndex": 14,
                     "inputValue": {
                       "useBlackboardKey": true,
                       "value": 0.0,
@@ -775,7 +746,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 16,
+                    "serverActionIndex": 15,
                     "inputValue": {
                       "useBlackboardKey": true,
                       "value": 0.0,
@@ -827,7 +798,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 17,
+                    "serverActionIndex": 16,
                     "ccsPriority": 20.0,
                     "totalAngle": {
                       "useBlackboardKey": true,
@@ -880,7 +851,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 18,
+              "serverActionIndex": 17,
               "conditionAction": {
                 "actionData": [
                   {
@@ -888,7 +859,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 19,
+                    "serverActionIndex": 18,
                     "source": {
                       "targetSource": "Source",
                       "targetGroupKey": "",
@@ -955,7 +926,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 20,
+                    "serverActionIndex": 19,
                     "moveType": "Location",
                     "totalTime": {
                       "useBlackboardKey": false,
@@ -1138,6 +1109,7 @@
                     },
                     "limitMoveDirRotateSpeed": false,
                     "moveDirYRotateSpeed": 0.0,
+                    "disableReachAutoEnd": false,
                     "ignoreNavmesh": true,
                     "ignoreAllCollision": false,
                     "ignoreCollisionLayer": {},
@@ -1177,7 +1149,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 21,
+              "serverActionIndex": 20,
               "targetGroupKey": "targets",
               "center": "ActionOwner",
               "centerContextKey": "",
@@ -1320,7 +1292,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 22,
+              "serverActionIndex": 21,
               "attacker": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -1379,7 +1351,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 23,
+              "serverActionIndex": 22,
               "conditionAction": {
                 "actionData": [
                   {
@@ -1387,7 +1359,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 24,
+                    "serverActionIndex": 23,
                     "valueA": {
                       "useBlackboardKey": true,
                       "value": 0.0,
@@ -1405,7 +1377,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 25,
+                    "serverActionIndex": 24,
                     "valueA": {
                       "useBlackboardKey": true,
                       "value": 0.0,
@@ -1423,7 +1395,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 26,
+                    "serverActionIndex": 25,
                     "checkTarget": {
                       "targetSource": "Context",
                       "targetGroupKey": "targets",
@@ -1466,7 +1438,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 27,
+                    "serverActionIndex": 26,
                     "buffs": [
                       {
                         "buffId": "buff_chr_0009_azrila_normal_skill_shelter",
@@ -1527,10 +1499,12 @@
                     "contextKey": "",
                     "autoFinishByAction": false,
                     "inheritSkillIdList": [],
+                    "finishWithNextSkillIfNotInherited": true,
                     "asChildBuff": false,
                     "inheritSourceSkillCastId": false,
                     "inheritSourceSkillCastInfo": true,
                     "isExtra": false,
+                    "passTargetGroupsToBuff": false,
                     "overrideBuffIconDuration": false,
                     "buffIconDurationSource": {
                       "durationSourceType": "AbilityEntity",
@@ -1553,7 +1527,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 28,
+              "serverActionIndex": 27,
               "source": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -1628,7 +1602,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 29,
+              "serverActionIndex": 28,
               "alwaysNext": true,
               "attacker": "ActionSource",
               "targetSettings": {
@@ -1744,6 +1718,12 @@
                       "value": 0.0,
                       "blackboardKey": ""
                     },
+                    "useDurationScaleBB": false,
+                    "durationScaleBB": {
+                      "useBlackboardKey": false,
+                      "value": 0.0,
+                      "blackboardKey": ""
+                    },
                     "releaseByAction": false,
                     "ignoreOwnerTimeScale": false,
                     "interruptTime": 0.0,
@@ -1759,11 +1739,23 @@
                     "isUltimateShow": false,
                     "visibleWithEntity": true,
                     "visibleWithEntityType": "Source",
+                    "ignoreEntityDither": false,
                     "moveType": "Stationary",
+                    "useCameraViewportAnchor": false,
+                    "cameraViewportPosition": {
+                      "x": 0.5,
+                      "y": 0.5
+                    },
+                    "cameraAnchorDistance": 1.0,
+                    "cameraScreenSizeScaleMode": "None",
+                    "cameraReferenceFov": 58.0,
+                    "cameraReferenceAspect": 1.0,
                     "positionRef": "Target",
                     "grounded": false,
                     "followGrounded": false,
                     "followGroundedMaxDistance": 3.0,
+                    "lerpToTargetTrans": false,
+                    "lerpDuration": 0.0,
                     "followHideTarget": false,
                     "visibleWhenHideTarget": false,
                     "slotIndex": 0,
@@ -1935,6 +1927,12 @@
                       "value": 0.0,
                       "blackboardKey": ""
                     },
+                    "useDurationScaleBB": false,
+                    "durationScaleBB": {
+                      "useBlackboardKey": false,
+                      "value": 0.0,
+                      "blackboardKey": ""
+                    },
                     "releaseByAction": false,
                     "ignoreOwnerTimeScale": false,
                     "interruptTime": 0.0,
@@ -1950,11 +1948,23 @@
                     "isUltimateShow": false,
                     "visibleWithEntity": true,
                     "visibleWithEntityType": "Source",
+                    "ignoreEntityDither": false,
                     "moveType": "Stationary",
+                    "useCameraViewportAnchor": false,
+                    "cameraViewportPosition": {
+                      "x": 0.5,
+                      "y": 0.5
+                    },
+                    "cameraAnchorDistance": 1.0,
+                    "cameraScreenSizeScaleMode": "None",
+                    "cameraReferenceFov": 58.0,
+                    "cameraReferenceAspect": 1.0,
                     "positionRef": "Target",
                     "grounded": false,
                     "followGrounded": false,
                     "followGroundedMaxDistance": 3.0,
+                    "lerpToTargetTrans": false,
+                    "lerpDuration": 0.0,
                     "followHideTarget": false,
                     "visibleWhenHideTarget": false,
                     "slotIndex": 0,
@@ -2077,7 +2087,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 30,
+              "serverActionIndex": 29,
               "attacker": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -2210,7 +2220,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 31,
+              "serverActionIndex": 30,
               "alwaysNext": true,
               "healType": "Normal",
               "healer": "ActionSource",
@@ -2298,6 +2308,12 @@
                   "value": 0.0,
                   "blackboardKey": ""
                 },
+                "useDurationScaleBB": false,
+                "durationScaleBB": {
+                  "useBlackboardKey": false,
+                  "value": 0.0,
+                  "blackboardKey": ""
+                },
                 "releaseByAction": false,
                 "ignoreOwnerTimeScale": false,
                 "interruptTime": 0.0,
@@ -2313,11 +2329,23 @@
                 "isUltimateShow": false,
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
+                "ignoreEntityDither": false,
                 "moveType": "Stationary",
+                "useCameraViewportAnchor": false,
+                "cameraViewportPosition": {
+                  "x": 0.5,
+                  "y": 0.5
+                },
+                "cameraAnchorDistance": 1.0,
+                "cameraScreenSizeScaleMode": "None",
+                "cameraReferenceFov": 58.0,
+                "cameraReferenceAspect": 1.0,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
                 "followGroundedMaxDistance": 3.0,
+                "lerpToTargetTrans": false,
+                "lerpDuration": 0.0,
                 "followHideTarget": false,
                 "visibleWhenHideTarget": false,
                 "slotIndex": 0,
@@ -2404,11 +2432,11 @@
                 "modifyType": "StartLifeTime",
                 "value": 0.0
               },
+              "onlyPlayEffectOnActualHeal": false,
               "useHealTags": true,
               "healTags": {
                 "predefinedTag": [
                   {
-                    "tagName": "Skill/Character/Common/Heal/ComboSkillHeal",
                     "tagId": -1517158118
                   }
                 ]
@@ -2419,7 +2447,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 32,
+              "serverActionIndex": 31,
               "conditionAction": {
                 "actionData": [
                   {
@@ -2427,7 +2455,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 33,
+                    "serverActionIndex": 32,
                     "valueA": {
                       "useBlackboardKey": true,
                       "value": 0.0,
@@ -2451,7 +2479,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 34,
+                    "serverActionIndex": 33,
                     "targetGroupKey": "Main",
                     "center": "ActionSource",
                     "centerContextKey": "",
@@ -2489,7 +2517,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 35,
+                    "serverActionIndex": 34,
                     "targetGroupKey": "CureTarget",
                     "center": "ActionSource",
                     "centerContextKey": "",
@@ -2570,7 +2598,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 36,
+                    "serverActionIndex": 35,
                     "key": "will_additive",
                     "operation": "Multiply",
                     "directValue": true,
@@ -2611,7 +2639,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 37,
+                    "serverActionIndex": 36,
                     "key": "heal_base",
                     "operation": "Multiply",
                     "directValue": true,
@@ -2652,7 +2680,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 38,
+                    "serverActionIndex": 37,
                     "alwaysNext": true,
                     "healType": "Normal",
                     "healer": "ActionSource",
@@ -2736,6 +2764,12 @@
                         "value": 0.0,
                         "blackboardKey": ""
                       },
+                      "useDurationScaleBB": false,
+                      "durationScaleBB": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "releaseByAction": false,
                       "ignoreOwnerTimeScale": false,
                       "interruptTime": 0.0,
@@ -2751,11 +2785,23 @@
                       "isUltimateShow": false,
                       "visibleWithEntity": true,
                       "visibleWithEntityType": "Source",
+                      "ignoreEntityDither": false,
                       "moveType": "Stationary",
+                      "useCameraViewportAnchor": false,
+                      "cameraViewportPosition": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "cameraAnchorDistance": 1.0,
+                      "cameraScreenSizeScaleMode": "None",
+                      "cameraReferenceFov": 58.0,
+                      "cameraReferenceAspect": 1.0,
                       "positionRef": "Target",
                       "grounded": false,
                       "followGrounded": false,
                       "followGroundedMaxDistance": 3.0,
+                      "lerpToTargetTrans": false,
+                      "lerpDuration": 0.0,
                       "followHideTarget": false,
                       "visibleWhenHideTarget": false,
                       "slotIndex": 0,
@@ -2842,11 +2888,11 @@
                       "modifyType": "StartLifeTime",
                       "value": 0.0
                     },
+                    "onlyPlayEffectOnActualHeal": false,
                     "useHealTags": true,
                     "healTags": {
                       "predefinedTag": [
                         {
-                          "tagName": "Skill/Character/Common/Heal/ComboSkillHeal",
                           "tagId": -1517158118
                         }
                       ]
@@ -2868,7 +2914,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 39,
+              "serverActionIndex": 38,
               "conditionAction": {
                 "actionData": [
                   {
@@ -2876,7 +2922,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 40,
+                    "serverActionIndex": 39,
                     "checkTarget": {
                       "targetSource": "Context",
                       "targetGroupKey": "targets",
@@ -2919,12 +2965,11 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 41,
+                    "serverActionIndex": 40,
                     "costType": "UltimateSp",
                     "isPercentValue": false,
                     "useUspRecoverTag": false,
                     "uspRecoverTag": {
-                      "tagName": "",
                       "tagId": 0
                     },
                     "ignoreUspGainScalar": false,
@@ -3026,7 +3071,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 42,
+              "serverActionIndex": 41,
               "realCameraShake2D": false,
               "targetSettings": {
                 "targetSource": "Owner",
@@ -3101,7 +3146,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 43,
+              "serverActionIndex": 42,
               "_soundEvent": "au_chr_0009_azrila_combo_skill_exp",
               "_stopOnEnd": false,
               "_stopFadeDurationMs": 100,
@@ -3166,7 +3211,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 44,
+              "serverActionIndex": 43,
               "rotateType": "ToTarget",
               "useAdvancedDirectionSetting": false,
               "targetSettings": {
@@ -3234,7 +3279,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 45,
+              "serverActionIndex": 44,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3262,6 +3307,32 @@
               },
               "effectSource": {
                 "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "useGuardLodSourceOverride": false,
+              "guardLodSource": {
+                "targetSource": "Target",
                 "targetGroupKey": "",
                 "selectorOwner": "ActionOwner",
                 "ownerContextKey": "",
@@ -3324,6 +3395,12 @@
                   "value": 0.0,
                   "blackboardKey": ""
                 },
+                "useDurationScaleBB": false,
+                "durationScaleBB": {
+                  "useBlackboardKey": false,
+                  "value": 0.0,
+                  "blackboardKey": ""
+                },
                 "releaseByAction": false,
                 "ignoreOwnerTimeScale": false,
                 "interruptTime": 0.667,
@@ -3339,11 +3416,23 @@
                 "isUltimateShow": false,
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
+                "ignoreEntityDither": false,
                 "moveType": "FollowTarget",
+                "useCameraViewportAnchor": false,
+                "cameraViewportPosition": {
+                  "x": 0.5,
+                  "y": 0.5
+                },
+                "cameraAnchorDistance": 1.0,
+                "cameraScreenSizeScaleMode": "None",
+                "cameraReferenceFov": 58.0,
+                "cameraReferenceAspect": 1.0,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
                 "followGroundedMaxDistance": 3.0,
+                "lerpToTargetTrans": false,
+                "lerpDuration": 0.0,
                 "followHideTarget": false,
                 "visibleWhenHideTarget": false,
                 "slotIndex": 0,
@@ -3455,7 +3544,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 46,
+              "serverActionIndex": 45,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3515,7 +3604,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 47,
+              "serverActionIndex": 46,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3543,6 +3632,32 @@
               },
               "effectSource": {
                 "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "useGuardLodSourceOverride": false,
+              "guardLodSource": {
+                "targetSource": "Target",
                 "targetGroupKey": "",
                 "selectorOwner": "ActionOwner",
                 "ownerContextKey": "",
@@ -3605,6 +3720,12 @@
                   "value": 0.0,
                   "blackboardKey": ""
                 },
+                "useDurationScaleBB": false,
+                "durationScaleBB": {
+                  "useBlackboardKey": false,
+                  "value": 0.0,
+                  "blackboardKey": ""
+                },
                 "releaseByAction": false,
                 "ignoreOwnerTimeScale": false,
                 "interruptTime": 0.0,
@@ -3620,11 +3741,23 @@
                 "isUltimateShow": false,
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
+                "ignoreEntityDither": false,
                 "moveType": "Stationary",
+                "useCameraViewportAnchor": false,
+                "cameraViewportPosition": {
+                  "x": 0.5,
+                  "y": 0.5
+                },
+                "cameraAnchorDistance": 1.0,
+                "cameraScreenSizeScaleMode": "None",
+                "cameraReferenceFov": 58.0,
+                "cameraReferenceAspect": 1.0,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
                 "followGroundedMaxDistance": 3.0,
+                "lerpToTargetTrans": false,
+                "lerpDuration": 0.0,
                 "followHideTarget": false,
                 "visibleWhenHideTarget": false,
                 "slotIndex": 0,
@@ -3736,7 +3869,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 48,
+              "serverActionIndex": 47,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3764,6 +3897,32 @@
               },
               "effectSource": {
                 "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "useGuardLodSourceOverride": false,
+              "guardLodSource": {
+                "targetSource": "Target",
                 "targetGroupKey": "",
                 "selectorOwner": "ActionOwner",
                 "ownerContextKey": "",
@@ -3826,6 +3985,12 @@
                   "value": 0.0,
                   "blackboardKey": ""
                 },
+                "useDurationScaleBB": false,
+                "durationScaleBB": {
+                  "useBlackboardKey": false,
+                  "value": 0.0,
+                  "blackboardKey": ""
+                },
                 "releaseByAction": true,
                 "ignoreOwnerTimeScale": false,
                 "interruptTime": 0.0,
@@ -3841,11 +4006,23 @@
                 "isUltimateShow": false,
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
+                "ignoreEntityDither": false,
                 "moveType": "FollowTarget",
+                "useCameraViewportAnchor": false,
+                "cameraViewportPosition": {
+                  "x": 0.5,
+                  "y": 0.5
+                },
+                "cameraAnchorDistance": 1.0,
+                "cameraScreenSizeScaleMode": "None",
+                "cameraReferenceFov": 58.0,
+                "cameraReferenceAspect": 1.0,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
                 "followGroundedMaxDistance": 3.0,
+                "lerpToTargetTrans": false,
+                "lerpDuration": 0.0,
                 "followHideTarget": false,
                 "visibleWhenHideTarget": false,
                 "slotIndex": 0,
@@ -3957,7 +4134,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 49,
+              "serverActionIndex": 48,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3985,6 +4162,32 @@
               },
               "effectSource": {
                 "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "useGuardLodSourceOverride": false,
+              "guardLodSource": {
+                "targetSource": "Target",
                 "targetGroupKey": "",
                 "selectorOwner": "ActionOwner",
                 "ownerContextKey": "",
@@ -4047,6 +4250,12 @@
                   "value": 0.0,
                   "blackboardKey": ""
                 },
+                "useDurationScaleBB": false,
+                "durationScaleBB": {
+                  "useBlackboardKey": false,
+                  "value": 0.0,
+                  "blackboardKey": ""
+                },
                 "releaseByAction": false,
                 "ignoreOwnerTimeScale": false,
                 "interruptTime": 0.0,
@@ -4062,11 +4271,23 @@
                 "isUltimateShow": false,
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
+                "ignoreEntityDither": false,
                 "moveType": "Stationary",
+                "useCameraViewportAnchor": false,
+                "cameraViewportPosition": {
+                  "x": 0.5,
+                  "y": 0.5
+                },
+                "cameraAnchorDistance": 1.0,
+                "cameraScreenSizeScaleMode": "None",
+                "cameraReferenceFov": 58.0,
+                "cameraReferenceAspect": 1.0,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
                 "followGroundedMaxDistance": 3.0,
+                "lerpToTargetTrans": false,
+                "lerpDuration": 0.0,
                 "followHideTarget": false,
                 "visibleWhenHideTarget": false,
                 "slotIndex": 0,
@@ -4178,14 +4399,12 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 50,
+              "serverActionIndex": 49,
               "layer": "Global",
               "slot": {
-                "tagName": "",
                 "tagId": 0
               },
               "timeDilationPriority": {
-                "tagName": "TimeDilation/Priority/ComboSkill",
                 "tagId": -593023102
               },
               "duration": {
@@ -4287,7 +4506,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 51,
+              "serverActionIndex": 50,
               "conditionAction": {
                 "actionData": [
                   {
@@ -4295,7 +4514,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 52,
+                    "serverActionIndex": 51,
                     "checkTarget": {
                       "targetSource": "Owner",
                       "targetGroupKey": "",
@@ -4338,7 +4557,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 53,
+                    "serverActionIndex": 52,
                     "targetGroupKey": "mainchar",
                     "center": "ActionSource",
                     "centerContextKey": "",
@@ -4376,7 +4595,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 54,
+                    "serverActionIndex": 53,
                     "source": {
                       "targetSource": "Context",
                       "targetGroupKey": "mainchar",
@@ -4434,7 +4653,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 55,
+                    "serverActionIndex": 54,
                     "conditionAction": {
                       "actionData": [
                         {
@@ -4442,7 +4661,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 56,
+                          "serverActionIndex": 55,
                           "desiredAlphaSetting": "Strong"
                         }
                       ],
@@ -4456,7 +4675,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 57,
+                          "serverActionIndex": 56,
                           "inputValue": {
                             "useBlackboardKey": true,
                             "value": 0.0,
@@ -4528,7 +4747,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 58,
+                          "serverActionIndex": 57,
                           "targetSettings": {
                             "targetSource": "Owner",
                             "targetGroupKey": "",
@@ -4620,7 +4839,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 59,
+                          "serverActionIndex": 58,
                           "inputValue": {
                             "useBlackboardKey": true,
                             "value": 0.0,
@@ -4662,7 +4881,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 60,
+                          "serverActionIndex": 59,
                           "targetSettings": {
                             "targetSource": "Owner",
                             "targetGroupKey": "",
@@ -4776,7 +4995,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 61,
+              "serverActionIndex": 60,
               "conditionAction": {
                 "actionData": [
                   {
@@ -4784,7 +5003,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 62,
+                    "serverActionIndex": 61,
                     "checkTarget": {
                       "targetSource": "Owner",
                       "targetGroupKey": "",
@@ -4827,7 +5046,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 63,
+                    "serverActionIndex": 62,
                     "compareTarget": false,
                     "targetSettings": {
                       "targetSource": "Target",
@@ -4883,7 +5102,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 64,
+              "serverActionIndex": 63,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -4978,7 +5197,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 65,
+              "serverActionIndex": 64,
               "mappingDataList": [
                 {
                   "cmdType": "NormalSkill",
@@ -5015,7 +5234,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 66,
+              "serverActionIndex": 65,
               "allowedSkillIdList": [
                 "chr_0009_azrila_normal_skill"
               ]
@@ -5041,7 +5260,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 67,
+              "serverActionIndex": 66,
               "includeAllWeapons": false,
               "weaponIndex": 0,
               "visible": true,
@@ -5089,7 +5308,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 68,
+              "serverActionIndex": 67,
               "_soundEvent": "au_chr_0009_azrila_combo_skill",
               "_stopOnEnd": true,
               "_stopFadeDurationMs": 300,
@@ -5154,7 +5373,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 69,
+              "serverActionIndex": 68,
               "_triggerKey": "combat_skill_comb_release",
               "_speakerType": "Characters",
               "_canInterruptTimeMs": 0,
@@ -5205,7 +5424,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 70,
+              "serverActionIndex": 69,
               "_soundEvent": "au_chr_0009_azrila_combo_skill_foley",
               "_stopOnEnd": true,
               "_stopFadeDurationMs": 300,

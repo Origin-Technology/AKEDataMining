@@ -2,13 +2,16 @@
   "id": "buff_eny_0093_hshog_attack",
   "iconConfig": {
     "_spritePath": "",
-    "showInHeadBarCommon": true,
+    "showInHeadBarCommon": false,
     "showInHeadBarAttached": false,
     "showInSquadIcon": false,
     "onlyShowForMainCharacter": false,
     "blinkInMainCharHpBar": false,
     "showProgressInHpBar": false,
     "showProgressInNormalSkillButton": false,
+    "useWeakProgressInNormalSkillButton": false,
+    "showProgressInUltimateSkillButton": false,
+    "forceRaiseIconEvent": false,
     "iconStyleInSquad": "Default",
     "abnormalColorType": "Physical",
     "_orderPriorityConfig": {
@@ -24,6 +27,7 @@
   "hasIcon": false,
   "ignoreTagImmune": false,
   "useTimeDilationDt": false,
+  "onlyUseSelfTimeDilation": false,
   "finishOnRepatriate": false,
   "hasAddingCooldown": false,
   "addingCooldown": {
@@ -155,6 +159,8 @@
                 "autoSetTargetFaction": true,
                 "factionTarget": "Ally",
                 "targetFactionType": 0,
+                "filterObjectType": false,
+                "objectType": "All",
                 "filterSlot": false,
                 "slotIndex": 0,
                 "filterGameplayTag": true,
@@ -259,10 +265,12 @@
                     "contextKey": "",
                     "autoFinishByAction": false,
                     "inheritSkillIdList": [],
+                    "finishWithNextSkillIfNotInherited": true,
                     "asChildBuff": false,
                     "inheritSourceSkillCastId": false,
                     "inheritSourceSkillCastInfo": true,
                     "isExtra": false,
+                    "passTargetGroupsToBuff": false,
                     "overrideBuffIconDuration": false,
                     "buffIconDurationSource": {
                       "durationSourceType": "AbilityEntity",
@@ -350,6 +358,8 @@
                 "autoSetTargetFaction": true,
                 "factionTarget": "Anti",
                 "targetFactionType": 0,
+                "filterObjectType": false,
+                "objectType": "All",
                 "filterSlot": false,
                 "slotIndex": 0,
                 "filterGameplayTag": false,
@@ -407,7 +417,6 @@
                       "queryType": "ExceptAny",
                       "tags": [
                         {
-                          "tagName": "Category/Interactive/Settlement",
                           "tagId": -1672839342
                         }
                       ]
@@ -534,6 +543,12 @@
                             "value": 0.0,
                             "blackboardKey": ""
                           },
+                          "useDurationScaleBB": false,
+                          "durationScaleBB": {
+                            "useBlackboardKey": false,
+                            "value": 0.0,
+                            "blackboardKey": ""
+                          },
                           "releaseByAction": false,
                           "ignoreOwnerTimeScale": false,
                           "interruptTime": 0.0,
@@ -549,11 +564,23 @@
                           "isUltimateShow": false,
                           "visibleWithEntity": true,
                           "visibleWithEntityType": "Source",
+                          "ignoreEntityDither": false,
                           "moveType": "Stationary",
+                          "useCameraViewportAnchor": false,
+                          "cameraViewportPosition": {
+                            "x": 0.5,
+                            "y": 0.5
+                          },
+                          "cameraAnchorDistance": 1.0,
+                          "cameraScreenSizeScaleMode": "None",
+                          "cameraReferenceFov": 58.0,
+                          "cameraReferenceAspect": 1.0,
                           "positionRef": "Target",
                           "grounded": false,
                           "followGrounded": false,
                           "followGroundedMaxDistance": 3.0,
+                          "lerpToTargetTrans": false,
+                          "lerpDuration": 0.0,
                           "followHideTarget": false,
                           "visibleWhenHideTarget": false,
                           "slotIndex": 0,
@@ -913,7 +940,6 @@
                       "queryType": "HasAny",
                       "tags": [
                         {
-                          "tagName": "Category/Interactive/Settlement",
                           "tagId": -1672839342
                         }
                       ]
@@ -984,10 +1010,12 @@
               "contextKey": "",
               "autoFinishByAction": false,
               "inheritSkillIdList": [],
+              "finishWithNextSkillIfNotInherited": true,
               "asChildBuff": false,
               "inheritSourceSkillCastId": false,
               "inheritSourceSkillCastInfo": true,
               "isExtra": false,
+              "passTargetGroupsToBuff": false,
               "overrideBuffIconDuration": false,
               "buffIconDurationSource": {
                 "durationSourceType": "AbilityEntity",

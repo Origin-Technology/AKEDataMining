@@ -9,6 +9,9 @@
     "blinkInMainCharHpBar": false,
     "showProgressInHpBar": false,
     "showProgressInNormalSkillButton": false,
+    "useWeakProgressInNormalSkillButton": false,
+    "showProgressInUltimateSkillButton": false,
+    "forceRaiseIconEvent": false,
     "iconStyleInSquad": "Default",
     "abnormalColorType": "Physical",
     "_orderPriorityConfig": {
@@ -24,6 +27,7 @@
   "hasIcon": false,
   "ignoreTagImmune": false,
   "useTimeDilationDt": false,
+  "onlyUseSelfTimeDilation": false,
   "finishOnRepatriate": false,
   "hasAddingCooldown": false,
   "addingCooldown": {
@@ -85,11 +89,31 @@
         {
           "actionData": [
             {
-              "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
+              "$type": "Beyond.Gameplay.Core.OnSpellAbnormalStartFinish+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
               "serverActionIndex": 0,
+              "isStart": true,
+              "abnormalType": "Natural"
+            }
+          ],
+          "onlyExecuteWhenSourceIsMainChar": false,
+          "onlyExecuteWhenSourceIsGuard": false
+        }
+      ]
+    },
+    {
+      "buffEvent": "OnBuffStart",
+      "actions": [
+        {
+          "actionData": [
+            {
+              "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 1,
               "conditionAction": {
                 "actionData": [
                   {
@@ -97,7 +121,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 1,
+                    "serverActionIndex": 2,
                     "checkTarget": {
                       "targetSource": "Target",
                       "targetGroupKey": "",
@@ -132,7 +156,6 @@
                         "queryType": "HasAny",
                         "tags": [
                           {
-                            "tagName": "Skill/Character/Common/SpellStatus/Corrupt",
                             "tagId": -421286163
                           }
                         ]
@@ -158,7 +181,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 2,
+                    "serverActionIndex": 3,
                     "targetSettings": {
                       "targetSource": "Target",
                       "targetGroupKey": "",
@@ -191,7 +214,6 @@
                         "queryType": "HasAny",
                         "tags": [
                           {
-                            "tagName": "Skill/Character/Common/SpellStatus/Corrupt",
                             "tagId": -421286163
                           }
                         ]
@@ -216,7 +238,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 3,
+              "serverActionIndex": 4,
               "buffs": [
                 {
                   "buffId": "buff_common_natural_triggered",
@@ -287,6 +309,22 @@
                       "stringValue": ""
                     },
                     {
+                      "targetKey": "consumed_type",
+                      "inputValueKey": "consumed_type",
+                      "useDirectValue": false,
+                      "directValueType": "Numeric",
+                      "numericValue": 0.0,
+                      "stringValue": ""
+                    },
+                    {
+                      "targetKey": "consumed_layer",
+                      "inputValueKey": "consumed_layer",
+                      "useDirectValue": false,
+                      "directValueType": "Numeric",
+                      "numericValue": 0.0,
+                      "stringValue": ""
+                    },
+                    {
                       "targetKey": "count",
                       "inputValueKey": "count",
                       "useDirectValue": false,
@@ -333,35 +371,17 @@
               "contextKey": "",
               "autoFinishByAction": false,
               "inheritSkillIdList": [],
+              "finishWithNextSkillIfNotInherited": true,
               "asChildBuff": false,
               "inheritSourceSkillCastId": false,
               "inheritSourceSkillCastInfo": true,
               "isExtra": false,
+              "passTargetGroupsToBuff": false,
               "overrideBuffIconDuration": false,
               "buffIconDurationSource": {
                 "durationSourceType": "AbilityEntity",
                 "timedMarkerId": ""
               }
-            }
-          ],
-          "onlyExecuteWhenSourceIsMainChar": false,
-          "onlyExecuteWhenSourceIsGuard": false
-        }
-      ]
-    },
-    {
-      "buffEvent": "OnBuffStart",
-      "actions": [
-        {
-          "actionData": [
-            {
-              "$type": "Beyond.Gameplay.Core.OnSpellAbnormalStartFinish+Data, Gameplay.Beyond",
-              "isEnable": true,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 4,
-              "isStart": true,
-              "abnormalType": "Natural"
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -420,13 +440,19 @@
       "key": "consumed_layer",
       "valueDouble": 0.0,
       "valueStr": "",
-      "isDynamic": false
+      "isDynamic": true
     },
     {
       "key": "count",
       "valueDouble": 0.0,
       "valueStr": "",
-      "isDynamic": false
+      "isDynamic": true
+    },
+    {
+      "key": "consumed_type",
+      "valueDouble": 0.0,
+      "valueStr": "",
+      "isDynamic": true
     }
   ]
 }
