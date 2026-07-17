@@ -190,6 +190,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -217,6 +221,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           }
@@ -255,6 +263,7 @@
         "plungingAttackStartId": "chr_0020_meurs_plunging_attack_start",
         "plungingAttackEndId": "chr_0020_meurs_plunging_attack_end",
         "dodgeSkillId": "common_character_perfect_dodge",
+        "comboSkillPriorityType": "Default",
         "comboSkillConditions": [
           {
             "comboSkillEvent": "OnTakeDamage",
@@ -432,10 +441,12 @@
                   "contextKey": "meurs_weakness_enemy",
                   "autoFinishByAction": false,
                   "inheritSkillIdList": [],
+                  "finishWithNextSkillIfNotInherited": true,
                   "asChildBuff": false,
                   "inheritSourceSkillCastId": false,
                   "inheritSourceSkillCastInfo": true,
                   "isExtra": false,
+                  "passTargetGroupsToBuff": false,
                   "overrideBuffIconDuration": false,
                   "buffIconDurationSource": {
                     "durationSourceType": "AbilityEntity",
@@ -456,13 +467,18 @@
             "comboSkillConditionImmediately": false
           }
         ],
+        "enableComboSkillBlackboard": false,
+        "comboSkillBlackboard": [],
         "comboSkillId": "chr_0020_meurs_combo_skill",
         "comboSkillSpecialNodeName": "",
         "defaultCmdMapping": {
           "Attack": "chr_0020_meurs_attack1",
           "NormalSkill": "chr_0020_meurs_normal_skill",
-          "ComboSkill": "chr_0020_meurs_combo_skill"
-        }
+          "ComboSkill": "chr_0020_meurs_combo_skill",
+          "UltimateSkill": "chr_0020_meurs_ultimate_skill"
+        },
+        "hudPanelName": "",
+        "activeSkillTypeOverrides": {}
       },
       "uiData": {
         "showBigHeadBar": false,
@@ -593,6 +609,12 @@
           "value": 0.0,
           "blackboardKey": ""
         },
+        "useDurationScaleBB": false,
+        "durationScaleBB": {
+          "useBlackboardKey": false,
+          "value": 0.0,
+          "blackboardKey": ""
+        },
         "releaseByAction": false,
         "ignoreOwnerTimeScale": false,
         "interruptTime": 0.0,
@@ -608,11 +630,23 @@
         "isUltimateShow": false,
         "visibleWithEntity": true,
         "visibleWithEntityType": "Source",
+        "ignoreEntityDither": false,
         "moveType": "Stationary",
+        "useCameraViewportAnchor": false,
+        "cameraViewportPosition": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "cameraAnchorDistance": 1.0,
+        "cameraScreenSizeScaleMode": "None",
+        "cameraReferenceFov": 58.0,
+        "cameraReferenceAspect": 1.0,
         "positionRef": "Target",
         "grounded": false,
         "followGrounded": false,
         "followGroundedMaxDistance": 3.0,
+        "lerpToTargetTrans": false,
+        "lerpDuration": 0.0,
         "followHideTarget": false,
         "visibleWhenHideTarget": false,
         "slotIndex": 0,
@@ -699,16 +733,21 @@
         "modifyType": "StartLifeTime",
         "value": 0.0
       },
+      "deadEffects": [],
       "effectScale": 1.0,
       "isPlayHitFlash": false,
       "hitFlashAsset": "",
       "healthType": "Normal",
-      "preloadAbilityEntities": {},
-      "maxPotentialEffectBuffId": ""
+      "preloadAbilityEntities": {
+        "abilityentity_chr_0020_meurs_talent_shockwave": 1
+      },
+      "maxPotentialEffectBuffId": "",
+      "checkAllyBlockableMoveCollider": false
     },
     {
       "$type": "Beyond.Gameplay.View.CharacterAnimationComponentData, Gameplay.Beyond",
       "_animCfgPath": "Data/Json/AnimationConfig/anim_cfg_chr_0020_meurs.json",
+      "normalDodgeToFightIdle": false,
       "_minPivotAngle": 165.0,
       "_relaxTriggerTime": 5.0,
       "_idleTriggerTime": 15.0,
@@ -720,7 +759,6 @@
     {
       "$type": "Beyond.Gameplay.View.SkeletalMorphComponentData, Gameplay.Beyond",
       "_avatarTag": {
-        "tagName": "FacialMorph/Avatar/Boy/meurs",
         "tagId": 1988771986
       }
     },
@@ -754,61 +792,51 @@
           "mode": {
             "MainChar": {
               "tag": {
-                "tagName": "AI/Char/BB/MainChar",
                 "tagId": 328793703
               }
             },
             "Follow": {
               "tag": {
-                "tagName": "AI/Char/BB/Follow",
                 "tagId": -2097982019
               }
             },
             "Farm": {
               "tag": {
-                "tagName": "AI/Char/BB/Farm",
                 "tagId": -1190460388
               }
             },
             "Battle": {
               "tag": {
-                "tagName": "AI/Char/BB/Battle",
                 "tagId": -111278343
               }
             },
             "CastSkill": {
               "tag": {
-                "tagName": "AI/Char/BB/CastSkill",
                 "tagId": 1155907871
               }
             },
             "Cooperate": {
               "tag": {
-                "tagName": "AI/Char/BB/Cooperate",
                 "tagId": -1675344905
               }
             },
             "Idle": {
               "tag": {
-                "tagName": "AI/Char/BB/Idle",
                 "tagId": 1027170636
               }
             },
             "SummonTeam": {
               "tag": {
-                "tagName": "AI/Char/BB/SummonTeam",
                 "tagId": 584998869
               }
             },
             "Photo": {
               "tag": {
-                "tagName": "AI/Char/BB/Photo",
                 "tagId": 115437724
               }
             },
             "Scripted": {
               "tag": {
-                "tagName": "AI/Char/BB/Scripted",
                 "tagId": 1360895761
               }
             }
@@ -823,15 +851,29 @@
         "priority": 0.2,
         "layer": "Character",
         "modeData": {
-          "default": {
+          "Default": {
             "collidesWith": "DefaultAgent, DefaultObstacle, Character, Enemy, NPC, FactoryObstacle",
-            "normalTimeHorizon": 12,
-            "rvoIgnoreAgentTime": 5.0
+            "normalTimeHorizon": 10,
+            "constrainNearSteering": true,
+            "nearSteeringLookAheadTime": 0.5,
+            "constrainModAngle": false,
+            "limitModAngle": 180.0
           },
-          "follow": {
+          "Follow": {
             "collidesWith": "DefaultAgent, DefaultObstacle, Enemy, NPC, FactoryObstacle",
             "normalTimeHorizon": 6,
-            "rvoIgnoreAgentTime": 5.0
+            "constrainNearSteering": true,
+            "nearSteeringLookAheadTime": 0.5,
+            "constrainModAngle": false,
+            "limitModAngle": 180.0
+          },
+          "MainChar": {
+            "collidesWith": 0,
+            "normalTimeHorizon": 0,
+            "constrainNearSteering": true,
+            "nearSteeringLookAheadTime": 0.5,
+            "constrainModAngle": false,
+            "limitModAngle": 180.0
           }
         }
       }
@@ -848,9 +890,21 @@
                 "vfxKey": "",
                 "weaponScale": 1.0,
                 "showWhenIdle": true,
-                "idleMountPoint": "WepM",
+                "legacyIdleMountPoint": "WepM",
+                "idleMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
                 "showWhenFight": true,
-                "fightMountPoint": "WepR",
+                "legacyFightMountPoint": "WepR",
+                "fightMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
                 "overrideAnimation": false
               }
             ]
@@ -871,11 +925,9 @@
       "$type": "Beyond.Gameplay.Core.ObservedComponentData, Gameplay.Beyond",
       "checkTagList": [
         {
-          "tagName": "Category/Interactive",
           "tagId": 888050036
         },
         {
-          "tagName": "Category/NPC",
           "tagId": -2031623528
         }
       ],
@@ -969,7 +1021,8 @@
       "overrideDryDrenchedAfterSeconds": false,
       "dryDrenchedAfterSeconds": -1.0,
       "overrideDryDrenchedSmoothTime": false,
-      "dryDrenchedSmoothTime": -1.0
+      "dryDrenchedSmoothTime": -1.0,
+      "needGPUReadbackQuery": true
     },
     {
       "$type": "Beyond.Gameplay.DynamicBattleShapeComponentData, Gameplay.Beyond"

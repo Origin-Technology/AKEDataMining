@@ -147,7 +147,9 @@
             "S_actor_yvonne_vfxpart_01_lod0",
             "S_actor_yvonne_vfxpart_01_lod1",
             "S_actor_yvonne_vfxpart_01_lod2",
-            "S_actor_yvonne_vfxpart_01_lod3"
+            "S_actor_yvonne_vfxpart_01_lod3",
+            "S_actor_yvonne_vfxpart_01_shadowProxyDesktop",
+            "S_actor_yvonne_vfxpart_01_shadowProxyMobile"
           ]
         }
       },
@@ -219,6 +221,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -252,6 +258,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": true,
             "cmdMapping": {
               "Attack": "chr_0017_yvonne_ult_attack1_1"
@@ -281,6 +291,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": true,
             "cmdMapping": {
               "Attack": "chr_0017_yvonne_ult_attack3_2"
@@ -310,6 +324,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": true,
             "cmdMapping": {
               "Attack": "chr_0017_yvonne_attack5"
@@ -358,6 +376,7 @@
         "plungingAttackStartId": "chr_0017_yvonne_plunging_attack_start",
         "plungingAttackEndId": "chr_0017_yvonne_plunging_attack_end",
         "dodgeSkillId": "common_character_perfect_dodge",
+        "comboSkillPriorityType": "Default",
         "comboSkillConditions": [
           {
             "comboSkillEvent": "OnBeforeTakeDamage",
@@ -471,7 +490,6 @@
                     "queryType": "HasAny",
                     "tags": [
                       {
-                        "tagName": "Skill/Character/Common/SpellStatus/Frozen",
                         "tagId": 1535684437
                       }
                     ]
@@ -517,13 +535,18 @@
             "comboSkillConditionImmediately": false
           }
         ],
+        "enableComboSkillBlackboard": false,
+        "comboSkillBlackboard": [],
         "comboSkillId": "chr_0017_yvonne_combo_skill",
         "comboSkillSpecialNodeName": "",
         "defaultCmdMapping": {
           "Attack": "chr_0017_yvonne_attack1",
           "NormalSkill": "chr_0017_yvonne_normal_skill",
-          "ComboSkill": "chr_0017_yvonne_combo_skill"
-        }
+          "ComboSkill": "chr_0017_yvonne_combo_skill",
+          "UltimateSkill": "chr_0017_yvonne_ultimate_skill"
+        },
+        "hudPanelName": "",
+        "activeSkillTypeOverrides": {}
       },
       "uiData": {
         "showBigHeadBar": false,
@@ -658,6 +681,12 @@
           "value": 0.0,
           "blackboardKey": ""
         },
+        "useDurationScaleBB": false,
+        "durationScaleBB": {
+          "useBlackboardKey": false,
+          "value": 0.0,
+          "blackboardKey": ""
+        },
         "releaseByAction": false,
         "ignoreOwnerTimeScale": false,
         "interruptTime": 0.0,
@@ -673,11 +702,23 @@
         "isUltimateShow": false,
         "visibleWithEntity": true,
         "visibleWithEntityType": "Source",
+        "ignoreEntityDither": false,
         "moveType": "Stationary",
+        "useCameraViewportAnchor": false,
+        "cameraViewportPosition": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "cameraAnchorDistance": 1.0,
+        "cameraScreenSizeScaleMode": "None",
+        "cameraReferenceFov": 58.0,
+        "cameraReferenceAspect": 1.0,
         "positionRef": "Target",
         "grounded": false,
         "followGrounded": false,
         "followGroundedMaxDistance": 3.0,
+        "lerpToTargetTrans": false,
+        "lerpDuration": 0.0,
         "followHideTarget": false,
         "visibleWhenHideTarget": false,
         "slotIndex": 0,
@@ -764,16 +805,24 @@
         "modifyType": "StartLifeTime",
         "value": 0.0
       },
+      "deadEffects": [],
       "effectScale": 1.0,
       "isPlayHitFlash": false,
       "hitFlashAsset": "",
       "healthType": "Normal",
-      "preloadAbilityEntities": {},
-      "maxPotentialEffectBuffId": "buff_chr_0017_yvonne_potential_5_effect"
+      "preloadAbilityEntities": {
+        "abilityentity_chr_0017_yvonne_combo_skill": 2,
+        "abilityentity_chr_0017_yvonne_ultimate_skill": 1,
+        "abilityentity_chr_0017_yvonne_ultimate_skill2": 1,
+        "abilityentity_chr_0017_yvonne_ultimate_skill3": 1
+      },
+      "maxPotentialEffectBuffId": "buff_chr_0017_yvonne_potential_5_effect",
+      "checkAllyBlockableMoveCollider": false
     },
     {
       "$type": "Beyond.Gameplay.View.CharacterAnimationComponentData, Gameplay.Beyond",
       "_animCfgPath": "Data/Json/AnimationConfig/anim_cfg_chr_0017_yvonne.json",
+      "normalDodgeToFightIdle": false,
       "_minPivotAngle": 165.0,
       "_relaxTriggerTime": 5.0,
       "_idleTriggerTime": 15.0,
@@ -785,7 +834,6 @@
     {
       "$type": "Beyond.Gameplay.View.SkeletalMorphComponentData, Gameplay.Beyond",
       "_avatarTag": {
-        "tagName": "FacialMorph/Avatar/Girl/yvonne",
         "tagId": -1116210604
       }
     },
@@ -818,61 +866,51 @@
           "mode": {
             "MainChar": {
               "tag": {
-                "tagName": "AI/Char/BB/MainChar",
                 "tagId": 328793703
               }
             },
             "Follow": {
               "tag": {
-                "tagName": "AI/Char/BB/Follow",
                 "tagId": -2097982019
               }
             },
             "Farm": {
               "tag": {
-                "tagName": "AI/Char/BB/Farm",
                 "tagId": -1190460388
               }
             },
             "Battle": {
               "tag": {
-                "tagName": "AI/Char/BB/Battle",
                 "tagId": -111278343
               }
             },
             "CastSkill": {
               "tag": {
-                "tagName": "AI/Char/BB/CastSkill",
                 "tagId": 1155907871
               }
             },
             "Cooperate": {
               "tag": {
-                "tagName": "AI/Char/BB/Cooperate",
                 "tagId": -1675344905
               }
             },
             "Idle": {
               "tag": {
-                "tagName": "AI/Char/BB/Idle",
                 "tagId": 1027170636
               }
             },
             "SummonTeam": {
               "tag": {
-                "tagName": "AI/Char/BB/SummonTeam",
                 "tagId": 584998869
               }
             },
             "Photo": {
               "tag": {
-                "tagName": "AI/Char/BB/Photo",
                 "tagId": 115437724
               }
             },
             "Scripted": {
               "tag": {
-                "tagName": "AI/Char/BB/Scripted",
                 "tagId": 1360895761
               }
             }
@@ -887,15 +925,29 @@
         "priority": 0.2,
         "layer": "Character",
         "modeData": {
-          "default": {
+          "Default": {
             "collidesWith": "DefaultAgent, DefaultObstacle, Character, Enemy, NPC, FactoryObstacle",
-            "normalTimeHorizon": 12,
-            "rvoIgnoreAgentTime": 5.0
+            "normalTimeHorizon": 10,
+            "constrainNearSteering": true,
+            "nearSteeringLookAheadTime": 0.5,
+            "constrainModAngle": false,
+            "limitModAngle": 180.0
           },
-          "follow": {
+          "Follow": {
             "collidesWith": "DefaultAgent, DefaultObstacle, Enemy, NPC, FactoryObstacle",
             "normalTimeHorizon": 6,
-            "rvoIgnoreAgentTime": 5.0
+            "constrainNearSteering": true,
+            "nearSteeringLookAheadTime": 0.5,
+            "constrainModAngle": false,
+            "limitModAngle": 180.0
+          },
+          "MainChar": {
+            "collidesWith": 0,
+            "normalTimeHorizon": 0,
+            "constrainNearSteering": true,
+            "nearSteeringLookAheadTime": 0.5,
+            "constrainModAngle": false,
+            "limitModAngle": 180.0
           }
         }
       }
@@ -912,9 +964,21 @@
                 "vfxKey": "",
                 "weaponScale": 1.0,
                 "showWhenIdle": false,
-                "idleMountPoint": "WepM",
+                "legacyIdleMountPoint": "WepM",
+                "idleMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
                 "showWhenFight": true,
-                "fightMountPoint": "WepR",
+                "legacyFightMountPoint": "WepR",
+                "fightMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
                 "overrideAnimation": false
               },
               {
@@ -923,9 +987,21 @@
                 "vfxKey": "",
                 "weaponScale": 1.0,
                 "showWhenIdle": false,
-                "idleMountPoint": "WepM",
+                "legacyIdleMountPoint": "WepM",
+                "idleMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
                 "showWhenFight": true,
-                "fightMountPoint": "WepL",
+                "legacyFightMountPoint": "WepL",
+                "fightMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
                 "overrideAnimation": false
               },
               {
@@ -934,10 +1010,35 @@
                 "vfxKey": "",
                 "weaponScale": 1.0,
                 "showWhenIdle": false,
-                "idleMountPoint": "None",
+                "legacyIdleMountPoint": "None",
+                "idleMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
                 "showWhenFight": false,
-                "fightMountPoint": "Custom1",
-                "overrideAnimation": false
+                "legacyFightMountPoint": "Custom1",
+                "fightMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
+                "overrideAnimation": false,
+                "overrideVfxBaseConfig": false,
+                "vfxBaseConfig": {
+                  "toIdleAppearParticleFx": "",
+                  "toIdleAppearRendererFx": "",
+                  "toIdleAppearRendererFx2": "",
+                  "toIdleAppearRendererFx3": "",
+                  "toIdleAppearRendererFx4": "",
+                  "toIdleDisappearParticleFx": "",
+                  "toIdleDisappearRendererFx": "",
+                  "toFightAppearParticleFx": "",
+                  "toFightAppearRendererFx": "",
+                  "decoEffectDelayAfterAppearFx": 0.0
+                }
               },
               {
                 "$type": "Beyond.Gameplay.StaticWeaponData, Gameplay.Beyond",
@@ -945,10 +1046,35 @@
                 "vfxKey": "",
                 "weaponScale": 1.0,
                 "showWhenIdle": false,
-                "idleMountPoint": "None",
+                "legacyIdleMountPoint": "None",
+                "idleMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
                 "showWhenFight": false,
-                "fightMountPoint": "Custom2",
-                "overrideAnimation": false
+                "legacyFightMountPoint": "Custom2",
+                "fightMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
+                "overrideAnimation": false,
+                "overrideVfxBaseConfig": false,
+                "vfxBaseConfig": {
+                  "toIdleAppearParticleFx": "",
+                  "toIdleAppearRendererFx": "",
+                  "toIdleAppearRendererFx2": "",
+                  "toIdleAppearRendererFx3": "",
+                  "toIdleAppearRendererFx4": "",
+                  "toIdleDisappearParticleFx": "",
+                  "toIdleDisappearRendererFx": "",
+                  "toFightAppearParticleFx": "",
+                  "toFightAppearRendererFx": "",
+                  "decoEffectDelayAfterAppearFx": 0.0
+                }
               },
               {
                 "$type": "Beyond.Gameplay.StaticWeaponData, Gameplay.Beyond",
@@ -956,10 +1082,35 @@
                 "vfxKey": "",
                 "weaponScale": 1.0,
                 "showWhenIdle": false,
-                "idleMountPoint": "None",
+                "legacyIdleMountPoint": "None",
+                "idleMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
                 "showWhenFight": false,
-                "fightMountPoint": "Custom3",
-                "overrideAnimation": false
+                "legacyFightMountPoint": "Custom3",
+                "fightMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
+                "overrideAnimation": false,
+                "overrideVfxBaseConfig": false,
+                "vfxBaseConfig": {
+                  "toIdleAppearParticleFx": "",
+                  "toIdleAppearRendererFx": "",
+                  "toIdleAppearRendererFx2": "",
+                  "toIdleAppearRendererFx3": "",
+                  "toIdleAppearRendererFx4": "",
+                  "toIdleDisappearParticleFx": "",
+                  "toIdleDisappearRendererFx": "",
+                  "toFightAppearParticleFx": "",
+                  "toFightAppearRendererFx": "",
+                  "decoEffectDelayAfterAppearFx": 0.0
+                }
               },
               {
                 "$type": "Beyond.Gameplay.StaticWeaponData, Gameplay.Beyond",
@@ -967,10 +1118,35 @@
                 "vfxKey": "",
                 "weaponScale": 1.0,
                 "showWhenIdle": false,
-                "idleMountPoint": "None",
+                "legacyIdleMountPoint": "None",
+                "idleMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
                 "showWhenFight": false,
-                "fightMountPoint": "Custom4",
-                "overrideAnimation": false
+                "legacyFightMountPoint": "Custom4",
+                "fightMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
+                "overrideAnimation": false,
+                "overrideVfxBaseConfig": false,
+                "vfxBaseConfig": {
+                  "toIdleAppearParticleFx": "",
+                  "toIdleAppearRendererFx": "",
+                  "toIdleAppearRendererFx2": "",
+                  "toIdleAppearRendererFx3": "",
+                  "toIdleAppearRendererFx4": "",
+                  "toIdleDisappearParticleFx": "",
+                  "toIdleDisappearRendererFx": "",
+                  "toFightAppearParticleFx": "",
+                  "toFightAppearRendererFx": "",
+                  "decoEffectDelayAfterAppearFx": 0.0
+                }
               },
               {
                 "$type": "Beyond.Gameplay.StaticWeaponData, Gameplay.Beyond",
@@ -978,10 +1154,35 @@
                 "vfxKey": "",
                 "weaponScale": 1.0,
                 "showWhenIdle": false,
-                "idleMountPoint": "None",
+                "legacyIdleMountPoint": "None",
+                "idleMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
                 "showWhenFight": false,
-                "fightMountPoint": "Custom5",
-                "overrideAnimation": false
+                "legacyFightMountPoint": "Custom5",
+                "fightMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
+                "overrideAnimation": false,
+                "overrideVfxBaseConfig": false,
+                "vfxBaseConfig": {
+                  "toIdleAppearParticleFx": "",
+                  "toIdleAppearRendererFx": "",
+                  "toIdleAppearRendererFx2": "",
+                  "toIdleAppearRendererFx3": "",
+                  "toIdleAppearRendererFx4": "",
+                  "toIdleDisappearParticleFx": "",
+                  "toIdleDisappearRendererFx": "",
+                  "toFightAppearParticleFx": "",
+                  "toFightAppearRendererFx": "",
+                  "decoEffectDelayAfterAppearFx": 0.0
+                }
               },
               {
                 "$type": "Beyond.Gameplay.StaticWeaponData, Gameplay.Beyond",
@@ -989,10 +1190,35 @@
                 "vfxKey": "",
                 "weaponScale": 1.0,
                 "showWhenIdle": false,
-                "idleMountPoint": "None",
+                "legacyIdleMountPoint": "None",
+                "idleMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
                 "showWhenFight": false,
-                "fightMountPoint": "Custom7",
-                "overrideAnimation": false
+                "legacyFightMountPoint": "Custom7",
+                "fightMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
+                "overrideAnimation": false,
+                "overrideVfxBaseConfig": false,
+                "vfxBaseConfig": {
+                  "toIdleAppearParticleFx": "",
+                  "toIdleAppearRendererFx": "",
+                  "toIdleAppearRendererFx2": "",
+                  "toIdleAppearRendererFx3": "",
+                  "toIdleAppearRendererFx4": "",
+                  "toIdleDisappearParticleFx": "",
+                  "toIdleDisappearRendererFx": "",
+                  "toFightAppearParticleFx": "",
+                  "toFightAppearRendererFx": "",
+                  "decoEffectDelayAfterAppearFx": 0.0
+                }
               },
               {
                 "$type": "Beyond.Gameplay.StaticWeaponData, Gameplay.Beyond",
@@ -1000,10 +1226,35 @@
                 "vfxKey": "",
                 "weaponScale": 1.0,
                 "showWhenIdle": false,
-                "idleMountPoint": "None",
+                "legacyIdleMountPoint": "None",
+                "idleMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
                 "showWhenFight": false,
-                "fightMountPoint": "Custom8",
-                "overrideAnimation": false
+                "legacyFightMountPoint": "Custom8",
+                "fightMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
+                "overrideAnimation": false,
+                "overrideVfxBaseConfig": false,
+                "vfxBaseConfig": {
+                  "toIdleAppearParticleFx": "",
+                  "toIdleAppearRendererFx": "",
+                  "toIdleAppearRendererFx2": "",
+                  "toIdleAppearRendererFx3": "",
+                  "toIdleAppearRendererFx4": "",
+                  "toIdleDisappearParticleFx": "",
+                  "toIdleDisappearRendererFx": "",
+                  "toFightAppearParticleFx": "",
+                  "toFightAppearRendererFx": "",
+                  "decoEffectDelayAfterAppearFx": 0.0
+                }
               },
               {
                 "$type": "Beyond.Gameplay.StaticWeaponData, Gameplay.Beyond",
@@ -1011,10 +1262,35 @@
                 "vfxKey": "",
                 "weaponScale": 1.0,
                 "showWhenIdle": false,
-                "idleMountPoint": "None",
+                "legacyIdleMountPoint": "None",
+                "idleMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
                 "showWhenFight": false,
-                "fightMountPoint": "Custom9",
-                "overrideAnimation": false
+                "legacyFightMountPoint": "Custom9",
+                "fightMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
+                "overrideAnimation": false,
+                "overrideVfxBaseConfig": false,
+                "vfxBaseConfig": {
+                  "toIdleAppearParticleFx": "",
+                  "toIdleAppearRendererFx": "",
+                  "toIdleAppearRendererFx2": "",
+                  "toIdleAppearRendererFx3": "",
+                  "toIdleAppearRendererFx4": "",
+                  "toIdleDisappearParticleFx": "",
+                  "toIdleDisappearRendererFx": "",
+                  "toFightAppearParticleFx": "",
+                  "toFightAppearRendererFx": "",
+                  "decoEffectDelayAfterAppearFx": 0.0
+                }
               },
               {
                 "$type": "Beyond.Gameplay.StaticWeaponData, Gameplay.Beyond",
@@ -1022,10 +1298,35 @@
                 "vfxKey": "",
                 "weaponScale": 1.0,
                 "showWhenIdle": false,
-                "idleMountPoint": "None",
+                "legacyIdleMountPoint": "None",
+                "idleMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
                 "showWhenFight": false,
-                "fightMountPoint": "Custom1",
-                "overrideAnimation": false
+                "legacyFightMountPoint": "Custom1",
+                "fightMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
+                "overrideAnimation": false,
+                "overrideVfxBaseConfig": false,
+                "vfxBaseConfig": {
+                  "toIdleAppearParticleFx": "",
+                  "toIdleAppearRendererFx": "",
+                  "toIdleAppearRendererFx2": "",
+                  "toIdleAppearRendererFx3": "",
+                  "toIdleAppearRendererFx4": "",
+                  "toIdleDisappearParticleFx": "",
+                  "toIdleDisappearRendererFx": "",
+                  "toFightAppearParticleFx": "",
+                  "toFightAppearRendererFx": "",
+                  "decoEffectDelayAfterAppearFx": 0.0
+                }
               },
               {
                 "$type": "Beyond.Gameplay.StaticWeaponData, Gameplay.Beyond",
@@ -1033,10 +1334,35 @@
                 "vfxKey": "",
                 "weaponScale": 1.0,
                 "showWhenIdle": false,
-                "idleMountPoint": "None",
+                "legacyIdleMountPoint": "None",
+                "idleMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
                 "showWhenFight": false,
-                "fightMountPoint": "Custom9",
-                "overrideAnimation": false
+                "legacyFightMountPoint": "Custom9",
+                "fightMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
+                "overrideAnimation": false,
+                "overrideVfxBaseConfig": false,
+                "vfxBaseConfig": {
+                  "toIdleAppearParticleFx": "",
+                  "toIdleAppearRendererFx": "",
+                  "toIdleAppearRendererFx2": "",
+                  "toIdleAppearRendererFx3": "",
+                  "toIdleAppearRendererFx4": "",
+                  "toIdleDisappearParticleFx": "",
+                  "toIdleDisappearRendererFx": "",
+                  "toFightAppearParticleFx": "",
+                  "toFightAppearRendererFx": "",
+                  "decoEffectDelayAfterAppearFx": 0.0
+                }
               },
               {
                 "$type": "Beyond.Gameplay.StaticWeaponData, Gameplay.Beyond",
@@ -1044,10 +1370,35 @@
                 "vfxKey": "",
                 "weaponScale": 1.0,
                 "showWhenIdle": false,
-                "idleMountPoint": "None",
+                "legacyIdleMountPoint": "None",
+                "idleMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
                 "showWhenFight": false,
-                "fightMountPoint": "Custom10",
-                "overrideAnimation": false
+                "legacyFightMountPoint": "Custom10",
+                "fightMountTarget": {
+                  "mountToWeapon": false,
+                  "characterMountPoint": "None",
+                  "targetWeaponIndex": 0,
+                  "weaponMountPoint": "Root"
+                },
+                "overrideAnimation": false,
+                "overrideVfxBaseConfig": false,
+                "vfxBaseConfig": {
+                  "toIdleAppearParticleFx": "",
+                  "toIdleAppearRendererFx": "",
+                  "toIdleAppearRendererFx2": "",
+                  "toIdleAppearRendererFx3": "",
+                  "toIdleAppearRendererFx4": "",
+                  "toIdleDisappearParticleFx": "",
+                  "toIdleDisappearRendererFx": "",
+                  "toFightAppearParticleFx": "",
+                  "toFightAppearRendererFx": "",
+                  "decoEffectDelayAfterAppearFx": 0.0
+                }
               }
             ]
           }
@@ -1067,11 +1418,9 @@
       "$type": "Beyond.Gameplay.Core.ObservedComponentData, Gameplay.Beyond",
       "checkTagList": [
         {
-          "tagName": "Category/Interactive",
           "tagId": 888050036
         },
         {
-          "tagName": "Category/NPC",
           "tagId": -2031623528
         }
       ],
@@ -1165,7 +1514,8 @@
       "overrideDryDrenchedAfterSeconds": false,
       "dryDrenchedAfterSeconds": -1.0,
       "overrideDryDrenchedSmoothTime": false,
-      "dryDrenchedSmoothTime": -1.0
+      "dryDrenchedSmoothTime": -1.0,
+      "needGPUReadbackQuery": true
     },
     {
       "$type": "Beyond.Gameplay.DynamicBattleShapeComponentData, Gameplay.Beyond"
