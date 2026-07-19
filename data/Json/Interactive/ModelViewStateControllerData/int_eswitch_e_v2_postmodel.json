@@ -1,0 +1,676 @@
+{
+  "preTickAnimator": false,
+  "modelId": "int_eswitch_e_v2_postmodel",
+  "clipAssetInfos": [
+    {
+      "animationClipName": "A_interactive_electricswitch+1_001_closeidle_01",
+      "animationClipHash": 890589767888459047
+    },
+    {
+      "animationClipName": "A_interactive_electricswitch+1_001_open_01",
+      "animationClipHash": 1141059695561917723
+    },
+    {
+      "animationClipName": "A_interactive_electricswitch+1_001_openidle_01",
+      "animationClipHash": 859935255986158747
+    },
+    {
+      "animationClipName": "A_interactive_electricswitch+1_001_close_01",
+      "animationClipHash": 767245679283808151
+    },
+    {
+      "animationClipName": "A_interactive_electricswitch+1_001_stuck_01",
+      "animationClipHash": 924439317144989607
+    }
+  ],
+  "emissiveConfigHashes": [
+    240593204017854229,
+    33431984047889756,
+    1043473419393144112
+  ],
+  "cameraSignalSourceAssetHashes": [],
+  "modelAnimatorDatas": [
+    {
+      "modelName": "P_interactive_electricswitch+1_001_01",
+      "layerFsmDatas": [
+        {
+          "hasAnimClip": true,
+          "index": 0,
+          "weight": 0.0,
+          "layerName": "BaseLayer",
+          "stateDatas": [
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "off_idle",
+              "isHaveClip": true,
+              "totalTime": 0.0333333351,
+              "animationClipName": "A_interactive_electricswitch+1_001_closeidle_01",
+              "isEmpty": false,
+              "isLoop": true,
+              "isStartingNode": true,
+              "isComplexAnimation": false,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "trigger_stuck",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "trigger_stuck",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "BoolTrigger"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.25,
+                    "hasExitTime": false,
+                    "exitTime": 0.75,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                },
+                {
+                  "targetStateName": "off_to_on",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Greater",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 1.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "off_to_on",
+              "isHaveClip": true,
+              "totalTime": 0.400000036,
+              "animationClipName": "A_interactive_electricswitch+1_001_open_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "trigger_stuck",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "trigger_stuck",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "BoolTrigger"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.25,
+                    "hasExitTime": false,
+                    "exitTime": 0.75,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                },
+                {
+                  "targetStateName": "on_idle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": true,
+                    "exitTime": 0.75,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "on_idle",
+              "isHaveClip": true,
+              "totalTime": 0.0333333351,
+              "animationClipName": "A_interactive_electricswitch+1_001_openidle_01",
+              "isEmpty": false,
+              "isLoop": true,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "trigger_stuck",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "trigger_stuck",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "BoolTrigger"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.25,
+                    "hasExitTime": false,
+                    "exitTime": 0.75,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                },
+                {
+                  "targetStateName": "on_to_off",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.75,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "on_to_off",
+              "isHaveClip": true,
+              "totalTime": 0.400000036,
+              "animationClipName": "A_interactive_electricswitch+1_001_close_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "trigger_stuck",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "trigger_stuck",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "BoolTrigger"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.25,
+                    "hasExitTime": false,
+                    "exitTime": 0.75,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                },
+                {
+                  "targetStateName": "off_idle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": true,
+                    "exitTime": 0.75,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "trigger_stuck",
+              "isHaveClip": true,
+              "totalTime": 2.0,
+              "animationClipName": "A_interactive_electricswitch+1_001_stuck_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": false,
+                  "innerId": 0,
+                  "effectNodeName": "joint02",
+                  "effectId": "P_lv001_common_spark",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": -437195227
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": false,
+                  "transitionTime": 200
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "trigger_stuck",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "trigger_stuck",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "BoolTrigger"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.25,
+                    "hasExitTime": false,
+                    "exitTime": 0.75,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                },
+                {
+                  "targetStateName": "off_idle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.25,
+                    "hasExitTime": true,
+                    "exitTime": 0.7857143,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "hasAnimClip": false,
+          "index": 0,
+          "weight": 1.0,
+          "layerName": "Effect",
+          "stateDatas": [
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "disable",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": true,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEmissiveBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Emissive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "emissiveNodeName": "",
+                  "emissiveConfigHash": 240593204017854229,
+                  "isBlend": true,
+                  "isColorBlend": false,
+                  "blendTime": 0.5
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "Off",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "available",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": false,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.875,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "Off",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEmissiveBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Emissive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "emissiveNodeName": "",
+                  "emissiveConfigHash": 33431984047889756,
+                  "isBlend": true,
+                  "isColorBlend": false,
+                  "blendTime": 0.5
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "disable",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "available",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 1,
+                  "transitionSetting": {
+                    "isFixedDuration": false,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.875,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                },
+                {
+                  "targetStateName": "On",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Greater",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": false,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.75,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "On",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEmissiveBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Emissive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "emissiveNodeName": "",
+                  "emissiveConfigHash": 1043473419393144112,
+                  "isBlend": true,
+                  "isColorBlend": false,
+                  "blendTime": 0.5
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "Off",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": false,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.75,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "effectIds": [
+    "P_lv001_common_spark"
+  ]
+}

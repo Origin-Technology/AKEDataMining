@@ -1,0 +1,506 @@
+{
+  "preTickAnimator": false,
+  "modelId": "int_map02_zfy_autodoor_01_postmodel",
+  "clipAssetInfos": [
+    {
+      "animationClipName": "A_anm_map02_door+1_005_01_closeidle_01",
+      "animationClipHash": 632095051406494582
+    },
+    {
+      "animationClipName": "A_anm_map02_door+1_005_01_open_01",
+      "animationClipHash": 765804067969622086
+    },
+    {
+      "animationClipName": "A_anm_map02_door+1_005_01_openidle_01",
+      "animationClipHash": 116397923093275132
+    },
+    {
+      "animationClipName": "A_anm_map02_door+1_005_01_close_01",
+      "animationClipHash": 966088490556252624
+    }
+  ],
+  "emissiveConfigHashes": [],
+  "cameraSignalSourceAssetHashes": [],
+  "modelAnimatorDatas": [
+    {
+      "modelName": "$$ROOT$$",
+      "layerFsmDatas": [
+        {
+          "hasAnimClip": true,
+          "index": 0,
+          "weight": 1.0,
+          "layerName": "autoDoor",
+          "stateDatas": [
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "off_idle",
+              "isHaveClip": true,
+              "totalTime": 0.0333333351,
+              "animationClipName": "A_anm_map02_door+1_005_01_closeidle_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": true,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAINavMeshCtrlBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "AINavMeshCtrl",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "ctrlType": "AddDynamicObstacle",
+                  "innerId": 0,
+                  "obstacleShape": "Box",
+                  "localCenter": {
+                    "x": 0.0,
+                    "y": 3.42,
+                    "z": 0.0
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "size": {
+                    "x": 6.85643673,
+                    "y": 6.861691,
+                    "z": 6.20694828
+                  },
+                  "radius": 0.0,
+                  "height": 0.0,
+                  "obstacleType": "None"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCSetActiveBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "SetActive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "gameObjName": "S_anm_map02_door+1_005_01_COL1_UBX01",
+                  "active": true
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": true,
+                  "isPersistence": true,
+                  "innerId": 0,
+                  "effectNodeName": "EffectPos",
+                  "effectId": "P_fxmap_zhuangfangyi_office_door_green_01",
+                  "followRot": true,
+                  "active": true,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "Loop"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioSpatialAuidoBehaviourData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "AudioSpatialAudio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "totalTime": 0.0333333351,
+                  "dependBlackBoard": false,
+                  "continuous": false,
+                  "dependFloatKey": "",
+                  "targetClosePercentage": 1.0,
+                  "directSet": true
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "off_to_on",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "LockedByGameplayLock",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "InTriggerVolume",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "off_to_on",
+              "isHaveClip": true,
+              "totalTime": 2.13333344,
+              "animationClipName": "A_anm_map02_door+1_005_01_open_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": true,
+                  "isPersistence": true,
+                  "innerId": 0,
+                  "effectNodeName": "EffectPos",
+                  "effectId": "P_fxmap_zhuangfangyi_office_door_green_01",
+                  "followRot": true,
+                  "active": true,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "End"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": -2132686741
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": false,
+                  "transitionTime": 200
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioSpatialAuidoBehaviourData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "AudioSpatialAudio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "totalTime": 2.13333344,
+                  "dependBlackBoard": false,
+                  "continuous": false,
+                  "dependFloatKey": "",
+                  "targetClosePercentage": 0.0,
+                  "directSet": false
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "on_idle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": true,
+                    "exitTime": 1.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "on_idle",
+              "isHaveClip": true,
+              "totalTime": 0.0333333351,
+              "animationClipName": "A_anm_map02_door+1_005_01_openidle_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAINavMeshCtrlBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "AINavMeshCtrl",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "ctrlType": "RemoveDynamicObstacle",
+                  "innerId": 0,
+                  "obstacleShape": "Box",
+                  "localCenter": {
+                    "x": 0.0,
+                    "y": 3.42,
+                    "z": 0.0
+                  },
+                  "localRotation": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  },
+                  "size": {
+                    "x": 6.85643673,
+                    "y": 6.861691,
+                    "z": 6.20694828
+                  },
+                  "radius": 0.0,
+                  "height": 0.0,
+                  "obstacleType": "None"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCSetActiveBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "SetActive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "gameObjName": "S_anm_map02_door+1_005_01_COL1_UBX01",
+                  "active": false
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": true,
+                  "isPersistence": true,
+                  "innerId": 0,
+                  "effectNodeName": "EffectPos",
+                  "effectId": "P_fxmap_zhuangfangyi_office_door_green_01",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "End"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": 2085640116
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": false,
+                  "transitionTime": 200
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioSpatialAuidoBehaviourData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "AudioSpatialAudio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "totalTime": 0.0333333351,
+                  "dependBlackBoard": false,
+                  "continuous": false,
+                  "dependFloatKey": "",
+                  "targetClosePercentage": 0.0,
+                  "directSet": true
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "on_to_off",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "InTriggerVolume",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "on_to_off",
+              "isHaveClip": true,
+              "totalTime": 2.16666675,
+              "animationClipName": "A_anm_map02_door+1_005_01_close_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": -854444871
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": false,
+                  "transitionTime": 200
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioSpatialAuidoBehaviourData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "AudioSpatialAudio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "totalTime": 2.16666675,
+                  "dependBlackBoard": false,
+                  "continuous": false,
+                  "dependFloatKey": "",
+                  "targetClosePercentage": 1.0,
+                  "directSet": false
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 1.33333337,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": true,
+                  "isPersistence": true,
+                  "innerId": 0,
+                  "effectNodeName": "EffectPos",
+                  "effectId": "P_fxmap_zhuangfangyi_office_door_green_01",
+                  "followRot": true,
+                  "active": true,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "Start"
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "off_idle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": true,
+                    "exitTime": 1.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "effectIds": [
+    "P_fxmap_zhuangfangyi_office_door_green_01"
+  ]
+}

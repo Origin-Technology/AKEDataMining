@@ -1,0 +1,395 @@
+{
+  "preTickAnimator": false,
+  "modelId": "int_lifter_v2_map02_shuifei_01_postmodel",
+  "clipAssetInfos": [],
+  "emissiveConfigHashes": [],
+  "cameraSignalSourceAssetHashes": [
+    573621888622665223
+  ],
+  "modelAnimatorDatas": [
+    {
+      "modelName": "Platform",
+      "layerFsmDatas": [
+        {
+          "hasAnimClip": false,
+          "index": 0,
+          "weight": 1.0,
+          "layerName": "MovingLayer",
+          "stateDatas": [
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "idle",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": true,
+              "isLoop": false,
+              "isStartingNode": true,
+              "isComplexAnimation": false,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "idle2move",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "IsMoving",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.75,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "idle2move",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCCameraImpulseBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "CameraImpulse",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "impulseDefinitionData": {
+                    "cameraShake2D": false,
+                    "impulseChannel": 1,
+                    "impulseType": "Legacy",
+                    "impulseShape": "Bump",
+                    "customImpulseShape": {
+                      "$type": "Beyond.FAnimationCurve, Common.Beyond",
+                      "keys": [],
+                      "preWrapMode": "ClampForever",
+                      "postWrapMode": "ClampForever"
+                    },
+                    "impulseDuration": 0.2,
+                    "rawSignalPath": "Assets/Beyond/DynamicAssets/GameData/SkillData/Curve/FixedSignal_CamShake_SinX.asset",
+                    "amplitudeGain": 0.05,
+                    "frequencyGain": 10.0,
+                    "repeatMode": "Loop",
+                    "randomize": true,
+                    "timeEnvelope": {
+                      "m_AttackShape": {},
+                      "m_DecayShape": {},
+                      "m_AttackTime": 0.0,
+                      "m_SustainTime": 0.05,
+                      "m_DecayTime": 0.1,
+                      "m_ScaleWithImpact": false,
+                      "m_HoldForever": false
+                    },
+                    "dissipationDistance": 10.0,
+                    "dissipationRate": 0.0,
+                    "impactRadius": 10.0,
+                    "directionMode": "Fixed",
+                    "dissipationMode": "ExponentialDecay",
+                    "propagationSpeed": 343.0
+                  },
+                  "rawSignalHash": 573621888622665223,
+                  "realCameraShake2D": false,
+                  "releaseWhenActionEnds": false,
+                  "nodeName": "",
+                  "positionOffset": {
+                    "x": 0.0,
+                    "y": 0.0,
+                    "z": 0.0
+                  }
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "move2idle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "IsMoving",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 1,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.75,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                },
+                {
+                  "targetStateName": "moving",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": true,
+                    "exitTime": 0.1,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "moving",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": true,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "move2idle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "IsMoving",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.75,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "move2idle",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": true,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "idle2move",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "IsMoving",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 1,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.75,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                },
+                {
+                  "targetStateName": "idle",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": false,
+                    "blendDuration": 0.0,
+                    "hasExitTime": true,
+                    "exitTime": 0.1,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "hasAnimClip": false,
+          "index": 0,
+          "weight": 1.0,
+          "layerName": "AudioLayer",
+          "stateDatas": [
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "Start",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": true,
+              "isLoop": false,
+              "isStartingNode": true,
+              "isComplexAnimation": false,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "Moving",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "IsMoving",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "Moving",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": -1791399670
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": true,
+                  "transitionTime": 200
+                }
+              ],
+              "transitions": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "effectIds": []
+}

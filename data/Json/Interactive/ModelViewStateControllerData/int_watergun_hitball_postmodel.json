@@ -1,0 +1,1607 @@
+{
+  "preTickAnimator": false,
+  "modelId": "int_watergun_hitball_postmodel",
+  "clipAssetInfos": [
+    {
+      "animationClipName": "A_igroup_map02_machine+1_006_02_closeidle_01",
+      "animationClipHash": 701987316079264293
+    },
+    {
+      "animationClipName": "A_igroup_map02_machine+1_006_02_shake_01",
+      "animationClipHash": 747464558996250195
+    },
+    {
+      "animationClipName": "A_igroup_map02_machine+1_006_02_open_01",
+      "animationClipHash": 861875133127189195
+    },
+    {
+      "animationClipName": "A_igroup_map02_machine+1_006_02_openidle_01",
+      "animationClipHash": 354079352171191963
+    }
+  ],
+  "emissiveConfigHashes": [
+    654839005598771193,
+    127123301981685924,
+    367726622296899561
+  ],
+  "cameraSignalSourceAssetHashes": [],
+  "modelAnimatorDatas": [
+    {
+      "modelName": "$$ROOT$$",
+      "layerFsmDatas": [
+        {
+          "hasAnimClip": false,
+          "index": 0,
+          "weight": 1.0,
+          "layerName": "Audio",
+          "stateDatas": [
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "Init",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": true,
+              "isLoop": false,
+              "isStartingNode": true,
+              "isComplexAnimation": false,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "moving",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "is_water_progress_drive_curve_moving",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "moving",
+              "isHaveClip": false,
+              "totalTime": 1.0,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": -1639569723
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": false,
+                  "transitionTime": 200
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "Init",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "is_water_progress_drive_curve_moving",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "modelName": "P_igroup_map02_machine+1_006_02",
+      "layerFsmDatas": [
+        {
+          "hasAnimClip": true,
+          "index": 0,
+          "weight": 1.0,
+          "layerName": "WaterBallSwitch",
+          "stateDatas": [
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "Init",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": true,
+              "isLoop": false,
+              "isStartingNode": true,
+              "isComplexAnimation": false,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "NeedHit",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "ball_perform_state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                },
+                {
+                  "targetStateName": "Finish",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "ball_perform_state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 2
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                },
+                {
+                  "targetStateName": "FakeFinish",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "ball_perform_state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 1
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "NeedHit",
+              "isHaveClip": true,
+              "totalTime": 0.0166666675,
+              "animationClipName": "A_igroup_map02_machine+1_006_02_closeidle_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEmissiveBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Emissive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "emissiveNodeName": "",
+                  "emissiveConfigHash": 654839005598771193,
+                  "isBlend": true,
+                  "isColorBlend": false,
+                  "blendTime": 0.5
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": false,
+                  "innerId": 0,
+                  "effectNodeName": "ShineEffect",
+                  "effectId": "P_fxint_s_rollingball_looplight_red_801",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "TurnFinish_1",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "ball_perform_state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 1
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                },
+                {
+                  "targetStateName": "TurnFinish_2",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "ball_perform_state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 2
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                },
+                {
+                  "targetStateName": "NeedHit_Shaking",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "ball_move_error_dir",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "is_water_drone_perform_hit",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "TurnFinish_1",
+              "isHaveClip": true,
+              "totalTime": 0.0166666675,
+              "animationClipName": "A_igroup_map02_machine+1_006_02_closeidle_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": true,
+                  "isPersistence": false,
+                  "innerId": 0,
+                  "effectNodeName": "FinishEffect",
+                  "effectId": "P_fxint_s_rollingball_finish_801",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": -365800917
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": false,
+                  "transitionTime": 200
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEmissiveBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.1,
+                  "type": "Emissive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "emissiveNodeName": "",
+                  "emissiveConfigHash": 127123301981685924,
+                  "isBlend": true,
+                  "isColorBlend": false,
+                  "blendTime": 0.3
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "FakeFinish",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": true,
+                    "exitTime": 1.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "FakeFinish",
+              "isHaveClip": true,
+              "totalTime": 0.0166666675,
+              "animationClipName": "A_igroup_map02_machine+1_006_02_closeidle_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEmissiveBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Emissive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "emissiveNodeName": "",
+                  "emissiveConfigHash": 127123301981685924,
+                  "isBlend": false,
+                  "isColorBlend": false,
+                  "blendTime": 0.3
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": false,
+                  "innerId": 0,
+                  "effectNodeName": "ShineEffect",
+                  "effectId": "P_fxint_s_rollingball_looplight_green_801",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "NeedHit",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "ball_perform_state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                },
+                {
+                  "targetStateName": "FakeFinish_Shaking",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "ball_move_error_dir",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "is_water_drone_perform_hit",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "FakeFinish_Shaking",
+              "isHaveClip": true,
+              "totalTime": 0.25,
+              "animationClipName": "A_igroup_map02_machine+1_006_02_shake_01",
+              "isEmpty": false,
+              "isLoop": true,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEmissiveBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Emissive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "emissiveNodeName": "",
+                  "emissiveConfigHash": 127123301981685924,
+                  "isBlend": false,
+                  "isColorBlend": false,
+                  "blendTime": 0.3
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": false,
+                  "innerId": 0,
+                  "effectNodeName": "ShineEffect",
+                  "effectId": "P_fxint_s_rollingball_looplight_green_801",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "FakeFinish",
+                  "conditionGroup": {
+                    "logic": "OR",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "ball_move_error_dir",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "is_water_drone_perform_hit",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "TurnFinish_2",
+              "isHaveClip": true,
+              "totalTime": 1.33333337,
+              "animationClipName": "A_igroup_map02_machine+1_006_02_open_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": true,
+                  "isPersistence": false,
+                  "innerId": 0,
+                  "effectNodeName": "FinishEffect",
+                  "effectId": "P_fxint_s_rollingball_finish_801",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCAudioBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Audio",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isDirectlyPlay": true,
+                  "isCustom": false,
+                  "customAudioId": "",
+                  "eAudioTriggerState": "Invalid",
+                  "normalAudioId": {
+                    "_id": -1180925593
+                  },
+                  "audioNodeName": "",
+                  "stopOnEnd": false,
+                  "transitionTime": 200
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEmissiveBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.13333334,
+                  "type": "Emissive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "emissiveNodeName": "",
+                  "emissiveConfigHash": 367726622296899561,
+                  "isBlend": true,
+                  "isColorBlend": false,
+                  "blendTime": 0.3
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "Finish",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": true,
+                    "exitTime": 1.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "Finish",
+              "isHaveClip": true,
+              "totalTime": 0.0166666675,
+              "animationClipName": "A_igroup_map02_machine+1_006_02_openidle_01",
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEmissiveBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Emissive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "emissiveNodeName": "",
+                  "emissiveConfigHash": 367726622296899561,
+                  "isBlend": true,
+                  "isColorBlend": false,
+                  "blendTime": 0.0
+                }
+              ],
+              "transitions": []
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "NeedHit_Shaking",
+              "isHaveClip": true,
+              "totalTime": 0.25,
+              "animationClipName": "A_igroup_map02_machine+1_006_02_shake_01",
+              "isEmpty": false,
+              "isLoop": true,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEmissiveBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Emissive",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "emissiveNodeName": "",
+                  "emissiveConfigHash": 654839005598771193,
+                  "isBlend": true,
+                  "isColorBlend": false,
+                  "blendTime": 0.5
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": false,
+                  "innerId": 0,
+                  "effectNodeName": "ShineEffect",
+                  "effectId": "P_fxint_s_rollingball_looplight_red_801",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "NeedHit",
+                  "conditionGroup": {
+                    "logic": "OR",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "ball_move_error_dir",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "is_water_drone_perform_hit",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "hasAnimClip": false,
+          "index": 0,
+          "weight": 1.0,
+          "layerName": "WaterBallArrow",
+          "stateDatas": [
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "Init",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": true,
+              "isLoop": false,
+              "isStartingNode": true,
+              "isComplexAnimation": false,
+              "behaviors": [],
+              "transitions": [
+                {
+                  "targetStateName": "NoArrow",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": []
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "NoArrow",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": true,
+                  "innerId": 0,
+                  "effectNodeName": "Left",
+                  "effectId": "P_fxint_s_rollingball_arrow_left_801",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": true,
+                  "innerId": 0,
+                  "effectNodeName": "Right",
+                  "effectId": "P_fxint_s_rollingball_arrow_right_801",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "Left",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "is_ball_aimed",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "ball_arrow_dir",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": -1
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                },
+                {
+                  "targetStateName": "Right",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "is_ball_aimed",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "ball_arrow_dir",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 1
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "Left",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": true,
+                  "innerId": 0,
+                  "effectNodeName": "Left",
+                  "effectId": "P_fxint_s_rollingball_arrow_left_801",
+                  "followRot": true,
+                  "active": true,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": true,
+                  "innerId": 0,
+                  "effectNodeName": "Right",
+                  "effectId": "P_fxint_s_rollingball_arrow_right_801",
+                  "followRot": true,
+                  "active": false,
+                  "force": true,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "Right",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "ball_arrow_dir",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 1
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                },
+                {
+                  "targetStateName": "NoArrow",
+                  "conditionGroup": {
+                    "logic": "OR",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "ball_arrow_dir",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Int"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "is_ball_aimed",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "Right",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": true,
+                  "innerId": 0,
+                  "effectNodeName": "Left",
+                  "effectId": "P_fxint_s_rollingball_arrow_left_801",
+                  "followRot": true,
+                  "active": false,
+                  "force": true,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                },
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": true,
+                  "innerId": 0,
+                  "effectNodeName": "Right",
+                  "effectId": "P_fxint_s_rollingball_arrow_right_801",
+                  "followRot": true,
+                  "active": true,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "None"
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "Left",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "ball_arrow_dir",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": -1
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                },
+                {
+                  "targetStateName": "NoArrow",
+                  "conditionGroup": {
+                    "logic": "OR",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "is_ball_aimed",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "ball_arrow_dir",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "hasAnimClip": false,
+          "index": 0,
+          "weight": 1.0,
+          "layerName": "SwitchHitEffect",
+          "stateDatas": [
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "Hide",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": true,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": true,
+                  "innerId": 0,
+                  "effectNodeName": "HitEffect",
+                  "effectId": "P_fxint_l_spraydrone_interhit_loop_801",
+                  "followRot": true,
+                  "active": false,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "End"
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "Show",
+                  "conditionGroup": {
+                    "logic": "AND",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "IsHit",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": true,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": false,
+                        "key": "ball_perform_state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            },
+            {
+              "stateType": "DeltaTimeBased",
+              "isSyncedWithGlobalTime": false,
+              "isSpeedBasedByParam": false,
+              "speed": 1.0,
+              "smoothTime": 0.2,
+              "stateName": "Show",
+              "isHaveClip": false,
+              "totalTime": 0.0,
+              "isEmpty": false,
+              "isLoop": false,
+              "isStartingNode": false,
+              "isComplexAnimation": false,
+              "behaviors": [
+                {
+                  "$type": "Beyond.Gameplay.Core.ModelViewStateController.MVSCEffectBehaviorData, Gameplay.Beyond",
+                  "normalizedTimeFlowBasedActive": false,
+                  "timeFlowSwitch": 0,
+                  "time": 0.0,
+                  "type": "Effect",
+                  "canLoopActive": false,
+                  "needForceExecute": false,
+                  "isLoadImmediately": false,
+                  "isPersistence": true,
+                  "innerId": 0,
+                  "effectNodeName": "HitEffect",
+                  "effectId": "P_fxint_l_spraydrone_interhit_loop_801",
+                  "followRot": true,
+                  "active": true,
+                  "force": false,
+                  "fireAndForget": false,
+                  "dontFollowTrans": false,
+                  "effectAnimationState": "Loop"
+                }
+              ],
+              "transitions": [
+                {
+                  "targetStateName": "Hide",
+                  "conditionGroup": {
+                    "logic": "OR",
+                    "conditions": [
+                      {
+                        "isInvert": false,
+                        "key": "IsHit",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Bool"
+                        }
+                      },
+                      {
+                        "isInvert": true,
+                        "key": "ball_perform_state",
+                        "comparison": "Equal",
+                        "conditionValue": {
+                          "conditionValue": {
+                            "boolValue": false,
+                            "floatValue": 0.0,
+                            "intValue": 0
+                          },
+                          "type": "Int"
+                        }
+                      }
+                    ]
+                  },
+                  "priority": 0,
+                  "transitionSetting": {
+                    "isFixedDuration": true,
+                    "blendDuration": 0.0,
+                    "hasExitTime": false,
+                    "exitTime": 0.0,
+                    "offset": 0.0,
+                    "easeType": "Linear",
+                    "blendMode": "EaseEnum"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "effectIds": [
+    "P_fxint_s_rollingball_looplight_red_801",
+    "P_fxint_s_rollingball_finish_801",
+    "P_fxint_s_rollingball_looplight_green_801",
+    "P_fxint_s_rollingball_arrow_left_801",
+    "P_fxint_s_rollingball_arrow_right_801",
+    "P_fxint_l_spraydrone_interhit_loop_801"
+  ]
+}

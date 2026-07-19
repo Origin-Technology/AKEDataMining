@@ -180,6 +180,7 @@
           "_ID": 2,
           "_nextID": 3,
           "_uid": "3f5abd4e",
+          "useCurrentScope": true,
           "_handle": {
             "paramSource": 100,
             "path": "fightHandle",
@@ -224,6 +225,12 @@
             }
           },
           "alpha": {
+            "constValue": 0.0
+          },
+          "flattenLookAt": {
+            "constValue": false
+          },
+          "lookAtHeight": {
             "constValue": 0.0
           },
           "horizontalBaseAngle": {
@@ -418,6 +425,9 @@
               "y": 1.0,
               "z": 1.0
             }
+          },
+          "_timeScale": {
+            "constValue": 1.0
           },
           "_isUnique": {
             "constValue": false
@@ -757,6 +767,7 @@
           "_ID": 31,
           "_nextID": 32,
           "_uid": "36245b85",
+          "useCurrentScope": true,
           "extraArg": {
             "constValue": 0
           },
@@ -768,6 +779,7 @@
           "$type": "Beyond.Gameplay.Actions.SetUInt, Gameplay.Beyond",
           "_ID": 32,
           "_uid": "47c25bf5",
+          "useCurrentScope": true,
           "_key": {
             "paramSource": 100,
             "path": "fightHandle",
@@ -806,6 +818,7 @@
           "$type": "Beyond.Gameplay.Actions.KeepSquadInFightRevert, Gameplay.Beyond",
           "_ID": 48,
           "_uid": "03b13552",
+          "useCurrentScope": true,
           "_handle": {
             "paramSource": 100,
             "path": "fightHandle",
@@ -889,21 +902,27 @@
   "taskMap": {
     "4a2d38a4": {
       "conditionDict": {
-        "a0ec0ed6": {
+        "d9bf0bc2": {
           "isMainObjective": true,
           "objectiveEnum": "Objective1",
           "condition": {
-            "$type": "Beyond.Gameplay.CheckMonsterSpawnerComplete, Gameplay.Beyond",
-            "uniqueId": "a0ec0ed6",
+            "$type": "Beyond.Gameplay.CheckLsmEncounterCompleted, Gameplay.Beyond",
+            "uniqueId": "d9bf0bc2",
             "useCurrentScope": false,
             "scopeMask": "Main",
             "useGraphScope": true,
-            "levelId": {
+            "_levelId": {
               "paramSource": 1000
             },
-            "spawnerId": {
+            "_scriptId": {
+              "paramSource": 1002,
+              "constValue": {
+                "scriptId": 0
+              }
+            },
+            "_lsm": {
               "paramSource": 19,
-              "path": "SpawnerID",
+              "path": "EncounterID",
               "constValue": {
                 "id": 0
               }
@@ -986,7 +1005,55 @@
       }
     },
     {
-      "key": "lt:p:4a2d38a4:a0ec0ed6",
+      "key": "EncounterID",
+      "value": {
+        "type": "LsmPtr",
+        "valueArray": [
+          {
+            "valueBit64": 0,
+            "valueString": ""
+          }
+        ]
+      }
+    },
+    {
+      "key": "@lsm_key@EncounterID@is_activated",
+      "value": {
+        "type": "String",
+        "valueArray": [
+          {
+            "valueBit64": 0,
+            "valueString": ""
+          }
+        ]
+      }
+    },
+    {
+      "key": "@lsm_key@EncounterID@is_failed",
+      "value": {
+        "type": "String",
+        "valueArray": [
+          {
+            "valueBit64": 0,
+            "valueString": ""
+          }
+        ]
+      }
+    },
+    {
+      "key": "@lsm_key@EncounterID@is_completed",
+      "value": {
+        "type": "String",
+        "valueArray": [
+          {
+            "valueBit64": 0,
+            "valueString": ""
+          }
+        ]
+      }
+    },
+    {
+      "key": "lt:p:4a2d38a4:d9bf0bc2",
       "value": {
         "type": "Int",
         "valueArray": [
@@ -997,7 +1064,7 @@
       }
     },
     {
-      "key": "lt:mp:4a2d38a4:a0ec0ed6",
+      "key": "lt:mp:4a2d38a4:d9bf0bc2",
       "value": {
         "type": "Int",
         "valueArray": [
@@ -1009,12 +1076,16 @@
     }
   ],
   "propertyIdToKeyMap": {
-    "9": "lt:p:4a2d38a4:a0ec0ed6",
+    "16": "lt:p:4a2d38a4:d9bf0bc2",
     "1025": "Chest",
     "1026": "Entry",
     "1027": "SpawnerID",
     "1028": "ChestPosition",
     "1029": "ChestRotation",
-    "1034": "lt:mp:4a2d38a4:a0ec0ed6"
+    "1036": "EncounterID",
+    "1037": "@lsm_key@EncounterID@is_activated",
+    "1038": "@lsm_key@EncounterID@is_failed",
+    "1039": "@lsm_key@EncounterID@is_completed",
+    "1041": "lt:mp:4a2d38a4:d9bf0bc2"
   }
 }
