@@ -1,0 +1,395 @@
+{
+  "baseCfg": false,
+  "desc": "",
+  "parent": {
+    "baseCfg": false,
+    "desc": "避战玩法怪物",
+    "canvasBB": {},
+    "mode": {
+      "AI/Enemy/BB/Patrol": {
+        "registerSystem": [
+          "EnemyPatrol",
+          "EnemySensor"
+        ],
+        "blackBoard": {},
+        "graph": {
+          "tag": {
+            "tagId": -1468007427
+          }
+        },
+        "behavior": {
+          "AI/Enemy/Behavior/GroupPatrol": {
+            "tag": {
+              "tagId": 47623250
+            }
+          },
+          "AI/Enemy/Behavior/SinglePatrol": {
+            "tag": {
+              "tagId": 1351478808
+            }
+          },
+          "AI/Enemy/Behavior/AttractPoint": {
+            "tag": {
+              "tagId": 1721942349
+            }
+          },
+          "AI/Enemy/Behavior/EnvConfront": {
+            "tag": {
+              "tagId": 47008295
+            }
+          }
+        }
+      },
+      "AI/Enemy/BB/Vigilance": {
+        "registerSystem": [
+          "EnemySensor"
+        ],
+        "blackBoard": {},
+        "graph": {
+          "tag": {
+            "tagId": 1862046274
+          }
+        },
+        "behavior": {
+          "AI/Enemy/Behavior/Vigilance": {
+            "tag": {
+              "tagId": 295851413
+            }
+          }
+        }
+      },
+      "AI/Enemy/BB/Battle": {
+        "registerSystem": [],
+        "blackBoard": {},
+        "graph": {
+          "tag": {
+            "tagId": -1340223560
+          }
+        },
+        "behavior": {
+          "AI/Enemy/Behavior/AvoidCombatBattle": {
+            "tag": {
+              "tagId": -1789641759
+            }
+          }
+        }
+      },
+      "AI/Enemy/BB/LeaveBattle": {
+        "registerSystem": [
+          "EnemySensor"
+        ],
+        "blackBoard": {},
+        "graph": {
+          "tag": {
+            "tagId": -1355204697
+          }
+        },
+        "behavior": {
+          "AI/Enemy/Behavior/LeaveBattle": {
+            "tag": {
+              "tagId": 91683886
+            }
+          },
+          "AI/Enemy/Behavior/Teleport": {
+            "tag": {
+              "tagId": 636388501
+            }
+          }
+        }
+      },
+      "AI/Enemy/BB/Born": {
+        "registerSystem": [
+          "EnemySensor",
+          "EnemyPatrol"
+        ],
+        "blackBoard": {},
+        "graph": {
+          "tag": {
+            "tagId": 1155112192
+          }
+        },
+        "behavior": {
+          "AI/Enemy/Behavior/Born": {
+            "tag": {
+              "tagId": 423737743
+            }
+          }
+        }
+      }
+    },
+    "graph": {
+      "AI/Enemy/BB/LeaveBattle": {
+        "graph": {
+          "$type": "Beyond.Gameplay.AI.EnemyLeaveBattleGraph+EnemyLeaveBattleGraphData, Gameplay.Beyond",
+          "tickInterval": 100.0,
+          "leaveTag": {
+            "tag": {
+              "tagId": 1852679807
+            }
+          },
+          "teleportTag": {
+            "tag": {
+              "tagId": 533615179
+            }
+          }
+        }
+      },
+      "AI/Enemy/BB/Patrol": {
+        "graph": {
+          "$type": "Beyond.Gameplay.AI.EnemyPatrolGraph+EnemyPatrolGraphData, Gameplay.Beyond",
+          "tickInterval": 0.1,
+          "singlePatrol": {
+            "tag": {
+              "tagId": -154101709
+            }
+          },
+          "groupPatrol": {
+            "tag": {
+              "tagId": -470294281
+            }
+          },
+          "enemySR": {
+            "cfg": [
+              {
+                "finishCount": 0,
+                "stimulusCfg": {
+                  "stimulusData": {
+                    "$type": "Beyond.Gameplay.AI.EnemyCommonStimulus+EnemyCommonStimulusData, Gameplay.Beyond",
+                    "stimulusType": "EnvConfront"
+                  }
+                },
+                "stimulusConditionCfg": {
+                  "stimulusConditionData": [
+                    {
+                      "$type": "Beyond.Gameplay.AI.EnemyCheckTag+EnemyCheckTagData, Gameplay.Beyond",
+                      "targetType": "Self",
+                      "checkTagType": "And",
+                      "tagInfo": [
+                        {
+                          "invert": true,
+                          "query": "InImmobilized"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "responseCfg": {
+                  "responseData": {
+                    "$type": "Beyond.Gameplay.AI.EnemyEnvConfrontResponse+EnemyEnvConfrontResponseData, Gameplay.Beyond",
+                    "tickInterval": 0.1
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "AI/Enemy/BB/Vigilance": {
+        "graph": {
+          "$type": "Beyond.Gameplay.AI.EnemySingleSwitchGraph+EnemySingleSwitchGraphData, Gameplay.Beyond",
+          "tickInterval": 100.0,
+          "behavior": {
+            "tag": {
+              "tagId": 1462195818
+            }
+          }
+        }
+      },
+      "AI/Enemy/BB/Born": {
+        "graph": {
+          "$type": "Beyond.Gameplay.AI.EnemySingleSwitchGraph+EnemySingleSwitchGraphData, Gameplay.Beyond",
+          "tickInterval": 100.0,
+          "behavior": {
+            "tag": {
+              "tagId": -1006593351
+            }
+          }
+        }
+      },
+      "AI/Enemy/BB/Battle": {
+        "graph": {
+          "$type": "Beyond.Gameplay.AI.EnemySingleSwitchGraph+EnemySingleSwitchGraphData, Gameplay.Beyond",
+          "tickInterval": 0.1,
+          "behavior": {
+            "tag": {
+              "tagId": -793830693
+            }
+          }
+        }
+      }
+    },
+    "behavior": {
+      "AI/Enemy/BB/LeaveBattle/LeaveBattle": {
+        "dataList": [
+          {
+            "$type": "Beyond.Gameplay.AI.EnemyLeaveBattleBehavior+EnemyLeaveBattleBehaviorData, Gameplay.Beyond",
+            "tickInterval": 0.0,
+            "animName": "SpotEnemy",
+            "waitTime": 2.0
+          }
+        ]
+      },
+      "AI/Enemy/BB/LeaveBattle/Teleport": {
+        "dataList": [
+          {
+            "$type": "Beyond.Gameplay.AI.EnemyLeaveBattleTeleportBehavior+EnemyLeaveBattleTeleportBehaviorData, Gameplay.Beyond",
+            "tickInterval": 100.0
+          }
+        ]
+      },
+      "AI/Enemy/BB/Patrol/GroupPatrol": {
+        "dataList": [
+          {
+            "$type": "Beyond.Gameplay.AI.EnemyGroupPatrolBehavior+EnemyGroupPatrolBehaviorData, Gameplay.Beyond",
+            "tickInterval": 0.1,
+            "clampRatio": 0.1
+          },
+          {
+            "$type": "Beyond.Gameplay.AI.EnemyFindTargetlBehavior+EnemyFindTargetlBehaviorData, Gameplay.Beyond",
+            "tickInterval": 0.2,
+            "forgetTime": 1.0,
+            "layer": {}
+          },
+          {
+            "$type": "Beyond.Gameplay.AI.EnemyPlaySoundBehavior+EnemyPlaySoundBehaviorData, Gameplay.Beyond",
+            "tickInterval": 1.0,
+            "soundName": "idle_common",
+            "radius": 20.0,
+            "loop": true,
+            "interval": 5.0
+          },
+          {
+            "$type": "Beyond.Gameplay.AI.EnemyShowAvoidCombatEffectBehavior+EnemyShowAvoidCombatEffectBehaviorData, Gameplay.Beyond",
+            "tickInterval": 0.1,
+            "radius": 0.0,
+            "effectName": "P_fxbat_skillalert_avoid_circle_02",
+            "outerEffectName": "P_fxbat_skillalert_avoid_circle_01"
+          }
+        ]
+      },
+      "AI/Enemy/BB/Patrol/SinglePatrol": {
+        "dataList": [
+          {
+            "$type": "Beyond.Gameplay.AI.EnemySinglePatrolBehavior+EnemySinglePatrolBehaviorData, Gameplay.Beyond",
+            "tickInterval": 0.1,
+            "enterRestart": false,
+            "moveMode": "NavMesh",
+            "reachDis": 0.2,
+            "reachRunDis": 1.0,
+            "entityModeId": "Patrol",
+            "entityRunModeId": "PatrolRun"
+          },
+          {
+            "$type": "Beyond.Gameplay.AI.EnemyFindTargetlBehavior+EnemyFindTargetlBehaviorData, Gameplay.Beyond",
+            "tickInterval": 0.2,
+            "forgetTime": 1.0,
+            "layer": {}
+          },
+          {
+            "$type": "Beyond.Gameplay.AI.EnemyPlaySoundBehavior+EnemyPlaySoundBehaviorData, Gameplay.Beyond",
+            "tickInterval": 1.0,
+            "soundName": "idle_common",
+            "radius": 20.0,
+            "loop": true,
+            "interval": 5.0
+          },
+          {
+            "$type": "Beyond.Gameplay.AI.EnemyShowAvoidCombatEffectBehavior+EnemyShowAvoidCombatEffectBehaviorData, Gameplay.Beyond",
+            "tickInterval": 0.1,
+            "radius": 12.0,
+            "effectName": "P_fxbat_skillalert_avoid_circle_02",
+            "outerEffectName": "P_fxbat_skillalert_avoid_circle_01"
+          }
+        ]
+      },
+      "AI/Enemy/BB/Vigilance/Vigilance": {
+        "dataList": [
+          {
+            "$type": "Beyond.Gameplay.AI.EnemyFindTargetlBehavior+EnemyFindTargetlBehaviorData, Gameplay.Beyond",
+            "tickInterval": 0.2,
+            "forgetTime": 1.0,
+            "layer": {}
+          },
+          {
+            "$type": "Beyond.Gameplay.AI.EnemyAvoidCombatVigilanceBehavior+EnemyAvoidCombatVigilanceBehaviorData, Gameplay.Beyond",
+            "tickInterval": 0.1,
+            "needMove": true,
+            "effectName": "P_fxbat_skillalert_avoid_circle_02",
+            "effectRadiusRatio": 1.0
+          }
+        ]
+      },
+      "AI/Enemy/BB/Born/Born": {
+        "dataList": [
+          {
+            "$type": "Beyond.Gameplay.AI.EnemyBornBehavior+EnemyBornBehaviorData, Gameplay.Beyond",
+            "tickInterval": 0.1,
+            "bornBehaviorData": {
+              "desc": "",
+              "enterMode": "Anim",
+              "enterBuffId": "",
+              "enterRepeat": true,
+              "enterAnimSpeed": 1.0,
+              "enterAnimId": "BornStart",
+              "enterRootMotion": false,
+              "enterSkillId": "",
+              "exitMode": "Anim",
+              "exitBuffId": "",
+              "exitAnimSpeed": 1.0,
+              "randomExitAnimId": false,
+              "exitAnimId": "BornExit",
+              "randomExitAnimIds": [],
+              "exitRootMotion": false,
+              "bornCanInterrupt": true,
+              "exitSkillId": "",
+              "canInterruptTime": -1.0
+            }
+          },
+          {
+            "$type": "Beyond.Gameplay.AI.EnemyFindTargetlBehavior+EnemyFindTargetlBehaviorData, Gameplay.Beyond",
+            "tickInterval": 0.2,
+            "forgetTime": 1.0,
+            "layer": {}
+          },
+          {
+            "$type": "Beyond.Gameplay.AI.EnemyPlaySoundBehavior+EnemyPlaySoundBehaviorData, Gameplay.Beyond",
+            "tickInterval": 1.0,
+            "soundName": "idle_common",
+            "radius": 20.0,
+            "loop": true,
+            "interval": 5.0
+          },
+          {
+            "$type": "Beyond.Gameplay.AI.EnemyShowAvoidCombatEffectBehavior+EnemyShowAvoidCombatEffectBehaviorData, Gameplay.Beyond",
+            "tickInterval": 0.1,
+            "radius": 0.0,
+            "effectName": "P_fxbat_skillalert_avoid_circle_02",
+            "outerEffectName": "P_fxbat_skillalert_avoid_circle_01"
+          }
+        ]
+      },
+      "AI/Enemy/BB/Battle/AvoidCombatBattle": {
+        "dataList": [
+          {
+            "$type": "Beyond.Gameplay.AI.EnemyAvoidCombatBattleBehavior+EnemyAvoidCombatBattleBehaviorData, Gameplay.Beyond",
+            "tickInterval": 0.1,
+            "skillId": ""
+          }
+        ]
+      }
+    }
+  },
+  "mode": {},
+  "graph": {},
+  "behavior": {
+    "AI/Enemy/BB/Battle/AvoidCombatBattle": {
+      "dataList": [
+        {
+          "$type": "Beyond.Gameplay.AI.EnemyAvoidCombatBattleBehavior+EnemyAvoidCombatBattleBehaviorData, Gameplay.Beyond",
+          "tickInterval": 0.1,
+          "skillId": "eny_0121_klbud_execute"
+        }
+      ]
+    }
+  }
+}

@@ -4,7 +4,6 @@
   "factionIndex": "Bad",
   "bornTag": [
     {
-      "tagName": "Skill/Enemy/eny_0113_jzogre",
       "tagId": -2144068822
     }
   ],
@@ -161,6 +160,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -188,6 +191,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -215,6 +222,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -242,6 +253,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -269,6 +284,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -296,6 +315,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -323,6 +346,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           }
@@ -346,7 +373,15 @@
           "eny_0113_jzogre_dash_l",
           "eny_0113_jzogre_dash_r",
           "eny_0113_jzogre_custom_levelact_1",
-          "eny_0113_jzogre_custom_levelact_2"
+          "eny_0113_jzogre_custom_levelact_2",
+          "eny_0113_jzogre_skill04_hdg023",
+          "eny_0113_jzogre_skill07_hdg023",
+          "eny_0113_jzogre_skill05_hdg023",
+          "eny_0113_jzogre_skill06_hdg023",
+          "eny_0113_jzogre_skill03_hdg023",
+          "eny_0113_jzogre_settlement",
+          "common_enemy_attackbase_settlement_elite",
+          "eny_0113_jzogre_taunt01_hdg023"
         ],
         "allPassiveSkillId": [
           "common_enemy_passive_patrol",
@@ -363,10 +398,15 @@
         "plungingAttackStartId": "",
         "plungingAttackEndId": "",
         "dodgeSkillId": "",
+        "comboSkillPriorityType": "Default",
         "comboSkillConditions": [],
+        "enableComboSkillBlackboard": false,
+        "comboSkillBlackboard": [],
         "comboSkillId": "",
         "comboSkillSpecialNodeName": "",
-        "defaultCmdMapping": {}
+        "defaultCmdMapping": {},
+        "hudPanelName": "",
+        "activeSkillTypeOverrides": {}
       },
       "uiData": {
         "showBigHeadBar": false,
@@ -2521,6 +2561,12 @@
           "value": 0.0,
           "blackboardKey": ""
         },
+        "useDurationScaleBB": false,
+        "durationScaleBB": {
+          "useBlackboardKey": false,
+          "value": 0.0,
+          "blackboardKey": ""
+        },
         "releaseByAction": false,
         "ignoreOwnerTimeScale": false,
         "interruptTime": 0.0,
@@ -2536,11 +2582,23 @@
         "isUltimateShow": false,
         "visibleWithEntity": true,
         "visibleWithEntityType": "Source",
+        "ignoreEntityDither": false,
         "moveType": "Stationary",
+        "useCameraViewportAnchor": false,
+        "cameraViewportPosition": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "cameraAnchorDistance": 1.0,
+        "cameraScreenSizeScaleMode": "None",
+        "cameraReferenceFov": 58.0,
+        "cameraReferenceAspect": 1.0,
         "positionRef": "Target",
         "grounded": false,
         "followGrounded": false,
         "followGroundedMaxDistance": 3.0,
+        "lerpToTargetTrans": false,
+        "lerpDuration": 0.0,
         "followHideTarget": false,
         "visibleWhenHideTarget": false,
         "slotIndex": 0,
@@ -2627,12 +2685,14 @@
         "modifyType": "StartLifeTime",
         "value": 0.0
       },
+      "deadEffects": [],
       "effectScale": 1.0,
       "isPlayHitFlash": true,
       "hitFlashAsset": "P_fxbat_enemy_hit_flash_01_asset",
       "healthType": "Normal",
       "preloadAbilityEntities": {},
-      "maxPotentialEffectBuffId": ""
+      "maxPotentialEffectBuffId": "",
+      "checkAllyBlockableMoveCollider": false
     },
     {
       "$type": "Beyond.Gameplay.View.EnemyAnimationComponentData, Gameplay.Beyond",
@@ -2648,10 +2708,13 @@
         "priority": 0.2,
         "layer": "Enemy",
         "modeData": {
-          "default": {
+          "Default": {
             "collidesWith": "DefaultAgent, DefaultObstacle, Character, Enemy, NPC",
             "normalTimeHorizon": 10,
-            "rvoIgnoreAgentTime": 5.0
+            "constrainNearSteering": true,
+            "nearSteeringLookAheadTime": 0.5,
+            "constrainModAngle": true,
+            "limitModAngle": 110.0
           }
         }
       }
@@ -2749,7 +2812,6 @@
               "partName": "battleshapeparent_monkey",
               "partTags": [
                 {
-                  "tagName": "Skill/Enemy/eny_0113_jzogre/part/monkey",
                   "tagId": 1735515807
                 }
               ]
@@ -2775,10 +2837,15 @@
                 "plungingAttackStartId": "",
                 "plungingAttackEndId": "",
                 "dodgeSkillId": "",
+                "comboSkillPriorityType": "Default",
                 "comboSkillConditions": [],
+                "enableComboSkillBlackboard": false,
+                "comboSkillBlackboard": [],
                 "comboSkillId": "",
                 "comboSkillSpecialNodeName": "",
-                "defaultCmdMapping": {}
+                "defaultCmdMapping": {},
+                "hudPanelName": "",
+                "activeSkillTypeOverrides": {}
               },
               "uiData": {
                 "showBigHeadBar": false,
@@ -2889,6 +2956,12 @@
                   "value": 0.0,
                   "blackboardKey": ""
                 },
+                "useDurationScaleBB": false,
+                "durationScaleBB": {
+                  "useBlackboardKey": false,
+                  "value": 0.0,
+                  "blackboardKey": ""
+                },
                 "releaseByAction": false,
                 "ignoreOwnerTimeScale": false,
                 "interruptTime": 0.0,
@@ -2904,11 +2977,23 @@
                 "isUltimateShow": false,
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
+                "ignoreEntityDither": false,
                 "moveType": "Stationary",
+                "useCameraViewportAnchor": false,
+                "cameraViewportPosition": {
+                  "x": 0.5,
+                  "y": 0.5
+                },
+                "cameraAnchorDistance": 1.0,
+                "cameraScreenSizeScaleMode": "None",
+                "cameraReferenceFov": 58.0,
+                "cameraReferenceAspect": 1.0,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
                 "followGroundedMaxDistance": 3.0,
+                "lerpToTargetTrans": false,
+                "lerpDuration": 0.0,
                 "followHideTarget": false,
                 "visibleWhenHideTarget": false,
                 "slotIndex": 0,
@@ -2995,12 +3080,14 @@
                 "modifyType": "StartLifeTime",
                 "value": 0.0
               },
+              "deadEffects": [],
               "effectScale": 1.0,
               "isPlayHitFlash": false,
               "hitFlashAsset": "",
               "healthType": "Normal",
               "preloadAbilityEntities": {},
               "maxPotentialEffectBuffId": "",
+              "checkAllyBlockableMoveCollider": false,
               "defaultEnabled": false,
               "asIndividualInExcludeTargetProcessor": false,
               "partAttributes": [],
@@ -3054,7 +3141,6 @@
               "partName": "battleshapeparent_hand",
               "partTags": [
                 {
-                  "tagName": "Skill/Enemy/eny_0113_jzogre/part/skill07_hand",
                   "tagId": 1302805660
                 }
               ]
@@ -3080,10 +3166,15 @@
                 "plungingAttackStartId": "",
                 "plungingAttackEndId": "",
                 "dodgeSkillId": "",
+                "comboSkillPriorityType": "Default",
                 "comboSkillConditions": [],
+                "enableComboSkillBlackboard": false,
+                "comboSkillBlackboard": [],
                 "comboSkillId": "",
                 "comboSkillSpecialNodeName": "",
-                "defaultCmdMapping": {}
+                "defaultCmdMapping": {},
+                "hudPanelName": "",
+                "activeSkillTypeOverrides": {}
               },
               "uiData": {
                 "showBigHeadBar": false,
@@ -3194,6 +3285,12 @@
                   "value": 0.0,
                   "blackboardKey": ""
                 },
+                "useDurationScaleBB": false,
+                "durationScaleBB": {
+                  "useBlackboardKey": false,
+                  "value": 0.0,
+                  "blackboardKey": ""
+                },
                 "releaseByAction": false,
                 "ignoreOwnerTimeScale": false,
                 "interruptTime": 0.0,
@@ -3209,11 +3306,23 @@
                 "isUltimateShow": false,
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
+                "ignoreEntityDither": false,
                 "moveType": "Stationary",
+                "useCameraViewportAnchor": false,
+                "cameraViewportPosition": {
+                  "x": 0.5,
+                  "y": 0.5
+                },
+                "cameraAnchorDistance": 1.0,
+                "cameraScreenSizeScaleMode": "None",
+                "cameraReferenceFov": 58.0,
+                "cameraReferenceAspect": 1.0,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
                 "followGroundedMaxDistance": 3.0,
+                "lerpToTargetTrans": false,
+                "lerpDuration": 0.0,
                 "followHideTarget": false,
                 "visibleWhenHideTarget": false,
                 "slotIndex": 0,
@@ -3300,12 +3409,14 @@
                 "modifyType": "StartLifeTime",
                 "value": 0.0
               },
+              "deadEffects": [],
               "effectScale": 1.0,
               "isPlayHitFlash": false,
               "hitFlashAsset": "",
               "healthType": "Independent",
               "preloadAbilityEntities": {},
               "maxPotentialEffectBuffId": "",
+              "checkAllyBlockableMoveCollider": false,
               "defaultEnabled": false,
               "asIndividualInExcludeTargetProcessor": false,
               "partAttributes": [

@@ -112,6 +112,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -139,6 +143,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -166,6 +174,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -193,6 +205,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -220,6 +236,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -247,6 +267,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -274,6 +298,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           }
@@ -310,10 +338,15 @@
         "plungingAttackStartId": "",
         "plungingAttackEndId": "",
         "dodgeSkillId": "",
+        "comboSkillPriorityType": "Default",
         "comboSkillConditions": [],
+        "enableComboSkillBlackboard": false,
+        "comboSkillBlackboard": [],
         "comboSkillId": "",
         "comboSkillSpecialNodeName": "",
-        "defaultCmdMapping": {}
+        "defaultCmdMapping": {},
+        "hudPanelName": "",
+        "activeSkillTypeOverrides": {}
       },
       "uiData": {
         "showBigHeadBar": false,
@@ -1718,7 +1751,7 @@
       "overrideDeadEffect": false,
       "deadEffect": {
         "fxType": "Normal",
-        "effectName": "",
+        "effectName": "P_common_firebuff_03",
         "guardEffect": false,
         "isCenterChangeLod": false,
         "useScaleBB": false,
@@ -1750,6 +1783,12 @@
           "value": 0.0,
           "blackboardKey": ""
         },
+        "useDurationScaleBB": false,
+        "durationScaleBB": {
+          "useBlackboardKey": false,
+          "value": 0.0,
+          "blackboardKey": ""
+        },
         "releaseByAction": false,
         "ignoreOwnerTimeScale": false,
         "interruptTime": 0.0,
@@ -1765,11 +1804,23 @@
         "isUltimateShow": false,
         "visibleWithEntity": true,
         "visibleWithEntityType": "Source",
+        "ignoreEntityDither": false,
         "moveType": "Stationary",
-        "positionRef": "Target",
+        "useCameraViewportAnchor": false,
+        "cameraViewportPosition": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "cameraAnchorDistance": 1.0,
+        "cameraScreenSizeScaleMode": "None",
+        "cameraReferenceFov": 58.0,
+        "cameraReferenceAspect": 1.0,
+        "positionRef": "Source",
         "grounded": false,
         "followGrounded": false,
         "followGroundedMaxDistance": 3.0,
+        "lerpToTargetTrans": false,
+        "lerpDuration": 0.0,
         "followHideTarget": false,
         "visibleWhenHideTarget": false,
         "slotIndex": 0,
@@ -1812,7 +1863,7 @@
         "unpackFollowTargetOnRelease": false,
         "rotType": "Stationary",
         "rotRef": "Target",
-        "directionRef": "Target",
+        "directionRef": "Source",
         "rotUseWeaponMountPoint": false,
         "rotMountPoint": "None",
         "rotWeaponIndex": 0,
@@ -1856,12 +1907,173 @@
         "modifyType": "StartLifeTime",
         "value": 0.0
       },
+      "deadEffects": [
+        {
+          "fxType": "Normal",
+          "effectName": "P_common_firebuff_03",
+          "guardEffect": false,
+          "isCenterChangeLod": false,
+          "useScaleBB": false,
+          "scale": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0
+          },
+          "scaleBB": {
+            "x": {
+              "useBlackboardKey": true,
+              "value": 0.0,
+              "blackboardKey": ""
+            },
+            "y": {
+              "useBlackboardKey": true,
+              "value": 0.0,
+              "blackboardKey": ""
+            },
+            "z": {
+              "useBlackboardKey": true,
+              "value": 0.0,
+              "blackboardKey": ""
+            }
+          },
+          "useLengthBB": false,
+          "lengthBB": {
+            "useBlackboardKey": false,
+            "value": 0.0,
+            "blackboardKey": ""
+          },
+          "useDurationScaleBB": false,
+          "durationScaleBB": {
+            "useBlackboardKey": false,
+            "value": 0.0,
+            "blackboardKey": ""
+          },
+          "releaseByAction": false,
+          "ignoreOwnerTimeScale": false,
+          "interruptTime": 0.0,
+          "terrainPrefab": false,
+          "effectPosData": [],
+          "isShowInDialog": false,
+          "isLimitEffectCount": false,
+          "limitCount": 0,
+          "protectTime": 0.0,
+          "limitTime": 0.0,
+          "limitKey": "",
+          "assetOnlyAffectModelRoot": false,
+          "isUltimateShow": false,
+          "visibleWithEntity": true,
+          "visibleWithEntityType": "Source",
+          "ignoreEntityDither": false,
+          "moveType": "Stationary",
+          "useCameraViewportAnchor": false,
+          "cameraViewportPosition": {
+            "x": 0.5,
+            "y": 0.5
+          },
+          "cameraAnchorDistance": 1.0,
+          "cameraScreenSizeScaleMode": "None",
+          "cameraReferenceFov": 58.0,
+          "cameraReferenceAspect": 1.0,
+          "positionRef": "Source",
+          "grounded": false,
+          "followGrounded": false,
+          "followGroundedMaxDistance": 3.0,
+          "lerpToTargetTrans": false,
+          "lerpDuration": 0.0,
+          "followHideTarget": false,
+          "visibleWhenHideTarget": false,
+          "slotIndex": 0,
+          "useWeaponMountPoint": false,
+          "mountPoint": "None",
+          "useAccurateMp": false,
+          "isClothMountPoint": false,
+          "weaponIndex": 0,
+          "weaponMountPoint": "Root",
+          "showHideWithWeapon": false,
+          "offsetDir": "Self",
+          "offsetDirRevert": false,
+          "usePositionOffsetBB": false,
+          "positionOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "positionOffsetBB": {
+            "x": {
+              "useBlackboardKey": true,
+              "value": 0.0,
+              "blackboardKey": ""
+            },
+            "y": {
+              "useBlackboardKey": true,
+              "value": 0.0,
+              "blackboardKey": ""
+            },
+            "z": {
+              "useBlackboardKey": true,
+              "value": 0.0,
+              "blackboardKey": ""
+            }
+          },
+          "useTargetRotation": false,
+          "scaleWithTargetSize": false,
+          "fxSize": 0.0,
+          "unpackPosDelayFrame": 0,
+          "unpackFollowTargetOnRelease": false,
+          "rotType": "Stationary",
+          "rotRef": "Target",
+          "directionRef": "Source",
+          "rotUseWeaponMountPoint": false,
+          "rotMountPoint": "None",
+          "rotWeaponIndex": 0,
+          "rotWeaponMountPoint": "Root",
+          "revertDir": false,
+          "useSelfRotationBB": false,
+          "selfRotation": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "selfRotationBB": {
+            "x": {
+              "useBlackboardKey": true,
+              "value": 0.0,
+              "blackboardKey": ""
+            },
+            "y": {
+              "useBlackboardKey": true,
+              "value": 0.0,
+              "blackboardKey": ""
+            },
+            "z": {
+              "useBlackboardKey": true,
+              "value": 0.0,
+              "blackboardKey": ""
+            }
+          },
+          "lockYRotation": true,
+          "unpackRotDelayFrame": 0,
+          "unpackFollowTargetRotOnRelease": false,
+          "weaponVfxKey": "",
+          "weaponVfxIndex": -1,
+          "weaponVfxPersistent": false,
+          "alertType": "Decal",
+          "animateAlert": false,
+          "alertAnimateDuration": 0.0,
+          "isAlertAnimateReverse": false,
+          "angle": 0.0,
+          "hollow": 0.0,
+          "modifyType": "StartLifeTime",
+          "value": 0.0
+        }
+      ],
       "effectScale": 1.0,
       "isPlayHitFlash": false,
       "hitFlashAsset": "",
       "healthType": "Normal",
       "preloadAbilityEntities": {},
-      "maxPotentialEffectBuffId": ""
+      "maxPotentialEffectBuffId": "",
+      "checkAllyBlockableMoveCollider": false
     },
     {
       "$type": "Beyond.Gameplay.View.EnemyAnimationComponentData, Gameplay.Beyond",
@@ -1877,10 +2089,13 @@
         "priority": 0.2,
         "layer": "Enemy",
         "modeData": {
-          "default": {
+          "Default": {
             "collidesWith": "DefaultAgent, DefaultObstacle, Character, Enemy, NPC",
             "normalTimeHorizon": 10,
-            "rvoIgnoreAgentTime": 5.0
+            "constrainNearSteering": true,
+            "nearSteeringLookAheadTime": 0.5,
+            "constrainModAngle": true,
+            "limitModAngle": 110.0
           }
         }
       }

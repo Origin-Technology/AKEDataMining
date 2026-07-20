@@ -4,15 +4,12 @@
   "factionIndex": "Bad",
   "bornTag": [
     {
-      "tagName": "Status/UnLockable",
       "tagId": -1496115823
     },
     {
-      "tagName": "ResetEnemyCategory/Boss",
       "tagId": -788164230
     },
     {
-      "tagName": "Skill/Enemy/eny_0081_ruanyi/ruanyi",
       "tagId": 1987514642
     }
   ],
@@ -167,6 +164,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -196,6 +197,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -223,6 +228,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -250,6 +259,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -277,6 +290,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           }
@@ -335,10 +352,15 @@
         "plungingAttackStartId": "",
         "plungingAttackEndId": "",
         "dodgeSkillId": "",
+        "comboSkillPriorityType": "Default",
         "comboSkillConditions": [],
+        "enableComboSkillBlackboard": false,
+        "comboSkillBlackboard": [],
         "comboSkillId": "",
         "comboSkillSpecialNodeName": "",
-        "defaultCmdMapping": {}
+        "defaultCmdMapping": {},
+        "hudPanelName": "",
+        "activeSkillTypeOverrides": {}
       },
       "uiData": {
         "showBigHeadBar": true,
@@ -13541,6 +13563,12 @@
           "value": 0.0,
           "blackboardKey": ""
         },
+        "useDurationScaleBB": false,
+        "durationScaleBB": {
+          "useBlackboardKey": false,
+          "value": 0.0,
+          "blackboardKey": ""
+        },
         "releaseByAction": false,
         "ignoreOwnerTimeScale": false,
         "interruptTime": 0.0,
@@ -13556,11 +13584,23 @@
         "isUltimateShow": false,
         "visibleWithEntity": true,
         "visibleWithEntityType": "Source",
+        "ignoreEntityDither": false,
         "moveType": "Stationary",
+        "useCameraViewportAnchor": false,
+        "cameraViewportPosition": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "cameraAnchorDistance": 1.0,
+        "cameraScreenSizeScaleMode": "None",
+        "cameraReferenceFov": 58.0,
+        "cameraReferenceAspect": 1.0,
         "positionRef": "Target",
         "grounded": false,
         "followGrounded": false,
         "followGroundedMaxDistance": 3.0,
+        "lerpToTargetTrans": false,
+        "lerpDuration": 0.0,
         "followHideTarget": false,
         "visibleWhenHideTarget": false,
         "slotIndex": 0,
@@ -13647,12 +13687,14 @@
         "modifyType": "StartLifeTime",
         "value": 0.0
       },
+      "deadEffects": [],
       "effectScale": 1.0,
       "isPlayHitFlash": false,
       "hitFlashAsset": "",
       "healthType": "Normal",
       "preloadAbilityEntities": {},
-      "maxPotentialEffectBuffId": ""
+      "maxPotentialEffectBuffId": "",
+      "checkAllyBlockableMoveCollider": false
     },
     {
       "$type": "Beyond.Gameplay.View.EnemyAnimationComponentData, Gameplay.Beyond",
@@ -13668,10 +13710,13 @@
         "priority": 0.2,
         "layer": "Enemy",
         "modeData": {
-          "default": {
+          "Default": {
             "collidesWith": "DefaultAgent, DefaultObstacle, Character, Enemy, NPC",
             "normalTimeHorizon": 10,
-            "rvoIgnoreAgentTime": 5.0
+            "constrainNearSteering": true,
+            "nearSteeringLookAheadTime": 0.5,
+            "constrainModAngle": true,
+            "limitModAngle": 110.0
           }
         }
       }
@@ -13775,7 +13820,6 @@
               "partName": "Bip001_R_Thigh",
               "partTags": [
                 {
-                  "tagName": "Skill/Enemy/eny_0081_ruanyi/right_foot",
                   "tagId": -1965586472
                 }
               ]
@@ -13801,10 +13845,15 @@
                 "plungingAttackStartId": "",
                 "plungingAttackEndId": "",
                 "dodgeSkillId": "",
+                "comboSkillPriorityType": "Default",
                 "comboSkillConditions": [],
+                "enableComboSkillBlackboard": false,
+                "comboSkillBlackboard": [],
                 "comboSkillId": "",
                 "comboSkillSpecialNodeName": "",
-                "defaultCmdMapping": {}
+                "defaultCmdMapping": {},
+                "hudPanelName": "",
+                "activeSkillTypeOverrides": {}
               },
               "uiData": {
                 "showBigHeadBar": false,
@@ -13915,6 +13964,12 @@
                   "value": 0.0,
                   "blackboardKey": ""
                 },
+                "useDurationScaleBB": false,
+                "durationScaleBB": {
+                  "useBlackboardKey": false,
+                  "value": 0.0,
+                  "blackboardKey": ""
+                },
                 "releaseByAction": false,
                 "ignoreOwnerTimeScale": false,
                 "interruptTime": 0.0,
@@ -13930,11 +13985,23 @@
                 "isUltimateShow": false,
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
+                "ignoreEntityDither": false,
                 "moveType": "Stationary",
+                "useCameraViewportAnchor": false,
+                "cameraViewportPosition": {
+                  "x": 0.5,
+                  "y": 0.5
+                },
+                "cameraAnchorDistance": 1.0,
+                "cameraScreenSizeScaleMode": "None",
+                "cameraReferenceFov": 58.0,
+                "cameraReferenceAspect": 1.0,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
                 "followGroundedMaxDistance": 3.0,
+                "lerpToTargetTrans": false,
+                "lerpDuration": 0.0,
                 "followHideTarget": false,
                 "visibleWhenHideTarget": false,
                 "slotIndex": 0,
@@ -14021,12 +14088,14 @@
                 "modifyType": "StartLifeTime",
                 "value": 0.0
               },
+              "deadEffects": [],
               "effectScale": 1.0,
               "isPlayHitFlash": false,
               "hitFlashAsset": "",
               "healthType": "Normal",
               "preloadAbilityEntities": {},
               "maxPotentialEffectBuffId": "",
+              "checkAllyBlockableMoveCollider": false,
               "defaultEnabled": true,
               "asIndividualInExcludeTargetProcessor": false,
               "partAttributes": [
@@ -14097,7 +14166,6 @@
               "partName": "Bip001_L_Thigh",
               "partTags": [
                 {
-                  "tagName": "Skill/Enemy/eny_0081_ruanyi/left_foot",
                   "tagId": -496215316
                 }
               ]
@@ -14123,10 +14191,15 @@
                 "plungingAttackStartId": "",
                 "plungingAttackEndId": "",
                 "dodgeSkillId": "",
+                "comboSkillPriorityType": "Default",
                 "comboSkillConditions": [],
+                "enableComboSkillBlackboard": false,
+                "comboSkillBlackboard": [],
                 "comboSkillId": "",
                 "comboSkillSpecialNodeName": "",
-                "defaultCmdMapping": {}
+                "defaultCmdMapping": {},
+                "hudPanelName": "",
+                "activeSkillTypeOverrides": {}
               },
               "uiData": {
                 "showBigHeadBar": false,
@@ -14237,6 +14310,12 @@
                   "value": 0.0,
                   "blackboardKey": ""
                 },
+                "useDurationScaleBB": false,
+                "durationScaleBB": {
+                  "useBlackboardKey": false,
+                  "value": 0.0,
+                  "blackboardKey": ""
+                },
                 "releaseByAction": false,
                 "ignoreOwnerTimeScale": false,
                 "interruptTime": 0.0,
@@ -14252,11 +14331,23 @@
                 "isUltimateShow": false,
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
+                "ignoreEntityDither": false,
                 "moveType": "Stationary",
+                "useCameraViewportAnchor": false,
+                "cameraViewportPosition": {
+                  "x": 0.5,
+                  "y": 0.5
+                },
+                "cameraAnchorDistance": 1.0,
+                "cameraScreenSizeScaleMode": "None",
+                "cameraReferenceFov": 58.0,
+                "cameraReferenceAspect": 1.0,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
                 "followGroundedMaxDistance": 3.0,
+                "lerpToTargetTrans": false,
+                "lerpDuration": 0.0,
                 "followHideTarget": false,
                 "visibleWhenHideTarget": false,
                 "slotIndex": 0,
@@ -14343,12 +14434,14 @@
                 "modifyType": "StartLifeTime",
                 "value": 0.0
               },
+              "deadEffects": [],
               "effectScale": 1.0,
               "isPlayHitFlash": false,
               "hitFlashAsset": "",
               "healthType": "Normal",
               "preloadAbilityEntities": {},
               "maxPotentialEffectBuffId": "",
+              "checkAllyBlockableMoveCollider": false,
               "defaultEnabled": true,
               "asIndividualInExcludeTargetProcessor": false,
               "partAttributes": [
@@ -14419,7 +14512,6 @@
               "partName": "Bip001_L_UpperArm",
               "partTags": [
                 {
-                  "tagName": "Skill/Enemy/eny_0081_ruanyi/left_hand",
                   "tagId": 209789424
                 }
               ]
@@ -14445,10 +14537,15 @@
                 "plungingAttackStartId": "",
                 "plungingAttackEndId": "",
                 "dodgeSkillId": "",
+                "comboSkillPriorityType": "Default",
                 "comboSkillConditions": [],
+                "enableComboSkillBlackboard": false,
+                "comboSkillBlackboard": [],
                 "comboSkillId": "",
                 "comboSkillSpecialNodeName": "",
-                "defaultCmdMapping": {}
+                "defaultCmdMapping": {},
+                "hudPanelName": "",
+                "activeSkillTypeOverrides": {}
               },
               "uiData": {
                 "showBigHeadBar": false,
@@ -14559,6 +14656,12 @@
                   "value": 0.0,
                   "blackboardKey": ""
                 },
+                "useDurationScaleBB": false,
+                "durationScaleBB": {
+                  "useBlackboardKey": false,
+                  "value": 0.0,
+                  "blackboardKey": ""
+                },
                 "releaseByAction": false,
                 "ignoreOwnerTimeScale": false,
                 "interruptTime": 0.0,
@@ -14574,11 +14677,23 @@
                 "isUltimateShow": false,
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
+                "ignoreEntityDither": false,
                 "moveType": "Stationary",
+                "useCameraViewportAnchor": false,
+                "cameraViewportPosition": {
+                  "x": 0.5,
+                  "y": 0.5
+                },
+                "cameraAnchorDistance": 1.0,
+                "cameraScreenSizeScaleMode": "None",
+                "cameraReferenceFov": 58.0,
+                "cameraReferenceAspect": 1.0,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
                 "followGroundedMaxDistance": 3.0,
+                "lerpToTargetTrans": false,
+                "lerpDuration": 0.0,
                 "followHideTarget": false,
                 "visibleWhenHideTarget": false,
                 "slotIndex": 0,
@@ -14665,12 +14780,14 @@
                 "modifyType": "StartLifeTime",
                 "value": 0.0
               },
+              "deadEffects": [],
               "effectScale": 1.0,
               "isPlayHitFlash": false,
               "hitFlashAsset": "",
               "healthType": "Normal",
               "preloadAbilityEntities": {},
               "maxPotentialEffectBuffId": "",
+              "checkAllyBlockableMoveCollider": false,
               "defaultEnabled": true,
               "asIndividualInExcludeTargetProcessor": false,
               "partAttributes": [
@@ -14741,7 +14858,6 @@
               "partName": "Bip001_R_UpperArm",
               "partTags": [
                 {
-                  "tagName": "Skill/Enemy/eny_0081_ruanyi/right_hand",
                   "tagId": 1681587396
                 }
               ]
@@ -14767,10 +14883,15 @@
                 "plungingAttackStartId": "",
                 "plungingAttackEndId": "",
                 "dodgeSkillId": "",
+                "comboSkillPriorityType": "Default",
                 "comboSkillConditions": [],
+                "enableComboSkillBlackboard": false,
+                "comboSkillBlackboard": [],
                 "comboSkillId": "",
                 "comboSkillSpecialNodeName": "",
-                "defaultCmdMapping": {}
+                "defaultCmdMapping": {},
+                "hudPanelName": "",
+                "activeSkillTypeOverrides": {}
               },
               "uiData": {
                 "showBigHeadBar": false,
@@ -14881,6 +15002,12 @@
                   "value": 0.0,
                   "blackboardKey": ""
                 },
+                "useDurationScaleBB": false,
+                "durationScaleBB": {
+                  "useBlackboardKey": false,
+                  "value": 0.0,
+                  "blackboardKey": ""
+                },
                 "releaseByAction": false,
                 "ignoreOwnerTimeScale": false,
                 "interruptTime": 0.0,
@@ -14896,11 +15023,23 @@
                 "isUltimateShow": false,
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
+                "ignoreEntityDither": false,
                 "moveType": "Stationary",
+                "useCameraViewportAnchor": false,
+                "cameraViewportPosition": {
+                  "x": 0.5,
+                  "y": 0.5
+                },
+                "cameraAnchorDistance": 1.0,
+                "cameraScreenSizeScaleMode": "None",
+                "cameraReferenceFov": 58.0,
+                "cameraReferenceAspect": 1.0,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
                 "followGroundedMaxDistance": 3.0,
+                "lerpToTargetTrans": false,
+                "lerpDuration": 0.0,
                 "followHideTarget": false,
                 "visibleWhenHideTarget": false,
                 "slotIndex": 0,
@@ -14987,12 +15126,14 @@
                 "modifyType": "StartLifeTime",
                 "value": 0.0
               },
+              "deadEffects": [],
               "effectScale": 1.0,
               "isPlayHitFlash": false,
               "hitFlashAsset": "",
               "healthType": "Normal",
               "preloadAbilityEntities": {},
               "maxPotentialEffectBuffId": "",
+              "checkAllyBlockableMoveCollider": false,
               "defaultEnabled": true,
               "asIndividualInExcludeTargetProcessor": false,
               "partAttributes": [
@@ -15063,7 +15204,6 @@
               "partName": "battle_Head",
               "partTags": [
                 {
-                  "tagName": "Skill/Enemy/eny_0081_ruanyi/head",
                   "tagId": 655093676
                 }
               ]
@@ -15089,10 +15229,15 @@
                 "plungingAttackStartId": "",
                 "plungingAttackEndId": "",
                 "dodgeSkillId": "",
+                "comboSkillPriorityType": "Default",
                 "comboSkillConditions": [],
+                "enableComboSkillBlackboard": false,
+                "comboSkillBlackboard": [],
                 "comboSkillId": "",
                 "comboSkillSpecialNodeName": "",
-                "defaultCmdMapping": {}
+                "defaultCmdMapping": {},
+                "hudPanelName": "",
+                "activeSkillTypeOverrides": {}
               },
               "uiData": {
                 "showBigHeadBar": false,
@@ -15203,6 +15348,12 @@
                   "value": 0.0,
                   "blackboardKey": ""
                 },
+                "useDurationScaleBB": false,
+                "durationScaleBB": {
+                  "useBlackboardKey": false,
+                  "value": 0.0,
+                  "blackboardKey": ""
+                },
                 "releaseByAction": false,
                 "ignoreOwnerTimeScale": false,
                 "interruptTime": 0.0,
@@ -15218,11 +15369,23 @@
                 "isUltimateShow": false,
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
+                "ignoreEntityDither": false,
                 "moveType": "Stationary",
+                "useCameraViewportAnchor": false,
+                "cameraViewportPosition": {
+                  "x": 0.5,
+                  "y": 0.5
+                },
+                "cameraAnchorDistance": 1.0,
+                "cameraScreenSizeScaleMode": "None",
+                "cameraReferenceFov": 58.0,
+                "cameraReferenceAspect": 1.0,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
                 "followGroundedMaxDistance": 3.0,
+                "lerpToTargetTrans": false,
+                "lerpDuration": 0.0,
                 "followHideTarget": false,
                 "visibleWhenHideTarget": false,
                 "slotIndex": 0,
@@ -15309,12 +15472,14 @@
                 "modifyType": "StartLifeTime",
                 "value": 0.0
               },
+              "deadEffects": [],
               "effectScale": 1.0,
               "isPlayHitFlash": false,
               "hitFlashAsset": "",
               "healthType": "Normal",
               "preloadAbilityEntities": {},
               "maxPotentialEffectBuffId": "",
+              "checkAllyBlockableMoveCollider": false,
               "defaultEnabled": true,
               "asIndividualInExcludeTargetProcessor": false,
               "partAttributes": [
@@ -15385,11 +15550,9 @@
               "partName": "spine_left",
               "partTags": [
                 {
-                  "tagName": "Status/UnLockable",
                   "tagId": -1496115823
                 },
                 {
-                  "tagName": "Skill/Enemy/eny_0081_ruanyi/body/body_left",
                   "tagId": -2147188017
                 }
               ]
@@ -15415,10 +15578,15 @@
                 "plungingAttackStartId": "",
                 "plungingAttackEndId": "",
                 "dodgeSkillId": "",
+                "comboSkillPriorityType": "Default",
                 "comboSkillConditions": [],
+                "enableComboSkillBlackboard": false,
+                "comboSkillBlackboard": [],
                 "comboSkillId": "",
                 "comboSkillSpecialNodeName": "",
-                "defaultCmdMapping": {}
+                "defaultCmdMapping": {},
+                "hudPanelName": "",
+                "activeSkillTypeOverrides": {}
               },
               "uiData": {
                 "showBigHeadBar": false,
@@ -15529,6 +15697,12 @@
                   "value": 0.0,
                   "blackboardKey": ""
                 },
+                "useDurationScaleBB": false,
+                "durationScaleBB": {
+                  "useBlackboardKey": false,
+                  "value": 0.0,
+                  "blackboardKey": ""
+                },
                 "releaseByAction": false,
                 "ignoreOwnerTimeScale": false,
                 "interruptTime": 0.0,
@@ -15544,11 +15718,23 @@
                 "isUltimateShow": false,
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
+                "ignoreEntityDither": false,
                 "moveType": "Stationary",
+                "useCameraViewportAnchor": false,
+                "cameraViewportPosition": {
+                  "x": 0.5,
+                  "y": 0.5
+                },
+                "cameraAnchorDistance": 1.0,
+                "cameraScreenSizeScaleMode": "None",
+                "cameraReferenceFov": 58.0,
+                "cameraReferenceAspect": 1.0,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
                 "followGroundedMaxDistance": 3.0,
+                "lerpToTargetTrans": false,
+                "lerpDuration": 0.0,
                 "followHideTarget": false,
                 "visibleWhenHideTarget": false,
                 "slotIndex": 0,
@@ -15635,12 +15821,14 @@
                 "modifyType": "StartLifeTime",
                 "value": 0.0
               },
+              "deadEffects": [],
               "effectScale": 1.0,
               "isPlayHitFlash": false,
               "hitFlashAsset": "",
               "healthType": "Normal",
               "preloadAbilityEntities": {},
               "maxPotentialEffectBuffId": "",
+              "checkAllyBlockableMoveCollider": false,
               "defaultEnabled": true,
               "asIndividualInExcludeTargetProcessor": false,
               "partAttributes": [
@@ -15711,11 +15899,9 @@
               "partName": "spine_right",
               "partTags": [
                 {
-                  "tagName": "Status/UnLockable",
                   "tagId": -1496115823
                 },
                 {
-                  "tagName": "Skill/Enemy/eny_0081_ruanyi/body/body_right",
                   "tagId": -58580934
                 }
               ]
@@ -15741,10 +15927,15 @@
                 "plungingAttackStartId": "",
                 "plungingAttackEndId": "",
                 "dodgeSkillId": "",
+                "comboSkillPriorityType": "Default",
                 "comboSkillConditions": [],
+                "enableComboSkillBlackboard": false,
+                "comboSkillBlackboard": [],
                 "comboSkillId": "",
                 "comboSkillSpecialNodeName": "",
-                "defaultCmdMapping": {}
+                "defaultCmdMapping": {},
+                "hudPanelName": "",
+                "activeSkillTypeOverrides": {}
               },
               "uiData": {
                 "showBigHeadBar": false,
@@ -15855,6 +16046,12 @@
                   "value": 0.0,
                   "blackboardKey": ""
                 },
+                "useDurationScaleBB": false,
+                "durationScaleBB": {
+                  "useBlackboardKey": false,
+                  "value": 0.0,
+                  "blackboardKey": ""
+                },
                 "releaseByAction": false,
                 "ignoreOwnerTimeScale": false,
                 "interruptTime": 0.0,
@@ -15870,11 +16067,23 @@
                 "isUltimateShow": false,
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
+                "ignoreEntityDither": false,
                 "moveType": "Stationary",
+                "useCameraViewportAnchor": false,
+                "cameraViewportPosition": {
+                  "x": 0.5,
+                  "y": 0.5
+                },
+                "cameraAnchorDistance": 1.0,
+                "cameraScreenSizeScaleMode": "None",
+                "cameraReferenceFov": 58.0,
+                "cameraReferenceAspect": 1.0,
                 "positionRef": "Target",
                 "grounded": false,
                 "followGrounded": false,
                 "followGroundedMaxDistance": 3.0,
+                "lerpToTargetTrans": false,
+                "lerpDuration": 0.0,
                 "followHideTarget": false,
                 "visibleWhenHideTarget": false,
                 "slotIndex": 0,
@@ -15961,12 +16170,14 @@
                 "modifyType": "StartLifeTime",
                 "value": 0.0
               },
+              "deadEffects": [],
               "effectScale": 1.0,
               "isPlayHitFlash": false,
               "hitFlashAsset": "",
               "healthType": "Normal",
               "preloadAbilityEntities": {},
               "maxPotentialEffectBuffId": "",
+              "checkAllyBlockableMoveCollider": false,
               "defaultEnabled": true,
               "asIndividualInExcludeTargetProcessor": false,
               "partAttributes": [

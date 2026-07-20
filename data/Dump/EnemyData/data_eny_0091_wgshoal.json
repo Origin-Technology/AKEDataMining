@@ -4,7 +4,6 @@
   "factionIndex": "Bad",
   "bornTag": [
     {
-      "tagName": "EnemyCate/WaterAngel",
       "tagId": -1820374837
     }
   ],
@@ -149,6 +148,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -176,6 +179,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -205,6 +212,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -232,6 +243,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -259,6 +274,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -286,6 +305,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -313,6 +336,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           }
@@ -336,7 +363,8 @@
           "eny_0091_wgshoal_dash_r",
           "eny_0091_wgshoal_skill02_nearspcial",
           "eny_0091_wgshoal_skill04_nearspecial",
-          "eny_0091_wgshoal_skill05_nearspecial"
+          "eny_0091_wgshoal_skill05_nearspecial",
+          "eny_0091_wgshoal_skill04_v2_inplace"
         ],
         "allPassiveSkillId": [
           "common_enemy_passive_patrol",
@@ -357,10 +385,15 @@
         "plungingAttackStartId": "",
         "plungingAttackEndId": "",
         "dodgeSkillId": "",
+        "comboSkillPriorityType": "Default",
         "comboSkillConditions": [],
+        "enableComboSkillBlackboard": false,
+        "comboSkillBlackboard": [],
         "comboSkillId": "",
         "comboSkillSpecialNodeName": "",
-        "defaultCmdMapping": {}
+        "defaultCmdMapping": {},
+        "hudPanelName": "",
+        "activeSkillTypeOverrides": {}
       },
       "uiData": {
         "showBigHeadBar": false,
@@ -1148,6 +1181,12 @@
           "value": 0.0,
           "blackboardKey": ""
         },
+        "useDurationScaleBB": false,
+        "durationScaleBB": {
+          "useBlackboardKey": false,
+          "value": 0.0,
+          "blackboardKey": ""
+        },
         "releaseByAction": false,
         "ignoreOwnerTimeScale": false,
         "interruptTime": 0.0,
@@ -1163,11 +1202,23 @@
         "isUltimateShow": false,
         "visibleWithEntity": true,
         "visibleWithEntityType": "Source",
+        "ignoreEntityDither": false,
         "moveType": "Stationary",
+        "useCameraViewportAnchor": false,
+        "cameraViewportPosition": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "cameraAnchorDistance": 1.0,
+        "cameraScreenSizeScaleMode": "None",
+        "cameraReferenceFov": 58.0,
+        "cameraReferenceAspect": 1.0,
         "positionRef": "Target",
         "grounded": false,
         "followGrounded": false,
         "followGroundedMaxDistance": 3.0,
+        "lerpToTargetTrans": false,
+        "lerpDuration": 0.0,
         "followHideTarget": false,
         "visibleWhenHideTarget": false,
         "slotIndex": 0,
@@ -1254,12 +1305,14 @@
         "modifyType": "StartLifeTime",
         "value": 0.0
       },
+      "deadEffects": [],
       "effectScale": 1.0,
       "isPlayHitFlash": true,
       "hitFlashAsset": "P_fxbat_enemy_hit_flash_01_asset",
       "healthType": "Normal",
       "preloadAbilityEntities": {},
-      "maxPotentialEffectBuffId": ""
+      "maxPotentialEffectBuffId": "",
+      "checkAllyBlockableMoveCollider": false
     },
     {
       "$type": "Beyond.Gameplay.View.EnemyAnimationComponentData, Gameplay.Beyond",
@@ -1275,10 +1328,13 @@
         "priority": 0.2,
         "layer": "Enemy",
         "modeData": {
-          "default": {
+          "Default": {
             "collidesWith": "DefaultAgent, DefaultObstacle, Character, Enemy, NPC",
             "normalTimeHorizon": 10,
-            "rvoIgnoreAgentTime": 5.0
+            "constrainNearSteering": true,
+            "nearSteeringLookAheadTime": 0.5,
+            "constrainModAngle": true,
+            "limitModAngle": 110.0
           }
         }
       }

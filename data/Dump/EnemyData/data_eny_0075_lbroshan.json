@@ -101,7 +101,7 @@
         "_navAcceleration": 1000.0
       },
       "proxyShape": {
-        "height": 2.0,
+        "height": 2.1,
         "radius": 1.0
       },
       "overrideMoveMode": "None",
@@ -114,7 +114,7 @@
       "$type": "Beyond.Gameplay.Core.AbilitySystemData, Gameplay.Beyond",
       "shapeData": {
         "detectedRadius": 1.0,
-        "detectedHeight": 2.0
+        "detectedHeight": 2.1
       },
       "modeConfig": {
         "modes": [
@@ -144,6 +144,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -173,6 +177,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -200,6 +208,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -227,6 +239,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -254,6 +270,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -281,6 +301,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           },
@@ -308,6 +332,10 @@
             "overrideModelKey": false,
             "modelKey": "",
             "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
             "overrideCmdMapping": false,
             "cmdMapping": {}
           }
@@ -330,7 +358,14 @@
           "eny_0075_lbroshan_dash_f",
           "eny_0075_lbroshan_dash_b",
           "eny_0075_lbroshan_boom_break",
-          "eny_0075_lbroshan_showselfpose"
+          "eny_0075_lbroshan_showselfpose",
+          "eny_0075_lbroshan_dung_coin",
+          "eny_0075_lbroshan_skill_settlement",
+          "common_enemy_attackbase_settlement_elite",
+          "eny_0075_lbroshan_skill2_coin",
+          "eny_0075_lbroshan_skill3_coin",
+          "eny_0075_lbroshan_skill4_coin",
+          "eny_0075_lbroshan_skill6_coin"
         ],
         "allPassiveSkillId": [
           "common_enemy_passive_patrol",
@@ -347,10 +382,15 @@
         "plungingAttackStartId": "",
         "plungingAttackEndId": "",
         "dodgeSkillId": "",
+        "comboSkillPriorityType": "Default",
         "comboSkillConditions": [],
+        "enableComboSkillBlackboard": false,
+        "comboSkillBlackboard": [],
         "comboSkillId": "",
         "comboSkillSpecialNodeName": "",
-        "defaultCmdMapping": {}
+        "defaultCmdMapping": {},
+        "hudPanelName": "",
+        "activeSkillTypeOverrides": {}
       },
       "uiData": {
         "showBigHeadBar": false,
@@ -2481,6 +2521,12 @@
           "value": 0.0,
           "blackboardKey": ""
         },
+        "useDurationScaleBB": false,
+        "durationScaleBB": {
+          "useBlackboardKey": false,
+          "value": 0.0,
+          "blackboardKey": ""
+        },
         "releaseByAction": false,
         "ignoreOwnerTimeScale": false,
         "interruptTime": 0.0,
@@ -2496,11 +2542,23 @@
         "isUltimateShow": false,
         "visibleWithEntity": true,
         "visibleWithEntityType": "Source",
+        "ignoreEntityDither": false,
         "moveType": "Stationary",
+        "useCameraViewportAnchor": false,
+        "cameraViewportPosition": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "cameraAnchorDistance": 1.0,
+        "cameraScreenSizeScaleMode": "None",
+        "cameraReferenceFov": 58.0,
+        "cameraReferenceAspect": 1.0,
         "positionRef": "Target",
         "grounded": false,
         "followGrounded": false,
         "followGroundedMaxDistance": 3.0,
+        "lerpToTargetTrans": false,
+        "lerpDuration": 0.0,
         "followHideTarget": false,
         "visibleWhenHideTarget": false,
         "slotIndex": 0,
@@ -2587,12 +2645,14 @@
         "modifyType": "StartLifeTime",
         "value": 0.0
       },
+      "deadEffects": [],
       "effectScale": 1.0,
       "isPlayHitFlash": false,
       "hitFlashAsset": "",
       "healthType": "Normal",
       "preloadAbilityEntities": {},
-      "maxPotentialEffectBuffId": ""
+      "maxPotentialEffectBuffId": "",
+      "checkAllyBlockableMoveCollider": false
     },
     {
       "$type": "Beyond.Gameplay.View.EnemyAnimationComponentData, Gameplay.Beyond",
@@ -2608,10 +2668,13 @@
         "priority": 0.2,
         "layer": "Enemy",
         "modeData": {
-          "default": {
+          "Default": {
             "collidesWith": "DefaultAgent, DefaultObstacle, Character, Enemy, NPC",
             "normalTimeHorizon": 10,
-            "rvoIgnoreAgentTime": 5.0
+            "constrainNearSteering": true,
+            "nearSteeringLookAheadTime": 0.5,
+            "constrainModAngle": true,
+            "limitModAngle": 110.0
           }
         }
       }
