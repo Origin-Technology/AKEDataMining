@@ -267,6 +267,7 @@
             "priorityOffset": 0,
             "serverActionIndex": 3,
             "auraDebugName": "",
+            "m_auraTypeWarning": "光环范围过大，每帧检测物理碰撞开销较大，建议使用全局光环",
             "auraType": "RangedAura",
             "auraRoot": {
               "targetSource": "Owner",
@@ -349,6 +350,8 @@
             "buffInput": [],
             "overrideBuffIconDuration": false,
             "buffIconDurationSource": {
+              "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
+              "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
               "durationSourceType": "AbilityEntity",
               "timedMarkerId": ""
             },
@@ -1949,53 +1952,44 @@
                         },
                         "useCurveKey": false,
                         "curveKey": "",
-                        "timeScaleCurve": {
-                          "$type": "Beyond.FAnimationCurve, Common.Beyond",
-                          "keys": [
-                            {
-                              "time": 0.0,
-                              "value": 1.0,
-                              "inTangent": -3.354385,
-                              "outTangent": -3.354385,
-                              "tangentMode": 0,
-                              "weightedMode": 0,
-                              "inWeight": 0.0,
-                              "outWeight": 0.0
-                            },
-                            {
-                              "time": 0.1095815,
-                              "value": 0.03185417,
-                              "inTangent": -1.871277,
-                              "outTangent": 0.0,
-                              "tangentMode": 0,
-                              "weightedMode": 0,
-                              "inWeight": 0.0,
-                              "outWeight": 0.0
-                            },
-                            {
-                              "time": 0.8651878,
-                              "value": 0.04138419,
-                              "inTangent": 0.002828423,
-                              "outTangent": 0.002828423,
-                              "tangentMode": 0,
-                              "weightedMode": 0,
-                              "inWeight": 0.0,
-                              "outWeight": 0.0
-                            },
-                            {
-                              "time": 1.0,
-                              "value": 1.0,
-                              "inTangent": 3.116933,
-                              "outTangent": 3.116933,
-                              "tangentMode": 0,
-                              "weightedMode": 0,
-                              "inWeight": 0.0,
-                              "outWeight": 0.0
-                            }
-                          ],
-                          "preWrapMode": "ClampForever",
-                          "postWrapMode": "ClampForever"
-                        },
+                        "timeScaleCurve": [
+                          {
+                            "time": 0.0,
+                            "value": 1.0,
+                            "inTangent": -3.354385,
+                            "outTangent": -3.354385,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          },
+                          {
+                            "time": 0.1095815,
+                            "value": 0.03185417,
+                            "inTangent": -1.871277,
+                            "outTangent": 0.0,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          },
+                          {
+                            "time": 0.8651878,
+                            "value": 0.04138419,
+                            "inTangent": 0.002828423,
+                            "outTangent": 0.002828423,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          },
+                          {
+                            "time": 1.0,
+                            "value": 1.0,
+                            "inTangent": 3.116933,
+                            "outTangent": 3.116933,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          }
+                        ],
                         "finishByAction": false,
                         "ignoreTargets": [],
                         "effectTargets": [],
@@ -2052,12 +2046,7 @@
                           "impulseChannel": 1,
                           "impulseType": "Legacy",
                           "impulseShape": "Custom",
-                          "customImpulseShape": {
-                            "$type": "Beyond.FAnimationCurve, Common.Beyond",
-                            "keys": [],
-                            "preWrapMode": "ClampForever",
-                            "postWrapMode": "ClampForever"
-                          },
+                          "customImpulseShape": [],
                           "impulseDuration": 0.2,
                           "rawSignalPath": "Assets/Beyond/DynamicAssets/GameData/SkillData/Curve/NoiseSettings_Skill_3D_LargeY.asset",
                           "amplitudeGain": 1.0,
@@ -2065,8 +2054,27 @@
                           "repeatMode": "Loop",
                           "randomize": true,
                           "timeEnvelope": {
-                            "m_AttackShape": {},
-                            "m_DecayShape": {},
+                            "m_AttackShape": [],
+                            "m_DecayShape": [
+                              {
+                                "time": 0.0,
+                                "value": 1.0,
+                                "inTangent": 0.0,
+                                "outTangent": 0.0,
+                                "inWeight": 0.0,
+                                "outWeight": 0.0,
+                                "weightedMode": 0
+                              },
+                              {
+                                "time": 1.0,
+                                "value": 0.0,
+                                "inTangent": 0.0,
+                                "outTangent": 0.0,
+                                "inWeight": 0.0,
+                                "outWeight": 0.0,
+                                "weightedMode": 0
+                              }
+                            ],
                             "m_AttackTime": 0.0,
                             "m_SustainTime": 0.3,
                             "m_DecayTime": 0.2,
@@ -2187,6 +2195,8 @@
                         "passTargetGroupsToBuff": false,
                         "overrideBuffIconDuration": false,
                         "buffIconDurationSource": {
+                          "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
+                          "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
                           "durationSourceType": "AbilityEntity",
                           "timedMarkerId": ""
                         }
@@ -2217,53 +2227,44 @@
                         },
                         "useCurveKey": false,
                         "curveKey": "",
-                        "timeScaleCurve": {
-                          "$type": "Beyond.FAnimationCurve, Common.Beyond",
-                          "keys": [
-                            {
-                              "time": 0.0,
-                              "value": 1.0,
-                              "inTangent": -3.354385,
-                              "outTangent": -3.354385,
-                              "tangentMode": 0,
-                              "weightedMode": 0,
-                              "inWeight": 0.0,
-                              "outWeight": 0.0
-                            },
-                            {
-                              "time": 0.1095815,
-                              "value": 0.03185417,
-                              "inTangent": -1.871277,
-                              "outTangent": 0.0,
-                              "tangentMode": 0,
-                              "weightedMode": 0,
-                              "inWeight": 0.0,
-                              "outWeight": 0.0
-                            },
-                            {
-                              "time": 0.8651878,
-                              "value": 0.04138419,
-                              "inTangent": 0.002828423,
-                              "outTangent": 0.002828423,
-                              "tangentMode": 0,
-                              "weightedMode": 0,
-                              "inWeight": 0.0,
-                              "outWeight": 0.0
-                            },
-                            {
-                              "time": 1.0,
-                              "value": 1.0,
-                              "inTangent": 3.116933,
-                              "outTangent": 3.116933,
-                              "tangentMode": 0,
-                              "weightedMode": 0,
-                              "inWeight": 0.0,
-                              "outWeight": 0.0
-                            }
-                          ],
-                          "preWrapMode": "ClampForever",
-                          "postWrapMode": "ClampForever"
-                        },
+                        "timeScaleCurve": [
+                          {
+                            "time": 0.0,
+                            "value": 1.0,
+                            "inTangent": -3.354385,
+                            "outTangent": -3.354385,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          },
+                          {
+                            "time": 0.1095815,
+                            "value": 0.03185417,
+                            "inTangent": -1.871277,
+                            "outTangent": 0.0,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          },
+                          {
+                            "time": 0.8651878,
+                            "value": 0.04138419,
+                            "inTangent": 0.002828423,
+                            "outTangent": 0.002828423,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          },
+                          {
+                            "time": 1.0,
+                            "value": 1.0,
+                            "inTangent": 3.116933,
+                            "outTangent": 3.116933,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          }
+                        ],
                         "finishByAction": false,
                         "ignoreTargets": [],
                         "effectTargets": [],
@@ -2320,12 +2321,7 @@
                           "impulseChannel": 1,
                           "impulseType": "Legacy",
                           "impulseShape": "Custom",
-                          "customImpulseShape": {
-                            "$type": "Beyond.FAnimationCurve, Common.Beyond",
-                            "keys": [],
-                            "preWrapMode": "ClampForever",
-                            "postWrapMode": "ClampForever"
-                          },
+                          "customImpulseShape": [],
                           "impulseDuration": 0.2,
                           "rawSignalPath": "Assets/Beyond/DynamicAssets/GameData/SkillData/Curve/NoiseSettings_Skill_3D_LargeY.asset",
                           "amplitudeGain": 0.5,
@@ -2333,8 +2329,27 @@
                           "repeatMode": "Loop",
                           "randomize": true,
                           "timeEnvelope": {
-                            "m_AttackShape": {},
-                            "m_DecayShape": {},
+                            "m_AttackShape": [],
+                            "m_DecayShape": [
+                              {
+                                "time": 0.0,
+                                "value": 1.0,
+                                "inTangent": 0.0,
+                                "outTangent": 0.0,
+                                "inWeight": 0.0,
+                                "outWeight": 0.0,
+                                "weightedMode": 0
+                              },
+                              {
+                                "time": 1.0,
+                                "value": 0.0,
+                                "inTangent": 0.0,
+                                "outTangent": 0.0,
+                                "inWeight": 0.0,
+                                "outWeight": 0.0,
+                                "weightedMode": 0
+                              }
+                            ],
                             "m_AttackTime": 0.0,
                             "m_SustainTime": 0.2,
                             "m_DecayTime": 0.2,
@@ -2455,6 +2470,8 @@
                         "passTargetGroupsToBuff": false,
                         "overrideBuffIconDuration": false,
                         "buffIconDurationSource": {
+                          "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
+                          "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
                           "durationSourceType": "AbilityEntity",
                           "timedMarkerId": ""
                         }
@@ -2563,6 +2580,8 @@
                   "passTargetGroupsToBuff": false,
                   "overrideBuffIconDuration": false,
                   "buffIconDurationSource": {
+                    "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
+                    "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
                     "durationSourceType": "AbilityEntity",
                     "timedMarkerId": ""
                   }
@@ -3893,6 +3912,7 @@
             "priorityOffset": 0,
             "serverActionIndex": 38,
             "auraDebugName": "",
+            "m_auraTypeWarning": "光环范围过大，每帧检测物理碰撞开销较大，建议使用全局光环",
             "auraType": "RangedAura",
             "auraRoot": {
               "targetSource": "Owner",
@@ -3975,6 +3995,8 @@
             "buffInput": [],
             "overrideBuffIconDuration": false,
             "buffIconDurationSource": {
+              "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
+              "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
               "durationSourceType": "AbilityEntity",
               "timedMarkerId": ""
             },
@@ -5575,53 +5597,44 @@
                         },
                         "useCurveKey": false,
                         "curveKey": "",
-                        "timeScaleCurve": {
-                          "$type": "Beyond.FAnimationCurve, Common.Beyond",
-                          "keys": [
-                            {
-                              "time": 0.0,
-                              "value": 1.0,
-                              "inTangent": -3.354385,
-                              "outTangent": -3.354385,
-                              "tangentMode": 0,
-                              "weightedMode": 0,
-                              "inWeight": 0.0,
-                              "outWeight": 0.0
-                            },
-                            {
-                              "time": 0.1095815,
-                              "value": 0.03185417,
-                              "inTangent": -1.871277,
-                              "outTangent": 0.0,
-                              "tangentMode": 0,
-                              "weightedMode": 0,
-                              "inWeight": 0.0,
-                              "outWeight": 0.0
-                            },
-                            {
-                              "time": 0.8651878,
-                              "value": 0.04138419,
-                              "inTangent": 0.002828423,
-                              "outTangent": 0.002828423,
-                              "tangentMode": 0,
-                              "weightedMode": 0,
-                              "inWeight": 0.0,
-                              "outWeight": 0.0
-                            },
-                            {
-                              "time": 1.0,
-                              "value": 1.0,
-                              "inTangent": 3.116933,
-                              "outTangent": 3.116933,
-                              "tangentMode": 0,
-                              "weightedMode": 0,
-                              "inWeight": 0.0,
-                              "outWeight": 0.0
-                            }
-                          ],
-                          "preWrapMode": "ClampForever",
-                          "postWrapMode": "ClampForever"
-                        },
+                        "timeScaleCurve": [
+                          {
+                            "time": 0.0,
+                            "value": 1.0,
+                            "inTangent": -3.354385,
+                            "outTangent": -3.354385,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          },
+                          {
+                            "time": 0.1095815,
+                            "value": 0.03185417,
+                            "inTangent": -1.871277,
+                            "outTangent": 0.0,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          },
+                          {
+                            "time": 0.8651878,
+                            "value": 0.04138419,
+                            "inTangent": 0.002828423,
+                            "outTangent": 0.002828423,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          },
+                          {
+                            "time": 1.0,
+                            "value": 1.0,
+                            "inTangent": 3.116933,
+                            "outTangent": 3.116933,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          }
+                        ],
                         "finishByAction": false,
                         "ignoreTargets": [],
                         "effectTargets": [],
@@ -5678,12 +5691,7 @@
                           "impulseChannel": 1,
                           "impulseType": "Legacy",
                           "impulseShape": "Custom",
-                          "customImpulseShape": {
-                            "$type": "Beyond.FAnimationCurve, Common.Beyond",
-                            "keys": [],
-                            "preWrapMode": "ClampForever",
-                            "postWrapMode": "ClampForever"
-                          },
+                          "customImpulseShape": [],
                           "impulseDuration": 0.2,
                           "rawSignalPath": "Assets/Beyond/DynamicAssets/GameData/SkillData/Curve/NoiseSettings_Skill_3D_LargeY.asset",
                           "amplitudeGain": 1.0,
@@ -5691,8 +5699,27 @@
                           "repeatMode": "Loop",
                           "randomize": true,
                           "timeEnvelope": {
-                            "m_AttackShape": {},
-                            "m_DecayShape": {},
+                            "m_AttackShape": [],
+                            "m_DecayShape": [
+                              {
+                                "time": 0.0,
+                                "value": 1.0,
+                                "inTangent": 0.0,
+                                "outTangent": 0.0,
+                                "inWeight": 0.0,
+                                "outWeight": 0.0,
+                                "weightedMode": 0
+                              },
+                              {
+                                "time": 1.0,
+                                "value": 0.0,
+                                "inTangent": 0.0,
+                                "outTangent": 0.0,
+                                "inWeight": 0.0,
+                                "outWeight": 0.0,
+                                "weightedMode": 0
+                              }
+                            ],
                             "m_AttackTime": 0.0,
                             "m_SustainTime": 0.3,
                             "m_DecayTime": 0.2,
@@ -5813,6 +5840,8 @@
                         "passTargetGroupsToBuff": false,
                         "overrideBuffIconDuration": false,
                         "buffIconDurationSource": {
+                          "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
+                          "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
                           "durationSourceType": "AbilityEntity",
                           "timedMarkerId": ""
                         }
@@ -5843,53 +5872,44 @@
                         },
                         "useCurveKey": false,
                         "curveKey": "",
-                        "timeScaleCurve": {
-                          "$type": "Beyond.FAnimationCurve, Common.Beyond",
-                          "keys": [
-                            {
-                              "time": 0.0,
-                              "value": 1.0,
-                              "inTangent": -3.354385,
-                              "outTangent": -3.354385,
-                              "tangentMode": 0,
-                              "weightedMode": 0,
-                              "inWeight": 0.0,
-                              "outWeight": 0.0
-                            },
-                            {
-                              "time": 0.1095815,
-                              "value": 0.03185417,
-                              "inTangent": -1.871277,
-                              "outTangent": 0.0,
-                              "tangentMode": 0,
-                              "weightedMode": 0,
-                              "inWeight": 0.0,
-                              "outWeight": 0.0
-                            },
-                            {
-                              "time": 0.8651878,
-                              "value": 0.04138419,
-                              "inTangent": 0.002828423,
-                              "outTangent": 0.002828423,
-                              "tangentMode": 0,
-                              "weightedMode": 0,
-                              "inWeight": 0.0,
-                              "outWeight": 0.0
-                            },
-                            {
-                              "time": 1.0,
-                              "value": 1.0,
-                              "inTangent": 3.116933,
-                              "outTangent": 3.116933,
-                              "tangentMode": 0,
-                              "weightedMode": 0,
-                              "inWeight": 0.0,
-                              "outWeight": 0.0
-                            }
-                          ],
-                          "preWrapMode": "ClampForever",
-                          "postWrapMode": "ClampForever"
-                        },
+                        "timeScaleCurve": [
+                          {
+                            "time": 0.0,
+                            "value": 1.0,
+                            "inTangent": -3.354385,
+                            "outTangent": -3.354385,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          },
+                          {
+                            "time": 0.1095815,
+                            "value": 0.03185417,
+                            "inTangent": -1.871277,
+                            "outTangent": 0.0,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          },
+                          {
+                            "time": 0.8651878,
+                            "value": 0.04138419,
+                            "inTangent": 0.002828423,
+                            "outTangent": 0.002828423,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          },
+                          {
+                            "time": 1.0,
+                            "value": 1.0,
+                            "inTangent": 3.116933,
+                            "outTangent": 3.116933,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          }
+                        ],
                         "finishByAction": false,
                         "ignoreTargets": [],
                         "effectTargets": [],
@@ -5946,12 +5966,7 @@
                           "impulseChannel": 1,
                           "impulseType": "Legacy",
                           "impulseShape": "Custom",
-                          "customImpulseShape": {
-                            "$type": "Beyond.FAnimationCurve, Common.Beyond",
-                            "keys": [],
-                            "preWrapMode": "ClampForever",
-                            "postWrapMode": "ClampForever"
-                          },
+                          "customImpulseShape": [],
                           "impulseDuration": 0.2,
                           "rawSignalPath": "Assets/Beyond/DynamicAssets/GameData/SkillData/Curve/NoiseSettings_Skill_3D_LargeY.asset",
                           "amplitudeGain": 0.5,
@@ -5959,8 +5974,27 @@
                           "repeatMode": "Loop",
                           "randomize": true,
                           "timeEnvelope": {
-                            "m_AttackShape": {},
-                            "m_DecayShape": {},
+                            "m_AttackShape": [],
+                            "m_DecayShape": [
+                              {
+                                "time": 0.0,
+                                "value": 1.0,
+                                "inTangent": 0.0,
+                                "outTangent": 0.0,
+                                "inWeight": 0.0,
+                                "outWeight": 0.0,
+                                "weightedMode": 0
+                              },
+                              {
+                                "time": 1.0,
+                                "value": 0.0,
+                                "inTangent": 0.0,
+                                "outTangent": 0.0,
+                                "inWeight": 0.0,
+                                "outWeight": 0.0,
+                                "weightedMode": 0
+                              }
+                            ],
                             "m_AttackTime": 0.0,
                             "m_SustainTime": 0.2,
                             "m_DecayTime": 0.2,
@@ -6081,6 +6115,8 @@
                         "passTargetGroupsToBuff": false,
                         "overrideBuffIconDuration": false,
                         "buffIconDurationSource": {
+                          "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
+                          "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
                           "durationSourceType": "AbilityEntity",
                           "timedMarkerId": ""
                         }
@@ -6189,6 +6225,8 @@
                   "passTargetGroupsToBuff": false,
                   "overrideBuffIconDuration": false,
                   "buffIconDurationSource": {
+                    "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
+                    "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
                     "durationSourceType": "AbilityEntity",
                     "timedMarkerId": ""
                   }
@@ -6324,6 +6362,7 @@
             "priorityOffset": 0,
             "serverActionIndex": 67,
             "auraDebugName": "",
+            "m_auraTypeWarning": "光环范围过大，每帧检测物理碰撞开销较大，建议使用全局光环",
             "auraType": "RangedAura",
             "auraRoot": {
               "targetSource": "Owner",
@@ -6406,6 +6445,8 @@
             "buffInput": [],
             "overrideBuffIconDuration": false,
             "buffIconDurationSource": {
+              "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
+              "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
               "durationSourceType": "AbilityEntity",
               "timedMarkerId": ""
             },
