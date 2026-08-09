@@ -630,7 +630,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 29,
+                        "serverActionIndex": 31,
                         "valueA": {
                           "useBlackboardKey": true,
                           "value": 0.0,
@@ -1180,7 +1180,7 @@
                               "isEnable": true,
                               "priorityLevel": "Default",
                               "priorityOffset": 0,
-                              "serverActionIndex": 39,
+                              "serverActionIndex": 41,
                               "firstTargetSettings": {
                                 "targetSource": "Target",
                                 "targetGroupKey": "",
@@ -2576,7 +2576,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 45,
+                        "serverActionIndex": 47,
                         "checkTarget": {
                           "targetSource": "Context",
                           "targetGroupKey": "tar",
@@ -2705,69 +2705,144 @@
                   "alwaysNext": true
                 },
                 {
-                  "$type": "Beyond.Gameplay.Core.HitStopAction+Data, Gameplay.Beyond",
+                  "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
                   "isEnable": true,
                   "priorityLevel": "Default",
                   "priorityOffset": 0,
                   "serverActionIndex": 26,
-                  "affectType": "Both",
-                  "curveKey": "char_normal_attack",
-                  "useDirectCurve": false,
-                  "directCurve": [],
-                  "duration": 0.2,
-                  "timeDilationPriority": {
-                    "tagId": -2059842104
+                  "conditionAction": {
+                    "actionData": [
+                      {
+                        "$type": "Beyond.Gameplay.Core.CheckBuffStackNumAdvanced+Data, Gameplay.Beyond",
+                        "isEnable": true,
+                        "priorityLevel": "Default",
+                        "priorityOffset": 0,
+                        "serverActionIndex": 50,
+                        "checkTarget": {
+                          "targetSource": "Source",
+                          "targetGroupKey": "",
+                          "selectorOwner": "ActionOwner",
+                          "ownerContextKey": "",
+                          "centerType": "ActionSource",
+                          "centerContextKey": "",
+                          "centerToGround": false,
+                          "selectorData": {
+                            "validatorData": [],
+                            "postProcessorData": []
+                          },
+                          "enableAdvancedDirection": false,
+                          "advancedDirection": {
+                            "directionType": "SourceForward",
+                            "sourceMountPoint": "None",
+                            "targetMountPoint": "None",
+                            "customSourceAndTarget": false,
+                            "clampToXZ": true,
+                            "invertDirection": false
+                          },
+                          "selectorDirection": "SourceForward",
+                          "target": "ActionSource",
+                          "targetContextKey": ""
+                        },
+                        "buffSettings": {
+                          "checkType": "Id",
+                          "buffIdList": [
+                            "buff_chr_0032_lizhiyan_ultimate_skill_time_dilation_listener"
+                          ],
+                          "tagQuery": {
+                            "queryType": "HasAny",
+                            "tags": []
+                          }
+                        },
+                        "buffStackNumType": "BuffCount",
+                        "compareType": "GE",
+                        "value": {
+                          "useBlackboardKey": false,
+                          "value": 1.0,
+                          "blackboardKey": ""
+                        },
+                        "limitSkillCastId": false
+                      }
+                    ],
+                    "onlyExecuteWhenSourceIsMainChar": false,
+                    "onlyExecuteWhenSourceIsGuard": false
                   },
-                  "attacker": {
-                    "targetSource": "Source",
-                    "targetGroupKey": "",
-                    "selectorOwner": "ActionOwner",
-                    "ownerContextKey": "",
-                    "centerType": "ActionSource",
-                    "centerContextKey": "",
-                    "centerToGround": false,
-                    "selectorData": {
-                      "validatorData": [],
-                      "postProcessorData": []
-                    },
-                    "enableAdvancedDirection": false,
-                    "advancedDirection": {
-                      "directionType": "SourceForward",
-                      "sourceMountPoint": "None",
-                      "targetMountPoint": "None",
-                      "customSourceAndTarget": false,
-                      "clampToXZ": true,
-                      "invertDirection": false
-                    },
-                    "selectorDirection": "SourceForward",
-                    "target": "ActionSource",
-                    "targetContextKey": ""
+                  "succeedActions": {
+                    "actionData": [],
+                    "onlyExecuteWhenSourceIsMainChar": false,
+                    "onlyExecuteWhenSourceIsGuard": false
                   },
-                  "target": {
-                    "targetSource": "Context",
-                    "targetGroupKey": "tar",
-                    "selectorOwner": "ActionOwner",
-                    "ownerContextKey": "",
-                    "centerType": "ActionSource",
-                    "centerContextKey": "",
-                    "centerToGround": false,
-                    "selectorData": {
-                      "validatorData": [],
-                      "postProcessorData": []
-                    },
-                    "enableAdvancedDirection": false,
-                    "advancedDirection": {
-                      "directionType": "SourceForward",
-                      "sourceMountPoint": "None",
-                      "targetMountPoint": "None",
-                      "customSourceAndTarget": false,
-                      "clampToXZ": true,
-                      "invertDirection": false
-                    },
-                    "selectorDirection": "SourceForward",
-                    "target": "ActionSource",
-                    "targetContextKey": ""
-                  }
+                  "failActions": {
+                    "actionData": [
+                      {
+                        "$type": "Beyond.Gameplay.Core.HitStopAction+Data, Gameplay.Beyond",
+                        "isEnable": true,
+                        "priorityLevel": "Default",
+                        "priorityOffset": 0,
+                        "serverActionIndex": 28,
+                        "affectType": "Both",
+                        "curveKey": "char_normal_attack",
+                        "useDirectCurve": false,
+                        "directCurve": [],
+                        "duration": 0.2,
+                        "timeDilationPriority": {
+                          "tagId": -2059842104
+                        },
+                        "attacker": {
+                          "targetSource": "Source",
+                          "targetGroupKey": "",
+                          "selectorOwner": "ActionOwner",
+                          "ownerContextKey": "",
+                          "centerType": "ActionSource",
+                          "centerContextKey": "",
+                          "centerToGround": false,
+                          "selectorData": {
+                            "validatorData": [],
+                            "postProcessorData": []
+                          },
+                          "enableAdvancedDirection": false,
+                          "advancedDirection": {
+                            "directionType": "SourceForward",
+                            "sourceMountPoint": "None",
+                            "targetMountPoint": "None",
+                            "customSourceAndTarget": false,
+                            "clampToXZ": true,
+                            "invertDirection": false
+                          },
+                          "selectorDirection": "SourceForward",
+                          "target": "ActionSource",
+                          "targetContextKey": ""
+                        },
+                        "target": {
+                          "targetSource": "Context",
+                          "targetGroupKey": "tar",
+                          "selectorOwner": "ActionOwner",
+                          "ownerContextKey": "",
+                          "centerType": "ActionSource",
+                          "centerContextKey": "",
+                          "centerToGround": false,
+                          "selectorData": {
+                            "validatorData": [],
+                            "postProcessorData": []
+                          },
+                          "enableAdvancedDirection": false,
+                          "advancedDirection": {
+                            "directionType": "SourceForward",
+                            "sourceMountPoint": "None",
+                            "targetMountPoint": "None",
+                            "customSourceAndTarget": false,
+                            "clampToXZ": true,
+                            "invertDirection": false
+                          },
+                          "selectorDirection": "SourceForward",
+                          "target": "ActionSource",
+                          "targetContextKey": ""
+                        }
+                      }
+                    ],
+                    "onlyExecuteWhenSourceIsMainChar": false,
+                    "onlyExecuteWhenSourceIsGuard": false
+                  },
+                  "alwaysNext": true
                 }
               ],
               "onlyExecuteWhenSourceIsMainChar": false,
@@ -2780,7 +2855,7 @@
                   "isEnable": true,
                   "priorityLevel": "Default",
                   "priorityOffset": 0,
-                  "serverActionIndex": 27,
+                  "serverActionIndex": 29,
                   "targets": [
                     {
                       "targetSource": "Context",
@@ -2815,7 +2890,7 @@
                   "isEnable": true,
                   "priorityLevel": "Default",
                   "priorityOffset": 0,
-                  "serverActionIndex": 28,
+                  "serverActionIndex": 30,
                   "conditionAction": {
                     "actionData": [
                       {
@@ -2823,7 +2898,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 29,
+                        "serverActionIndex": 31,
                         "valueA": {
                           "useBlackboardKey": true,
                           "value": 0.0,
@@ -2847,7 +2922,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 30,
+                        "serverActionIndex": 32,
                         "choice": {
                           "useBlackboardKey": true,
                           "value": 0.0,
@@ -2867,7 +2942,7 @@
                                   "isEnable": true,
                                   "priorityLevel": "Default",
                                   "priorityOffset": 0,
-                                  "serverActionIndex": 31,
+                                  "serverActionIndex": 33,
                                   "source": {
                                     "targetSource": "Source",
                                     "targetGroupKey": "",
@@ -2939,7 +3014,7 @@
                                   "isEnable": true,
                                   "priorityLevel": "Default",
                                   "priorityOffset": 0,
-                                  "serverActionIndex": 32,
+                                  "serverActionIndex": 34,
                                   "source": {
                                     "targetSource": "Source",
                                     "targetGroupKey": "",
@@ -3011,7 +3086,7 @@
                                   "isEnable": true,
                                   "priorityLevel": "Default",
                                   "priorityOffset": 0,
-                                  "serverActionIndex": 33,
+                                  "serverActionIndex": 35,
                                   "source": {
                                     "targetSource": "Source",
                                     "targetGroupKey": "",
@@ -3083,7 +3158,7 @@
                                   "isEnable": true,
                                   "priorityLevel": "Default",
                                   "priorityOffset": 0,
-                                  "serverActionIndex": 34,
+                                  "serverActionIndex": 36,
                                   "source": {
                                     "targetSource": "Source",
                                     "targetGroupKey": "",
@@ -3161,7 +3236,7 @@
                   "isEnable": true,
                   "priorityLevel": "Default",
                   "priorityOffset": 0,
-                  "serverActionIndex": 35,
+                  "serverActionIndex": 37,
                   "attacker": {
                     "targetSource": "Source",
                     "targetGroupKey": "",
@@ -3220,7 +3295,7 @@
                   "isEnable": true,
                   "priorityLevel": "Default",
                   "priorityOffset": 0,
-                  "serverActionIndex": 36,
+                  "serverActionIndex": 38,
                   "buffs": [
                     {
                       "buffId": "buff_chr_0032_lizhiyan_combo_skill_seal2",
@@ -3332,7 +3407,7 @@
                   "isEnable": true,
                   "priorityLevel": "Default",
                   "priorityOffset": 0,
-                  "serverActionIndex": 37,
+                  "serverActionIndex": 39,
                   "target": {
                     "targetSource": "Context",
                     "targetGroupKey": "tar",
@@ -3365,7 +3440,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 38,
+                        "serverActionIndex": 40,
                         "conditionAction": {
                           "actionData": [
                             {
@@ -3373,7 +3448,7 @@
                               "isEnable": true,
                               "priorityLevel": "Default",
                               "priorityOffset": 0,
-                              "serverActionIndex": 39,
+                              "serverActionIndex": 41,
                               "firstTargetSettings": {
                                 "targetSource": "Target",
                                 "targetGroupKey": "",
@@ -3436,7 +3511,7 @@
                               "isEnable": true,
                               "priorityLevel": "Default",
                               "priorityOffset": 0,
-                              "serverActionIndex": 40,
+                              "serverActionIndex": 42,
                               "alwaysNext": true,
                               "attacker": "ActionSource",
                               "targetSettings": {
@@ -3927,7 +4002,7 @@
                               "isEnable": true,
                               "priorityLevel": "Default",
                               "priorityOffset": 0,
-                              "serverActionIndex": 41,
+                              "serverActionIndex": 43,
                               "alwaysNext": true,
                               "attacker": "ActionSource",
                               "targetSettings": {
@@ -4412,7 +4487,7 @@
                               "isEnable": true,
                               "priorityLevel": "Default",
                               "priorityOffset": 0,
-                              "serverActionIndex": 42,
+                              "serverActionIndex": 44,
                               "targetSettings": {
                                 "targetSource": "Target",
                                 "targetGroupKey": "",
@@ -4672,7 +4747,7 @@
                   "isEnable": true,
                   "priorityLevel": "Default",
                   "priorityOffset": 0,
-                  "serverActionIndex": 43,
+                  "serverActionIndex": 45,
                   "realCameraShake2D": false,
                   "targetSettings": {
                     "targetSource": "Context",
@@ -4761,7 +4836,7 @@
                   "isEnable": true,
                   "priorityLevel": "Default",
                   "priorityOffset": 0,
-                  "serverActionIndex": 44,
+                  "serverActionIndex": 46,
                   "conditionAction": {
                     "actionData": [
                       {
@@ -4769,7 +4844,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 45,
+                        "serverActionIndex": 47,
                         "checkTarget": {
                           "targetSource": "Context",
                           "targetGroupKey": "tar",
@@ -4812,7 +4887,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 46,
+                        "serverActionIndex": 48,
                         "costType": "UltimateSp",
                         "isPercentValue": false,
                         "useUspRecoverTag": false,
@@ -4898,69 +4973,144 @@
                   "alwaysNext": true
                 },
                 {
-                  "$type": "Beyond.Gameplay.Core.HitStopAction+Data, Gameplay.Beyond",
+                  "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
                   "isEnable": true,
                   "priorityLevel": "Default",
                   "priorityOffset": 0,
-                  "serverActionIndex": 47,
-                  "affectType": "Both",
-                  "curveKey": "char_normal_attack",
-                  "useDirectCurve": false,
-                  "directCurve": [],
-                  "duration": 0.2,
-                  "timeDilationPriority": {
-                    "tagId": -2059842104
+                  "serverActionIndex": 49,
+                  "conditionAction": {
+                    "actionData": [
+                      {
+                        "$type": "Beyond.Gameplay.Core.CheckBuffStackNumAdvanced+Data, Gameplay.Beyond",
+                        "isEnable": true,
+                        "priorityLevel": "Default",
+                        "priorityOffset": 0,
+                        "serverActionIndex": 50,
+                        "checkTarget": {
+                          "targetSource": "Source",
+                          "targetGroupKey": "",
+                          "selectorOwner": "ActionOwner",
+                          "ownerContextKey": "",
+                          "centerType": "ActionSource",
+                          "centerContextKey": "",
+                          "centerToGround": false,
+                          "selectorData": {
+                            "validatorData": [],
+                            "postProcessorData": []
+                          },
+                          "enableAdvancedDirection": false,
+                          "advancedDirection": {
+                            "directionType": "SourceForward",
+                            "sourceMountPoint": "None",
+                            "targetMountPoint": "None",
+                            "customSourceAndTarget": false,
+                            "clampToXZ": true,
+                            "invertDirection": false
+                          },
+                          "selectorDirection": "SourceForward",
+                          "target": "ActionSource",
+                          "targetContextKey": ""
+                        },
+                        "buffSettings": {
+                          "checkType": "Id",
+                          "buffIdList": [
+                            "buff_chr_0032_lizhiyan_ultimate_skill_time_dilation_listener"
+                          ],
+                          "tagQuery": {
+                            "queryType": "HasAny",
+                            "tags": []
+                          }
+                        },
+                        "buffStackNumType": "BuffCount",
+                        "compareType": "GE",
+                        "value": {
+                          "useBlackboardKey": false,
+                          "value": 1.0,
+                          "blackboardKey": ""
+                        },
+                        "limitSkillCastId": false
+                      }
+                    ],
+                    "onlyExecuteWhenSourceIsMainChar": false,
+                    "onlyExecuteWhenSourceIsGuard": false
                   },
-                  "attacker": {
-                    "targetSource": "Source",
-                    "targetGroupKey": "",
-                    "selectorOwner": "ActionOwner",
-                    "ownerContextKey": "",
-                    "centerType": "ActionSource",
-                    "centerContextKey": "",
-                    "centerToGround": false,
-                    "selectorData": {
-                      "validatorData": [],
-                      "postProcessorData": []
-                    },
-                    "enableAdvancedDirection": false,
-                    "advancedDirection": {
-                      "directionType": "SourceForward",
-                      "sourceMountPoint": "None",
-                      "targetMountPoint": "None",
-                      "customSourceAndTarget": false,
-                      "clampToXZ": true,
-                      "invertDirection": false
-                    },
-                    "selectorDirection": "SourceForward",
-                    "target": "ActionSource",
-                    "targetContextKey": ""
+                  "succeedActions": {
+                    "actionData": [],
+                    "onlyExecuteWhenSourceIsMainChar": false,
+                    "onlyExecuteWhenSourceIsGuard": false
                   },
-                  "target": {
-                    "targetSource": "Context",
-                    "targetGroupKey": "tar",
-                    "selectorOwner": "ActionOwner",
-                    "ownerContextKey": "",
-                    "centerType": "ActionSource",
-                    "centerContextKey": "",
-                    "centerToGround": false,
-                    "selectorData": {
-                      "validatorData": [],
-                      "postProcessorData": []
-                    },
-                    "enableAdvancedDirection": false,
-                    "advancedDirection": {
-                      "directionType": "SourceForward",
-                      "sourceMountPoint": "None",
-                      "targetMountPoint": "None",
-                      "customSourceAndTarget": false,
-                      "clampToXZ": true,
-                      "invertDirection": false
-                    },
-                    "selectorDirection": "SourceForward",
-                    "target": "ActionSource",
-                    "targetContextKey": ""
-                  }
+                  "failActions": {
+                    "actionData": [
+                      {
+                        "$type": "Beyond.Gameplay.Core.HitStopAction+Data, Gameplay.Beyond",
+                        "isEnable": true,
+                        "priorityLevel": "Default",
+                        "priorityOffset": 0,
+                        "serverActionIndex": 51,
+                        "affectType": "Both",
+                        "curveKey": "char_normal_attack",
+                        "useDirectCurve": false,
+                        "directCurve": [],
+                        "duration": 0.2,
+                        "timeDilationPriority": {
+                          "tagId": -2059842104
+                        },
+                        "attacker": {
+                          "targetSource": "Source",
+                          "targetGroupKey": "",
+                          "selectorOwner": "ActionOwner",
+                          "ownerContextKey": "",
+                          "centerType": "ActionSource",
+                          "centerContextKey": "",
+                          "centerToGround": false,
+                          "selectorData": {
+                            "validatorData": [],
+                            "postProcessorData": []
+                          },
+                          "enableAdvancedDirection": false,
+                          "advancedDirection": {
+                            "directionType": "SourceForward",
+                            "sourceMountPoint": "None",
+                            "targetMountPoint": "None",
+                            "customSourceAndTarget": false,
+                            "clampToXZ": true,
+                            "invertDirection": false
+                          },
+                          "selectorDirection": "SourceForward",
+                          "target": "ActionSource",
+                          "targetContextKey": ""
+                        },
+                        "target": {
+                          "targetSource": "Context",
+                          "targetGroupKey": "tar",
+                          "selectorOwner": "ActionOwner",
+                          "ownerContextKey": "",
+                          "centerType": "ActionSource",
+                          "centerContextKey": "",
+                          "centerToGround": false,
+                          "selectorData": {
+                            "validatorData": [],
+                            "postProcessorData": []
+                          },
+                          "enableAdvancedDirection": false,
+                          "advancedDirection": {
+                            "directionType": "SourceForward",
+                            "sourceMountPoint": "None",
+                            "targetMountPoint": "None",
+                            "customSourceAndTarget": false,
+                            "clampToXZ": true,
+                            "invertDirection": false
+                          },
+                          "selectorDirection": "SourceForward",
+                          "target": "ActionSource",
+                          "targetContextKey": ""
+                        }
+                      }
+                    ],
+                    "onlyExecuteWhenSourceIsMainChar": false,
+                    "onlyExecuteWhenSourceIsGuard": false
+                  },
+                  "alwaysNext": true
                 }
               ],
               "onlyExecuteWhenSourceIsMainChar": false,
@@ -4989,7 +5139,7 @@
             "isEnable": true,
             "priorityLevel": "Default",
             "priorityOffset": 0,
-            "serverActionIndex": 48,
+            "serverActionIndex": 52,
             "conditionAction": {
               "actionData": [
                 {
@@ -4997,7 +5147,7 @@
                   "isEnable": true,
                   "priorityLevel": "Default",
                   "priorityOffset": 0,
-                  "serverActionIndex": 49,
+                  "serverActionIndex": 53,
                   "checkTarget": {
                     "targetSource": "Context",
                     "targetGroupKey": "trigger",
@@ -5040,7 +5190,7 @@
                   "isEnable": true,
                   "priorityLevel": "Default",
                   "priorityOffset": 0,
-                  "serverActionIndex": 50,
+                  "serverActionIndex": 54,
                   "targetGroupKey": "tar",
                   "center": "ContextTarget",
                   "centerContextKey": "trigger",
@@ -5167,7 +5317,7 @@
                   "isEnable": true,
                   "priorityLevel": "Default",
                   "priorityOffset": 0,
-                  "serverActionIndex": 51,
+                  "serverActionIndex": 55,
                   "conditionAction": {
                     "actionData": [
                       {
@@ -5175,7 +5325,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 52,
+                        "serverActionIndex": 56,
                         "valueA": {
                           "useBlackboardKey": true,
                           "value": 0.0,
@@ -5199,7 +5349,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 53,
+                        "serverActionIndex": 57,
                         "convertFrom": {
                           "targetSource": "Context",
                           "targetGroupKey": "trigger",
@@ -5257,7 +5407,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 54,
+                        "serverActionIndex": 58,
                         "attacker": {
                           "targetSource": "Source",
                           "targetGroupKey": "",
@@ -5383,7 +5533,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 55,
+                        "serverActionIndex": 59,
                         "targetSettings": {
                           "targetSource": "Context",
                           "targetGroupKey": "tar",
@@ -5490,7 +5640,7 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 56,
+                        "serverActionIndex": 60,
                         "attacker": {
                           "targetSource": "Source",
                           "targetGroupKey": "",
@@ -5649,7 +5799,7 @@
             "isEnable": true,
             "priorityLevel": "Default",
             "priorityOffset": 0,
-            "serverActionIndex": 57,
+            "serverActionIndex": 61,
             "key": "duration_effect",
             "value1": {
               "useBlackboardKey": true,
@@ -5668,7 +5818,7 @@
             "isEnable": true,
             "priorityLevel": "Default",
             "priorityOffset": 0,
-            "serverActionIndex": 58,
+            "serverActionIndex": 62,
             "buffs": [
               {
                 "buffId": "buff_chr_0032_lizhiyan_combo_skill_seal_effect",
