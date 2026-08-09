@@ -1,0 +1,317 @@
+{
+  "memberSetting": {
+    "Enemy": {
+      "totalToken": 3,
+      "modeSetting": {
+        "Attacker": {
+          "order": 4,
+          "maxLifeCycle": 10.0,
+          "notCountInTotal": false,
+          "useMode": false,
+          "identitySettingGroup": {},
+          "identitySettingSingle": {
+            "tickInterval": 5.0,
+            "lifeCycle": 5.0,
+            "minCountSet": {
+              "$type": "Beyond.Gameplay.AI.ForceSet, Gameplay.Beyond",
+              "count": 0
+            },
+            "maxCountSet": {
+              "$type": "Beyond.Gameplay.AI.ForceSet, Gameplay.Beyond",
+              "count": 2
+            },
+            "filters": [
+              {
+                "$type": "Beyond.Gameplay.AI.HasAttackRangeType, Gameplay.Beyond",
+                "revertResult": false,
+                "attackRangeType": "Melee",
+                "priority": 0.0
+              }
+            ],
+            "evaluates": [
+              {
+                "$type": "Beyond.Gameplay.AI.HasFinishToken, Gameplay.Beyond",
+                "revertResult": false,
+                "priority": -200.0
+              },
+              {
+                "$type": "Beyond.Gameplay.AI.TargetDistance, Gameplay.Beyond",
+                "disType": "All",
+                "factor": -10.0
+              },
+              {
+                "$type": "Beyond.Gameplay.AI.EnemyRankType, Gameplay.Beyond",
+                "revertResult": false,
+                "enemyRank": "Elite",
+                "priority": 100.0
+              },
+              {
+                "$type": "Beyond.Gameplay.AI.RandomAdd, Gameplay.Beyond",
+                "range": {
+                  "x": 0.0,
+                  "y": 10.0
+                }
+              },
+              {
+                "$type": "Beyond.Gameplay.AI.LongTimeNoIdentity, Gameplay.Beyond",
+                "outTime": 20.0,
+                "multiplier": 10.0
+              }
+            ]
+          }
+        },
+        "RangeAttacker": {
+          "order": 5,
+          "maxLifeCycle": 10.0,
+          "notCountInTotal": false,
+          "useMode": true,
+          "identitySettingGroup": {
+            "Moderate": {
+              "tickInterval": 8.0,
+              "lifeCycle": 5.0,
+              "minCountSet": {
+                "$type": "Beyond.Gameplay.AI.ForceSet, Gameplay.Beyond",
+                "count": 1
+              },
+              "maxCountSet": {
+                "$type": "Beyond.Gameplay.AI.ForceSet, Gameplay.Beyond",
+                "count": 1
+              },
+              "filters": [
+                {
+                  "$type": "Beyond.Gameplay.AI.HasAttackRangeType, Gameplay.Beyond",
+                  "revertResult": false,
+                  "attackRangeType": "Ranged",
+                  "priority": 0.0
+                }
+              ],
+              "evaluates": [
+                {
+                  "$type": "Beyond.Gameplay.AI.HasFinishToken, Gameplay.Beyond",
+                  "revertResult": false,
+                  "priority": -200.0
+                },
+                {
+                  "$type": "Beyond.Gameplay.AI.RandomAdd, Gameplay.Beyond",
+                  "range": {
+                    "x": 0.0,
+                    "y": 30.0
+                  }
+                },
+                {
+                  "$type": "Beyond.Gameplay.AI.LongTimeNoIdentity, Gameplay.Beyond",
+                  "outTime": 32.0,
+                  "multiplier": 10.0
+                }
+              ]
+            },
+            "Steady": {
+              "tickInterval": 8.0,
+              "lifeCycle": 5.0,
+              "minCountSet": {
+                "$type": "Beyond.Gameplay.AI.ForceSet, Gameplay.Beyond",
+                "count": 1
+              },
+              "maxCountSet": {
+                "$type": "Beyond.Gameplay.AI.ForceSet, Gameplay.Beyond",
+                "count": 2
+              },
+              "filters": [
+                {
+                  "$type": "Beyond.Gameplay.AI.HasAttackRangeType, Gameplay.Beyond",
+                  "revertResult": false,
+                  "attackRangeType": "Ranged",
+                  "priority": 0.0
+                }
+              ],
+              "evaluates": [
+                {
+                  "$type": "Beyond.Gameplay.AI.HasFinishToken, Gameplay.Beyond",
+                  "revertResult": false,
+                  "priority": -100.0
+                },
+                {
+                  "$type": "Beyond.Gameplay.AI.RandomAdd, Gameplay.Beyond",
+                  "range": {
+                    "x": 0.0,
+                    "y": 30.0
+                  }
+                },
+                {
+                  "$type": "Beyond.Gameplay.AI.EnemyRankType, Gameplay.Beyond",
+                  "revertResult": false,
+                  "enemyRank": "Elite",
+                  "priority": 2.0
+                },
+                {
+                  "$type": "Beyond.Gameplay.AI.LongTimeNoIdentity, Gameplay.Beyond",
+                  "outTime": 32.0,
+                  "multiplier": 10.0
+                }
+              ]
+            }
+          },
+          "identitySettingSingle": {
+            "tickInterval": 0.0,
+            "lifeCycle": 5.0,
+            "filters": [],
+            "evaluates": []
+          }
+        },
+        "EliteAttacker": {
+          "order": 2,
+          "maxLifeCycle": 72000.0,
+          "notCountInTotal": false,
+          "useMode": false,
+          "identitySettingGroup": {},
+          "identitySettingSingle": {
+            "tickInterval": 1.0,
+            "lifeCycle": 36000.0,
+            "minCountSet": {
+              "$type": "Beyond.Gameplay.AI.ForceSet, Gameplay.Beyond",
+              "count": 1
+            },
+            "maxCountSet": {
+              "$type": "Beyond.Gameplay.AI.ForceSet, Gameplay.Beyond",
+              "count": 2
+            },
+            "filters": [
+              {
+                "$type": "Beyond.Gameplay.AI.EnemySubRankType, Gameplay.Beyond",
+                "revertResult": false,
+                "enemySubRank": "Elite_Tier_Two",
+                "priority": 0.0
+              },
+              {
+                "$type": "Beyond.Gameplay.AI.HasAttackRangeType, Gameplay.Beyond",
+                "revertResult": false,
+                "attackRangeType": "Melee",
+                "priority": 0.0
+              }
+            ],
+            "evaluates": [
+              {
+                "$type": "Beyond.Gameplay.AI.RandomAdd, Gameplay.Beyond",
+                "range": {
+                  "x": 0.0,
+                  "y": 20.0
+                }
+              }
+            ]
+          }
+        },
+        "EliteRangeAttacker": {
+          "order": 3,
+          "maxLifeCycle": 72000.0,
+          "notCountInTotal": false,
+          "useMode": false,
+          "identitySettingGroup": {},
+          "identitySettingSingle": {
+            "tickInterval": 1.0,
+            "lifeCycle": 36000.0,
+            "minCountSet": {
+              "$type": "Beyond.Gameplay.AI.ForceSet, Gameplay.Beyond",
+              "count": 1
+            },
+            "maxCountSet": {
+              "$type": "Beyond.Gameplay.AI.ForceSet, Gameplay.Beyond",
+              "count": 2
+            },
+            "filters": [
+              {
+                "$type": "Beyond.Gameplay.AI.EnemySubRankType, Gameplay.Beyond",
+                "revertResult": false,
+                "enemySubRank": "Elite_Tier_Two",
+                "priority": 0.0
+              },
+              {
+                "$type": "Beyond.Gameplay.AI.HasAttackRangeType, Gameplay.Beyond",
+                "revertResult": false,
+                "attackRangeType": "Ranged",
+                "priority": 0.0
+              }
+            ],
+            "evaluates": [
+              {
+                "$type": "Beyond.Gameplay.AI.RandomAdd, Gameplay.Beyond",
+                "range": {
+                  "x": 0.0,
+                  "y": 20.0
+                }
+              }
+            ]
+          }
+        },
+        "AngryAttacker": {
+          "order": 0,
+          "maxLifeCycle": 10.0,
+          "notCountInTotal": false,
+          "useMode": false,
+          "identitySettingGroup": {},
+          "identitySettingSingle": {
+            "tickInterval": 0.1,
+            "lifeCycle": 5.0,
+            "minCountSet": {
+              "$type": "Beyond.Gameplay.AI.ForceSet, Gameplay.Beyond",
+              "count": 1
+            },
+            "maxCountSet": {
+              "$type": "Beyond.Gameplay.AI.ForceSet, Gameplay.Beyond",
+              "count": 1
+            },
+            "filters": [
+              {
+                "$type": "Beyond.Gameplay.AI.ResilienceEmpty, Gameplay.Beyond",
+                "revertResult": false,
+                "priority": 0.0
+              }
+            ],
+            "evaluates": [
+              {
+                "$type": "Beyond.Gameplay.AI.TargetDistance, Gameplay.Beyond",
+                "disType": "All",
+                "factor": -10.0
+              },
+              {
+                "$type": "Beyond.Gameplay.AI.RandomAdd, Gameplay.Beyond",
+                "range": {
+                  "x": 0.0,
+                  "y": 10.0
+                }
+              }
+            ]
+          }
+        },
+        "PermanentAttacker": {
+          "order": 1,
+          "maxLifeCycle": 99999.0,
+          "notCountInTotal": true,
+          "useMode": false,
+          "identitySettingGroup": {},
+          "identitySettingSingle": {
+            "tickInterval": 5.0,
+            "lifeCycle": 99999.0,
+            "minCountSet": {
+              "$type": "Beyond.Gameplay.AI.ForceSet, Gameplay.Beyond",
+              "count": 20
+            },
+            "maxCountSet": {
+              "$type": "Beyond.Gameplay.AI.ForceSet, Gameplay.Beyond",
+              "count": 20
+            },
+            "filters": [
+              {
+                "$type": "Beyond.Gameplay.AI.TargetHasTags, Gameplay.Beyond",
+                "revertResult": false,
+                "tagEntityType": "Self",
+                "tag": "InfiniteAITokenSelf",
+                "priority": 0.0
+              }
+            ],
+            "evaluates": []
+          }
+        }
+      }
+    }
+  }
+}
