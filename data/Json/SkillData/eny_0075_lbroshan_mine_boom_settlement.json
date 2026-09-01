@@ -61,6 +61,7 @@
   },
   "canMove": false,
   "canCastInAir": false,
+  "canCastInWater": false,
   "rootMotionCliffCheck": true,
   "characterReturnToIdle": false,
   "switchToCenterBeforeCast": false,
@@ -145,7 +146,57 @@
                 "_radius": 2.5
               },
               "excludeColliderOptions": 0,
+              "limitInfluenceAngle": false,
+              "influenceDirection": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              },
+              "influenceDirectionAngleOffset": {
+                "useBlackboardKey": false,
+                "value": 0.0,
+                "blackboardKey": ""
+              },
+              "influenceAngle": {
+                "useBlackboardKey": false,
+                "value": 360.0,
+                "blackboardKey": ""
+              },
+              "limitInfluenceHeight": false,
+              "maxInfluenceHeight": {
+                "useBlackboardKey": false,
+                "value": 0.0,
+                "blackboardKey": ""
+              },
               "targetObjectType": 0,
+              "filterFactionSource": {
+                "targetSource": "Source",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "targetFilter": {
                 "checkAlive": true,
                 "autoSetTargetFaction": true,
@@ -509,76 +560,6 @@
         }
       },
       {
-        "_startFrame": 0,
-        "_endFrame": 888,
-        "_sequenceActionData": {
-          "actionData": [
-            {
-              "$type": "Beyond.Gameplay.Core.CommandToCharactersAction+CommandToCharactersActionData, Gameplay.Beyond",
-              "isEnable": true,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 6,
-              "targetSettings": {
-                "targetSource": "Owner",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "finderData": {
-                    "$type": "Beyond.Gameplay.Core.Selector+CharacterTeamFinder+Data, Gameplay.Beyond"
-                  },
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "targetType": "ActionOwner",
-              "contextKey": "",
-              "commandType": "MoveToSafeArea",
-              "safeAreaData": {
-                "shape": "Circle",
-                "radius": 1.0,
-                "circleOriginOffset": 0.0,
-                "rayWidth": 0.0,
-                "rayMaxDistance": 0.0,
-                "rayOriginOffset": 0.0,
-                "angle": 0.0,
-                "activeTime": 0.0,
-                "moveType": "FollowTarget"
-              },
-              "offsetAngle": 0.0,
-              "safeAreaDir": "SourceForward",
-              "activeDisToMainChar": 50.0,
-              "stopDis": 0.0,
-              "dirMoveType": "AwayFromTarget"
-            }
-          ],
-          "onlyExecuteWhenSourceIsMainChar": false,
-          "onlyExecuteWhenSourceIsGuard": false
-        },
-        "forceSyncAnimData": {
-          "forceSync": false,
-          "montageName": "",
-          "targetFrame": 0,
-          "playbackSpeed": 0.0
-        }
-      },
-      {
         "_startFrame": 921,
         "_endFrame": 922,
         "_sequenceActionData": {
@@ -588,7 +569,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 7,
+              "serverActionIndex": 6,
               "alwaysNext": true,
               "attacker": "ActionSource",
               "targetSettings": {
@@ -656,6 +637,7 @@
                   "hidePoiseUIEffect": false,
                   "hideMainCharHpScreenEffect": false,
                   "damageDecorateMask": 0,
+                  "damageTags": [],
                   "ignoreDamageImmuneLevel": "None",
                   "simpleCalculation": false,
                   "atkScale": {
@@ -879,7 +861,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 8,
+              "serverActionIndex": 7,
               "buffOwner": {
                 "targetSource": "Context",
                 "targetGroupKey": "tar",
@@ -980,7 +962,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 9,
+              "serverActionIndex": 8,
               "randomType": "Int",
               "minValue": {
                 "useBlackboardKey": false,
@@ -999,7 +981,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 10,
+              "serverActionIndex": 9,
               "choice": {
                 "useBlackboardKey": true,
                 "value": 4.0,
@@ -1019,10 +1001,12 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 11,
+                        "serverActionIndex": 10,
                         "_triggerKey": "combat_skill_bomb_sv",
                         "_speakerType": "Minions",
                         "_canInterruptTimeMs": 0,
+                        "_jumpToWhenPlayMs": 0,
+                        "_seekFadeInMs": 0,
                         "targetSettings": {
                           "targetSource": "Source",
                           "targetGroupKey": "",
@@ -1047,7 +1031,8 @@
                           "selectorDirection": "SourceForward",
                           "target": "ActionSource",
                           "targetContextKey": ""
-                        }
+                        },
+                        "_responseQuestIdKey": ""
                       }
                     ],
                     "onlyExecuteWhenSourceIsMainChar": false,
@@ -1067,10 +1052,12 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 12,
+                        "serverActionIndex": 11,
                         "_triggerKey": "combat_skill_bomb_01",
                         "_speakerType": "Minions",
                         "_canInterruptTimeMs": 0,
+                        "_jumpToWhenPlayMs": 0,
+                        "_seekFadeInMs": 0,
                         "targetSettings": {
                           "targetSource": "Source",
                           "targetGroupKey": "",
@@ -1095,7 +1082,8 @@
                           "selectorDirection": "SourceForward",
                           "target": "ActionSource",
                           "targetContextKey": ""
-                        }
+                        },
+                        "_responseQuestIdKey": ""
                       }
                     ],
                     "onlyExecuteWhenSourceIsMainChar": false,
@@ -1115,10 +1103,12 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 13,
+                        "serverActionIndex": 12,
                         "_triggerKey": "combat_skill_bomb_02",
                         "_speakerType": "Minions",
                         "_canInterruptTimeMs": 0,
+                        "_jumpToWhenPlayMs": 0,
+                        "_seekFadeInMs": 0,
                         "targetSettings": {
                           "targetSource": "Source",
                           "targetGroupKey": "",
@@ -1143,7 +1133,8 @@
                           "selectorDirection": "SourceForward",
                           "target": "ActionSource",
                           "targetContextKey": ""
-                        }
+                        },
+                        "_responseQuestIdKey": ""
                       }
                     ],
                     "onlyExecuteWhenSourceIsMainChar": false,
@@ -1163,10 +1154,12 @@
                         "isEnable": true,
                         "priorityLevel": "Default",
                         "priorityOffset": 0,
-                        "serverActionIndex": 14,
+                        "serverActionIndex": 13,
                         "_triggerKey": "combat_skill_bomb_03",
                         "_speakerType": "Minions",
                         "_canInterruptTimeMs": 0,
+                        "_jumpToWhenPlayMs": 0,
+                        "_seekFadeInMs": 0,
                         "targetSettings": {
                           "targetSource": "Source",
                           "targetGroupKey": "",
@@ -1191,7 +1184,8 @@
                           "selectorDirection": "SourceForward",
                           "target": "ActionSource",
                           "targetContextKey": ""
-                        }
+                        },
+                        "_responseQuestIdKey": ""
                       }
                     ],
                     "onlyExecuteWhenSourceIsMainChar": false,
@@ -1222,7 +1216,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 15,
+              "serverActionIndex": 14,
               "owner": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -1271,7 +1265,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 16,
+              "serverActionIndex": 15,
               "realCameraShake2D": false,
               "targetSettings": {
                 "targetSource": "Owner",
@@ -1376,7 +1370,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 17,
+              "serverActionIndex": 16,
               "owner": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -1425,7 +1419,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 18,
+              "serverActionIndex": 17,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -1506,6 +1500,31 @@
               "isTargetMainCharacterActive": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
+              "bigEffectTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
@@ -1690,7 +1709,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 19,
+              "serverActionIndex": 18,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -1771,6 +1790,31 @@
               "isTargetMainCharacterActive": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
+              "bigEffectTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
@@ -1955,7 +1999,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 20,
+              "serverActionIndex": 19,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -2036,6 +2080,31 @@
               "isTargetMainCharacterActive": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
+              "bigEffectTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Alert",
@@ -2220,7 +2289,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 21,
+              "serverActionIndex": 20,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -2301,6 +2370,31 @@
               "isTargetMainCharacterActive": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
+              "bigEffectTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
@@ -2485,7 +2579,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 22,
+              "serverActionIndex": 21,
               "_soundEvent": "au_eny_0075_lbroshan_skill2_weapon_land",
               "_stopOnEnd": true,
               "_stopFadeDurationMs": 300,
@@ -2550,7 +2644,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 23,
+              "serverActionIndex": 22,
               "_soundEvent": "au_eny_0075_lbroshan_skill2_weapon_start",
               "_stopOnEnd": true,
               "_stopFadeDurationMs": 100,
@@ -2615,7 +2709,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 24,
+              "serverActionIndex": 23,
               "_soundEvent": "au_eny_0075_lbroshan_skill2_weapon_exp",
               "_stopOnEnd": false,
               "_stopFadeDurationMs": 100,
@@ -2680,10 +2774,12 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 25,
+              "serverActionIndex": 24,
               "_triggerKey": "combat_skill_bomb",
               "_speakerType": "Minions",
               "_canInterruptTimeMs": 0,
+              "_jumpToWhenPlayMs": 0,
+              "_seekFadeInMs": 0,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -2708,7 +2804,8 @@
                 "selectorDirection": "SourceForward",
                 "target": "ActionSource",
                 "targetContextKey": ""
-              }
+              },
+              "_responseQuestIdKey": ""
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,

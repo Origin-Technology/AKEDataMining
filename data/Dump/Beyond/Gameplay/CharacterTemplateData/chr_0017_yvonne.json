@@ -168,6 +168,9 @@
         "_aiRotationSpeed": 1000.0,
         "_overrideStepOffset": -1.0,
         "_overrideStepDownOffset": -1.0,
+        "_walkSpeedMultiplier": 1.0,
+        "_runSpeedMultiplier": 1.0,
+        "_sprintSpeedMultiplier": 1.0,
         "_overrideStepOffsetForSpDash": -1.0,
         "_overrideStepDownOffsetForSpDash": -1.0,
         "_navAcceleration": 1000.0
@@ -212,6 +215,7 @@
             "moveInterruptAttack": true,
             "overrideNormalAttackList": false,
             "normalAttackList": [],
+            "blownStartHeight": 0.0,
             "applyAnimBool": true,
             "animBoolName": "isStrafe",
             "overrideStateClip": false,
@@ -249,6 +253,7 @@
               "chr_0017_yvonne_ult_attack3_1",
               "chr_0017_yvonne_ult_attack3_2"
             ],
+            "blownStartHeight": 0.0,
             "applyAnimBool": false,
             "animBoolName": "",
             "overrideStateClip": false,
@@ -282,6 +287,7 @@
             "moveInterruptAttack": true,
             "overrideNormalAttackList": false,
             "normalAttackList": [],
+            "blownStartHeight": 0.0,
             "applyAnimBool": false,
             "animBoolName": "",
             "overrideStateClip": false,
@@ -315,6 +321,7 @@
             "moveInterruptAttack": true,
             "overrideNormalAttackList": false,
             "normalAttackList": [],
+            "blownStartHeight": 0.0,
             "applyAnimBool": false,
             "animBoolName": "",
             "overrideStateClip": false,
@@ -855,615 +862,11 @@
           "y": 4.0
         },
         "pursueToAttackMinTime": 0.4,
-        "pursuePqsConfig": {
-          "m_pqsConfig": {
-            "creator": {
-              "shape": "Circle",
-              "center": "Target",
-              "areaTypeMask": 132097,
-              "areaType": [
-                1,
-                1024,
-                131072
-              ],
-              "step": 1.0,
-              "radius": 10.0,
-              "optimizeRadius": 0.0
-            },
-            "filter": [
-              {
-                "filterType": "CheckAlert",
-                "center": "Source",
-                "areaType": "NotMeet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 0.0,
-                "useEntityRadius": false,
-                "radius": 0.0,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "FriendPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5
-              },
-              {
-                "filterType": "CheckPoint",
-                "center": "Source",
-                "areaType": "NotMeet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 0.0,
-                "useEntityRadius": false,
-                "radius": 1.5,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "FriendPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5
-              },
-              {
-                "filterType": "CheckPoint",
-                "center": "Source",
-                "areaType": "NotMeet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 0.0,
-                "useEntityRadius": true,
-                "radius": 1.0,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "TargetPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5
-              }
-            ],
-            "evaluator": [
-              {
-                "filterType": "CheckInNormalAttackRange",
-                "center": "Source",
-                "areaType": "Meet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 0.0,
-                "useEntityRadius": false,
-                "radius": 0.0,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "FriendPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5,
-                "randomScore": false,
-                "scoreRange": {
-                  "x": 0.0,
-                  "y": 0.0
-                },
-                "scoreFactor": 100.0
-              },
-              {
-                "filterType": "CheckDistanceFactor",
-                "center": "Source",
-                "areaType": "Meet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 0.0,
-                "useEntityRadius": false,
-                "radius": 0.0,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "FriendPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5,
-                "randomScore": false,
-                "scoreRange": {
-                  "x": 0.0,
-                  "y": 0.0
-                },
-                "scoreFactor": -10.0
-              },
-              {
-                "filterType": "CheckPoint",
-                "center": "Source",
-                "areaType": "NotMeet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 0.0,
-                "useEntityRadius": false,
-                "radius": 1.0,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "EnemyPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5,
-                "randomScore": false,
-                "scoreRange": {
-                  "x": 0.0,
-                  "y": 0.0
-                },
-                "scoreFactor": 5.0
-              },
-              {
-                "filterType": "CheckDistanceFactor",
-                "center": "Target",
-                "areaType": "Meet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 0.0,
-                "useEntityRadius": false,
-                "radius": 0.0,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "FriendPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5,
-                "randomScore": false,
-                "scoreRange": {
-                  "x": 0.0,
-                  "y": 0.0
-                },
-                "scoreFactor": -1.0
-              }
-            ]
-          }
-        },
-        "attackPqsConfig": {
-          "m_pqsConfig": {
-            "creator": {
-              "shape": "Circle",
-              "center": "Target",
-              "areaTypeMask": 132097,
-              "areaType": [
-                1,
-                1024,
-                131072
-              ],
-              "step": 1.5,
-              "radius": 10.0,
-              "optimizeRadius": 0.0
-            },
-            "filter": [
-              {
-                "filterType": "CheckInNormalAttackRange",
-                "center": "Target",
-                "areaType": "Meet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 8.0,
-                "useEntityRadius": false,
-                "radius": 0.0,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "FriendPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5
-              },
-              {
-                "filterType": "CheckPoint",
-                "center": "Source",
-                "areaType": "NotMeet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 0.0,
-                "useEntityRadius": true,
-                "radius": 1.0,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "TargetPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5
-              },
-              {
-                "filterType": "CheckAlert",
-                "center": "Source",
-                "areaType": "NotMeet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 0.0,
-                "useEntityRadius": false,
-                "radius": 0.0,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "FriendPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5
-              }
-            ],
-            "evaluator": [
-              {
-                "filterType": "CheckPoint",
-                "center": "Source",
-                "areaType": "NotMeet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 0.0,
-                "useEntityRadius": false,
-                "radius": 2.5,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "FriendPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5,
-                "randomScore": true,
-                "scoreRange": {
-                  "x": 50.0,
-                  "y": 75.0
-                },
-                "scoreFactor": 75.0
-              },
-              {
-                "filterType": "CheckDistanceFactor",
-                "center": "Source",
-                "areaType": "Meet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 0.0,
-                "useEntityRadius": false,
-                "radius": 0.0,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "FriendPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5,
-                "randomScore": false,
-                "scoreRange": {
-                  "x": 0.0,
-                  "y": 0.0
-                },
-                "scoreFactor": -2.0
-              }
-            ]
-          }
-        },
-        "attackPartPqsConfig": {
-          "m_pqsConfig": {
-            "creator": {
-              "shape": "Circle",
-              "center": "Target",
-              "areaTypeMask": 132097,
-              "areaType": [
-                1,
-                1024,
-                131072
-              ],
-              "step": 1.5,
-              "radius": 10.0,
-              "optimizeRadius": 0.0
-            },
-            "filter": [
-              {
-                "filterType": "CheckAngle",
-                "center": "Target",
-                "areaType": "Meet",
-                "dir": "DynamicDir",
-                "revert": false,
-                "dynamicAngle": true,
-                "angle": 60.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 0.0,
-                "useEntityRadius": false,
-                "radius": 0.0,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "FriendPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5
-              },
-              {
-                "filterType": "CheckDistance",
-                "center": "Target",
-                "areaType": "NotMeet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 5.0,
-                "useEntityRadius": false,
-                "radius": 0.0,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "FriendPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5
-              },
-              {
-                "filterType": "CheckDistance",
-                "center": "Target",
-                "areaType": "Meet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 8.0,
-                "useEntityRadius": false,
-                "radius": 0.0,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "FriendPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5
-              },
-              {
-                "filterType": "CheckPoint",
-                "center": "Source",
-                "areaType": "NotMeet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 0.0,
-                "useEntityRadius": true,
-                "radius": 1.0,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "TargetPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5
-              },
-              {
-                "filterType": "CheckAlert",
-                "center": "Source",
-                "areaType": "NotMeet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 0.0,
-                "useEntityRadius": false,
-                "radius": 0.0,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "FriendPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5
-              }
-            ],
-            "evaluator": [
-              {
-                "filterType": "CheckPoint",
-                "center": "Source",
-                "areaType": "NotMeet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 0.0,
-                "useEntityRadius": false,
-                "radius": 2.5,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "FriendPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5,
-                "randomScore": true,
-                "scoreRange": {
-                  "x": 50.0,
-                  "y": 75.0
-                },
-                "scoreFactor": 75.0
-              },
-              {
-                "filterType": "CheckDistanceFactor",
-                "center": "Source",
-                "areaType": "Meet",
-                "dir": "SourceForward",
-                "revert": false,
-                "dynamicAngle": false,
-                "angle": 0.0,
-                "dynamicDis": false,
-                "dynamicDisOffset": 0.0,
-                "distance": 0.0,
-                "useEntityRadius": false,
-                "radius": 0.0,
-                "entityRadiusOffset": 0.0,
-                "checkPointType": "FriendPos",
-                "angleMin": 0.0,
-                "angleMax": 0.0,
-                "aimTargetType": "Center",
-                "point": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "isCharacter": false,
-                "intersectRadius": 1.5,
-                "randomScore": false,
-                "scoreRange": {
-                  "x": 0.0,
-                  "y": 0.0
-                },
-                "scoreFactor": -2.0
-              }
-            ]
-          }
-        },
+        "forceMoveToPursuePos": false,
+        "pursuePqsConfig": {},
+        "attackPqsConfig": {},
+        "attackPartPqsConfig": {},
         "brainConfig": {
-          "m_CachedPtr": {
-            "value": 9418281056
-          },
           "strategy": {
             "$type": "Beyond.Gameplay.AI.CharacterNormalStrategy+CharacterNormalStrategyData, Gameplay.Beyond",
             "tickInterval": 0.1
@@ -1568,7 +971,6 @@
                 "weaponIndex": 0,
                 "vfxKey": "",
                 "weaponScale": 1.0,
-                "m_maxWeaponIndex": 0,
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "WepM",
                 "idleMountTarget": {
@@ -1578,6 +980,7 @@
                   "weaponMountPoint": "Root"
                 },
                 "showWhenFight": true,
+                "fightIdleAnimStrength": 1.0,
                 "legacyFightMountPoint": "WepR",
                 "fightMountTarget": {
                   "mountToWeapon": false,
@@ -1592,7 +995,6 @@
                 "weaponIndex": 1,
                 "vfxKey": "",
                 "weaponScale": 1.0,
-                "m_maxWeaponIndex": 0,
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "WepM",
                 "idleMountTarget": {
@@ -1602,6 +1004,7 @@
                   "weaponMountPoint": "Root"
                 },
                 "showWhenFight": true,
+                "fightIdleAnimStrength": 1.0,
                 "legacyFightMountPoint": "WepL",
                 "fightMountTarget": {
                   "mountToWeapon": false,
@@ -1616,7 +1019,6 @@
                 "weaponIndex": 10,
                 "vfxKey": "",
                 "weaponScale": 1.0,
-                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0022",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "None",
                 "idleMountTarget": {
@@ -1653,7 +1055,6 @@
                 "weaponIndex": 11,
                 "vfxKey": "",
                 "weaponScale": 1.0,
-                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0022",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "None",
                 "idleMountTarget": {
@@ -1690,7 +1091,6 @@
                 "weaponIndex": 12,
                 "vfxKey": "",
                 "weaponScale": 1.0,
-                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0022",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "None",
                 "idleMountTarget": {
@@ -1727,7 +1127,6 @@
                 "weaponIndex": 13,
                 "vfxKey": "",
                 "weaponScale": 1.0,
-                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0022",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "None",
                 "idleMountTarget": {
@@ -1764,7 +1163,6 @@
                 "weaponIndex": 14,
                 "vfxKey": "",
                 "weaponScale": 1.0,
-                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0022",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "None",
                 "idleMountTarget": {
@@ -1801,7 +1199,6 @@
                 "weaponIndex": 15,
                 "vfxKey": "",
                 "weaponScale": 1.0,
-                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0022",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "None",
                 "idleMountTarget": {
@@ -1838,7 +1235,6 @@
                 "weaponIndex": 16,
                 "vfxKey": "",
                 "weaponScale": 1.0,
-                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0022",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "None",
                 "idleMountTarget": {
@@ -1875,7 +1271,6 @@
                 "weaponIndex": 17,
                 "vfxKey": "",
                 "weaponScale": 1.0,
-                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0022",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "None",
                 "idleMountTarget": {
@@ -1912,7 +1307,6 @@
                 "weaponIndex": 18,
                 "vfxKey": "",
                 "weaponScale": 1.0,
-                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0023",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "None",
                 "idleMountTarget": {
@@ -1949,7 +1343,6 @@
                 "weaponIndex": 19,
                 "vfxKey": "",
                 "weaponScale": 1.0,
-                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0023",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "None",
                 "idleMountTarget": {
@@ -1986,7 +1379,6 @@
                 "weaponIndex": 20,
                 "vfxKey": "",
                 "weaponScale": 1.0,
-                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0022",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "None",
                 "idleMountTarget": {
@@ -2129,10 +1521,15 @@
       "enableGameplayWetness": true,
       "enableWaterRaycast": true,
       "enableRainRaycast": true,
+      "deferRegisterOnStart": false,
       "overrideDryDrenchedAfterSeconds": false,
       "dryDrenchedAfterSeconds": -1.0,
       "overrideDryDrenchedSmoothTime": false,
       "dryDrenchedSmoothTime": -1.0,
+      "overrideMeltSnowAfterSeconds": false,
+      "meltSnowAfterSeconds": -1.0,
+      "overrideMeltSnowSmoothTime": false,
+      "meltSnowSmoothTime": -1.0,
       "needGPUReadbackQuery": true
     },
     {
@@ -2145,7 +1542,6 @@
       "$type": "Beyond.Gameplay.CustomAbilityComponentData, Gameplay.Beyond"
     }
   ],
-  "m_componentDataCache": {},
   "animConfigPath": "Assets/Beyond/Designer/Editing/AnimationConfig/Character/anim_cfg_chr_0017_yvonne.asset",
   "bodyType": {
     "bodyType": "Girl",

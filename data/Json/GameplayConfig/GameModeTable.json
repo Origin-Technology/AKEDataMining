@@ -351,6 +351,32 @@
     },
     "gameplayTagList": []
   },
+  "default_nofactory": {
+    "$type": "Beyond.Gameplay.Core.CustomModeSetting, Gameplay.Beyond",
+    "modeId": "default_nofactory",
+    "functionSettings": [
+      {
+        "modeFuncType": "ForbidFactoryBuild"
+      }
+    ],
+    "forbidSettings": {
+      "forbidItems": [
+        {
+          "forbidType": "DisableSwitchMode",
+          "forbidParams": {
+            "$type": "Beyond.Gameplay.DisableSwitchModeForbidParams, Gameplay.Beyond",
+            "forbidStyle": "HideBtn"
+          }
+        }
+      ],
+      "forbidPhaseMode": "BlackList",
+      "forbidPhaseItems": [],
+      "whiteListPhaseForbidStyle": "HideEntrance",
+      "phaseNameWhiteList": [],
+      "<forbidReason>k__BackingField": "GameMode"
+    },
+    "gameplayTagList": []
+  },
   "default_nomap": {
     "$type": "Beyond.Gameplay.Core.CustomModeSetting, Gameplay.Beyond",
     "modeId": "default_nomap",
@@ -701,9 +727,9 @@
     },
     "gameplayTagList": []
   },
-  "dungeon_bossrush": {
+  "dungeon_archery": {
     "$type": "Beyond.Gameplay.Core.DungeonGameModeSetting, Gameplay.Beyond",
-    "modeId": "dungeon_bossrush",
+    "modeId": "dungeon_archery",
     "functionSettings": [
       {
         "modeFuncType": "ForbidSetSquad"
@@ -721,14 +747,14 @@
           "forbidType": "HideMissionHud"
         },
         {
+          "forbidType": "ForbidFactoryMode"
+        },
+        {
           "forbidType": "DisableSwitchMode",
           "forbidParams": {
             "$type": "Beyond.Gameplay.DisableSwitchModeForbidParams, Gameplay.Beyond",
             "forbidStyle": "HideBtn"
           }
-        },
-        {
-          "forbidType": "ForbidFactoryMode"
         },
         {
           "forbidType": "HideSNSHud",
@@ -738,11 +764,24 @@
           }
         },
         {
+          "forbidType": "ForbidUseGeneralAbility",
+          "forbidParams": {
+            "$type": "Beyond.Gameplay.GeneralAbilityForbidUseParams, Gameplay.Beyond",
+            "forbidStyle": "Scan, Bomb, FluidInteract, WaterGun, Snapshot, BombInf, WaterGunInf, XiraniteNexus"
+          }
+        },
+        {
           "forbidType": "ForbidGeneralAbility",
           "forbidParams": {
             "$type": "Beyond.Gameplay.GeneralAbilityForbidParams, Gameplay.Beyond",
-            "forbidStyle": "FluidInteract, WaterGun, BombInf, WaterGunInf"
+            "forbidStyle": "Scan, Bomb, FluidInteract, WaterGun, Snapshot, BombInf, WaterGunInf, XiraniteNexus"
           }
+        },
+        {
+          "forbidType": "ForbidBattleEnterExitBark"
+        },
+        {
+          "forbidType": "ForbidAttack"
         }
       ],
       "forbidPhaseMode": "BlackList",
@@ -833,6 +872,157 @@
         },
         {
           "phaseName": "GachaPool",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "Inventory",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        }
+      ],
+      "whiteListPhaseForbidStyle": "HideEntrance",
+      "phaseNameWhiteList": [],
+      "<forbidReason>k__BackingField": "GameMode"
+    },
+    "gameplayTagList": []
+  },
+  "dungeon_bossrush": {
+    "$type": "Beyond.Gameplay.Core.DungeonGameModeSetting, Gameplay.Beyond",
+    "modeId": "dungeon_bossrush",
+    "functionSettings": [
+      {
+        "modeFuncType": "ForbidSetSquad"
+      },
+      {
+        "modeFuncType": "NoLoot"
+      },
+      {
+        "modeFuncType": "ForbidFactoryBuild"
+      }
+    ],
+    "forbidSettings": {
+      "forbidItems": [
+        {
+          "forbidType": "HideMissionHud"
+        },
+        {
+          "forbidType": "DisableSwitchMode",
+          "forbidParams": {
+            "$type": "Beyond.Gameplay.DisableSwitchModeForbidParams, Gameplay.Beyond",
+            "forbidStyle": "HideBtn"
+          }
+        },
+        {
+          "forbidType": "ForbidFactoryMode"
+        },
+        {
+          "forbidType": "HideSNSHud",
+          "forbidParams": {
+            "$type": "Beyond.Gameplay.ForbidForceSNSForbidParams, Gameplay.Beyond",
+            "dialogIdWhiteList": []
+          }
+        },
+        {
+          "forbidType": "ForbidGeneralAbility",
+          "forbidParams": {
+            "$type": "Beyond.Gameplay.GeneralAbilityForbidParams, Gameplay.Beyond",
+            "forbidStyle": "FluidInteract, WaterGun, BombInf, WaterGunInf"
+          }
+        }
+      ],
+      "forbidPhaseMode": "BlackList",
+      "forbidPhaseItems": [
+        {
+          "phaseName": "Watch",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "Mission",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "Map",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "RegionMap",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "AdventureBook",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "ValuableDepot",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "SNS",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "Friend",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "ActivityCenter",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "CashShop",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "BattlePass",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "GachaPool",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "CharFormation",
           "forbidPhaseParams": {
             "phaseForbidStyle": "HideEntrance",
             "toastTextId": ""
@@ -2590,6 +2780,9 @@
         },
         {
           "forbidType": "ForbidBattleEnterExitBark"
+        },
+        {
+          "forbidType": "ForbidSetSquad"
         }
       ],
       "forbidPhaseMode": "BlackList",
@@ -2624,13 +2817,6 @@
         },
         {
           "phaseName": "Friend",
-          "forbidPhaseParams": {
-            "phaseForbidStyle": "HideEntrance",
-            "toastTextId": ""
-          }
-        },
-        {
-          "phaseName": "CharFormation",
           "forbidPhaseParams": {
             "phaseForbidStyle": "HideEntrance",
             "toastTextId": ""
@@ -2737,6 +2923,9 @@
         },
         {
           "forbidType": "ForbidBattleEnterExitBark"
+        },
+        {
+          "forbidType": "ForbidSetSquad"
         }
       ],
       "forbidPhaseMode": "BlackList",
@@ -2771,13 +2960,6 @@
         },
         {
           "phaseName": "Friend",
-          "forbidPhaseParams": {
-            "phaseForbidStyle": "HideEntrance",
-            "toastTextId": ""
-          }
-        },
-        {
-          "phaseName": "CharFormation",
           "forbidPhaseParams": {
             "phaseForbidStyle": "HideEntrance",
             "toastTextId": ""
@@ -3174,6 +3356,13 @@
             "phaseForbidStyle": "HideEntrance",
             "toastTextId": ""
           }
+        },
+        {
+          "phaseName": "Mission",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
         }
       ],
       "whiteListPhaseForbidStyle": "HideEntrance",
@@ -3407,6 +3596,150 @@
         },
         {
           "phaseName": "ActivityCenter",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        }
+      ],
+      "whiteListPhaseForbidStyle": "HideEntrance",
+      "phaseNameWhiteList": [],
+      "<forbidReason>k__BackingField": "GameMode"
+    },
+    "gameplayTagList": []
+  },
+  "dungeon_rdg_tf": {
+    "$type": "Beyond.Gameplay.Core.DungeonGameModeSetting, Gameplay.Beyond",
+    "modeId": "dungeon_rdg_tf",
+    "functionSettings": [
+      {
+        "modeFuncType": "ForbidSetSquad"
+      },
+      {
+        "modeFuncType": "NoLoot"
+      },
+      {
+        "modeFuncType": "ForbidFactoryBuild"
+      }
+    ],
+    "forbidSettings": {
+      "forbidItems": [
+        {
+          "forbidType": "ForbidFactoryMode"
+        },
+        {
+          "forbidType": "DisableSwitchMode",
+          "forbidParams": {
+            "$type": "Beyond.Gameplay.DisableSwitchModeForbidParams, Gameplay.Beyond",
+            "forbidStyle": "HideBtn"
+          }
+        },
+        {
+          "forbidType": "ForbidMissionHudShowNonTracking"
+        },
+        {
+          "forbidType": "HideSNSHud",
+          "forbidParams": {
+            "$type": "Beyond.Gameplay.ForbidForceSNSForbidParams, Gameplay.Beyond",
+            "dialogIdWhiteList": []
+          }
+        }
+      ],
+      "forbidPhaseMode": "BlackList",
+      "forbidPhaseItems": [
+        {
+          "phaseName": "Watch",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "Map",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "RegionMap",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "AdventureBook",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "ValuableDepot",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "SNS",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "Friend",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "ActivityCenter",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "BattlePass",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "CashShop",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "GachaPool",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "Inventory",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "Wiki",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "Mission",
           "forbidPhaseParams": {
             "phaseForbidStyle": "HideEntrance",
             "toastTextId": ""
@@ -4601,6 +4934,160 @@
     },
     "gameplayTagList": []
   },
+  "dungeon_wuling_racing": {
+    "$type": "Beyond.Gameplay.Core.DungeonGameModeSetting, Gameplay.Beyond",
+    "modeId": "dungeon_wuling_racing",
+    "functionSettings": [
+      {
+        "modeFuncType": "ForbidFactoryBuild"
+      }
+    ],
+    "forbidSettings": {
+      "forbidItems": [
+        {
+          "forbidType": "ForbidGeneralAbility",
+          "forbidParams": {
+            "$type": "Beyond.Gameplay.GeneralAbilityForbidParams, Gameplay.Beyond",
+            "forbidStyle": "Scan, Bomb, FluidInteract, WaterGun, BombInf, WaterGunInf, XiraniteNexus, TyphoeaArchery"
+          }
+        },
+        {
+          "forbidType": "HideMiniMap"
+        },
+        {
+          "forbidType": "DisableSwitchMode",
+          "forbidParams": {
+            "$type": "Beyond.Gameplay.DisableSwitchModeForbidParams, Gameplay.Beyond",
+            "forbidStyle": "HideBtn"
+          }
+        },
+        {
+          "forbidType": "HideMissionHud"
+        },
+        {
+          "forbidType": "HideSNSHud"
+        },
+        {
+          "forbidType": "ForbidLockTarget"
+        },
+        {
+          "forbidType": "HideMiniMap"
+        }
+      ],
+      "forbidPhaseMode": "BlackList",
+      "forbidPhaseItems": [
+        {
+          "phaseName": "Watch",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "BattlePass",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "SNS",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "ActivityCenter",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "CashShop",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "Map",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "Friend",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "GachaPool",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "CharFormation",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "CharInfo",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "ValuableDepot",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "Inventory",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "AdventureReward",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "AdventureBook",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "Mission",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        }
+      ],
+      "whiteListPhaseForbidStyle": "HideEntrance",
+      "phaseNameWhiteList": [],
+      "<forbidReason>k__BackingField": "GameMode"
+    },
+    "gameplayTagList": []
+  },
   "focus_default": {
     "$type": "Beyond.Gameplay.Core.FocusGameModeSetting, Gameplay.Beyond",
     "modeId": "focus_default",
@@ -4643,6 +5130,9 @@
         },
         {
           "forbidType": "FacPowerToast"
+        },
+        {
+          "forbidType": "ForbidMapTeleport"
         }
       ],
       "forbidPhaseMode": "BlackList",
@@ -4727,6 +5217,9 @@
         },
         {
           "forbidType": "FacPowerToast"
+        },
+        {
+          "forbidType": "ForbidMapTeleport"
         }
       ],
       "forbidPhaseMode": "BlackList",
@@ -4813,6 +5306,9 @@
         },
         {
           "forbidType": "FacPowerToast"
+        },
+        {
+          "forbidType": "ForbidMapTeleport"
         }
       ],
       "forbidPhaseMode": "BlackList",
@@ -4897,6 +5393,9 @@
         },
         {
           "forbidType": "FacPowerToast"
+        },
+        {
+          "forbidType": "ForbidMapTeleport"
         }
       ],
       "forbidPhaseMode": "BlackList",
@@ -4982,12 +5481,36 @@
         },
         {
           "forbidType": "FacPowerToast"
+        },
+        {
+          "forbidType": "ForbidMissionHudShowNonTracking"
+        },
+        {
+          "forbidType": "HideSNSHud",
+          "forbidParams": {
+            "$type": "Beyond.Gameplay.ForbidForceSNSForbidParams, Gameplay.Beyond",
+            "dialogIdWhiteList": []
+          }
         }
       ],
       "forbidPhaseMode": "BlackList",
       "forbidPhaseItems": [
         {
           "phaseName": "Map",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "SNS",
+          "forbidPhaseParams": {
+            "phaseForbidStyle": "HideEntrance",
+            "toastTextId": ""
+          }
+        },
+        {
+          "phaseName": "Mission",
           "forbidPhaseParams": {
             "phaseForbidStyle": "HideEntrance",
             "toastTextId": ""

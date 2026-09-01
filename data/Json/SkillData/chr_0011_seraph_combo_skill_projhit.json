@@ -61,6 +61,7 @@
   },
   "canMove": false,
   "canCastInAir": false,
+  "canCastInWater": false,
   "rootMotionCliffCheck": true,
   "characterReturnToIdle": false,
   "switchToCenterBeforeCast": false,
@@ -600,7 +601,8 @@
                             "selectorDirection": "SourceForward",
                             "target": "ActionSource",
                             "targetContextKey": ""
-                          }
+                          },
+                          "processTargetType": "Targets"
                         },
                         {
                           "$type": "Beyond.Gameplay.Core.Selector+PriorityFilter+Data, Gameplay.Beyond",
@@ -618,7 +620,8 @@
                               }
                             },
                             "buffStackNumType": "BuffCount"
-                          }
+                          },
+                          "processTargetType": "Targets"
                         }
                       ]
                     },
@@ -767,7 +770,34 @@
                     "castSkillOnReach": false,
                     "skillIdOnReach": "",
                     "castSkillOnFinish": false,
-                    "skillIdOnFinish": ""
+                    "skillIdOnFinish": "",
+                    "targetFilterMode": "None",
+                    "targetFilterSettings": {
+                      "targetSource": "Target",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "alsoLaunchToHittableTarget": false
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -1104,6 +1134,7 @@
                   "hidePoiseUIEffect": false,
                   "hideMainCharHpScreenEffect": false,
                   "damageDecorateMask": 12288,
+                  "damageTags": [],
                   "ignoreDamageImmuneLevel": "None",
                   "simpleCalculation": true,
                   "atkScale": {
@@ -1299,6 +1330,7 @@
                   "hidePoiseUIEffect": false,
                   "hideMainCharHpScreenEffect": false,
                   "damageDecorateMask": 0,
+                  "damageTags": [],
                   "ignoreDamageImmuneLevel": "None",
                   "simpleCalculation": true,
                   "atkScale": {
@@ -1773,6 +1805,10 @@
                     "ignoreUspGainScalar": false,
                     "atbSourceType": "Default",
                     "atbGainMethod": "Gain",
+                    "useAtbGainTag": false,
+                    "atbGainTag": {
+                      "tagId": 0
+                    },
                     "playObtainAtbEffect": true,
                     "playObtainAtbAudio": true,
                     "costValue": {

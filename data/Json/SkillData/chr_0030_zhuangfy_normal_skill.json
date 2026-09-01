@@ -65,6 +65,7 @@
   },
   "canMove": false,
   "canCastInAir": false,
+  "canCastInWater": false,
   "rootMotionCliffCheck": true,
   "characterReturnToIdle": false,
   "switchToCenterBeforeCast": false,
@@ -465,7 +466,12 @@
                           "checkMaxDistance": false,
                           "maxDistance": 20.0,
                           "ignoreNavmeshLink": true,
-                          "snapToFloor": false
+                          "snapToFloor": false,
+                          "actionOnTargetPointInvalid": {
+                            "actionData": [],
+                            "onlyExecuteWhenSourceIsMainChar": false,
+                            "onlyExecuteWhenSourceIsGuard": false
+                          }
                         },
                         {
                           "$type": "Beyond.Gameplay.Core.SelfRotateAction+Data, Gameplay.Beyond",
@@ -658,7 +664,12 @@
                           "checkMaxDistance": false,
                           "maxDistance": 20.0,
                           "ignoreNavmeshLink": true,
-                          "snapToFloor": false
+                          "snapToFloor": false,
+                          "actionOnTargetPointInvalid": {
+                            "actionData": [],
+                            "onlyExecuteWhenSourceIsMainChar": false,
+                            "onlyExecuteWhenSourceIsGuard": false
+                          }
                         },
                         {
                           "$type": "Beyond.Gameplay.Core.SelfRotateAction+Data, Gameplay.Beyond",
@@ -1058,6 +1069,7 @@
               "priorityLevel": "Default",
               "priorityOffset": 0,
               "serverActionIndex": 22,
+              "manualTick": false,
               "moveTo": {
                 "targetSource": "Context",
                 "targetGroupKey": "smart_target",
@@ -1174,6 +1186,7 @@
               "priorityLevel": "Default",
               "priorityOffset": 0,
               "serverActionIndex": 23,
+              "manualTick": false,
               "moveTo": {
                 "targetSource": "Context",
                 "targetGroupKey": "smart_target",
@@ -1290,6 +1303,7 @@
               "priorityLevel": "Default",
               "priorityOffset": 0,
               "serverActionIndex": 24,
+              "manualTick": false,
               "moveTo": {
                 "targetSource": "Target",
                 "targetGroupKey": "smart_target",
@@ -1454,6 +1468,17 @@
                       "blackboardKey": ""
                     },
                     "recoverWhenLanding": false,
+                    "combineRootMotion": false,
+                    "inputAlongRMScale": {
+                      "useBlackboardKey": false,
+                      "value": 1.0,
+                      "blackboardKey": ""
+                    },
+                    "rootMotionScale": {
+                      "useBlackboardKey": false,
+                      "value": 1.0,
+                      "blackboardKey": ""
+                    },
                     "useTeammateParam": false,
                     "teammateParam": {
                       "inputDirection": "BasedCamForward",
@@ -1554,6 +1579,17 @@
                       "blackboardKey": ""
                     },
                     "recoverWhenLanding": false,
+                    "combineRootMotion": false,
+                    "inputAlongRMScale": {
+                      "useBlackboardKey": false,
+                      "value": 1.0,
+                      "blackboardKey": ""
+                    },
+                    "rootMotionScale": {
+                      "useBlackboardKey": false,
+                      "value": 1.0,
+                      "blackboardKey": ""
+                    },
                     "useTeammateParam": false,
                     "teammateParam": {
                       "inputDirection": "BasedCamForward",
@@ -1706,6 +1742,17 @@
                       "blackboardKey": ""
                     },
                     "recoverWhenLanding": false,
+                    "combineRootMotion": false,
+                    "inputAlongRMScale": {
+                      "useBlackboardKey": false,
+                      "value": 1.0,
+                      "blackboardKey": ""
+                    },
+                    "rootMotionScale": {
+                      "useBlackboardKey": false,
+                      "value": 1.0,
+                      "blackboardKey": ""
+                    },
                     "useTeammateParam": false,
                     "teammateParam": {
                       "inputDirection": "BasedCamForward",
@@ -1881,9 +1928,16 @@
                     "setMultipleTarget": false,
                     "targetSettings": {
                       "targetSource": "Target",
+                      "targetGroupKey": "",
                       "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
                       "centerType": "ActionSource",
+                      "centerContextKey": "",
                       "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
                       "enableAdvancedDirection": false,
                       "advancedDirection": {
                         "directionType": "SourceForward",
@@ -1894,7 +1948,8 @@
                         "invertDirection": false
                       },
                       "selectorDirection": "SourceForward",
-                      "target": "ActionSource"
+                      "target": "ActionSource",
+                      "targetContextKey": ""
                     },
                     "actionTargetType": "InputTarget",
                     "targetContextKey": "",
@@ -2612,6 +2667,10 @@
                           "ignoreUspGainScalar": false,
                           "atbSourceType": "Default",
                           "atbGainMethod": "Return",
+                          "useAtbGainTag": false,
+                          "atbGainTag": {
+                            "tagId": 0
+                          },
                           "playObtainAtbEffect": true,
                           "playObtainAtbAudio": true,
                           "costValue": {
@@ -2847,6 +2906,18 @@
                                 "value": 200.0,
                                 "blackboardKey": ""
                               },
+                              "extent2D": {
+                                "x": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                },
+                                "y": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                }
+                              },
                               "useExtraJitter": false,
                               "snapToNavMesh": true
                             },
@@ -2989,7 +3060,34 @@
                           "castSkillOnReach": true,
                           "skillIdOnReach": "chr_0030_zhuangfy_normal_skill_gene_sword_projhit",
                           "castSkillOnFinish": false,
-                          "skillIdOnFinish": ""
+                          "skillIdOnFinish": "",
+                          "targetFilterMode": "None",
+                          "targetFilterSettings": {
+                            "targetSource": "Target",
+                            "targetGroupKey": "",
+                            "selectorOwner": "ActionOwner",
+                            "ownerContextKey": "",
+                            "centerType": "ActionSource",
+                            "centerContextKey": "",
+                            "centerToGround": false,
+                            "selectorData": {
+                              "validatorData": [],
+                              "postProcessorData": []
+                            },
+                            "enableAdvancedDirection": false,
+                            "advancedDirection": {
+                              "directionType": "SourceForward",
+                              "sourceMountPoint": "None",
+                              "targetMountPoint": "None",
+                              "customSourceAndTarget": false,
+                              "clampToXZ": true,
+                              "invertDirection": false
+                            },
+                            "selectorDirection": "SourceForward",
+                            "target": "ActionSource",
+                            "targetContextKey": ""
+                          },
+                          "alsoLaunchToHittableTarget": false
                         },
                         {
                           "$type": "Beyond.Gameplay.Core.CameraImpulseAction+CameraImpulseActionData, Gameplay.Beyond",
@@ -3404,6 +3502,18 @@
                                 "value": 200.0,
                                 "blackboardKey": ""
                               },
+                              "extent2D": {
+                                "x": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                },
+                                "y": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                }
+                              },
                               "useExtraJitter": false,
                               "snapToNavMesh": true
                             },
@@ -3546,7 +3656,34 @@
                           "castSkillOnReach": true,
                           "skillIdOnReach": "chr_0030_zhuangfy_normal_skill_gene_sword_projhit",
                           "castSkillOnFinish": false,
-                          "skillIdOnFinish": ""
+                          "skillIdOnFinish": "",
+                          "targetFilterMode": "None",
+                          "targetFilterSettings": {
+                            "targetSource": "Target",
+                            "targetGroupKey": "",
+                            "selectorOwner": "ActionOwner",
+                            "ownerContextKey": "",
+                            "centerType": "ActionSource",
+                            "centerContextKey": "",
+                            "centerToGround": false,
+                            "selectorData": {
+                              "validatorData": [],
+                              "postProcessorData": []
+                            },
+                            "enableAdvancedDirection": false,
+                            "advancedDirection": {
+                              "directionType": "SourceForward",
+                              "sourceMountPoint": "None",
+                              "targetMountPoint": "None",
+                              "customSourceAndTarget": false,
+                              "clampToXZ": true,
+                              "invertDirection": false
+                            },
+                            "selectorDirection": "SourceForward",
+                            "target": "ActionSource",
+                            "targetContextKey": ""
+                          },
+                          "alsoLaunchToHittableTarget": false
                         },
                         {
                           "$type": "Beyond.Gameplay.Core.CameraImpulseAction+CameraImpulseActionData, Gameplay.Beyond",
@@ -3806,6 +3943,7 @@
                     "assignPairs": [],
                     "assignBlackboard": true,
                     "abilityEntitySkillId": "",
+                    "allowMultiInputTarget": false,
                     "overrideDuration": false,
                     "duration": {
                       "useBlackboardKey": false,
@@ -4910,6 +5048,31 @@
                     "isTargetMainCharacterActive": false,
                     "isShowBigEffect": false,
                     "bigEffectName": "",
+                    "bigEffectTarget": {
+                      "targetSource": "Target",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
                     "playOnHittableObjects": false,
                     "effectActionCfg": {
                       "fxType": "Normal",
@@ -5197,6 +5360,31 @@
                           "isTargetMainCharacterActive": false,
                           "isShowBigEffect": false,
                           "bigEffectName": "",
+                          "bigEffectTarget": {
+                            "targetSource": "Target",
+                            "targetGroupKey": "",
+                            "selectorOwner": "ActionOwner",
+                            "ownerContextKey": "",
+                            "centerType": "ActionSource",
+                            "centerContextKey": "",
+                            "centerToGround": false,
+                            "selectorData": {
+                              "validatorData": [],
+                              "postProcessorData": []
+                            },
+                            "enableAdvancedDirection": false,
+                            "advancedDirection": {
+                              "directionType": "SourceForward",
+                              "sourceMountPoint": "None",
+                              "targetMountPoint": "None",
+                              "customSourceAndTarget": false,
+                              "clampToXZ": true,
+                              "invertDirection": false
+                            },
+                            "selectorDirection": "SourceForward",
+                            "target": "ActionSource",
+                            "targetContextKey": ""
+                          },
                           "playOnHittableObjects": false,
                           "effectActionCfg": {
                             "fxType": "Normal",
@@ -5463,6 +5651,31 @@
               "isTargetMainCharacterActive": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
+              "bigEffectTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
@@ -6253,6 +6466,8 @@
                     "_triggerKey": "combat_skill_nor",
                     "_speakerType": "Characters",
                     "_canInterruptTimeMs": 9999,
+                    "_jumpToWhenPlayMs": 0,
+                    "_seekFadeInMs": 0,
                     "targetSettings": {
                       "targetSource": "Owner",
                       "targetGroupKey": "",
@@ -6277,7 +6492,8 @@
                       "selectorDirection": "SourceForward",
                       "target": "ActionSource",
                       "targetContextKey": ""
-                    }
+                    },
+                    "_responseQuestIdKey": ""
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -6530,6 +6746,31 @@
               "isTargetMainCharacterActive": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
+              "bigEffectTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
@@ -6795,6 +7036,31 @@
               "isTargetMainCharacterActive": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
+              "bigEffectTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
@@ -7060,6 +7326,31 @@
               "isTargetMainCharacterActive": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
+              "bigEffectTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
@@ -7325,6 +7616,31 @@
               "isTargetMainCharacterActive": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
+              "bigEffectTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
@@ -7590,6 +7906,31 @@
               "isTargetMainCharacterActive": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
+              "bigEffectTarget": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
