@@ -1,0 +1,535 @@
+{
+  "id": "int_movingplat_jointable_rock",
+  "name": "int_movingplat_jointable_rock",
+  "factionIndex": "Neutral",
+  "bornTag": [
+    {
+      "tagId": 602820708
+    },
+    {
+      "tagId": -1672050065
+    }
+  ],
+  "delayToRecycleTime": 0.0,
+  "delayRecyclePerformTime": 0.0,
+  "sendDieEvent": false,
+  "enableBornFadeIn": false,
+  "fadeInTime": 1.0,
+  "componentList": [
+    {
+      "$type": "Beyond.Gameplay.Core.InteractiveRootComponentData, Gameplay.Beyond"
+    },
+    {
+      "$type": "Beyond.Gameplay.View.InteractiveModelComponentData, Gameplay.Beyond",
+      "modelId": "int_RockGroup_Joinable_postmodel",
+      "modelScale": 1.0,
+      "enableBornFadeIn": false,
+      "bornFadeInTime": 1.0
+    },
+    {
+      "$type": "Beyond.Gameplay.Core.BaseControllerData, Gameplay.Beyond"
+    },
+    {
+      "$type": "Beyond.Gameplay.Core.InteractiveMovingPlatformComponentData, Gameplay.Beyond",
+      "propertyList": [
+        {
+          "key": "allow_turnon_inside",
+          "value": {
+            "type": "Bool",
+            "valueArray": [
+              {
+                "valueBit64": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "delay",
+          "value": {
+            "type": "Float",
+            "valueArray": [
+              {
+                "valueBit64": 0
+              }
+            ]
+          }
+        },
+        {
+          "key": "speed",
+          "value": {
+            "type": "Float",
+            "valueArray": [
+              {
+                "valueBit64": 1077936128
+              }
+            ]
+          }
+        },
+        {
+          "key": "wait_time",
+          "value": {
+            "type": "Float",
+            "valueArray": [
+              {
+                "valueBit64": 1077936128
+              }
+            ]
+          }
+        },
+        {
+          "key": "state",
+          "value": {
+            "type": "Int",
+            "valueArray": [
+              {
+                "valueBit64": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "current_pos_index",
+          "value": {
+            "type": "Int",
+            "valueArray": [
+              {
+                "valueBit64": 0
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "$type": "Beyond.Gameplay.Core.InteractiveAudioData, Gameplay.Beyond",
+      "propertyList": [],
+      "audioData": {
+        "openAudio": true,
+        "useDynamicLevel": false,
+        "useCustomStencil": true,
+        "useTiggerStencil": false,
+        "useWorkStencil": false,
+        "useAttackStencil": false,
+        "useRepairStencil": false,
+        "useDestroyStencil": false,
+        "useCollectStencil": false,
+        "useInteractStencil": false,
+        "useActiveStencil": false,
+        "audioNameDict": {},
+        "customAudioData": [
+          {
+            "audioState": "start_move",
+            "audioEvent": "au_int_movingplat_start",
+            "desc": "开始移动"
+          },
+          {
+            "audioState": "change_direction",
+            "audioEvent": "au_int_movingplat_turn",
+            "desc": "对于停留时间小于一个阈值（0.2s）的移动平台，将其【单次移动结束+第二次移动开始】合并为转换方向"
+          },
+          {
+            "audioState": "stop",
+            "audioEvent": "au_int_movingplat_end",
+            "desc": "结束移动"
+          }
+        ]
+      }
+    },
+    {
+      "$type": "Beyond.Gameplay.Core.InteractiveCommonPerformComponentData, Gameplay.Beyond",
+      "propertyList": [
+        {
+          "key": "use_dynamic_res",
+          "value": {
+            "type": "Bool",
+            "valueArray": [
+              {
+                "valueBit64": 0
+              }
+            ]
+          }
+        },
+        {
+          "key": "dynamic_entity_id",
+          "value": {
+            "type": "UInt64",
+            "valueArray": [
+              {
+                "valueBit64": 0
+              }
+            ]
+          }
+        }
+      ],
+      "propertyDataList": [
+        {
+          "propertyName": "have_airwall",
+          "propertyType": "Int",
+          "isProperty": true
+        }
+      ],
+      "syncGameplayLock": false
+    },
+    {
+      "$type": "Beyond.Gameplay.Core.TriggerObserverComponentData, Gameplay.Beyond",
+      "propertyList": [
+        {
+          "key": "shape",
+          "value": {
+            "type": "Int",
+            "valueArray": [
+              {
+                "valueBit64": 2
+              }
+            ]
+          }
+        },
+        {
+          "key": "radius",
+          "value": {
+            "type": "Float",
+            "valueArray": [
+              {
+                "valueBit64": 0
+              }
+            ]
+          }
+        },
+        {
+          "key": "center",
+          "value": {
+            "type": "Vector3",
+            "valueArray": [
+              {
+                "valueBit64": 0
+              },
+              {
+                "valueBit64": 0
+              },
+              {
+                "valueBit64": 0
+              }
+            ]
+          }
+        },
+        {
+          "key": "size",
+          "value": {
+            "type": "Vector3",
+            "valueArray": [
+              {
+                "valueBit64": 1065353216
+              },
+              {
+                "valueBit64": 1065353216
+              },
+              {
+                "valueBit64": 1065353216
+              }
+            ]
+          }
+        },
+        {
+          "key": "interactive_direction_check",
+          "value": {
+            "type": "Bool",
+            "valueArray": [
+              {
+                "valueBit64": 0
+              }
+            ]
+          }
+        },
+        {
+          "key": "check_area_offset",
+          "value": {
+            "type": "Vector3",
+            "valueArray": [
+              {
+                "valueBit64": 0
+              },
+              {
+                "valueBit64": 0
+              },
+              {
+                "valueBit64": 0
+              }
+            ]
+          }
+        },
+        {
+          "key": "check_area_radius",
+          "value": {
+            "type": "Float",
+            "valueArray": [
+              {
+                "valueBit64": 1092616192
+              }
+            ]
+          }
+        },
+        {
+          "key": "check_area_height",
+          "value": {
+            "type": "Float",
+            "valueArray": [
+              {
+                "valueBit64": 1084227584
+              }
+            ]
+          }
+        },
+        {
+          "key": "check_angle",
+          "value": {
+            "type": "Float",
+            "valueArray": [
+              {
+                "valueBit64": 1135869952
+              }
+            ]
+          }
+        },
+        {
+          "key": "check_angle_offset",
+          "value": {
+            "type": "Float",
+            "valueArray": [
+              {
+                "valueBit64": 0
+              }
+            ]
+          }
+        },
+        {
+          "key": "player_direction_check",
+          "value": {
+            "type": "Bool",
+            "valueArray": [
+              {
+                "valueBit64": 0
+              }
+            ]
+          }
+        },
+        {
+          "key": "is_important",
+          "value": {
+            "type": "Bool",
+            "valueArray": [
+              {
+                "valueBit64": 0
+              }
+            ]
+          }
+        },
+        {
+          "key": "in_trigger_volume_performance",
+          "value": {
+            "type": "Bool",
+            "valueArray": [
+              {
+                "valueBit64": 0
+              }
+            ]
+          }
+        }
+      ],
+      "a": 0,
+      "b": 0
+    }
+  ],
+  "m_componentDataCache": {},
+  "facOccDis": 0.5,
+  "useGlobalVar": false,
+  "useMapVar": false,
+  "hideInDialog": false,
+  "mountPoints": [],
+  "aoiRadiusType": "Default",
+  "configProperties": [
+    {
+      "key": "have_airwall",
+      "value": {
+        "type": "Int",
+        "valueArray": [
+          {
+            "valueBit64": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "position_list",
+      "value": {
+        "type": "Vector3List",
+        "valueArray": [
+          {
+            "valueBit64": 0
+          },
+          {
+            "valueBit64": 0
+          },
+          {
+            "valueBit64": 0
+          },
+          {
+            "valueBit64": 1084143698
+          },
+          {
+            "valueBit64": 0
+          },
+          {
+            "valueBit64": 1092857364
+          },
+          {
+            "valueBit64": 0
+          },
+          {
+            "valueBit64": 0
+          },
+          {
+            "valueBit64": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "speed",
+      "value": {
+        "type": "Float",
+        "valueArray": [
+          {
+            "valueBit64": 1077936128
+          }
+        ]
+      }
+    },
+    {
+      "key": "wait_time",
+      "value": {
+        "type": "Float",
+        "valueArray": [
+          {
+            "valueBit64": 1077936128
+          }
+        ]
+      }
+    }
+  ],
+  "saveProperties": [
+    {
+      "key": "current_pos_index",
+      "value": {
+        "type": "Int",
+        "valueArray": [
+          {
+            "valueBit64": 0
+          }
+        ]
+      }
+    },
+    {
+      "key": "state",
+      "value": {
+        "type": "Int",
+        "valueArray": [
+          {
+            "valueBit64": 1
+          }
+        ]
+      }
+    }
+  ],
+  "propertyIdToKeyMap": {
+    "1": "current_pos_index",
+    "2": "state",
+    "1027": "position_list",
+    "1028": "speed",
+    "1029": "wait_time",
+    "1030": "have_airwall"
+  },
+  "propertyKeyToIdMap": {
+    "current_pos_index": 1,
+    "have_airwall": 1030,
+    "position_list": 1027,
+    "speed": 1028,
+    "state": 2,
+    "wait_time": 1029
+  },
+  "templateVariant": {
+    "int_movingplat_rock_01": {
+      "modelId": {
+        "enabled": true,
+        "value": "int_movingplat_rock_01_postmodel"
+      },
+      "factionIndex": {
+        "enabled": false,
+        "value": "Neutral"
+      },
+      "delayToRecycleTime": {
+        "enabled": false,
+        "value": 0.0
+      },
+      "delayRecyclePerformTime": {
+        "enabled": false,
+        "value": 0.0
+      },
+      "facOccDis": {
+        "enabled": false,
+        "value": 0.5
+      },
+      "hideInDialog": {
+        "enabled": false,
+        "value": false
+      },
+      "relatedGuideTimestampGameVar": {
+        "enabled": false
+      },
+      "bornTag": {
+        "enabled": false,
+        "value": []
+      },
+      "mountPoints": {
+        "enabled": false,
+        "value": []
+      },
+      "aoiRadiusType": {
+        "enabled": false,
+        "value": "Default"
+      },
+      "diffProperties": [
+        {
+          "key": "position_list",
+          "value": {
+            "type": "Vector3List",
+            "valueArray": [
+              {
+                "valueBit64": 0
+              },
+              {
+                "valueBit64": 0
+              },
+              {
+                "valueBit64": 0
+              },
+              {
+                "valueBit64": 1084143698
+              },
+              {
+                "valueBit64": 0
+              },
+              {
+                "valueBit64": 1092857364
+              }
+            ]
+          }
+        }
+      ],
+      "componentDiffProperties": {},
+      "globalVarDiff": [],
+      "mapVarDiff": []
+    }
+  },
+  "allGlobalSaveProperties": [],
+  "allMapSaveProperties": []
+}
