@@ -8,6 +8,7 @@
     "showInSquadIcon": false,
     "onlyShowForMainCharacter": false,
     "blinkInMainCharHpBar": false,
+    "showProgressInEnemyHeadBar": false,
     "showProgressInHpBar": false,
     "showProgressInNormalSkillButton": false,
     "useWeakProgressInNormalSkillButton": false,
@@ -46,16 +47,12 @@
   "poiseModifier": [],
   "globalModifier": [],
   "shieldConfigs": [],
-  "applyTags": [
-    {
-      "tagId": -1486085048
-    }
-  ],
+  "applyTags": [],
   "tagsAfterTriggerExtendBuffAction": [],
   "lifeType": "Limited",
   "duration": {
-    "useBlackboardKey": true,
-    "value": 3.0,
+    "useBlackboardKey": false,
+    "value": 0.1,
     "blackboardKey": "duration"
   },
   "triggerInterval": {
@@ -71,7 +68,7 @@
   },
   "stackingSettings": {
     "identifierType": "Id",
-    "stackingType": "Refresh",
+    "stackingType": "Unique",
     "stackingKey": "",
     "usePriorityKey": false,
     "priorityKey": "",
@@ -87,7 +84,61 @@
     "canBeDispelled": false,
     "dispelledLevel": "Default"
   },
-  "buffEventAction": [],
+  "buffEventAction": [
+    {
+      "buffEvent": "OnBuffStart",
+      "actions": [
+        {
+          "actionData": [
+            {
+              "$type": "Beyond.Gameplay.Core.SetSkillCdAtOnce+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 0,
+              "target": {
+                "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "useSkillType": true,
+              "skillTypeMask": "NormalSkill",
+              "skillId": "",
+              "functionType": "Set",
+              "isPercentage": false,
+              "value": {
+                "useBlackboardKey": true,
+                "value": 0.0,
+                "blackboardKey": "duration"
+              }
+            }
+          ],
+          "onlyExecuteWhenSourceIsMainChar": false,
+          "onlyExecuteWhenSourceIsGuard": false
+        }
+      ]
+    }
+  ],
   "abilityEventAction": [],
   "igniteEventAction": [],
   "timelineActions": [],
@@ -98,5 +149,6 @@
       "valueStr": "",
       "isDynamic": false
     }
-  ]
+  ],
+  "<isSpellInflictionRelated>k__BackingField": false
 }

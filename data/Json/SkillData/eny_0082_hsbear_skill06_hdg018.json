@@ -6,6 +6,7 @@
   "iconBgType": "Physical",
   "attackRangeType": "Melee",
   "castType": "Active",
+  "normalSkillSubType": "Normal",
   "skillSpecification": "Default",
   "passiveSkillType": "AddBuff",
   "castData": {
@@ -150,6 +151,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerMountPoint",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -206,6 +208,16 @@
                         "value": 10.0,
                         "blackboardKey": ""
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 5.0,
@@ -225,6 +237,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -369,6 +419,7 @@
                         "alwaysStartNewCoalition": false,
                         "alwaysEndCoalition": false,
                         "updatePositionOnCoalition": true,
+                        "damageTextFollowDuration": 0.0,
                         "enablePoiseBreakTimeDilation": true,
                         "hidePoiseUIEffect": false,
                         "hideMainCharHpScreenEffect": false,
@@ -390,6 +441,7 @@
                         "playDefaultHitEffect": false,
                         "effectData": {
                           "fxType": "Normal",
+                          "sourceTag": "Battle",
                           "effectName": "P_fxbat_hsbear_skill_07_hit",
                           "guardEffect": false,
                           "isCenterChangeLod": false,
@@ -1107,6 +1159,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetForward",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 2.5,
@@ -1119,6 +1172,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": false,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": false,
                     "projectileSkillId": "",
                     "castSkillOnBlock": false,
@@ -1448,6 +1503,7 @@
                   "weightedMode": 0
                 }
               ],
+              "enableScaleZWithDistanceForRealPosition": false,
               "scaleZ": {
                 "useBlackboardKey": false,
                 "value": 1.0,
@@ -1707,6 +1763,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Alert",
+                "sourceTag": "Battle",
                 "effectName": "P_skillalert_circle_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -1865,7 +1922,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -2553,6 +2612,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_hsbear_skill_06_start_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -2711,7 +2771,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -2843,6 +2905,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_hsbear_skill_06_start_03",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3001,7 +3064,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3133,6 +3198,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_hsbear_skill_06_start_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3291,7 +3357,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3423,6 +3491,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_common_enemy_atk_ready_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3581,7 +3650,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3713,6 +3784,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_hsbear_skill_02_canying_asset_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3871,7 +3943,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -4003,6 +4077,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_hsbear_skill_06_start_04",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -4161,7 +4236,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -4293,6 +4370,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_hsbear_skill_06_start_05",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -4451,7 +4529,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,

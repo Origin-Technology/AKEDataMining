@@ -8,6 +8,7 @@
     "showInSquadIcon": false,
     "onlyShowForMainCharacter": false,
     "blinkInMainCharHpBar": false,
+    "showProgressInEnemyHeadBar": false,
     "showProgressInHpBar": false,
     "showProgressInNormalSkillButton": false,
     "useWeakProgressInNormalSkillButton": false,
@@ -46,7 +47,11 @@
   "poiseModifier": [],
   "globalModifier": [],
   "shieldConfigs": [],
-  "applyTags": [],
+  "applyTags": [
+    {
+      "tagId": -1065936627
+    }
+  ],
   "tagsAfterTriggerExtendBuffAction": [],
   "lifeType": "Limited",
   "duration": {
@@ -203,6 +208,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_tangtang_ultskill_live_choose_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -361,7 +367,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.EffectAction+EffectActionData, Gameplay.Beyond",
@@ -477,6 +485,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_tangtang_skill_ult_asset",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -635,14 +644,74 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": true,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
+            }
+          ],
+          "onlyExecuteWhenSourceIsMainChar": false,
+          "onlyExecuteWhenSourceIsGuard": false
+        },
+        {
+          "actionData": [
+            {
+              "$type": "Beyond.Gameplay.Core.CheckBuffStackNumAdvanced+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 2,
+              "checkTarget": {
+                "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "buffSettings": {
+                "checkType": "Tag",
+                "buffIdList": [],
+                "tagQuery": {
+                  "queryType": "HasAny",
+                  "tags": [
+                    {
+                      "tagId": 188749032
+                    }
+                  ]
+                }
+              },
+              "buffStackNumType": "BuffCount",
+              "compareType": "LT",
+              "value": {
+                "useBlackboardKey": false,
+                "value": 1.0,
+                "blackboardKey": ""
+              },
+              "limitSkillCastId": false
             },
             {
               "$type": "Beyond.Gameplay.Core.TimeDilationAction+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 2,
+              "serverActionIndex": 3,
               "layer": "Entity",
               "slot": {
                 "tagId": -1767339671
@@ -717,5 +786,6 @@
       "valueStr": "",
       "isDynamic": false
     }
-  ]
+  ],
+  "<isSpellInflictionRelated>k__BackingField": false
 }

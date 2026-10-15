@@ -6,6 +6,7 @@
   "iconBgType": "Physical",
   "attackRangeType": "Melee",
   "castType": "Active",
+  "normalSkillSubType": "Normal",
   "skillSpecification": "CharacterComboSkill",
   "passiveSkillType": "AddBuff",
   "castData": {
@@ -350,6 +351,7 @@
                           "overrideRotateRate": true,
                           "rotateRate": 1080.0,
                           "rotateDirType": "Free",
+                          "updateTargetPerFrame": false,
                           "ignoreImmobilized": false
                         }
                       ],
@@ -521,6 +523,7 @@
                     "overrideRotateRate": false,
                     "rotateRate": 1080.0,
                     "rotateDirType": "Free",
+                    "updateTargetPerFrame": false,
                     "ignoreImmobilized": false
                   }
                 ],
@@ -1360,6 +1363,7 @@
                   "weightedMode": 0
                 }
               ],
+              "enableScaleZWithDistanceForRealPosition": false,
               "scaleZ": {
                 "useBlackboardKey": false,
                 "value": 0.8,
@@ -1456,6 +1460,12 @@
                     },
                     "faceToMoveDir": false,
                     "overrideRotateSpeed": false,
+                    "limitMoveDirRotateSpeed": false,
+                    "moveDirRotateSpeed": {
+                      "useBlackboardKey": false,
+                      "value": 90.0,
+                      "blackboardKey": ""
+                    },
                     "disableCliffCheck": false,
                     "rotateSpeed": {
                       "useBlackboardKey": false,
@@ -1472,6 +1482,19 @@
                     "rootMotionScale": {
                       "useBlackboardKey": false,
                       "value": 1.0,
+                      "blackboardKey": ""
+                    },
+                    "enableStopDistance": false,
+                    "stopDistance": {
+                      "useBlackboardKey": false,
+                      "value": 0.0,
+                      "blackboardKey": ""
+                    },
+                    "stopLayerMask": {},
+                    "stopCheckSuperArmor": false,
+                    "stopSuperArmorThreshold": {
+                      "useBlackboardKey": false,
+                      "value": 0,
                       "blackboardKey": ""
                     },
                     "useTeammateParam": false,
@@ -1728,6 +1751,7 @@
                       "targetContextKey": ""
                     },
                     "dir2DirectionType": "SourceToTarget",
+                    "clampToXZ": false,
                     "compareType": "LT",
                     "value": {
                       "useBlackboardKey": false,
@@ -3012,6 +3036,7 @@
                   "alwaysStartNewCoalition": false,
                   "alwaysEndCoalition": false,
                   "updatePositionOnCoalition": true,
+                  "damageTextFollowDuration": 0.0,
                   "enablePoiseBreakTimeDilation": true,
                   "hidePoiseUIEffect": false,
                   "hideMainCharHpScreenEffect": false,
@@ -3041,6 +3066,7 @@
                   "playDefaultHitEffect": false,
                   "effectData": {
                     "fxType": "Normal",
+                    "sourceTag": "Battle",
                     "effectName": "",
                     "guardEffect": false,
                     "isCenterChangeLod": false,
@@ -3216,6 +3242,7 @@
                   "alwaysStartNewCoalition": false,
                   "alwaysEndCoalition": false,
                   "updatePositionOnCoalition": true,
+                  "damageTextFollowDuration": 0.0,
                   "enablePoiseBreakTimeDilation": true,
                   "hidePoiseUIEffect": false,
                   "hideMainCharHpScreenEffect": false,
@@ -3251,6 +3278,7 @@
                   "playDefaultHitEffect": false,
                   "effectData": {
                     "fxType": "Normal",
+                    "sourceTag": "Battle",
                     "effectName": "",
                     "guardEffect": false,
                     "isCenterChangeLod": false,
@@ -3985,6 +4013,7 @@
               "overrideHitBone": false,
               "hitMountPoint": "None",
               "hitBoneOffsetForward": "TargetForward",
+              "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
                 "x": 0.0,
                 "y": 0.0,
@@ -3997,6 +4026,8 @@
               },
               "presetPoints": [],
               "assignBlackboard": true,
+              "castSkillOnLaunch": false,
+              "skillIdOnLaunch": "",
               "castSkillOnHit": true,
               "projectileSkillId": "chr_0030_zhuangfy_combo_skill_ring_projhit",
               "castSkillOnBlock": false,
@@ -4221,6 +4252,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_zhuangfy_combo_skill_hit_start",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -4379,7 +4411,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -4531,6 +4565,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_zhuangfy_ult_combo_skill_hit",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -4689,7 +4724,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -4841,6 +4878,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_zhuangfy_combo_skill_range",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -4999,7 +5037,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -5477,6 +5517,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_zhuangfy_combo_skill_canying",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -5635,7 +5676,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -5767,6 +5810,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_zhuangfy_ult_combo_skill_start",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -5925,7 +5969,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,

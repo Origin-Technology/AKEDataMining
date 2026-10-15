@@ -6,6 +6,7 @@
   "iconBgType": "Physical",
   "attackRangeType": "Melee",
   "castType": "Active",
+  "normalSkillSubType": "Normal",
   "skillSpecification": "CharacterComboSkill",
   "passiveSkillType": "AddBuff",
   "castData": {
@@ -155,7 +156,7 @@
       },
       {
         "_startFrame": 0,
-        "_endFrame": 1,
+        "_endFrame": 3,
         "_sequenceActionData": {
           "actionData": [
             {
@@ -209,8 +210,9 @@
               "rootMotionDirectionType": "Clockwise",
               "immediateRotate": true,
               "overrideRotateRate": false,
-              "rotateRate": 1080.0,
+              "rotateRate": 0.0,
               "rotateDirType": "Free",
+              "updateTargetPerFrame": false,
               "ignoreImmobilized": false
             }
           ],
@@ -522,37 +524,12 @@
                             "validatorData": [],
                             "postProcessorData": []
                           },
-                          "selectorDirection": "SourceForward",
+                          "selectorDirection": "CameraForward",
                           "target": "ActionSource",
                           "contextKey": "",
                           "useAdvancedDirectionSetting": true,
                           "advancedSelectorDirection": {
                             "directionType": "CameraForward",
-                            "source": {
-                              "targetSource": "MainCharacter",
-                              "targetGroupKey": "",
-                              "selectorOwner": "ActionOwner",
-                              "ownerContextKey": "",
-                              "centerType": "ActionSource",
-                              "centerContextKey": "",
-                              "centerToGround": false,
-                              "selectorData": {
-                                "validatorData": [],
-                                "postProcessorData": []
-                              },
-                              "enableAdvancedDirection": false,
-                              "advancedDirection": {
-                                "directionType": "SourceForward",
-                                "sourceMountPoint": "None",
-                                "targetMountPoint": "None",
-                                "customSourceAndTarget": false,
-                                "clampToXZ": true,
-                                "invertDirection": false
-                              },
-                              "selectorDirection": "SourceForward",
-                              "target": "ActionSource",
-                              "targetContextKey": ""
-                            },
                             "sourceMountPoint": "None",
                             "targetMountPoint": "None",
                             "customSourceAndTarget": false,
@@ -759,37 +736,12 @@
                             "validatorData": [],
                             "postProcessorData": []
                           },
-                          "selectorDirection": "SourceForward",
+                          "selectorDirection": "CameraForward",
                           "target": "ActionSource",
                           "contextKey": "",
                           "useAdvancedDirectionSetting": true,
                           "advancedSelectorDirection": {
                             "directionType": "CameraForward",
-                            "source": {
-                              "targetSource": "MainCharacter",
-                              "targetGroupKey": "",
-                              "selectorOwner": "ActionOwner",
-                              "ownerContextKey": "",
-                              "centerType": "ActionSource",
-                              "centerContextKey": "",
-                              "centerToGround": false,
-                              "selectorData": {
-                                "validatorData": [],
-                                "postProcessorData": []
-                              },
-                              "enableAdvancedDirection": false,
-                              "advancedDirection": {
-                                "directionType": "SourceForward",
-                                "sourceMountPoint": "None",
-                                "targetMountPoint": "None",
-                                "customSourceAndTarget": false,
-                                "clampToXZ": true,
-                                "invertDirection": false
-                              },
-                              "selectorDirection": "SourceForward",
-                              "target": "ActionSource",
-                              "targetContextKey": ""
-                            },
                             "sourceMountPoint": "None",
                             "targetMountPoint": "None",
                             "customSourceAndTarget": false,
@@ -1665,6 +1617,7 @@
               "overrideRotateRate": true,
               "rotateRate": 720.0,
               "rotateDirType": "Free",
+              "updateTargetPerFrame": false,
               "ignoreImmobilized": false
             }
           ],
@@ -1898,7 +1851,7 @@
                       "excludeCurrentPos": false,
                       "distance": {
                         "useBlackboardKey": false,
-                        "value": 8.0,
+                        "value": 4.0,
                         "blackboardKey": ""
                       },
                       "useAddScoreToPrevSide": false
@@ -1969,7 +1922,7 @@
             },
             {
               "$type": "Beyond.Gameplay.Core.Conditions.CheckEntityNum+Data, Gameplay.Beyond",
-              "isEnable": false,
+              "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
               "serverActionIndex": 37,
@@ -2057,6 +2010,7 @@
               "overrideRotateRate": false,
               "rotateRate": 0.0,
               "rotateDirType": "Free",
+              "updateTargetPerFrame": false,
               "ignoreImmobilized": false
             }
           ],
@@ -2140,6 +2094,7 @@
                   "weightedMode": 0
                 }
               ],
+              "enableScaleZWithDistanceForRealPosition": false,
               "scaleZ": {
                 "useBlackboardKey": false,
                 "value": 1.0,
@@ -2403,6 +2358,9 @@
                       "target": "ActionSource",
                       "targetContextKey": ""
                     },
+                    "useTargetMountPoint": false,
+                    "targetMountPoint": "None",
+                    "ownerMountPoint": "None",
                     "fixAngle": {
                       "x": 0.0,
                       "y": 0.0,
@@ -4112,6 +4070,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_comboskill_arrowbirth_small",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -4270,7 +4229,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -4402,6 +4363,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_battle_comboskill_arrowrelease",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -4560,7 +4522,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
@@ -4727,6 +4691,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -4739,6 +4704,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -4914,6 +4881,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -4926,6 +4894,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -5098,6 +5068,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_comboskill_arrowbirth_small",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -5256,7 +5227,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -5388,6 +5361,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_battle_comboskill_arrowrelease",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -5546,7 +5520,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
@@ -5713,6 +5689,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -5725,6 +5702,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -5900,6 +5879,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -5912,6 +5892,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -6084,6 +6066,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_comboskill_arrowbirth_small",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -6242,7 +6225,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -6374,6 +6359,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_battle_comboskill_arrowrelease",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -6532,7 +6518,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
@@ -6699,6 +6687,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -6711,6 +6700,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -6886,6 +6877,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -6898,6 +6890,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -7070,6 +7064,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_comboskill_arrowbirth_small",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -7228,7 +7223,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -7360,6 +7357,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_battle_comboskill_arrowrelease",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -7518,7 +7516,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
@@ -7685,6 +7685,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -7697,6 +7698,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -7872,6 +7875,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -7884,6 +7888,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -8056,6 +8062,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_comboskill_arrowbirth_small",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -8214,7 +8221,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -8346,6 +8355,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_battle_comboskill_arrowrelease",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -8504,7 +8514,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
@@ -8671,6 +8683,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -8683,6 +8696,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -8858,6 +8873,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -8870,6 +8886,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -9042,6 +9060,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_comboskill_arrowbirth_small",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -9200,7 +9219,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -9332,6 +9353,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_battle_comboskill_arrowrelease",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -9490,7 +9512,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
@@ -9657,6 +9681,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -9669,6 +9694,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -9844,6 +9871,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -9856,6 +9884,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -10069,6 +10099,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "None",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 1.0,
@@ -10081,6 +10112,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_01_projhit",
                     "castSkillOnBlock": false,
@@ -10443,6 +10476,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "None",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -10455,6 +10489,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_01_projhit",
                     "castSkillOnBlock": false,
@@ -12056,6 +12092,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_battle_combo_skill_04_air",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -12214,7 +12251,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -12346,6 +12385,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_comboskill_arrowbirth_air",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -12504,7 +12544,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -12636,6 +12678,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "WeaponVfx",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_comboskill_wpn_glow_asset",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -12794,7 +12837,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,

@@ -8,6 +8,7 @@
     "showInSquadIcon": false,
     "onlyShowForMainCharacter": false,
     "blinkInMainCharHpBar": false,
+    "showProgressInEnemyHeadBar": false,
     "showProgressInHpBar": false,
     "showProgressInNormalSkillButton": false,
     "useWeakProgressInNormalSkillButton": false,
@@ -203,6 +204,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_lizhiyan_combo_skill_enemy_glow_asset",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -361,7 +363,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
@@ -457,6 +461,7 @@
                               "posRefMP": "None",
                               "directionRef": "OwnerForward",
                               "dirRefMountPoint": "None",
+                              "useFullRotation": false,
                               "centerOffset": {
                                 "x": {
                                   "useBlackboardKey": false,
@@ -513,6 +518,16 @@
                                 "value": 5.67,
                                 "blackboardKey": ""
                               },
+                              "innerRadius": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
+                              "outerRadius": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
                               "height": {
                                 "useBlackboardKey": false,
                                 "value": 15.0,
@@ -532,6 +547,44 @@
                               },
                               "useDirection": true,
                               "castDirection": "ZForward",
+                              "lineShapeType": "Box",
+                              "lineStart": {
+                                "source": "ActionOwner",
+                                "contextKey": "",
+                                "mountPoint": "None"
+                              },
+                              "lineEnd": {
+                                "source": "ActionOwner",
+                                "contextKey": "",
+                                "mountPoint": "None"
+                              },
+                              "lineBoxSize": {
+                                "x": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                },
+                                "y": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                },
+                                "z": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                }
+                              },
+                              "lineRadius": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
+                              "lineLengthOffset": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
                               "enablePreview": true,
                               "hitEffectTowardsType": "TowardsAttacker"
                             }
@@ -639,6 +692,7 @@
                               "posRefMP": "None",
                               "directionRef": "OwnerForward",
                               "dirRefMountPoint": "None",
+                              "useFullRotation": false,
                               "centerOffset": {
                                 "x": {
                                   "useBlackboardKey": false,
@@ -695,6 +749,16 @@
                                 "value": 5.67,
                                 "blackboardKey": ""
                               },
+                              "innerRadius": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
+                              "outerRadius": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
                               "height": {
                                 "useBlackboardKey": false,
                                 "value": 15.0,
@@ -714,6 +778,44 @@
                               },
                               "useDirection": true,
                               "castDirection": "ZForward",
+                              "lineShapeType": "Box",
+                              "lineStart": {
+                                "source": "ActionOwner",
+                                "contextKey": "",
+                                "mountPoint": "None"
+                              },
+                              "lineEnd": {
+                                "source": "ActionOwner",
+                                "contextKey": "",
+                                "mountPoint": "None"
+                              },
+                              "lineBoxSize": {
+                                "x": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                },
+                                "y": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                },
+                                "z": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                }
+                              },
+                              "lineRadius": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
+                              "lineLengthOffset": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
                               "enablePreview": true,
                               "hitEffectTowardsType": "TowardsAttacker"
                             }
@@ -1216,11 +1318,29 @@
         {
           "actionData": [
             {
-              "$type": "Beyond.Gameplay.Core.FindTargetAction+FindTargetActionData, Gameplay.Beyond",
+              "$type": "Beyond.Gameplay.Core.CompareFloat+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
               "serverActionIndex": 12,
+              "valueA": {
+                "useBlackboardKey": true,
+                "value": 0.0,
+                "blackboardKey": "has_finished"
+              },
+              "compare": "Equals",
+              "valueB": {
+                "useBlackboardKey": false,
+                "value": 0.0,
+                "blackboardKey": ""
+              }
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.FindTargetAction+FindTargetActionData, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 13,
               "targetGroupKey": "bunshin",
               "center": "ActionSource",
               "centerContextKey": "",
@@ -1270,7 +1390,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 13,
+              "serverActionIndex": 14,
               "target": {
                 "targetSource": "Context",
                 "targetGroupKey": "bunshin",
@@ -1303,7 +1423,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 14,
+                    "serverActionIndex": 15,
                     "caster": {
                       "targetSource": "Target",
                       "targetGroupKey": "",
@@ -1367,6 +1487,47 @@
                 "onlyExecuteWhenSourceIsMainChar": false,
                 "onlyExecuteWhenSourceIsGuard": false
               }
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.ModifyDynamicBlackboard+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 16,
+              "key": "has_finished",
+              "operation": "Assign",
+              "directValue": true,
+              "value": {
+                "useBlackboardKey": false,
+                "value": 1.0,
+                "blackboardKey": ""
+              },
+              "calculationTarget": {
+                "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "calculateType": "HpRatio"
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -1382,11 +1543,29 @@
         {
           "actionData": [
             {
+              "$type": "Beyond.Gameplay.Core.CompareFloat+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 17,
+              "valueA": {
+                "useBlackboardKey": true,
+                "value": 0.0,
+                "blackboardKey": "has_finished"
+              },
+              "compare": "Equals",
+              "valueB": {
+                "useBlackboardKey": false,
+                "value": 0.0,
+                "blackboardKey": ""
+              }
+            },
+            {
               "$type": "Beyond.Gameplay.Core.Conditions.CheckTimedMarkerCondition+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 15,
+              "serverActionIndex": 18,
               "checkTarget": {
                 "targetSource": "InstantSearch",
                 "targetGroupKey": "",
@@ -1441,7 +1620,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 16,
+              "serverActionIndex": 19,
               "targetGroupKey": "bunshin",
               "center": "ActionSource",
               "centerContextKey": "",
@@ -1491,7 +1670,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 17,
+              "serverActionIndex": 20,
               "target": {
                 "targetSource": "Context",
                 "targetGroupKey": "bunshin",
@@ -1524,7 +1703,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 18,
+                    "serverActionIndex": 21,
                     "caster": {
                       "targetSource": "Target",
                       "targetGroupKey": "",
@@ -1588,6 +1767,47 @@
                 "onlyExecuteWhenSourceIsMainChar": false,
                 "onlyExecuteWhenSourceIsGuard": false
               }
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.ModifyDynamicBlackboard+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 22,
+              "key": "has_finished",
+              "operation": "Assign",
+              "directValue": true,
+              "value": {
+                "useBlackboardKey": false,
+                "value": 1.0,
+                "blackboardKey": ""
+              },
+              "calculationTarget": {
+                "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "calculateType": "HpRatio"
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -1601,11 +1821,29 @@
         {
           "actionData": [
             {
+              "$type": "Beyond.Gameplay.Core.CompareFloat+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 23,
+              "valueA": {
+                "useBlackboardKey": true,
+                "value": 0.0,
+                "blackboardKey": "has_finished"
+              },
+              "compare": "Equals",
+              "valueB": {
+                "useBlackboardKey": false,
+                "value": 0.0,
+                "blackboardKey": ""
+              }
+            },
+            {
               "$type": "Beyond.Gameplay.Core.Conditions.CheckTimedMarkerCondition+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 19,
+              "serverActionIndex": 24,
               "checkTarget": {
                 "targetSource": "InstantSearch",
                 "targetGroupKey": "",
@@ -1657,7 +1895,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 20,
+              "serverActionIndex": 25,
               "firstTargetSettings": {
                 "targetSource": "Target",
                 "targetGroupKey": "",
@@ -1714,7 +1952,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 21,
+              "serverActionIndex": 26,
               "targetGroupKey": "bunshin",
               "center": "ActionSource",
               "centerContextKey": "",
@@ -1764,7 +2002,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 22,
+              "serverActionIndex": 27,
               "target": {
                 "targetSource": "Context",
                 "targetGroupKey": "bunshin",
@@ -1797,7 +2035,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 23,
+                    "serverActionIndex": 28,
                     "caster": {
                       "targetSource": "Target",
                       "targetGroupKey": "",
@@ -1861,6 +2099,360 @@
                 "onlyExecuteWhenSourceIsMainChar": false,
                 "onlyExecuteWhenSourceIsGuard": false
               }
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.ModifyDynamicBlackboard+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 29,
+              "key": "has_finished",
+              "operation": "Assign",
+              "directValue": true,
+              "value": {
+                "useBlackboardKey": false,
+                "value": 1.0,
+                "blackboardKey": ""
+              },
+              "calculationTarget": {
+                "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "calculateType": "HpRatio"
+            }
+          ],
+          "onlyExecuteWhenSourceIsMainChar": false,
+          "onlyExecuteWhenSourceIsGuard": false
+        }
+      ]
+    },
+    {
+      "abilityEvent": "OnSoulDisabled",
+      "actions": [
+        {
+          "actionData": [
+            {
+              "$type": "Beyond.Gameplay.Core.CompareFloat+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 30,
+              "valueA": {
+                "useBlackboardKey": true,
+                "value": 0.0,
+                "blackboardKey": "has_finished"
+              },
+              "compare": "Equals",
+              "valueB": {
+                "useBlackboardKey": false,
+                "value": 0.0,
+                "blackboardKey": ""
+              }
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.SaveTransferredSource+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 31,
+              "checkSource": {
+                "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "contextKey": "trans_source"
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.Conditions.CheckTargetsEqual+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 32,
+              "firstTargetSettings": {
+                "targetSource": "Target",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "secondTargetSettings": {
+                "targetSource": "Context",
+                "targetGroupKey": "trans_source",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              }
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.FindTargetAction+FindTargetActionData, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 33,
+              "targetGroupKey": "bunshin",
+              "center": "ActionSource",
+              "centerContextKey": "",
+              "useCenterEntityMountPoint": false,
+              "centerMountPoint": "None",
+              "centerToGround": false,
+              "selectorOwner": "ActionSource",
+              "selectorOwnerContextKey": "",
+              "selectorData": {
+                "finderData": {
+                  "$type": "Beyond.Gameplay.Core.Selector+OwnerSpawnedEntityFinder+Data, Gameplay.Beyond",
+                  "spawnedObjectType": "AbilityEntity"
+                },
+                "validatorData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.Selector+SkillCastIdValidator+Data, Gameplay.Beyond"
+                  },
+                  {
+                    "$type": "Beyond.Gameplay.Core.Selector+TagValidator+Data, Gameplay.Beyond",
+                    "query": {
+                      "queryType": "HasAny",
+                      "tags": [
+                        {
+                          "tagId": -1480463572
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "postProcessorData": []
+              },
+              "selectorDirection": "SourceForward",
+              "target": "ActionSource",
+              "contextKey": "",
+              "useAdvancedDirectionSetting": false,
+              "advancedSelectorDirection": {
+                "directionType": "SourceForward",
+                "sourceMountPoint": "None",
+                "targetMountPoint": "None",
+                "customSourceAndTarget": false,
+                "clampToXZ": true,
+                "invertDirection": false
+              }
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.ForEachAction+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 34,
+              "target": {
+                "targetSource": "Context",
+                "targetGroupKey": "bunshin",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "action": {
+                "actionData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.CastSkill+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 35,
+                    "caster": {
+                      "targetSource": "Target",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "target": {
+                      "targetSource": "Owner",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "skillId": {
+                      "useBlackboardKey": false,
+                      "value": "chr_0032_lizhiyan_combo_skill_abilityentity_end",
+                      "blackboardKey": ""
+                    },
+                    "skipApplyCost": false,
+                    "inheritSourceSkillCastId": true,
+                    "interruptCurSkillOnlyWhenTargetCastable": false
+                  }
+                ],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              }
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.ModifyDynamicBlackboard+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 36,
+              "key": "has_finished",
+              "operation": "Assign",
+              "directValue": true,
+              "value": {
+                "useBlackboardKey": false,
+                "value": 1.0,
+                "blackboardKey": ""
+              },
+              "calculationTarget": {
+                "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "calculateType": "HpRatio"
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -1895,6 +2487,13 @@
       "valueDouble": 0.0,
       "valueStr": "",
       "isDynamic": true
+    },
+    {
+      "key": "has_finished",
+      "valueDouble": 0.0,
+      "valueStr": "",
+      "isDynamic": true
     }
-  ]
+  ],
+  "<isSpellInflictionRelated>k__BackingField": false
 }

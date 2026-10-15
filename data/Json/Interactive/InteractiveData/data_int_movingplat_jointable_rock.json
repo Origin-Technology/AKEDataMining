@@ -30,6 +30,108 @@
       "$type": "Beyond.Gameplay.Core.BaseControllerData, Gameplay.Beyond"
     },
     {
+      "$type": "Beyond.Gameplay.Core.ClickTriggerComponentForIntData, Gameplay.Beyond",
+      "propertyStateData": [
+        {
+          "triggerId": 0,
+          "triggerType": "Click",
+          "optionName": {
+            "key": "lang_int_movingplat_option"
+          },
+          "isContinuous": false,
+          "performTag": "Performing",
+          "attackTags": "All",
+          "stepOnStayTime": 0.0,
+          "stepOnForceTrigger": false,
+          "hasCustomLevelEvent": false,
+          "eventId": "",
+          "conditions": [
+            {
+              "conditionType": "PropertyCondition",
+              "propertyData": {
+                "propertyName": "allow_turnon_inside",
+                "compareType": "Equal",
+                "value": 0,
+                "useBool": true,
+                "bValue": true
+              },
+              "levelEntityConfig": {
+                "isEnabled": false
+              },
+              "systemUnlockConfig": {
+                "systemType": "Map",
+                "isInvert": false
+              },
+              "noUseConfig": {
+                "isUnlock": false
+              },
+              "gameEventsUpdateConfig": {
+                "events": [],
+                "needHide": false
+              },
+              "systemStateConfig": {
+                "systemType": "None",
+                "systemState": "None",
+                "succeed": false
+              },
+              "targetEntityConfig": {
+                "propertyName": "",
+                "value": 0,
+                "ignore": false,
+                "ignorePropertyName": ""
+              },
+              "groupName": "A"
+            },
+            {
+              "conditionType": "PropertyCondition",
+              "propertyData": {
+                "propertyName": "state",
+                "compareType": "NotEqual",
+                "value": 1,
+                "useBool": false,
+                "bValue": false
+              },
+              "levelEntityConfig": {
+                "isEnabled": false
+              },
+              "systemUnlockConfig": {
+                "systemType": "Map",
+                "isInvert": false
+              },
+              "noUseConfig": {
+                "isUnlock": false
+              },
+              "gameEventsUpdateConfig": {
+                "events": [],
+                "needHide": false
+              },
+              "systemStateConfig": {
+                "systemType": "None",
+                "systemState": "None",
+                "succeed": false
+              },
+              "targetEntityConfig": {
+                "propertyName": "",
+                "value": 0,
+                "ignore": false,
+                "ignorePropertyName": ""
+              },
+              "groupName": "B"
+            }
+          ],
+          "conditionExpression": "A&&B",
+          "logicCD": 0.0,
+          "triggerBasePropertyChanged": false,
+          "expectedNewValue": 0,
+          "ignoreClientExpectedValue": false,
+          "checkPerformTag": false,
+          "optionIcon": "",
+          "ignoreInSpace": false,
+          "invokeOnceBeforeEndScan": true
+        }
+      ]
+    },
+    {
       "$type": "Beyond.Gameplay.Core.InteractiveMovingPlatformComponentData, Gameplay.Beyond",
       "propertyList": [
         {
@@ -38,7 +140,7 @@
             "type": "Bool",
             "valueArray": [
               {
-                "valueBit64": 1
+                "valueBit64": 0
               }
             ]
           }
@@ -348,6 +450,17 @@
   "aoiRadiusType": "Default",
   "configProperties": [
     {
+      "key": "allow_turnon_inside",
+      "value": {
+        "type": "Bool",
+        "valueArray": [
+          {
+            "valueBit64": 0
+          }
+        ]
+      }
+    },
+    {
       "key": "have_airwall",
       "value": {
         "type": "Int",
@@ -446,9 +559,11 @@
     "1027": "position_list",
     "1028": "speed",
     "1029": "wait_time",
-    "1030": "have_airwall"
+    "1030": "have_airwall",
+    "1031": "allow_turnon_inside"
   },
   "propertyKeyToIdMap": {
+    "allow_turnon_inside": 1031,
     "current_pos_index": 1,
     "have_airwall": 1030,
     "position_list": 1027,

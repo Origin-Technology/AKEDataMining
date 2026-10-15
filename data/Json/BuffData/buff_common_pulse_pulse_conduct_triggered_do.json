@@ -8,6 +8,7 @@
     "showInSquadIcon": false,
     "onlyShowForMainCharacter": false,
     "blinkInMainCharHpBar": false,
+    "showProgressInEnemyHeadBar": false,
     "showProgressInHpBar": false,
     "showProgressInNormalSkillButton": false,
     "useWeakProgressInNormalSkillButton": false,
@@ -47,12 +48,12 @@
       "condition": {
         "actionData": [
           {
-            "$type": "Beyond.Gameplay.Core.Conditions.CheckDamageType+Data, Gameplay.Beyond",
+            "$type": "Beyond.Gameplay.Core.Conditions.CheckDamageTypeMask+Data, Gameplay.Beyond",
             "isEnable": true,
             "priorityLevel": "Default",
             "priorityOffset": 0,
             "serverActionIndex": 0,
-            "damageType": "Fire"
+            "damageTypeMask": "Fire, Pulse, Cryst, Natural"
           }
         ],
         "onlyExecuteWhenSourceIsMainChar": false,
@@ -76,70 +77,30 @@
       "condition": {
         "actionData": [
           {
-            "$type": "Beyond.Gameplay.Core.Conditions.CheckDamageType+Data, Gameplay.Beyond",
+            "$type": "Beyond.Gameplay.Core.Conditions.CheckDamageTypeMask+Data, Gameplay.Beyond",
             "isEnable": true,
             "priorityLevel": "Default",
             "priorityOffset": 0,
             "serverActionIndex": 1,
-            "damageType": "Pulse"
-          }
-        ],
-        "onlyExecuteWhenSourceIsMainChar": false,
-        "onlyExecuteWhenSourceIsGuard": false
-      },
-      "damageProcessors": [
-        {
-          "$type": "Beyond.Gameplay.Core.DamageScaleProcessor, Gameplay.Beyond",
-          "side": "Defender",
-          "zoneName": "NormalCalcZone",
-          "addition": {
-            "useBlackboardKey": true,
-            "value": 0.0,
-            "blackboardKey": "final_spell_resistance_decrease"
-          }
-        }
-      ]
-    },
-    {
-      "enableSide": "Defender",
-      "condition": {
-        "actionData": [
+            "damageTypeMask": "Physical, Ether"
+          },
           {
-            "$type": "Beyond.Gameplay.Core.Conditions.CheckDamageType+Data, Gameplay.Beyond",
+            "$type": "Beyond.Gameplay.Core.CompareFloat+Data, Gameplay.Beyond",
             "isEnable": true,
             "priorityLevel": "Default",
             "priorityOffset": 0,
             "serverActionIndex": 2,
-            "damageType": "Cryst"
-          }
-        ],
-        "onlyExecuteWhenSourceIsMainChar": false,
-        "onlyExecuteWhenSourceIsGuard": false
-      },
-      "damageProcessors": [
-        {
-          "$type": "Beyond.Gameplay.Core.DamageScaleProcessor, Gameplay.Beyond",
-          "side": "Defender",
-          "zoneName": "NormalCalcZone",
-          "addition": {
-            "useBlackboardKey": true,
-            "value": 0.0,
-            "blackboardKey": "final_spell_resistance_decrease"
-          }
-        }
-      ]
-    },
-    {
-      "enableSide": "Defender",
-      "condition": {
-        "actionData": [
-          {
-            "$type": "Beyond.Gameplay.Core.Conditions.CheckDamageType+Data, Gameplay.Beyond",
-            "isEnable": true,
-            "priorityLevel": "Default",
-            "priorityOffset": 0,
-            "serverActionIndex": 3,
-            "damageType": "Natural"
+            "valueA": {
+              "useBlackboardKey": true,
+              "value": 0.0,
+              "blackboardKey": "if_contain_physicdamage"
+            },
+            "compare": "Equals",
+            "valueB": {
+              "useBlackboardKey": false,
+              "value": 1.0,
+              "blackboardKey": ""
+            }
           }
         ],
         "onlyExecuteWhenSourceIsMainChar": false,
@@ -215,7 +176,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 4,
+              "serverActionIndex": 3,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -324,6 +285,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxgp_common_lightningbuff_02_rimlight_asset",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -482,7 +444,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -495,7 +459,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 5,
+              "serverActionIndex": 4,
               "_soundEvent": "au_chr_conduct_state_loop",
               "_stopOnEnd": true,
               "_stopFadeDurationMs": 100,
@@ -544,7 +508,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 6,
+              "serverActionIndex": 5,
               "targetSettings": {
                 "targetSource": "Target",
                 "targetGroupKey": "",
@@ -653,6 +617,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_common_lightningbuff_03",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -811,14 +776,16 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.Conditions.CheckSuperArmor+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 7,
+              "serverActionIndex": 6,
               "checkTarget": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -867,7 +834,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 8,
+              "serverActionIndex": 7,
               "buffs": [
                 {
                   "buffId": "buff_common_pulse_triggered_start",
@@ -941,7 +908,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 9,
+              "serverActionIndex": 8,
               "dataList": [
                 {
                   "dataKey": "导电法术伤害提高",
@@ -984,7 +951,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 10,
+              "serverActionIndex": 9,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -1036,7 +1003,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 11,
+              "serverActionIndex": 10,
               "key": "final_spell_resistance_decrease",
               "operation": "Multiply",
               "directValue": true,
@@ -1077,7 +1044,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 12,
+              "serverActionIndex": 11,
               "buffs": [
                 {
                   "buffId": "buff_common_pulse_triggered_fx",
@@ -1151,7 +1118,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 13,
+              "serverActionIndex": 12,
               "isStart": true,
               "abnormalType": "Pulse"
             }
@@ -1171,7 +1138,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 14,
+              "serverActionIndex": 13,
               "isStart": false,
               "abnormalType": "Pulse"
             }
@@ -1215,6 +1182,13 @@
       "valueDouble": 1.0,
       "valueStr": "",
       "isDynamic": true
+    },
+    {
+      "key": "if_contain_physicdamage",
+      "valueDouble": 0.0,
+      "valueStr": "",
+      "isDynamic": true
     }
-  ]
+  ],
+  "<isSpellInflictionRelated>k__BackingField": false
 }

@@ -6,6 +6,7 @@
   "iconBgType": "Physical",
   "attackRangeType": "Melee",
   "castType": "Active",
+  "normalSkillSubType": "Normal",
   "skillSpecification": "EnemyEliteSkill",
   "passiveSkillType": "AddBuff",
   "castData": {
@@ -184,6 +185,7 @@
                   "weightedMode": 0
                 }
               ],
+              "enableScaleZWithDistanceForRealPosition": false,
               "scaleZ": {
                 "useBlackboardKey": false,
                 "value": 1.0,
@@ -298,6 +300,7 @@
                   "weightedMode": 0
                 }
               ],
+              "enableScaleZWithDistanceForRealPosition": false,
               "scaleZ": {
                 "useBlackboardKey": false,
                 "value": 1.0,
@@ -412,6 +415,7 @@
                   "weightedMode": 0
                 }
               ],
+              "enableScaleZWithDistanceForRealPosition": false,
               "scaleZ": {
                 "useBlackboardKey": false,
                 "value": 1.0,
@@ -511,6 +515,7 @@
               "overrideRotateRate": true,
               "rotateRate": 360.0,
               "rotateDirType": "Free",
+              "updateTargetPerFrame": false,
               "ignoreImmobilized": false
             }
           ],
@@ -579,6 +584,7 @@
               "overrideRotateRate": true,
               "rotateRate": 180.0,
               "rotateDirType": "Free",
+              "updateTargetPerFrame": false,
               "ignoreImmobilized": false
             }
           ],
@@ -916,6 +922,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_klhog_skill_03_thunder_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -1074,7 +1081,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.FindTargetAction+FindTargetActionData, Gameplay.Beyond",
@@ -1107,6 +1116,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -1163,6 +1173,16 @@
                         "value": 2.0,
                         "blackboardKey": "radius"
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -1182,6 +1202,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -1359,6 +1417,7 @@
                         "alwaysStartNewCoalition": false,
                         "alwaysEndCoalition": false,
                         "updatePositionOnCoalition": true,
+                        "damageTextFollowDuration": 0.0,
                         "enablePoiseBreakTimeDilation": true,
                         "hidePoiseUIEffect": false,
                         "hideMainCharHpScreenEffect": false,
@@ -1375,11 +1434,12 @@
                         "damageProcessors": [],
                         "ignorePoiseImmune": false,
                         "reduceDamageForGuard": true,
-                        "reduceDamageForGuardRatio": 0.3,
+                        "reduceDamageForGuardRatio": 0.5,
                         "playHitEffect": true,
                         "playDefaultHitEffect": false,
                         "effectData": {
                           "fxType": "Normal",
+                          "sourceTag": "Battle",
                           "effectName": "P_fxbat_klhog_skill03_hit",
                           "guardEffect": false,
                           "isCenterChangeLod": false,
@@ -1910,6 +1970,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_klhog_skill_03_thunder_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -2068,7 +2129,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.FindTargetAction+FindTargetActionData, Gameplay.Beyond",
@@ -2101,6 +2164,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -2157,6 +2221,16 @@
                         "value": 2.0,
                         "blackboardKey": "radius"
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -2176,6 +2250,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -2353,6 +2465,7 @@
                         "alwaysStartNewCoalition": false,
                         "alwaysEndCoalition": false,
                         "updatePositionOnCoalition": true,
+                        "damageTextFollowDuration": 0.0,
                         "enablePoiseBreakTimeDilation": true,
                         "hidePoiseUIEffect": false,
                         "hideMainCharHpScreenEffect": false,
@@ -2369,11 +2482,12 @@
                         "damageProcessors": [],
                         "ignorePoiseImmune": false,
                         "reduceDamageForGuard": true,
-                        "reduceDamageForGuardRatio": 0.3,
+                        "reduceDamageForGuardRatio": 0.5,
                         "playHitEffect": true,
                         "playDefaultHitEffect": false,
                         "effectData": {
                           "fxType": "Normal",
+                          "sourceTag": "Battle",
                           "effectName": "P_fxbat_klhog_skill03_hit",
                           "guardEffect": false,
                           "isCenterChangeLod": false,
@@ -2904,6 +3018,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_klhog_skill_03_thunder_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3062,7 +3177,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.FindTargetAction+FindTargetActionData, Gameplay.Beyond",
@@ -3095,6 +3212,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -3151,6 +3269,16 @@
                         "value": 2.0,
                         "blackboardKey": "radius"
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -3170,6 +3298,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -3347,6 +3513,7 @@
                         "alwaysStartNewCoalition": false,
                         "alwaysEndCoalition": false,
                         "updatePositionOnCoalition": true,
+                        "damageTextFollowDuration": 0.0,
                         "enablePoiseBreakTimeDilation": true,
                         "hidePoiseUIEffect": false,
                         "hideMainCharHpScreenEffect": false,
@@ -3363,11 +3530,12 @@
                         "damageProcessors": [],
                         "ignorePoiseImmune": false,
                         "reduceDamageForGuard": true,
-                        "reduceDamageForGuardRatio": 0.3,
+                        "reduceDamageForGuardRatio": 0.5,
                         "playHitEffect": true,
                         "playDefaultHitEffect": false,
                         "effectData": {
                           "fxType": "Normal",
+                          "sourceTag": "Battle",
                           "effectName": "P_fxbat_klhog_skill03_hit",
                           "guardEffect": false,
                           "isCenterChangeLod": false,
@@ -3898,6 +4066,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_klhog_skill_03_thunder_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -4056,7 +4225,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.FindTargetAction+FindTargetActionData, Gameplay.Beyond",
@@ -4089,6 +4260,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -4145,6 +4317,16 @@
                         "value": 2.0,
                         "blackboardKey": "radius"
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -4164,6 +4346,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -4341,6 +4561,7 @@
                         "alwaysStartNewCoalition": false,
                         "alwaysEndCoalition": false,
                         "updatePositionOnCoalition": true,
+                        "damageTextFollowDuration": 0.0,
                         "enablePoiseBreakTimeDilation": true,
                         "hidePoiseUIEffect": false,
                         "hideMainCharHpScreenEffect": false,
@@ -4357,11 +4578,12 @@
                         "damageProcessors": [],
                         "ignorePoiseImmune": false,
                         "reduceDamageForGuard": true,
-                        "reduceDamageForGuardRatio": 0.3,
+                        "reduceDamageForGuardRatio": 0.5,
                         "playHitEffect": true,
                         "playDefaultHitEffect": false,
                         "effectData": {
                           "fxType": "Normal",
+                          "sourceTag": "Battle",
                           "effectName": "P_fxbat_klhog_skill03_hit",
                           "guardEffect": false,
                           "isCenterChangeLod": false,
@@ -4892,6 +5114,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_klhog_skill_03_thunder_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -5050,7 +5273,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.FindTargetAction+FindTargetActionData, Gameplay.Beyond",
@@ -5083,6 +5308,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -5139,6 +5365,16 @@
                         "value": 2.0,
                         "blackboardKey": "radius"
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -5158,6 +5394,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -5335,6 +5609,7 @@
                         "alwaysStartNewCoalition": false,
                         "alwaysEndCoalition": false,
                         "updatePositionOnCoalition": true,
+                        "damageTextFollowDuration": 0.0,
                         "enablePoiseBreakTimeDilation": true,
                         "hidePoiseUIEffect": false,
                         "hideMainCharHpScreenEffect": false,
@@ -5351,11 +5626,12 @@
                         "damageProcessors": [],
                         "ignorePoiseImmune": false,
                         "reduceDamageForGuard": true,
-                        "reduceDamageForGuardRatio": 0.3,
+                        "reduceDamageForGuardRatio": 0.5,
                         "playHitEffect": true,
                         "playDefaultHitEffect": false,
                         "effectData": {
                           "fxType": "Normal",
+                          "sourceTag": "Battle",
                           "effectName": "P_fxbat_klhog_skill03_hit",
                           "guardEffect": false,
                           "isCenterChangeLod": false,
@@ -5886,6 +6162,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_klhog_skill_03_thunder_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -6044,7 +6321,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.FindTargetAction+FindTargetActionData, Gameplay.Beyond",
@@ -6077,6 +6356,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -6133,6 +6413,16 @@
                         "value": 2.0,
                         "blackboardKey": "radius"
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -6152,6 +6442,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -6329,6 +6657,7 @@
                         "alwaysStartNewCoalition": false,
                         "alwaysEndCoalition": false,
                         "updatePositionOnCoalition": true,
+                        "damageTextFollowDuration": 0.0,
                         "enablePoiseBreakTimeDilation": true,
                         "hidePoiseUIEffect": false,
                         "hideMainCharHpScreenEffect": false,
@@ -6345,11 +6674,12 @@
                         "damageProcessors": [],
                         "ignorePoiseImmune": false,
                         "reduceDamageForGuard": true,
-                        "reduceDamageForGuardRatio": 0.3,
+                        "reduceDamageForGuardRatio": 0.5,
                         "playHitEffect": true,
                         "playDefaultHitEffect": false,
                         "effectData": {
                           "fxType": "Normal",
+                          "sourceTag": "Battle",
                           "effectName": "P_fxbat_klhog_skill03_hit",
                           "guardEffect": false,
                           "isCenterChangeLod": false,
@@ -6880,6 +7210,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_klhog_skill_03_thunder_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -7038,7 +7369,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.FindTargetAction+FindTargetActionData, Gameplay.Beyond",
@@ -7071,6 +7404,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -7127,6 +7461,16 @@
                         "value": 2.0,
                         "blackboardKey": "radius"
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -7146,6 +7490,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -7323,6 +7705,7 @@
                         "alwaysStartNewCoalition": false,
                         "alwaysEndCoalition": false,
                         "updatePositionOnCoalition": true,
+                        "damageTextFollowDuration": 0.0,
                         "enablePoiseBreakTimeDilation": true,
                         "hidePoiseUIEffect": false,
                         "hideMainCharHpScreenEffect": false,
@@ -7339,11 +7722,12 @@
                         "damageProcessors": [],
                         "ignorePoiseImmune": false,
                         "reduceDamageForGuard": true,
-                        "reduceDamageForGuardRatio": 0.3,
+                        "reduceDamageForGuardRatio": 0.5,
                         "playHitEffect": true,
                         "playDefaultHitEffect": false,
                         "effectData": {
                           "fxType": "Normal",
+                          "sourceTag": "Battle",
                           "effectName": "P_fxbat_klhog_skill03_hit",
                           "guardEffect": false,
                           "isCenterChangeLod": false,
@@ -7821,6 +8205,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -7877,6 +8262,16 @@
                         "value": 20.0,
                         "blackboardKey": ""
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -7896,6 +8291,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -8165,6 +8598,7 @@
                     "playOnHittableObjects": false,
                     "effectActionCfg": {
                       "fxType": "Normal",
+                      "sourceTag": "Battle",
                       "effectName": "P_fxbat_klhog_skill_03_thunder_02",
                       "guardEffect": false,
                       "isCenterChangeLod": false,
@@ -8323,7 +8757,9 @@
                     },
                     "saveEffectIdToBlackboard": "",
                     "forceMainBody": false,
-                    "isCreateWithSourceModelActive": false
+                    "isCreateWithSourceModelActive": false,
+                    "alignSpawnPhaseToTimeline": false,
+                    "spawnPhaseAlignFrame": 0
                   },
                   {
                     "$type": "Beyond.Gameplay.Core.CreateBuffAction+Data, Gameplay.Beyond",
@@ -8419,6 +8855,7 @@
                             "posRefMP": "None",
                             "directionRef": "OwnerForward",
                             "dirRefMountPoint": "None",
+                            "useFullRotation": false,
                             "centerOffset": {
                               "x": {
                                 "useBlackboardKey": false,
@@ -8475,6 +8912,16 @@
                               "value": 2.0,
                               "blackboardKey": "radius"
                             },
+                            "innerRadius": {
+                              "useBlackboardKey": false,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
+                            "outerRadius": {
+                              "useBlackboardKey": false,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
                             "height": {
                               "useBlackboardKey": false,
                               "value": 0.0,
@@ -8494,6 +8941,44 @@
                             },
                             "useDirection": true,
                             "castDirection": "ZForward",
+                            "lineShapeType": "Box",
+                            "lineStart": {
+                              "source": "ActionOwner",
+                              "contextKey": "",
+                              "mountPoint": "None"
+                            },
+                            "lineEnd": {
+                              "source": "ActionOwner",
+                              "contextKey": "",
+                              "mountPoint": "None"
+                            },
+                            "lineBoxSize": {
+                              "x": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
+                              "y": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
+                              "z": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              }
+                            },
+                            "lineRadius": {
+                              "useBlackboardKey": false,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
+                            "lineLengthOffset": {
+                              "useBlackboardKey": false,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
                             "enablePreview": true,
                             "hitEffectTowardsType": "TowardsAttacker"
                           }
@@ -8671,6 +9156,7 @@
                               "alwaysStartNewCoalition": false,
                               "alwaysEndCoalition": false,
                               "updatePositionOnCoalition": true,
+                              "damageTextFollowDuration": 0.0,
                               "enablePoiseBreakTimeDilation": true,
                               "hidePoiseUIEffect": false,
                               "hideMainCharHpScreenEffect": false,
@@ -8687,11 +9173,12 @@
                               "damageProcessors": [],
                               "ignorePoiseImmune": false,
                               "reduceDamageForGuard": true,
-                              "reduceDamageForGuardRatio": 0.3,
+                              "reduceDamageForGuardRatio": 0.5,
                               "playHitEffect": true,
                               "playDefaultHitEffect": false,
                               "effectData": {
                                 "fxType": "Normal",
+                                "sourceTag": "Battle",
                                 "effectName": "P_fxbat_klhog_skill03_hit",
                                 "guardEffect": false,
                                 "isCenterChangeLod": false,
@@ -10484,6 +10971,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_klhog_skill_03_absorb",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -10642,7 +11130,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -10774,6 +11264,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_hshog_skill_04_jump_smoke",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -10932,7 +11423,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -11064,6 +11557,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_hshog_skill_04_jump_smoke",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -11222,7 +11716,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -11354,6 +11850,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_hshog_skill_02_smoke",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -11512,7 +12009,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -11644,6 +12143,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_klhog_skill_03_asset",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -11802,7 +12302,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -11934,6 +12436,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_klhog_skill_03_thunder_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -12092,7 +12595,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -12224,6 +12729,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_klhog_skill_03_ground",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -12382,7 +12888,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -12514,6 +13022,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_common_enemy_atk_ready_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -12672,7 +13181,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -12804,6 +13315,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_klhog_skill_03_atk",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -12962,7 +13474,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -13094,6 +13608,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_klhog_skill_03_rora_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -13252,7 +13767,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -13384,6 +13901,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_klhog_skill_03_rora_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -13542,7 +14060,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,

@@ -6,6 +6,7 @@
   "iconBgType": "Physical",
   "attackRangeType": "Melee",
   "castType": "Active",
+  "normalSkillSubType": "Normal",
   "skillSpecification": "CharacterComboSkill",
   "passiveSkillType": "AddBuff",
   "castData": {
@@ -116,7 +117,7 @@
       },
       {
         "_startFrame": 0,
-        "_endFrame": 1,
+        "_endFrame": 3,
         "_sequenceActionData": {
           "actionData": [
             {
@@ -170,8 +171,9 @@
               "rootMotionDirectionType": "Clockwise",
               "immediateRotate": true,
               "overrideRotateRate": false,
-              "rotateRate": 1080.0,
+              "rotateRate": 0.0,
               "rotateDirType": "Free",
+              "updateTargetPerFrame": false,
               "ignoreImmobilized": false
             }
           ],
@@ -377,37 +379,12 @@
                       "validatorData": [],
                       "postProcessorData": []
                     },
-                    "selectorDirection": "SourceForward",
+                    "selectorDirection": "CameraForward",
                     "target": "ActionSource",
                     "contextKey": "",
-                    "useAdvancedDirectionSetting": true,
+                    "useAdvancedDirectionSetting": false,
                     "advancedSelectorDirection": {
-                      "directionType": "CameraForward",
-                      "source": {
-                        "targetSource": "MainCharacter",
-                        "targetGroupKey": "",
-                        "selectorOwner": "ActionOwner",
-                        "ownerContextKey": "",
-                        "centerType": "ActionSource",
-                        "centerContextKey": "",
-                        "centerToGround": false,
-                        "selectorData": {
-                          "validatorData": [],
-                          "postProcessorData": []
-                        },
-                        "enableAdvancedDirection": false,
-                        "advancedDirection": {
-                          "directionType": "SourceForward",
-                          "sourceMountPoint": "None",
-                          "targetMountPoint": "None",
-                          "customSourceAndTarget": false,
-                          "clampToXZ": true,
-                          "invertDirection": false
-                        },
-                        "selectorDirection": "SourceForward",
-                        "target": "ActionSource",
-                        "targetContextKey": ""
-                      },
+                      "directionType": "SourceForward",
                       "sourceMountPoint": "None",
                       "targetMountPoint": "None",
                       "customSourceAndTarget": false,
@@ -496,11 +473,48 @@
         "_sequenceActionData": {
           "actionData": [
             {
-              "$type": "Beyond.Gameplay.Core.SelfRotateAction+Data, Gameplay.Beyond",
+              "$type": "Beyond.Gameplay.Core.Conditions.CheckEntityNum+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
               "serverActionIndex": 8,
+              "checkTarget": {
+                "targetSource": "Context",
+                "targetGroupKey": "tar",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "minNum": 1,
+              "containsHittableTarget": false,
+              "compareType": "GE",
+              "excludeDeadEntity": false,
+              "storeKey": ""
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.SelfRotateAction+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 9,
               "rotateType": "ToTarget",
               "useAdvancedDirectionSetting": false,
               "targetSettings": {
@@ -545,6 +559,7 @@
               "overrideRotateRate": true,
               "rotateRate": 720.0,
               "rotateDirType": "Free",
+              "updateTargetPerFrame": false,
               "ignoreImmobilized": false
             }
           ],
@@ -568,7 +583,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 9,
+              "serverActionIndex": 10,
               "conditionAction": {
                 "actionData": [
                   {
@@ -576,7 +591,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 10,
+                    "serverActionIndex": 11,
                     "checkTarget": {
                       "targetSource": "Source",
                       "targetGroupKey": "",
@@ -619,7 +634,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 11,
+                    "serverActionIndex": 12,
                     "targetSettings": {
                       "targetSource": "Context",
                       "targetGroupKey": "tar",
@@ -653,7 +668,7 @@
                       "excludeCurrentPos": false,
                       "distance": {
                         "useBlackboardKey": false,
-                        "value": 8.5,
+                        "value": 8.0,
                         "blackboardKey": ""
                       },
                       "useAddScoreToPrevSide": false
@@ -672,7 +687,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 12,
+                    "serverActionIndex": 13,
                     "teleportTo": {
                       "targetSource": "Context",
                       "targetGroupKey": "smartpos",
@@ -723,11 +738,48 @@
               "alwaysNext": true
             },
             {
+              "$type": "Beyond.Gameplay.Core.Conditions.CheckEntityNum+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 14,
+              "checkTarget": {
+                "targetSource": "Context",
+                "targetGroupKey": "tar",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "minNum": 1,
+              "containsHittableTarget": false,
+              "compareType": "GE",
+              "excludeDeadEntity": false,
+              "storeKey": ""
+            },
+            {
               "$type": "Beyond.Gameplay.Core.SelfRotateAction+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 13,
+              "serverActionIndex": 15,
               "rotateType": "ToLocation",
               "useAdvancedDirectionSetting": false,
               "targetSettings": {
@@ -775,6 +827,7 @@
               "overrideRotateRate": false,
               "rotateRate": 0.0,
               "rotateDirType": "Free",
+              "updateTargetPerFrame": false,
               "ignoreImmobilized": false
             }
           ],
@@ -798,7 +851,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 14,
+              "serverActionIndex": 16,
               "manualTick": false,
               "moveTo": {
                 "targetSource": "Context",
@@ -858,6 +911,7 @@
                   "weightedMode": 0
                 }
               ],
+              "enableScaleZWithDistanceForRealPosition": false,
               "scaleZ": {
                 "useBlackboardKey": false,
                 "value": 1.0,
@@ -912,7 +966,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 15,
+              "serverActionIndex": 17,
               "checkTarget": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -944,7 +998,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 16,
+              "serverActionIndex": 18,
               "debugName": "DynamicCCS(SkillAction)",
               "customPriority": false,
               "ccsPriority": {
@@ -1129,7 +1183,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 17,
+              "serverActionIndex": 19,
               "checkTarget": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -1161,7 +1215,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 18,
+              "serverActionIndex": 20,
               "configKey": "CCS_targetaim_disablefightorbit",
               "customPriority": false,
               "ccsPriority": 20.0,
@@ -1203,7 +1257,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 19,
+              "serverActionIndex": 21,
               "checkTarget": {
                 "targetSource": "Context",
                 "targetGroupKey": "tar",
@@ -1240,7 +1294,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 20,
+              "serverActionIndex": 22,
               "checkTarget": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -1272,7 +1326,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 21,
+              "serverActionIndex": 23,
               "debugName": "DynamicCCS(SkillAction)",
               "customPriority": true,
               "ccsPriority": {
@@ -1485,7 +1539,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 22,
+              "serverActionIndex": 24,
               "checkTarget": {
                 "targetSource": "Context",
                 "targetGroupKey": "tar",
@@ -1522,7 +1576,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 23,
+              "serverActionIndex": 25,
               "checkTarget": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -1554,7 +1608,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 24,
+              "serverActionIndex": 26,
               "debugName": "DynamicCCS(SkillAction)",
               "customPriority": true,
               "ccsPriority": {
@@ -1767,7 +1821,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 25,
+              "serverActionIndex": 27,
               "checkTarget": {
                 "targetSource": "Context",
                 "targetGroupKey": "tar",
@@ -1804,7 +1858,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 26,
+              "serverActionIndex": 28,
               "checkTarget": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -1836,7 +1890,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 27,
+              "serverActionIndex": 29,
               "ccsPriority": 99.0,
               "overrideLowerParamsToDefault": false,
               "angleThreshold": 360.0,
@@ -2053,7 +2107,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 28,
+              "serverActionIndex": 30,
               "checkTarget": {
                 "targetSource": "Context",
                 "targetGroupKey": "tar",
@@ -2090,7 +2144,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 29,
+              "serverActionIndex": 31,
               "checkTarget": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -2122,7 +2176,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 30,
+              "serverActionIndex": 32,
               "ccsPriority": 99.0,
               "overrideLowerParamsToDefault": false,
               "angleThreshold": 360.0,
@@ -2339,7 +2393,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 31,
+              "serverActionIndex": 33,
               "layer": "Global",
               "slot": {
                 "tagId": 0
@@ -2441,7 +2495,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 32,
+              "serverActionIndex": 34,
               "conditionAction": {
                 "actionData": [
                   {
@@ -2449,7 +2503,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 33,
+                    "serverActionIndex": 35,
                     "checkTarget": {
                       "targetSource": "Owner",
                       "targetGroupKey": "",
@@ -2492,7 +2546,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 34,
+                    "serverActionIndex": 36,
                     "targetGroupKey": "mainchar",
                     "center": "ActionSource",
                     "centerContextKey": "",
@@ -2530,7 +2584,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 35,
+                    "serverActionIndex": 37,
                     "source": {
                       "targetSource": "Context",
                       "targetGroupKey": "mainchar",
@@ -2588,7 +2642,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 36,
+                    "serverActionIndex": 38,
                     "conditionAction": {
                       "actionData": [
                         {
@@ -2596,7 +2650,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 37,
+                          "serverActionIndex": 39,
                           "desiredAlphaSetting": "Strong"
                         }
                       ],
@@ -2610,7 +2664,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 38,
+                          "serverActionIndex": 40,
                           "inputValue": {
                             "useBlackboardKey": true,
                             "value": 0.0,
@@ -2672,7 +2726,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 39,
+                          "serverActionIndex": 41,
                           "targetSettings": {
                             "targetSource": "Owner",
                             "targetGroupKey": "",
@@ -2764,7 +2818,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 40,
+                          "serverActionIndex": 42,
                           "inputValue": {
                             "useBlackboardKey": true,
                             "value": 0.0,
@@ -2799,7 +2853,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 41,
+                          "serverActionIndex": 43,
                           "targetSettings": {
                             "targetSource": "Owner",
                             "targetGroupKey": "",
@@ -2913,7 +2967,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 42,
+              "serverActionIndex": 44,
               "conditionAction": {
                 "actionData": [
                   {
@@ -2921,7 +2975,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 43,
+                    "serverActionIndex": 45,
                     "checkTarget": {
                       "targetSource": "Owner",
                       "targetGroupKey": "",
@@ -2964,7 +3018,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 44,
+                    "serverActionIndex": 46,
                     "compareTarget": false,
                     "targetSettings": {
                       "targetSource": "Target",
@@ -3021,7 +3075,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 45,
+              "serverActionIndex": 47,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -3116,7 +3170,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 46,
+              "serverActionIndex": 48,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3176,7 +3230,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 47,
+              "serverActionIndex": 49,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -3285,6 +3339,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_comboskill_arrowbirth_small",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3443,7 +3498,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3466,7 +3523,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 48,
+              "serverActionIndex": 50,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -3575,6 +3632,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_battle_comboskill_arrowrelease",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3733,14 +3791,16 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 49,
+              "serverActionIndex": 51,
               "conditionAction": {
                 "actionData": [
                   {
@@ -3748,7 +3808,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 50,
+                    "serverActionIndex": 52,
                     "valueA": {
                       "useBlackboardKey": true,
                       "value": 0.0,
@@ -3772,7 +3832,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 51,
+                    "serverActionIndex": 53,
                     "projectileId": "projectile_chr_0034_typhoea_archery_combo_2",
                     "projectileSource": {
                       "targetSource": "Source",
@@ -3916,6 +3976,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -3928,6 +3989,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -3975,7 +4038,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 52,
+                    "serverActionIndex": 54,
                     "projectileId": "projectile_chr_0034_typhoea_archery_combo_2",
                     "projectileSource": {
                       "targetSource": "Source",
@@ -4119,6 +4182,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -4131,6 +4195,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -4194,7 +4260,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 53,
+              "serverActionIndex": 55,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -4303,6 +4369,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_comboskill_arrowbirth_small",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -4461,7 +4528,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -4484,7 +4553,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 54,
+              "serverActionIndex": 56,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -4593,6 +4662,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_battle_comboskill_arrowrelease",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -4751,14 +4821,16 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 55,
+              "serverActionIndex": 57,
               "conditionAction": {
                 "actionData": [
                   {
@@ -4766,7 +4838,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 56,
+                    "serverActionIndex": 58,
                     "valueA": {
                       "useBlackboardKey": true,
                       "value": 0.0,
@@ -4790,7 +4862,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 57,
+                    "serverActionIndex": 59,
                     "projectileId": "projectile_chr_0034_typhoea_archery_combo_2",
                     "projectileSource": {
                       "targetSource": "Source",
@@ -4934,6 +5006,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -4946,6 +5019,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -4993,7 +5068,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 58,
+                    "serverActionIndex": 60,
                     "projectileId": "projectile_chr_0034_typhoea_archery_combo_2",
                     "projectileSource": {
                       "targetSource": "Source",
@@ -5137,6 +5212,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -5149,6 +5225,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -5212,7 +5290,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 59,
+              "serverActionIndex": 61,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -5321,6 +5399,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_comboskill_arrowbirth_small",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -5479,7 +5558,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -5502,7 +5583,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 60,
+              "serverActionIndex": 62,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -5611,6 +5692,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_battle_comboskill_arrowrelease",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -5769,14 +5851,16 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 61,
+              "serverActionIndex": 63,
               "conditionAction": {
                 "actionData": [
                   {
@@ -5784,7 +5868,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 62,
+                    "serverActionIndex": 64,
                     "valueA": {
                       "useBlackboardKey": true,
                       "value": 0.0,
@@ -5808,7 +5892,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 63,
+                    "serverActionIndex": 65,
                     "projectileId": "projectile_chr_0034_typhoea_archery_combo_2",
                     "projectileSource": {
                       "targetSource": "Source",
@@ -5952,6 +6036,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -5964,6 +6049,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -6011,7 +6098,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 64,
+                    "serverActionIndex": 66,
                     "projectileId": "projectile_chr_0034_typhoea_archery_combo_2",
                     "projectileSource": {
                       "targetSource": "Source",
@@ -6155,6 +6242,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -6167,6 +6255,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -6230,7 +6320,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 65,
+              "serverActionIndex": 67,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -6339,6 +6429,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_comboskill_arrowbirth_small",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -6497,7 +6588,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -6520,7 +6613,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 66,
+              "serverActionIndex": 68,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -6629,6 +6722,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_battle_comboskill_arrowrelease",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -6787,14 +6881,16 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 67,
+              "serverActionIndex": 69,
               "conditionAction": {
                 "actionData": [
                   {
@@ -6802,7 +6898,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 68,
+                    "serverActionIndex": 70,
                     "valueA": {
                       "useBlackboardKey": true,
                       "value": 0.0,
@@ -6826,7 +6922,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 69,
+                    "serverActionIndex": 71,
                     "projectileId": "projectile_chr_0034_typhoea_archery_combo_2",
                     "projectileSource": {
                       "targetSource": "Source",
@@ -6970,6 +7066,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -6982,6 +7079,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -7029,7 +7128,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 70,
+                    "serverActionIndex": 72,
                     "projectileId": "projectile_chr_0034_typhoea_archery_combo_2",
                     "projectileSource": {
                       "targetSource": "Source",
@@ -7173,6 +7272,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -7185,6 +7285,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -7248,7 +7350,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 71,
+              "serverActionIndex": 73,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -7357,6 +7459,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_comboskill_arrowbirth_small",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -7515,7 +7618,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -7538,7 +7643,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 72,
+              "serverActionIndex": 74,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -7647,6 +7752,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_battle_comboskill_arrowrelease",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -7805,14 +7911,16 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 73,
+              "serverActionIndex": 75,
               "conditionAction": {
                 "actionData": [
                   {
@@ -7820,7 +7928,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 74,
+                    "serverActionIndex": 76,
                     "valueA": {
                       "useBlackboardKey": true,
                       "value": 0.0,
@@ -7844,7 +7952,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 75,
+                    "serverActionIndex": 77,
                     "projectileId": "projectile_chr_0034_typhoea_archery_combo_2",
                     "projectileSource": {
                       "targetSource": "Source",
@@ -7988,6 +8096,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -8000,6 +8109,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -8047,7 +8158,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 76,
+                    "serverActionIndex": 78,
                     "projectileId": "projectile_chr_0034_typhoea_archery_combo_2",
                     "projectileSource": {
                       "targetSource": "Source",
@@ -8191,6 +8302,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -8203,6 +8315,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -8266,7 +8380,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 77,
+              "serverActionIndex": 79,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -8375,6 +8489,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_comboskill_arrowbirth_small",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -8533,7 +8648,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -8556,7 +8673,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 78,
+              "serverActionIndex": 80,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -8665,6 +8782,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_battle_comboskill_arrowrelease",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -8823,14 +8941,16 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 79,
+              "serverActionIndex": 81,
               "conditionAction": {
                 "actionData": [
                   {
@@ -8838,7 +8958,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 80,
+                    "serverActionIndex": 82,
                     "valueA": {
                       "useBlackboardKey": true,
                       "value": 0.0,
@@ -8862,7 +8982,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 81,
+                    "serverActionIndex": 83,
                     "projectileId": "projectile_chr_0034_typhoea_archery_combo_2",
                     "projectileSource": {
                       "targetSource": "Source",
@@ -9006,6 +9126,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -9018,6 +9139,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -9065,7 +9188,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 82,
+                    "serverActionIndex": 84,
                     "projectileId": "projectile_chr_0034_typhoea_archery_combo_2",
                     "projectileSource": {
                       "targetSource": "Source",
@@ -9209,6 +9332,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -9221,6 +9345,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_02_projhit",
                     "castSkillOnBlock": false,
@@ -9284,7 +9410,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 83,
+              "serverActionIndex": 85,
               "conditionAction": {
                 "actionData": [
                   {
@@ -9292,7 +9418,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 84,
+                    "serverActionIndex": 86,
                     "checkTarget": {
                       "targetSource": "Source",
                       "targetGroupKey": "",
@@ -9330,7 +9456,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 85,
+                    "serverActionIndex": 87,
                     "realCameraShake2D": false,
                     "targetSettings": {
                       "targetSource": "Target",
@@ -9430,7 +9556,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 86,
+              "serverActionIndex": 88,
               "key": "arrow_speed_basic",
               "value1": {
                 "useBlackboardKey": true,
@@ -9449,7 +9575,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 87,
+              "serverActionIndex": 89,
               "key": "arrow_rotate_1",
               "value1": {
                 "useBlackboardKey": true,
@@ -9468,7 +9594,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 88,
+              "serverActionIndex": 90,
               "key": "arrow_rotate_2",
               "value1": {
                 "useBlackboardKey": true,
@@ -9487,7 +9613,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 89,
+              "serverActionIndex": 91,
               "conditionAction": {
                 "actionData": [
                   {
@@ -9495,7 +9621,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 90,
+                    "serverActionIndex": 92,
                     "checkTarget": {
                       "targetSource": "Context",
                       "targetGroupKey": "tar",
@@ -9532,250 +9658,6 @@
                 "onlyExecuteWhenSourceIsGuard": false
               },
               "succeedActions": {
-                "actionData": [
-                  {
-                    "$type": "Beyond.Gameplay.Core.LaunchProjectile+Data, Gameplay.Beyond",
-                    "isEnable": true,
-                    "priorityLevel": "Default",
-                    "priorityOffset": 0,
-                    "serverActionIndex": 91,
-                    "projectileId": "projectile_chr_0034_typhoea_archery_combo_1",
-                    "projectileSource": {
-                      "targetSource": "Source",
-                      "targetGroupKey": "",
-                      "selectorOwner": "ActionOwner",
-                      "ownerContextKey": "",
-                      "centerType": "ActionSource",
-                      "centerContextKey": "",
-                      "centerToGround": false,
-                      "selectorData": {
-                        "validatorData": [],
-                        "postProcessorData": []
-                      },
-                      "enableAdvancedDirection": false,
-                      "advancedDirection": {
-                        "directionType": "SourceForward",
-                        "sourceMountPoint": "None",
-                        "targetMountPoint": "None",
-                        "customSourceAndTarget": false,
-                        "clampToXZ": true,
-                        "invertDirection": false
-                      },
-                      "selectorDirection": "SourceForward",
-                      "target": "ActionSource",
-                      "targetContextKey": ""
-                    },
-                    "syncTimeScale": false,
-                    "assignEntityBlackboard": true,
-                    "assignPairs": [
-                      {
-                        "targetKey": "EntityBB_arrow_speed",
-                        "inputValueKey": "arrow_speed_basic",
-                        "useDirectValue": true,
-                        "directValueType": "Numeric",
-                        "numericValue": 42.0,
-                        "stringValue": ""
-                      },
-                      {
-                        "targetKey": "EntityBB_rotate_1",
-                        "inputValueKey": "arrow_rotate_1",
-                        "useDirectValue": false,
-                        "directValueType": "Numeric",
-                        "numericValue": 0.0,
-                        "stringValue": ""
-                      },
-                      {
-                        "targetKey": "EntityBB_rotate_2",
-                        "inputValueKey": "arrow_rotate_2",
-                        "useDirectValue": false,
-                        "directValueType": "Numeric",
-                        "numericValue": 0.0,
-                        "stringValue": ""
-                      }
-                    ],
-                    "emitPos": {
-                      "targetSource": "Owner",
-                      "targetGroupKey": "tar",
-                      "selectorOwner": "ActionOwner",
-                      "ownerContextKey": "",
-                      "centerType": "ActionSource",
-                      "centerContextKey": "",
-                      "centerToGround": false,
-                      "selectorData": {
-                        "validatorData": [],
-                        "postProcessorData": []
-                      },
-                      "enableAdvancedDirection": false,
-                      "advancedDirection": {
-                        "directionType": "SourceForward",
-                        "sourceMountPoint": "None",
-                        "targetMountPoint": "None",
-                        "customSourceAndTarget": false,
-                        "clampToXZ": true,
-                        "invertDirection": false
-                      },
-                      "selectorDirection": "SourceForward",
-                      "target": "ActionSource",
-                      "targetContextKey": ""
-                    },
-                    "overrideEmitBone": true,
-                    "emitMountPoint": "WepR",
-                    "useWeaponMp": true,
-                    "weaponIndex": 10,
-                    "weaponMp": "Muzzle",
-                    "emitPosOffsetForward": "TargetForward",
-                    "emitPosFixedOffset": {
-                      "x": 0.0,
-                      "y": 0.0,
-                      "z": 0.0
-                    },
-                    "emitPosRandomOffset": {
-                      "x": 0.0,
-                      "y": 0.0,
-                      "z": 0.0
-                    },
-                    "targetSettings": {
-                      "targetSource": "Context",
-                      "targetGroupKey": "tar",
-                      "selectorOwner": "ActionOwner",
-                      "ownerContextKey": "",
-                      "centerType": "ActionSource",
-                      "centerContextKey": "",
-                      "centerToGround": false,
-                      "selectorData": {
-                        "finderData": {
-                          "$type": "Beyond.Gameplay.Core.Selector+FixedPointFinder+Data, Gameplay.Beyond",
-                          "positionOffset": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 10.0
-                          },
-                          "rotationOffset": {
-                            "x": 0.0,
-                            "y": 0.0,
-                            "z": 0.0,
-                            "w": 1.0
-                          },
-                          "snapToNavmesh": false,
-                          "sampleRadius": {
-                            "useBlackboardKey": false,
-                            "value": 0.0,
-                            "blackboardKey": ""
-                          }
-                        },
-                        "validatorData": [],
-                        "postProcessorData": []
-                      },
-                      "enableAdvancedDirection": false,
-                      "advancedDirection": {
-                        "directionType": "SourceForward",
-                        "sourceMountPoint": "None",
-                        "targetMountPoint": "None",
-                        "customSourceAndTarget": false,
-                        "clampToXZ": true,
-                        "invertDirection": false
-                      },
-                      "selectorDirection": "SourceForward",
-                      "target": "ActionSource",
-                      "targetContextKey": ""
-                    },
-                    "overrideHitBone": true,
-                    "hitMountPoint": "VBHit",
-                    "hitBoneOffsetForward": "TargetToSource",
-                    "hitBoneFixedOffset": {
-                      "x": 0.0,
-                      "y": 0.0,
-                      "z": 0.0
-                    },
-                    "hitBoneRandomOffset": {
-                      "x": 0.0,
-                      "y": 0.0,
-                      "z": 0.0
-                    },
-                    "presetPoints": [],
-                    "assignBlackboard": true,
-                    "castSkillOnHit": true,
-                    "projectileSkillId": "chr_0034_typhoea_combo_01_projhit",
-                    "castSkillOnBlock": false,
-                    "skillIdOnBlock": "chr_0034_typhoea_attack5_01_projhit",
-                    "castSkillOnReach": false,
-                    "skillIdOnReach": "chr_0034_typhoea_combo_01_projhit",
-                    "castSkillOnFinish": false,
-                    "skillIdOnFinish": "",
-                    "targetFilterMode": "OnlyHit",
-                    "targetFilterSettings": {
-                      "targetSource": "Context",
-                      "targetGroupKey": "tar",
-                      "selectorOwner": "ActionOwner",
-                      "ownerContextKey": "",
-                      "centerType": "ActionSource",
-                      "centerContextKey": "",
-                      "centerToGround": false,
-                      "selectorData": {
-                        "validatorData": [],
-                        "postProcessorData": []
-                      },
-                      "enableAdvancedDirection": false,
-                      "advancedDirection": {
-                        "directionType": "SourceForward",
-                        "sourceMountPoint": "None",
-                        "targetMountPoint": "None",
-                        "customSourceAndTarget": false,
-                        "clampToXZ": true,
-                        "invertDirection": false
-                      },
-                      "selectorDirection": "SourceForward",
-                      "target": "ActionSource",
-                      "targetContextKey": ""
-                    },
-                    "alsoLaunchToHittableTarget": false
-                  },
-                  {
-                    "$type": "Beyond.Gameplay.Core.ModifyDynamicBlackboard+Data, Gameplay.Beyond",
-                    "isEnable": true,
-                    "priorityLevel": "Default",
-                    "priorityOffset": 0,
-                    "serverActionIndex": 92,
-                    "key": "is_have_target",
-                    "operation": "Assign",
-                    "directValue": true,
-                    "value": {
-                      "useBlackboardKey": false,
-                      "value": 1.0,
-                      "blackboardKey": ""
-                    },
-                    "calculationTarget": {
-                      "targetSource": "Owner",
-                      "targetGroupKey": "",
-                      "selectorOwner": "ActionOwner",
-                      "ownerContextKey": "",
-                      "centerType": "ActionSource",
-                      "centerContextKey": "",
-                      "centerToGround": false,
-                      "selectorData": {
-                        "validatorData": [],
-                        "postProcessorData": []
-                      },
-                      "enableAdvancedDirection": false,
-                      "advancedDirection": {
-                        "directionType": "SourceForward",
-                        "sourceMountPoint": "None",
-                        "targetMountPoint": "None",
-                        "customSourceAndTarget": false,
-                        "clampToXZ": true,
-                        "invertDirection": false
-                      },
-                      "selectorDirection": "SourceForward",
-                      "target": "ActionSource",
-                      "targetContextKey": ""
-                    },
-                    "calculateType": "HpRatio"
-                  }
-                ],
-                "onlyExecuteWhenSourceIsMainChar": false,
-                "onlyExecuteWhenSourceIsGuard": false
-              },
-              "failActions": {
                 "actionData": [
                   {
                     "$type": "Beyond.Gameplay.Core.LaunchProjectile+Data, Gameplay.Beyond",
@@ -9879,6 +9761,253 @@
                       "z": 0.0
                     },
                     "targetSettings": {
+                      "targetSource": "Context",
+                      "targetGroupKey": "tar",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "finderData": {
+                          "$type": "Beyond.Gameplay.Core.Selector+FixedPointFinder+Data, Gameplay.Beyond",
+                          "positionOffset": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 10.0
+                          },
+                          "rotationOffset": {
+                            "x": 0.0,
+                            "y": 0.0,
+                            "z": 0.0,
+                            "w": 1.0
+                          },
+                          "snapToNavmesh": false,
+                          "sampleRadius": {
+                            "useBlackboardKey": false,
+                            "value": 0.0,
+                            "blackboardKey": ""
+                          }
+                        },
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "overrideHitBone": true,
+                    "hitMountPoint": "VBHit",
+                    "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
+                    "hitBoneFixedOffset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    },
+                    "hitBoneRandomOffset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    },
+                    "presetPoints": [],
+                    "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
+                    "castSkillOnHit": true,
+                    "projectileSkillId": "chr_0034_typhoea_combo_01_projhit",
+                    "castSkillOnBlock": false,
+                    "skillIdOnBlock": "chr_0034_typhoea_attack5_01_projhit",
+                    "castSkillOnReach": false,
+                    "skillIdOnReach": "chr_0034_typhoea_combo_01_projhit",
+                    "castSkillOnFinish": false,
+                    "skillIdOnFinish": "",
+                    "targetFilterMode": "OnlyHit",
+                    "targetFilterSettings": {
+                      "targetSource": "Context",
+                      "targetGroupKey": "tar",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "alsoLaunchToHittableTarget": false
+                  },
+                  {
+                    "$type": "Beyond.Gameplay.Core.ModifyDynamicBlackboard+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 94,
+                    "key": "is_have_target",
+                    "operation": "Assign",
+                    "directValue": true,
+                    "value": {
+                      "useBlackboardKey": false,
+                      "value": 1.0,
+                      "blackboardKey": ""
+                    },
+                    "calculationTarget": {
+                      "targetSource": "Owner",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "calculateType": "HpRatio"
+                  }
+                ],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              },
+              "failActions": {
+                "actionData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.LaunchProjectile+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 95,
+                    "projectileId": "projectile_chr_0034_typhoea_archery_combo_1",
+                    "projectileSource": {
+                      "targetSource": "Source",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "syncTimeScale": false,
+                    "assignEntityBlackboard": true,
+                    "assignPairs": [
+                      {
+                        "targetKey": "EntityBB_arrow_speed",
+                        "inputValueKey": "arrow_speed_basic",
+                        "useDirectValue": true,
+                        "directValueType": "Numeric",
+                        "numericValue": 42.0,
+                        "stringValue": ""
+                      },
+                      {
+                        "targetKey": "EntityBB_rotate_1",
+                        "inputValueKey": "arrow_rotate_1",
+                        "useDirectValue": false,
+                        "directValueType": "Numeric",
+                        "numericValue": 0.0,
+                        "stringValue": ""
+                      },
+                      {
+                        "targetKey": "EntityBB_rotate_2",
+                        "inputValueKey": "arrow_rotate_2",
+                        "useDirectValue": false,
+                        "directValueType": "Numeric",
+                        "numericValue": 0.0,
+                        "stringValue": ""
+                      }
+                    ],
+                    "emitPos": {
+                      "targetSource": "Owner",
+                      "targetGroupKey": "tar",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "overrideEmitBone": true,
+                    "emitMountPoint": "WepR",
+                    "useWeaponMp": true,
+                    "weaponIndex": 10,
+                    "weaponMp": "Muzzle",
+                    "emitPosOffsetForward": "TargetForward",
+                    "emitPosFixedOffset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    },
+                    "emitPosRandomOffset": {
+                      "x": 0.0,
+                      "y": 0.0,
+                      "z": 0.0
+                    },
+                    "targetSettings": {
                       "targetSource": "InstantSearch",
                       "targetGroupKey": "smart_target",
                       "selectorOwner": "ActionOwner",
@@ -9926,6 +10055,7 @@
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
                     "hitBoneOffsetForward": "TargetToSource",
+                    "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
                       "x": 0.0,
                       "y": 0.0,
@@ -9938,6 +10068,8 @@
                     },
                     "presetPoints": [],
                     "assignBlackboard": true,
+                    "castSkillOnLaunch": false,
+                    "skillIdOnLaunch": "",
                     "castSkillOnHit": true,
                     "projectileSkillId": "chr_0034_typhoea_combo_01_projhit",
                     "castSkillOnBlock": false,
@@ -9979,7 +10111,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 94,
+                    "serverActionIndex": 96,
                     "key": "is_have_target",
                     "operation": "Assign",
                     "directValue": true,
@@ -10042,7 +10174,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 95,
+              "serverActionIndex": 97,
               "invertCondition": false
             },
             {
@@ -10050,7 +10182,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 96,
+              "serverActionIndex": 98,
               "costType": "UltimateSp",
               "isPercentValue": false,
               "useUspRecoverTag": false,
@@ -10149,7 +10281,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 97,
+              "serverActionIndex": 99,
               "buffs": [
                 {
                   "buffId": "buff_chr_0034_typhoea_common_func_arrowreload",
@@ -10228,7 +10360,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 98,
+              "serverActionIndex": 100,
               "checkTarget": {
                 "targetSource": "Target",
                 "targetGroupKey": "",
@@ -10260,7 +10392,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 99,
+              "serverActionIndex": 101,
               "realCameraShake2D": true,
               "targetSettings": {
                 "targetSource": "Target",
@@ -10365,7 +10497,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 100,
+              "serverActionIndex": 102,
               "mappingDataList": [
                 {
                   "cmdType": "NormalSkill",
@@ -10402,7 +10534,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 101,
+              "serverActionIndex": 103,
               "allowedSkillIdList": [
                 "chr_0034_typhoea_normal_skill_floating_start"
               ]
@@ -10428,7 +10560,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 102
+              "serverActionIndex": 104
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -10451,7 +10583,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 103,
+              "serverActionIndex": 105,
               "includeAllWeapons": false,
               "weaponIndex": 0,
               "visible": true,
@@ -10499,7 +10631,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 104,
+              "serverActionIndex": 106,
               "weaponIndex": 10,
               "overrideIdleMountPoint": false,
               "idleMountPoint": "None",
@@ -10527,7 +10659,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 105,
+              "serverActionIndex": 107,
               "includeAllWeapons": false,
               "weaponIndex": 10,
               "visible": true,
@@ -10575,7 +10707,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 106,
+              "serverActionIndex": 108,
               "weaponId": 10,
               "paramAction": {
                 "animatorParam": 1505480800,
@@ -10624,7 +10756,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 107,
+              "serverActionIndex": 109,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -10733,6 +10865,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_wpn_line_glow_asset",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -10891,7 +11024,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -10914,7 +11049,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 108,
+              "serverActionIndex": 110,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -11023,6 +11158,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_battle_combo_skill_04",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -11181,7 +11317,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -11204,7 +11342,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 109,
+              "serverActionIndex": 111,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -11313,6 +11451,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_battle_combo_skill_05",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -11471,7 +11610,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -11494,7 +11635,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 110,
+              "serverActionIndex": 112,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -11603,6 +11744,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_normalskill_arrowbirth",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -11761,7 +11903,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -11784,7 +11928,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 111,
+              "serverActionIndex": 113,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -11893,6 +12037,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_battle_combo_weapon_ground",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -12051,7 +12196,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -12074,7 +12221,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 112,
+              "serverActionIndex": 114,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -12183,6 +12330,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "WeaponVfx",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_comboskill_wpn_glow_asset",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -12341,7 +12489,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -12364,7 +12514,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 113,
+              "serverActionIndex": 115,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -12473,6 +12623,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_typhoea_comboskill_movetrail",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -12631,7 +12782,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -12654,7 +12807,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 114,
+              "serverActionIndex": 116,
               "_soundEvent": "au_chr_0034_typhoea_combo_ground",
               "_stopOnEnd": true,
               "_stopFadeDurationMs": 100,
@@ -12719,7 +12872,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 115,
+              "serverActionIndex": 117,
               "_soundEvent": "au_chr_0034_typhoea_combo_shot",
               "_stopOnEnd": false,
               "_stopFadeDurationMs": 100,
@@ -12784,7 +12937,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 116,
+              "serverActionIndex": 118,
               "_soundEvent": "au_chr_0034_typhoea_combo_end",
               "_stopOnEnd": true,
               "_stopFadeDurationMs": 100,
@@ -12849,7 +13002,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 117,
+              "serverActionIndex": 119,
               "_triggerKey": "combat_skill_comb_release",
               "_speakerType": "Characters",
               "_canInterruptTimeMs": 0,

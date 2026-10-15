@@ -8,6 +8,7 @@
     "showInSquadIcon": false,
     "onlyShowForMainCharacter": false,
     "blinkInMainCharHpBar": false,
+    "showProgressInEnemyHeadBar": false,
     "showProgressInHpBar": false,
     "showProgressInNormalSkillButton": false,
     "useWeakProgressInNormalSkillButton": false,
@@ -207,6 +208,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_endminf_combo_skill_01_hit",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -365,7 +367,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -492,6 +496,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_endminf_combo_skill_01_asset",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -650,7 +655,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -810,6 +817,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_endminf_combo_skill_01_hit_ci",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -968,91 +976,40 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
-              "$type": "Beyond.Gameplay.Core.TimeDilationAction+Data, Gameplay.Beyond",
+              "$type": "Beyond.Gameplay.Core.CreateBuffAction+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
               "serverActionIndex": 4,
-              "layer": "Entity",
-              "slot": {
-                "tagId": -1855252810
-              },
-              "timeDilationPriority": {
-                "tagId": -361293424
-              },
-              "duration": {
-                "useBlackboardKey": true,
-                "value": 0.0,
-                "blackboardKey": "duration"
-              },
-              "useCurveKey": false,
-              "curveKey": "",
-              "timeScaleCurve": [
+              "buffs": [
                 {
-                  "time": 0.0,
-                  "value": 0.0,
-                  "inTangent": 0.0,
-                  "outTangent": 0.0,
-                  "inWeight": 0.0,
-                  "outWeight": 0.333333343,
-                  "weightedMode": 0
-                },
-                {
-                  "time": 1.0,
-                  "value": 0.0,
-                  "inTangent": 0.0,
-                  "outTangent": 0.0,
-                  "inWeight": 0.333333343,
-                  "outWeight": 0.0,
-                  "weightedMode": 0
+                  "buffId": "buff_common_originum_frozen_inner",
+                  "assignBlackboard": true,
+                  "assignItems": [
+                    {
+                      "targetKey": "duration",
+                      "inputValueKey": "duration",
+                      "useDirectValue": false,
+                      "directValueType": "Numeric",
+                      "numericValue": 0.0,
+                      "stringValue": ""
+                    }
+                  ],
+                  "readIdFromBlackboard": false,
+                  "buffIdKey": ""
                 }
               ],
-              "finishByAction": true,
-              "ignoreTargets": [],
-              "effectTargets": [
-                {
-                  "targetSource": "Owner",
-                  "targetGroupKey": "trigger",
-                  "selectorOwner": "ActionOwner",
-                  "ownerContextKey": "",
-                  "centerType": "ActionSource",
-                  "centerContextKey": "",
-                  "centerToGround": false,
-                  "selectorData": {
-                    "validatorData": [],
-                    "postProcessorData": []
-                  },
-                  "enableAdvancedDirection": false,
-                  "advancedDirection": {
-                    "directionType": "SourceForward",
-                    "sourceMountPoint": "None",
-                    "targetMountPoint": "None",
-                    "customSourceAndTarget": false,
-                    "clampToXZ": true,
-                    "invertDirection": false
-                  },
-                  "selectorDirection": "SourceForward",
-                  "target": "ActionSource",
-                  "targetContextKey": ""
-                }
-              ],
-              "useTimeScaleForSkillCdTick": false,
-              "influenceSkillCdTime": {
+              "count": {
                 "useBlackboardKey": false,
-                "value": 0.0,
+                "value": 1.0,
                 "blackboardKey": ""
-              }
-            },
-            {
-              "$type": "Beyond.Gameplay.Core.AddTagAction+Data, Gameplay.Beyond",
-              "isEnable": true,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 5,
-              "tagOwner": {
+              },
+              "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
                 "selectorOwner": "ActionOwner",
@@ -1077,16 +1034,22 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "useBlackboard": false,
-              "tags": [
-                {
-                  "tagId": -503420352
-                }
-              ],
-              "tag": {
-                "useBlackboardKey": false,
-                "value": "",
-                "blackboardKey": ""
+              "buffSource": "ActionSource",
+              "contextKey": "",
+              "autoFinishByAction": true,
+              "inheritSkillIdList": [],
+              "finishWithNextSkillIfNotInherited": true,
+              "asChildBuff": true,
+              "inheritSourceSkillCastId": false,
+              "inheritSourceSkillCastInfo": true,
+              "isExtra": false,
+              "passTargetGroupsToBuff": false,
+              "overrideBuffIconDuration": false,
+              "buffIconDurationSource": {
+                "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
+                "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
+                "durationSourceType": "AbilityEntity",
+                "timedMarkerId": ""
               }
             },
             {
@@ -1094,7 +1057,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 6,
+              "serverActionIndex": 5,
               "_soundEvent": "au_chr_0003_endmin_combo_skill_pad",
               "_stopOnEnd": true,
               "_stopFadeDurationMs": 100,
@@ -1154,7 +1117,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 7,
+              "serverActionIndex": 6,
               "target": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -1187,7 +1150,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 8,
+              "serverActionIndex": 7,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -1296,6 +1259,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_endminf_combo_skill_01_end",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -1454,14 +1418,16 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.PlaySoundAction+PlaySoundActionData, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 9,
+              "serverActionIndex": 8,
               "_soundEvent": "au_chr_0003_endmin_combo_skill_broken",
               "_stopOnEnd": false,
               "_stopFadeDurationMs": 100,
@@ -1525,7 +1491,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 10,
+              "serverActionIndex": 9,
               "alwaysNext": true,
               "attacker": "ActionSource",
               "targetSettings": {
@@ -1589,6 +1555,7 @@
                   "alwaysStartNewCoalition": false,
                   "alwaysEndCoalition": false,
                   "updatePositionOnCoalition": true,
+                  "damageTextFollowDuration": 0.0,
                   "enablePoiseBreakTimeDilation": true,
                   "hidePoiseUIEffect": false,
                   "hideMainCharHpScreenEffect": false,
@@ -1610,6 +1577,7 @@
                   "playDefaultHitEffect": false,
                   "effectData": {
                     "fxType": "Normal",
+                    "sourceTag": "Battle",
                     "effectName": "P_endminf_combo_skill_01_break",
                     "guardEffect": false,
                     "isCenterChangeLod": false,
@@ -1808,7 +1776,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 11,
+              "serverActionIndex": 10,
               "checkTarget": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -1858,7 +1826,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 12,
+              "serverActionIndex": 11,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -1902,7 +1870,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 13,
+              "serverActionIndex": 12,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -1946,7 +1914,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 14,
+              "serverActionIndex": 13,
               "buffs": [
                 {
                   "buffId": "buff_chr_0003_endminf_talent_1_tirgger",
@@ -2026,7 +1994,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 15,
+              "serverActionIndex": 14,
               "checkTarget": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -2076,7 +2044,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 16,
+              "serverActionIndex": 15,
               "targetGroupKey": "teammate",
               "center": "ActionSource",
               "centerContextKey": "",
@@ -2114,7 +2082,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 17,
+              "serverActionIndex": 16,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -2158,7 +2126,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 18,
+              "serverActionIndex": 17,
               "key": "atk_up_dynamic",
               "operation": "Multiply",
               "directValue": true,
@@ -2199,7 +2167,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 19,
+              "serverActionIndex": 18,
               "key": "duration_dynamic",
               "operation": "Multiply",
               "directValue": true,
@@ -2240,7 +2208,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 20,
+              "serverActionIndex": 19,
               "buffs": [
                 {
                   "buffId": "buff_chr_0003_endminf_talent_1_tirgger",
@@ -2326,7 +2294,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 21,
+              "serverActionIndex": 20,
               "checkTarget": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -2376,7 +2344,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 22,
+              "serverActionIndex": 21,
               "targetSettings": {
                 "targetSource": "Target",
                 "targetGroupKey": "",
@@ -2420,7 +2388,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 23,
+              "serverActionIndex": 22,
               "costType": "UltimateSp",
               "isPercentValue": false,
               "useUspRecoverTag": false,
@@ -2515,7 +2483,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 24,
+              "serverActionIndex": 23,
               "alwaysNext": true,
               "attacker": "ActionSource",
               "targetSettings": {
@@ -2579,6 +2547,7 @@
                   "alwaysStartNewCoalition": false,
                   "alwaysEndCoalition": false,
                   "updatePositionOnCoalition": true,
+                  "damageTextFollowDuration": 0.0,
                   "enablePoiseBreakTimeDilation": true,
                   "hidePoiseUIEffect": false,
                   "hideMainCharHpScreenEffect": false,
@@ -2600,6 +2569,7 @@
                   "playDefaultHitEffect": false,
                   "effectData": {
                     "fxType": "Normal",
+                    "sourceTag": "Battle",
                     "effectName": "P_endminf_combo_skill_01_break",
                     "guardEffect": false,
                     "isCenterChangeLod": false,
@@ -2798,7 +2768,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 25,
+              "serverActionIndex": 24,
               "checkTarget": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -2848,7 +2818,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 26,
+              "serverActionIndex": 25,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -2892,7 +2862,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 27,
+              "serverActionIndex": 26,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -2936,7 +2906,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 28,
+              "serverActionIndex": 27,
               "buffs": [
                 {
                   "buffId": "buff_chr_0003_endminf_talent_1_tirgger",
@@ -3016,7 +2986,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 29,
+              "serverActionIndex": 28,
               "checkTarget": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3066,7 +3036,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 30,
+              "serverActionIndex": 29,
               "targetGroupKey": "teammate",
               "center": "ActionSource",
               "centerContextKey": "",
@@ -3104,7 +3074,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 31,
+              "serverActionIndex": 30,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3148,7 +3118,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 32,
+              "serverActionIndex": 31,
               "key": "atk_up_dynamic",
               "operation": "Multiply",
               "directValue": true,
@@ -3189,7 +3159,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 33,
+              "serverActionIndex": 32,
               "key": "duration_dynamic",
               "operation": "Multiply",
               "directValue": true,
@@ -3230,7 +3200,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 34,
+              "serverActionIndex": 33,
               "buffs": [
                 {
                   "buffId": "buff_chr_0003_endminf_talent_1_tirgger",
@@ -3322,7 +3292,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 35,
+              "serverActionIndex": 34,
               "alwaysNext": true,
               "attacker": "ActionSource",
               "targetSettings": {
@@ -3386,6 +3356,7 @@
                   "alwaysStartNewCoalition": false,
                   "alwaysEndCoalition": false,
                   "updatePositionOnCoalition": true,
+                  "damageTextFollowDuration": 0.0,
                   "enablePoiseBreakTimeDilation": true,
                   "hidePoiseUIEffect": false,
                   "hideMainCharHpScreenEffect": false,
@@ -3407,6 +3378,7 @@
                   "playDefaultHitEffect": false,
                   "effectData": {
                     "fxType": "Normal",
+                    "sourceTag": "Battle",
                     "effectName": "P_endminf_combo_skill_01_break",
                     "guardEffect": false,
                     "isCenterChangeLod": false,
@@ -3605,7 +3577,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 36,
+              "serverActionIndex": 35,
               "checkTarget": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3655,7 +3627,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 37,
+              "serverActionIndex": 36,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3699,7 +3671,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 38,
+              "serverActionIndex": 37,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3743,7 +3715,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 39,
+              "serverActionIndex": 38,
               "buffs": [
                 {
                   "buffId": "buff_chr_0003_endminf_talent_1_tirgger",
@@ -3823,7 +3795,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 40,
+              "serverActionIndex": 39,
               "checkTarget": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3873,7 +3845,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 41,
+              "serverActionIndex": 40,
               "targetGroupKey": "teammate",
               "center": "ActionSource",
               "centerContextKey": "",
@@ -3911,7 +3883,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 42,
+              "serverActionIndex": 41,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3955,7 +3927,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 43,
+              "serverActionIndex": 42,
               "key": "atk_up_dynamic",
               "operation": "Multiply",
               "directValue": true,
@@ -3996,7 +3968,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 44,
+              "serverActionIndex": 43,
               "key": "duration_dynamic",
               "operation": "Multiply",
               "directValue": true,
@@ -4037,7 +4009,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 45,
+              "serverActionIndex": 44,
               "buffs": [
                 {
                   "buffId": "buff_chr_0003_endminf_talent_1_tirgger",
@@ -4157,5 +4129,6 @@
       "valueStr": "",
       "isDynamic": true
     }
-  ]
+  ],
+  "<isSpellInflictionRelated>k__BackingField": false
 }

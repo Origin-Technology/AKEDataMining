@@ -6,6 +6,7 @@
   "iconBgType": "Physical",
   "attackRangeType": "Melee",
   "castType": "Active",
+  "normalSkillSubType": "Normal",
   "skillSpecification": "CharacterUltimateSkill",
   "passiveSkillType": "AddBuff",
   "castData": {
@@ -817,6 +818,7 @@
                     "overrideRotateRate": false,
                     "rotateRate": 0.0,
                     "rotateDirType": "Free",
+                    "updateTargetPerFrame": false,
                     "ignoreImmobilized": false
                   }
                 ],
@@ -1097,6 +1099,7 @@
                     "overrideRotateRate": false,
                     "rotateRate": 0.0,
                     "rotateDirType": "Free",
+                    "updateTargetPerFrame": false,
                     "ignoreImmobilized": false
                   }
                 ],
@@ -1227,8 +1230,12 @@
               "pauseEffectOnEnd": true,
               "inheritSourceSkillCastId": true,
               "dieWhenSourceDie": false,
+              "dieWhenTargetDie": false,
               "forceSyncInit": false,
-              "dieOnEnd": false
+              "dieOnEnd": false,
+              "attachWeaponModel": false,
+              "weaponIndex": 0,
+              "readFullPotentialExtraEffect": false
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -1474,6 +1481,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_heal",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -1632,7 +1640,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -1941,6 +1951,7 @@
               "overrideHitBone": true,
               "hitMountPoint": "None",
               "hitBoneOffsetForward": "TargetForward",
+              "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
                 "x": 0.0,
                 "y": 1.5,
@@ -1953,6 +1964,8 @@
               },
               "presetPoints": [],
               "assignBlackboard": true,
+              "castSkillOnLaunch": false,
+              "skillIdOnLaunch": "",
               "castSkillOnHit": true,
               "projectileSkillId": "chr_0035_liino_ultimate_skill_soundwave_02_projhit",
               "castSkillOnBlock": false,
@@ -2103,6 +2116,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_ult_soundwave_once_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -2261,7 +2275,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -4438,6 +4454,12 @@
               },
               "faceToMoveDir": true,
               "overrideRotateSpeed": true,
+              "limitMoveDirRotateSpeed": false,
+              "moveDirRotateSpeed": {
+                "useBlackboardKey": false,
+                "value": 90.0,
+                "blackboardKey": ""
+              },
               "disableCliffCheck": false,
               "rotateSpeed": {
                 "useBlackboardKey": false,
@@ -4454,6 +4476,19 @@
               "rootMotionScale": {
                 "useBlackboardKey": false,
                 "value": 1.0,
+                "blackboardKey": ""
+              },
+              "enableStopDistance": false,
+              "stopDistance": {
+                "useBlackboardKey": false,
+                "value": 0.0,
+                "blackboardKey": ""
+              },
+              "stopLayerMask": {},
+              "stopCheckSuperArmor": false,
+              "stopSuperArmorThreshold": {
+                "useBlackboardKey": false,
+                "value": 0,
                 "blackboardKey": ""
               },
               "useTeammateParam": true,
@@ -5906,6 +5941,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_lighting_liino_skill_ult",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -6064,7 +6100,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -6196,6 +6234,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_ult_camera_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -6354,7 +6393,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -6486,6 +6527,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_ult_camera_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -6644,7 +6686,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -6776,6 +6820,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_ult_PP",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -6934,7 +6979,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -7066,6 +7113,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_ult_beijing",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -7224,7 +7272,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -7356,6 +7406,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_ult_step_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -7514,7 +7565,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -7646,6 +7699,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_ult_step_02_trail",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -7804,7 +7858,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -7936,6 +7992,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_ult_step_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -8094,7 +8151,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -8226,6 +8285,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_ult_bullet",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -8384,7 +8444,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -8516,6 +8578,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_ult_foot_start",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -8674,7 +8737,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -8806,6 +8871,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_ult_foot_start",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -8964,7 +9030,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -9096,6 +9164,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_ult_fire_foot_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -9254,7 +9323,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -9386,6 +9457,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_ult_fire_foot_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -9544,7 +9616,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -9676,6 +9750,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_ult_weapons_L_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -9834,7 +9909,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -9966,6 +10043,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_ult_weapons_R_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -10124,7 +10202,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -10256,6 +10336,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_foot_start_04",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -10414,7 +10495,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -10546,6 +10629,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_ult_beijing_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -10704,7 +10788,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -10836,6 +10922,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_ult_wings",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -10994,7 +11081,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -11126,6 +11215,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_foot_start_05",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -11284,7 +11374,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,

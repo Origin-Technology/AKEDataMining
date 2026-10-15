@@ -6,6 +6,7 @@
   "iconBgType": "Physical",
   "attackRangeType": "Melee",
   "castType": "Active",
+  "normalSkillSubType": "Normal",
   "skillSpecification": "CharacterNormalAttack",
   "passiveSkillType": "AddBuff",
   "castData": {
@@ -169,6 +170,7 @@
               "overrideRotateRate": true,
               "rotateRate": 720.0,
               "rotateDirType": "Free",
+              "updateTargetPerFrame": false,
               "ignoreImmobilized": false
             }
           ],
@@ -252,6 +254,7 @@
                   "weightedMode": 0
                 }
               ],
+              "enableScaleZWithDistanceForRealPosition": false,
               "scaleZ": {
                 "useBlackboardKey": false,
                 "value": 1.0,
@@ -385,6 +388,12 @@
                     },
                     "faceToMoveDir": false,
                     "overrideRotateSpeed": false,
+                    "limitMoveDirRotateSpeed": false,
+                    "moveDirRotateSpeed": {
+                      "useBlackboardKey": false,
+                      "value": 90.0,
+                      "blackboardKey": ""
+                    },
                     "disableCliffCheck": false,
                     "rotateSpeed": {
                       "useBlackboardKey": false,
@@ -401,6 +410,19 @@
                     "rootMotionScale": {
                       "useBlackboardKey": false,
                       "value": 1.0,
+                      "blackboardKey": ""
+                    },
+                    "enableStopDistance": false,
+                    "stopDistance": {
+                      "useBlackboardKey": false,
+                      "value": 0.0,
+                      "blackboardKey": ""
+                    },
+                    "stopLayerMask": {},
+                    "stopCheckSuperArmor": false,
+                    "stopSuperArmorThreshold": {
+                      "useBlackboardKey": false,
+                      "value": 0,
                       "blackboardKey": ""
                     },
                     "useTeammateParam": false,
@@ -858,8 +880,12 @@
                                 "pauseEffectOnEnd": false,
                                 "inheritSourceSkillCastId": true,
                                 "dieWhenSourceDie": false,
+                                "dieWhenTargetDie": false,
                                 "forceSyncInit": false,
-                                "dieOnEnd": false
+                                "dieOnEnd": false,
+                                "attachWeaponModel": false,
+                                "weaponIndex": 0,
+                                "readFullPotentialExtraEffect": false
                               }
                             ],
                             "onlyExecuteWhenSourceIsMainChar": false,
@@ -1075,8 +1101,12 @@
                                 "pauseEffectOnEnd": false,
                                 "inheritSourceSkillCastId": true,
                                 "dieWhenSourceDie": false,
+                                "dieWhenTargetDie": false,
                                 "forceSyncInit": false,
-                                "dieOnEnd": false
+                                "dieOnEnd": false,
+                                "attachWeaponModel": false,
+                                "weaponIndex": 0,
+                                "readFullPotentialExtraEffect": false
                               }
                             ],
                             "onlyExecuteWhenSourceIsMainChar": false,
@@ -1298,8 +1328,12 @@
                           "pauseEffectOnEnd": false,
                           "inheritSourceSkillCastId": true,
                           "dieWhenSourceDie": false,
+                          "dieWhenTargetDie": false,
                           "forceSyncInit": false,
-                          "dieOnEnd": false
+                          "dieOnEnd": false,
+                          "attachWeaponModel": false,
+                          "weaponIndex": 0,
+                          "readFullPotentialExtraEffect": false
                         }
                       ],
                       "onlyExecuteWhenSourceIsMainChar": false,
@@ -1521,8 +1555,12 @@
                     "pauseEffectOnEnd": false,
                     "inheritSourceSkillCastId": true,
                     "dieWhenSourceDie": false,
+                    "dieWhenTargetDie": false,
                     "forceSyncInit": false,
-                    "dieOnEnd": false
+                    "dieOnEnd": false,
+                    "attachWeaponModel": false,
+                    "weaponIndex": 0,
+                    "readFullPotentialExtraEffect": false
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -2135,6 +2173,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_zhuangfy_attack_05",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -2293,7 +2332,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -2425,6 +2466,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_zhuangfy_attack_05_pp",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -2583,7 +2625,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -2715,6 +2759,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_zhuangfy_attack_05_start",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -2873,7 +2918,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3005,6 +3052,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_zhuangfy_attack_05_canying",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3163,7 +3211,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3295,6 +3345,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_zhuangfy_attack_05_wpn",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3453,7 +3504,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3585,6 +3638,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_zhuangfy_attack_05_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3743,7 +3797,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3875,6 +3931,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_zhuangfy_bash",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -4033,7 +4090,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -4165,6 +4224,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_zhuangfy_attack_03_asset",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -4323,7 +4383,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,

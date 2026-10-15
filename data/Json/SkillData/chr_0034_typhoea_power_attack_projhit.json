@@ -6,6 +6,7 @@
   "iconBgType": "Physical",
   "attackRangeType": "Ranged",
   "castType": "Active",
+  "normalSkillSubType": "Normal",
   "skillSpecification": "CharacterNormalAttack",
   "passiveSkillType": "AddBuff",
   "castData": {
@@ -111,6 +112,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -167,6 +169,16 @@
                         "value": 5.0,
                         "blackboardKey": ""
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -186,6 +198,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -346,40 +396,59 @@
                     "succeedActions": {
                       "actionData": [
                         {
-                          "$type": "Beyond.Gameplay.Core.MergeTargetAction+Data, Gameplay.Beyond",
+                          "$type": "Beyond.Gameplay.Core.ConvertToTargetContext+Data, Gameplay.Beyond",
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
                           "serverActionIndex": 5,
-                          "targets": [
-                            {
-                              "targetSource": "Target",
-                              "targetGroupKey": "",
-                              "selectorOwner": "ActionOwner",
-                              "ownerContextKey": "",
-                              "centerType": "ActionSource",
-                              "centerContextKey": "",
-                              "centerToGround": false,
-                              "selectorData": {
-                                "validatorData": [],
-                                "postProcessorData": []
-                              },
-                              "enableAdvancedDirection": false,
-                              "advancedDirection": {
-                                "directionType": "SourceForward",
-                                "sourceMountPoint": "None",
-                                "targetMountPoint": "None",
-                                "customSourceAndTarget": false,
-                                "clampToXZ": true,
-                                "invertDirection": false
-                              },
-                              "selectorDirection": "SourceForward",
-                              "target": "ActionSource",
-                              "targetContextKey": ""
-                            }
-                          ],
+                          "convertFrom": {
+                            "targetSource": "Target",
+                            "targetGroupKey": "",
+                            "selectorOwner": "ActionOwner",
+                            "ownerContextKey": "",
+                            "centerType": "ActionSource",
+                            "centerContextKey": "",
+                            "centerToGround": false,
+                            "selectorData": {
+                              "validatorData": [],
+                              "postProcessorData": []
+                            },
+                            "enableAdvancedDirection": false,
+                            "advancedDirection": {
+                              "directionType": "SourceForward",
+                              "sourceMountPoint": "None",
+                              "targetMountPoint": "None",
+                              "customSourceAndTarget": false,
+                              "clampToXZ": true,
+                              "invertDirection": false
+                            },
+                            "selectorDirection": "SourceForward",
+                            "target": "ActionSource",
+                            "targetContextKey": ""
+                          },
                           "targetGroupKey": "maintar",
-                          "mergeHittableTargets": false
+                          "operationType": "None",
+                          "translateOperation": "Rotate180DegAroundRef",
+                          "translationRef": "ActionSource",
+                          "translationDeg": 0.0,
+                          "excludeTarget": "ActionSource",
+                          "blackboardVector3": {
+                            "x": {
+                              "useBlackboardKey": false,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
+                            "y": {
+                              "useBlackboardKey": false,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            },
+                            "z": {
+                              "useBlackboardKey": false,
+                              "value": 0.0,
+                              "blackboardKey": ""
+                            }
+                          }
                         },
                         {
                           "$type": "Beyond.Gameplay.Core.DamageAction+DamageActionData, Gameplay.Beyond",
@@ -450,6 +519,7 @@
                               "alwaysStartNewCoalition": false,
                               "alwaysEndCoalition": false,
                               "updatePositionOnCoalition": true,
+                              "damageTextFollowDuration": 0.0,
                               "enablePoiseBreakTimeDilation": true,
                               "hidePoiseUIEffect": false,
                               "hideMainCharHpScreenEffect": false,
@@ -484,6 +554,7 @@
                               "playDefaultHitEffect": false,
                               "effectData": {
                                 "fxType": "Normal",
+                                "sourceTag": "Battle",
                                 "effectName": "P_fxbat_wulfa_power_attack_hit_03",
                                 "guardEffect": true,
                                 "isCenterChangeLod": false,
@@ -1054,6 +1125,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -1110,6 +1182,16 @@
                         "value": 5.0,
                         "blackboardKey": ""
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -1129,6 +1211,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -1324,7 +1444,7 @@
                             "targetContextKey": ""
                           },
                           "target": {
-                            "targetSource": "Target",
+                            "targetSource": "Context",
                             "targetGroupKey": "maintar",
                             "selectorOwner": "ActionOwner",
                             "ownerContextKey": "",

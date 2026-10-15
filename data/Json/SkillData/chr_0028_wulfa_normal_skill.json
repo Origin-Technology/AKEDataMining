@@ -6,6 +6,7 @@
   "iconBgType": "Physical",
   "attackRangeType": "Melee",
   "castType": "Active",
+  "normalSkillSubType": "Normal",
   "skillSpecification": "CharacterNormalSkill",
   "passiveSkillType": "AddBuff",
   "castData": {
@@ -480,6 +481,7 @@
                           "playOnHittableObjects": false,
                           "effectActionCfg": {
                             "fxType": "Normal",
+                            "sourceTag": "Battle",
                             "effectName": "P_common_teleport_01_start_ready",
                             "guardEffect": false,
                             "isCenterChangeLod": false,
@@ -638,7 +640,9 @@
                           },
                           "saveEffectIdToBlackboard": "",
                           "forceMainBody": false,
-                          "isCreateWithSourceModelActive": false
+                          "isCreateWithSourceModelActive": false,
+                          "alignSpawnPhaseToTimeline": false,
+                          "spawnPhaseAlignFrame": 0
                         }
                       ],
                       "onlyExecuteWhenSourceIsMainChar": false,
@@ -883,6 +887,7 @@
               "overrideRotateRate": false,
               "rotateRate": 0.0,
               "rotateDirType": "Free",
+              "updateTargetPerFrame": false,
               "ignoreImmobilized": false
             }
           ],
@@ -951,6 +956,7 @@
               "overrideRotateRate": false,
               "rotateRate": 0.0,
               "rotateDirType": "Free",
+              "updateTargetPerFrame": false,
               "ignoreImmobilized": false
             }
           ],
@@ -1068,6 +1074,7 @@
                     "overrideRotateRate": true,
                     "rotateRate": 800.0,
                     "rotateDirType": "Free",
+                    "updateTargetPerFrame": false,
                     "ignoreImmobilized": false
                   }
                 ],
@@ -1183,6 +1190,7 @@
                           "overrideRotateRate": true,
                           "rotateRate": 800.0,
                           "rotateDirType": "Free",
+                          "updateTargetPerFrame": false,
                           "ignoreImmobilized": false
                         }
                       ],
@@ -1241,6 +1249,7 @@
                           "overrideRotateRate": true,
                           "rotateRate": 800.0,
                           "rotateDirType": "Free",
+                          "updateTargetPerFrame": false,
                           "ignoreImmobilized": false
                         }
                       ],
@@ -1336,6 +1345,7 @@
                   "weightedMode": 0
                 }
               ],
+              "enableScaleZWithDistanceForRealPosition": false,
               "scaleZ": {
                 "useBlackboardKey": false,
                 "value": 1.0,
@@ -1450,6 +1460,7 @@
                   "weightedMode": 0
                 }
               ],
+              "enableScaleZWithDistanceForRealPosition": false,
               "scaleZ": {
                 "useBlackboardKey": false,
                 "value": 0.8,
@@ -1591,6 +1602,9 @@
                       "target": "ActionSource",
                       "targetContextKey": ""
                     },
+                    "useTargetMountPoint": false,
+                    "targetMountPoint": "None",
+                    "ownerMountPoint": "None",
                     "fixAngle": {
                       "x": 0.0,
                       "y": 0.0,
@@ -1822,6 +1836,9 @@
                       "target": "ActionSource",
                       "targetContextKey": ""
                     },
+                    "useTargetMountPoint": false,
+                    "targetMountPoint": "None",
+                    "ownerMountPoint": "None",
                     "fixAngle": {
                       "x": 0.0,
                       "y": 0.0,
@@ -2057,6 +2074,9 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
+              "useTargetMountPoint": false,
+              "targetMountPoint": "None",
+              "ownerMountPoint": "None",
               "fixAngle": {
                 "x": 0.0,
                 "y": 0.0,
@@ -2281,6 +2301,9 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
+              "useTargetMountPoint": false,
+              "targetMountPoint": "None",
+              "ownerMountPoint": "None",
               "fixAngle": {
                 "x": 0.0,
                 "y": 0.0,
@@ -2755,6 +2778,7 @@
                       "targetContextKey": ""
                     },
                     "dir2DirectionType": "SourceToTarget",
+                    "clampToXZ": false,
                     "key": "input_angle"
                   },
                   {
@@ -4003,6 +4027,7 @@
                       "targetContextKey": ""
                     },
                     "dir2DirectionType": "SourceToTarget",
+                    "clampToXZ": false,
                     "key": "input_angle"
                   },
                   {
@@ -4629,6 +4654,7 @@
                       "targetContextKey": ""
                     },
                     "dir2DirectionType": "SourceToTarget",
+                    "clampToXZ": false,
                     "key": "input_angle"
                   },
                   {
@@ -5537,6 +5563,7 @@
                       "targetContextKey": ""
                     },
                     "dir2DirectionType": "SourceToTarget",
+                    "clampToXZ": false,
                     "compareType": "LT",
                     "value": {
                       "useBlackboardKey": false,
@@ -6011,6 +6038,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -6067,6 +6095,16 @@
                         "value": 0.0,
                         "blackboardKey": ""
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -6086,6 +6124,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -6155,6 +6231,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -6211,6 +6288,16 @@
                         "value": 0.0,
                         "blackboardKey": ""
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -6230,6 +6317,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -6299,6 +6424,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -6355,6 +6481,16 @@
                         "value": 0.0,
                         "blackboardKey": ""
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -6374,6 +6510,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -6669,6 +6843,7 @@
                         "alwaysStartNewCoalition": false,
                         "alwaysEndCoalition": false,
                         "updatePositionOnCoalition": true,
+                        "damageTextFollowDuration": 0.0,
                         "enablePoiseBreakTimeDilation": true,
                         "hidePoiseUIEffect": false,
                         "hideMainCharHpScreenEffect": false,
@@ -6698,6 +6873,7 @@
                         "playDefaultHitEffect": false,
                         "effectData": {
                           "fxType": "Normal",
+                          "sourceTag": "Battle",
                           "effectName": "P_fxbat_wulfa_skill_01_hit",
                           "guardEffect": true,
                           "isCenterChangeLod": false,
@@ -7682,6 +7858,7 @@
                         "alwaysStartNewCoalition": false,
                         "alwaysEndCoalition": false,
                         "updatePositionOnCoalition": true,
+                        "damageTextFollowDuration": 0.0,
                         "enablePoiseBreakTimeDilation": true,
                         "hidePoiseUIEffect": false,
                         "hideMainCharHpScreenEffect": false,
@@ -7711,6 +7888,7 @@
                         "playDefaultHitEffect": false,
                         "effectData": {
                           "fxType": "Normal",
+                          "sourceTag": "Battle",
                           "effectName": "P_fxbat_wulfa_skill_01_hit_02",
                           "guardEffect": true,
                           "isCenterChangeLod": false,
@@ -8761,6 +8939,7 @@
                           },
                           "airborneEffect": {
                             "fxType": "Normal",
+                            "sourceTag": "Battle",
                             "effectName": "",
                             "guardEffect": false,
                             "isCenterChangeLod": false,
@@ -8991,6 +9170,7 @@
                               "alwaysStartNewCoalition": false,
                               "alwaysEndCoalition": false,
                               "updatePositionOnCoalition": true,
+                              "damageTextFollowDuration": 0.0,
                               "enablePoiseBreakTimeDilation": true,
                               "hidePoiseUIEffect": false,
                               "hideMainCharHpScreenEffect": false,
@@ -9020,6 +9200,7 @@
                               "playDefaultHitEffect": false,
                               "effectData": {
                                 "fxType": "Normal",
+                                "sourceTag": "Battle",
                                 "effectName": "P_fxbat_wulfa_skill_01_hit",
                                 "guardEffect": true,
                                 "isCenterChangeLod": false,
@@ -9201,6 +9382,7 @@
                               "alwaysStartNewCoalition": false,
                               "alwaysEndCoalition": false,
                               "updatePositionOnCoalition": true,
+                              "damageTextFollowDuration": 0.0,
                               "enablePoiseBreakTimeDilation": true,
                               "hidePoiseUIEffect": false,
                               "hideMainCharHpScreenEffect": false,
@@ -9236,6 +9418,7 @@
                               "playDefaultHitEffect": false,
                               "effectData": {
                                 "fxType": "Normal",
+                                "sourceTag": "Battle",
                                 "effectName": "",
                                 "guardEffect": false,
                                 "isCenterChangeLod": false,
@@ -9945,6 +10128,7 @@
                           },
                           "airborneEffect": {
                             "fxType": "Normal",
+                            "sourceTag": "Battle",
                             "effectName": "",
                             "guardEffect": false,
                             "isCenterChangeLod": false,
@@ -10175,6 +10359,7 @@
                               "alwaysStartNewCoalition": false,
                               "alwaysEndCoalition": false,
                               "updatePositionOnCoalition": true,
+                              "damageTextFollowDuration": 0.0,
                               "enablePoiseBreakTimeDilation": true,
                               "hidePoiseUIEffect": false,
                               "hideMainCharHpScreenEffect": false,
@@ -10204,6 +10389,7 @@
                               "playDefaultHitEffect": false,
                               "effectData": {
                                 "fxType": "Normal",
+                                "sourceTag": "Battle",
                                 "effectName": "P_fxbat_wulfa_skill_01_hit",
                                 "guardEffect": true,
                                 "isCenterChangeLod": false,
@@ -10385,6 +10571,7 @@
                               "alwaysStartNewCoalition": false,
                               "alwaysEndCoalition": false,
                               "updatePositionOnCoalition": true,
+                              "damageTextFollowDuration": 0.0,
                               "enablePoiseBreakTimeDilation": true,
                               "hidePoiseUIEffect": false,
                               "hideMainCharHpScreenEffect": false,
@@ -10420,6 +10607,7 @@
                               "playDefaultHitEffect": false,
                               "effectData": {
                                 "fxType": "Normal",
+                                "sourceTag": "Battle",
                                 "effectName": "",
                                 "guardEffect": false,
                                 "isCenterChangeLod": false,
@@ -11280,6 +11468,7 @@
               "overrideHitBone": true,
               "hitMountPoint": "VBHit",
               "hitBoneOffsetForward": "SourceToTarget",
+              "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
                 "x": 0.0,
                 "y": 0.0,
@@ -11292,6 +11481,8 @@
               },
               "presetPoints": [],
               "assignBlackboard": true,
+              "castSkillOnLaunch": false,
+              "skillIdOnLaunch": "",
               "castSkillOnHit": true,
               "projectileSkillId": "chr_0028_wulfa_normal_skill_projhit2",
               "castSkillOnBlock": false,
@@ -11432,6 +11623,7 @@
               "overrideHitBone": true,
               "hitMountPoint": "VBHit",
               "hitBoneOffsetForward": "SourceToTarget",
+              "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
                 "x": 0.0,
                 "y": 0.0,
@@ -11444,6 +11636,8 @@
               },
               "presetPoints": [],
               "assignBlackboard": true,
+              "castSkillOnLaunch": false,
+              "skillIdOnLaunch": "",
               "castSkillOnHit": true,
               "projectileSkillId": "chr_0028_wulfa_normal_skill_projhit3",
               "castSkillOnBlock": false,
@@ -11584,6 +11778,7 @@
               "overrideHitBone": true,
               "hitMountPoint": "VBHit",
               "hitBoneOffsetForward": "SourceToTarget",
+              "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
                 "x": 0.0,
                 "y": 0.0,
@@ -11596,6 +11791,8 @@
               },
               "presetPoints": [],
               "assignBlackboard": true,
+              "castSkillOnLaunch": false,
+              "skillIdOnLaunch": "",
               "castSkillOnHit": true,
               "projectileSkillId": "chr_0028_wulfa_normal_skill_projhit4",
               "castSkillOnBlock": false,
@@ -11736,6 +11933,7 @@
               "overrideHitBone": true,
               "hitMountPoint": "VBHit",
               "hitBoneOffsetForward": "SourceToTarget",
+              "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
                 "x": 0.0,
                 "y": 0.0,
@@ -11748,6 +11946,8 @@
               },
               "presetPoints": [],
               "assignBlackboard": true,
+              "castSkillOnLaunch": false,
+              "skillIdOnLaunch": "",
               "castSkillOnHit": true,
               "projectileSkillId": "chr_0028_wulfa_normal_skill_projhit5",
               "castSkillOnBlock": false,
@@ -12121,6 +12321,7 @@
               "overrideHitBone": true,
               "hitMountPoint": "VBHit",
               "hitBoneOffsetForward": "TargetForward",
+              "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
                 "x": 0.0,
                 "y": 0.0,
@@ -12133,6 +12334,8 @@
               },
               "presetPoints": [],
               "assignBlackboard": true,
+              "castSkillOnLaunch": false,
+              "skillIdOnLaunch": "",
               "castSkillOnHit": true,
               "projectileSkillId": "chr_0028_wulfa_normal_skill_projhit1",
               "castSkillOnBlock": false,
@@ -14498,6 +14701,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_wulfa_skill_01_start_01",
                 "guardEffect": true,
                 "isCenterChangeLod": false,
@@ -14656,7 +14860,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -14788,6 +14994,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_wulfa_skill_01_start_02",
                 "guardEffect": true,
                 "isCenterChangeLod": false,
@@ -14946,7 +15153,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -15078,6 +15287,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_wulfa_skill_01_start_03",
                 "guardEffect": true,
                 "isCenterChangeLod": false,
@@ -15236,7 +15446,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -15368,6 +15580,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_wulfa_skill_02_start_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -15526,7 +15739,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -15658,6 +15873,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_wulfa_skill_01_start_04",
                 "guardEffect": true,
                 "isCenterChangeLod": false,
@@ -15816,7 +16032,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -15948,6 +16166,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_wulfa_skill_02_start_03",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -16106,7 +16325,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -16238,6 +16459,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_wulfa_skill_01_start_05",
                 "guardEffect": true,
                 "isCenterChangeLod": false,
@@ -16396,7 +16618,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -16528,6 +16752,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_wulfa_skill_01_asset02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -16686,7 +16911,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -16818,6 +17045,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_wulfa_skill_01_asset",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -16976,7 +17204,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -17108,6 +17338,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_wulfa_skill_01_start_canying",
                 "guardEffect": true,
                 "isCenterChangeLod": false,
@@ -17266,7 +17497,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -17398,6 +17631,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_wulfa_skill_01_start_06",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -17556,7 +17790,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,

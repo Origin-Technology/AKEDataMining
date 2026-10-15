@@ -6,6 +6,7 @@
   "iconBgType": "Physical",
   "attackRangeType": "Melee",
   "castType": "Active",
+  "normalSkillSubType": "Normal",
   "skillSpecification": "EnemyBossSkill",
   "passiveSkillType": "AddBuff",
   "castData": {
@@ -169,6 +170,7 @@
               "overrideRotateRate": true,
               "rotateRate": 360.0,
               "rotateDirType": "Free",
+              "updateTargetPerFrame": false,
               "ignoreImmobilized": false
             }
           ],
@@ -237,6 +239,7 @@
               "overrideRotateRate": true,
               "rotateRate": 360.0,
               "rotateDirType": "Free",
+              "updateTargetPerFrame": false,
               "ignoreImmobilized": false
             }
           ],
@@ -320,6 +323,7 @@
                   "weightedMode": 0
                 }
               ],
+              "enableScaleZWithDistanceForRealPosition": false,
               "scaleZ": {
                 "useBlackboardKey": false,
                 "value": 1.0,
@@ -483,6 +487,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Alert",
+                "sourceTag": "Battle",
                 "effectName": "P_skillalert_sector_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -641,7 +646,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -690,6 +697,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -746,6 +754,16 @@
                         "value": 12.0,
                         "blackboardKey": ""
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 1.0,
@@ -765,6 +783,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -1025,6 +1081,7 @@
               "overrideHitBone": false,
               "hitMountPoint": "None",
               "hitBoneOffsetForward": "TargetForward",
+              "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
                 "x": 0.0,
                 "y": 0.0,
@@ -1037,6 +1094,8 @@
               },
               "presetPoints": [],
               "assignBlackboard": true,
+              "castSkillOnLaunch": false,
+              "skillIdOnLaunch": "",
               "castSkillOnHit": true,
               "projectileSkillId": "eny_0082_hsbear_skill03_01_projhit",
               "castSkillOnBlock": false,
@@ -1213,6 +1272,7 @@
               "overrideHitBone": true,
               "hitMountPoint": "None",
               "hitBoneOffsetForward": "TargetForward",
+              "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
                 "x": 0.0,
                 "y": 0.0,
@@ -1225,6 +1285,8 @@
               },
               "presetPoints": [],
               "assignBlackboard": true,
+              "castSkillOnLaunch": false,
+              "skillIdOnLaunch": "",
               "castSkillOnHit": true,
               "projectileSkillId": "eny_0082_hsbear_skill03_01_projhit",
               "castSkillOnBlock": false,
@@ -1381,6 +1443,7 @@
               "overrideHitBone": false,
               "hitMountPoint": "None",
               "hitBoneOffsetForward": "TargetForward",
+              "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
                 "x": 0.0,
                 "y": 0.0,
@@ -1393,6 +1456,8 @@
               },
               "presetPoints": [],
               "assignBlackboard": true,
+              "castSkillOnLaunch": false,
+              "skillIdOnLaunch": "",
               "castSkillOnHit": true,
               "projectileSkillId": "eny_0082_hsbear_skill03_01_projhit",
               "castSkillOnBlock": false,
@@ -2496,6 +2561,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_common_enemy_atk_ready_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -2654,7 +2720,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -2786,6 +2854,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_common_enemy_atk_ready_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -2944,7 +3013,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3076,6 +3147,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_hsbear_skill_03_start_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3234,7 +3306,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3366,6 +3440,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_hsbear_skill_03_start_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3524,7 +3599,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3656,6 +3733,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_hsbear_skill_03_start_03",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3814,7 +3892,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,

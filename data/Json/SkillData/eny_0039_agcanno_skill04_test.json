@@ -6,6 +6,7 @@
   "iconBgType": "Physical",
   "attackRangeType": "Melee",
   "castType": "Active",
+  "normalSkillSubType": "Normal",
   "skillSpecification": "EnemyEliteSkill",
   "passiveSkillType": "AddBuff",
   "castData": {
@@ -189,6 +190,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -245,6 +247,16 @@
                         "value": 30.0,
                         "blackboardKey": ""
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -264,6 +276,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -480,6 +530,7 @@
               "overrideHitBone": false,
               "hitMountPoint": "None",
               "hitBoneOffsetForward": "TargetForward",
+              "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
                 "x": 0.0,
                 "y": 0.0,
@@ -492,6 +543,8 @@
               },
               "presetPoints": [],
               "assignBlackboard": true,
+              "castSkillOnLaunch": false,
+              "skillIdOnLaunch": "",
               "castSkillOnHit": true,
               "projectileSkillId": "eny_0039_agcanno_skill01_projhit_test",
               "castSkillOnBlock": false,
@@ -658,6 +711,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Alert",
+                "sourceTag": "Battle",
                 "effectName": "P_skillalert_circle_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -816,7 +870,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,

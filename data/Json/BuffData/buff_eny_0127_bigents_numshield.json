@@ -8,6 +8,7 @@
     "showInSquadIcon": false,
     "onlyShowForMainCharacter": false,
     "blinkInMainCharHpBar": false,
+    "showProgressInEnemyHeadBar": false,
     "showProgressInHpBar": false,
     "showProgressInNormalSkillButton": false,
     "useWeakProgressInNormalSkillButton": false,
@@ -421,6 +422,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_bigents_energy_buff",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -579,7 +581,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.EffectAction+EffectActionData, Gameplay.Beyond",
@@ -695,6 +699,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_bigents_stage_01_asset",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -853,7 +858,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.EffectAction+EffectActionData, Gameplay.Beyond",
@@ -969,6 +976,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_bigents_stage_02_asset",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -1127,7 +1135,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.SetSuperArmorAction+Data, Gameplay.Beyond",
@@ -1185,440 +1195,486 @@
         {
           "actionData": [
             {
-              "$type": "Beyond.Gameplay.Core.CreateBuffAction+Data, Gameplay.Beyond",
+              "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
               "serverActionIndex": 7,
-              "buffs": [
-                {
-                  "buffId": "buff_common_mini_poise_break_bigents",
-                  "assignBlackboard": false,
-                  "assignItems": [],
-                  "readIdFromBlackboard": false,
-                  "buffIdKey": ""
-                },
-                {
-                  "buffId": "buff_eny_0127_bigents_numshield_destory",
-                  "assignBlackboard": false,
-                  "assignItems": [],
-                  "readIdFromBlackboard": false,
-                  "buffIdKey": ""
-                }
-              ],
-              "count": {
-                "useBlackboardKey": false,
-                "value": 1.0,
-                "blackboardKey": ""
-              },
-              "targetSettings": {
-                "targetSource": "Owner",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "buffSource": "ActionSource",
-              "contextKey": "",
-              "autoFinishByAction": false,
-              "inheritSkillIdList": [],
-              "finishWithNextSkillIfNotInherited": true,
-              "asChildBuff": false,
-              "inheritSourceSkillCastId": false,
-              "inheritSourceSkillCastInfo": true,
-              "isExtra": false,
-              "passTargetGroupsToBuff": false,
-              "overrideBuffIconDuration": false,
-              "buffIconDurationSource": {
-                "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
-                "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
-                "durationSourceType": "AbilityEntity",
-                "timedMarkerId": ""
-              }
-            },
-            {
-              "$type": "Beyond.Gameplay.Core.CountShieldUIAction+Data, Gameplay.Beyond",
-              "isEnable": true,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 8,
-              "targetSetting": {
-                "targetSource": "Owner",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "removeCountShieldUI": true,
-              "maxCountShield": {
-                "useBlackboardKey": false,
-                "value": 1,
-                "blackboardKey": ""
-              },
-              "curCountShield": {
-                "useBlackboardKey": true,
-                "value": 1,
-                "blackboardKey": "shield_num"
-              }
-            },
-            {
-              "$type": "Beyond.Gameplay.Core.PlaySoundAction+PlaySoundActionData, Gameplay.Beyond",
-              "isEnable": true,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 9,
-              "_soundEvent": "au_eny_0127_bigents_combat_shield_break",
-              "_stopOnEnd": true,
-              "_stopFadeDurationMs": 2500,
-              "_canInterruptTimeMs": 0,
-              "_intrptFadeDurationMs": 100,
-              "_jumpToWhenPlayMs": 0,
-              "_useTempEmitter": false,
-              "targetSettings": {
-                "targetSource": "Owner",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "mountPoint": "None",
-              "followMountPoint": false,
-              "useWeaponMountPoint": false,
-              "weaponIndex": 0,
-              "weaponMountPoint": "Root",
-              "useTimeDilationPauseAndSeek": false,
-              "timeDilationPauseThreshold": 0.7,
-              "timeDilationSeekThreshold": 0.4,
-              "timeDilationFadeOutDurationMs": 500,
-              "timeDilationFadeInDurationMs": 100
-            },
-            {
-              "$type": "Beyond.Gameplay.Core.EffectAction+EffectActionData, Gameplay.Beyond",
-              "isEnable": false,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 10,
-              "targetSettings": {
-                "targetSource": "Owner",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "effectSource": {
-                "targetSource": "Owner",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "useGuardLodSourceOverride": false,
-              "guardLodSource": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "isMainCharacterActive": false,
-              "isTargetMainCharacterActive": false,
-              "isShowBigEffect": false,
-              "bigEffectName": "",
-              "bigEffectTarget": {
-                "targetSource": "Target",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "playOnHittableObjects": false,
-              "effectActionCfg": {
-                "fxType": "Normal",
-                "effectName": "P_fxbat_v1d5_commone_shield_destroy_big",
-                "guardEffect": false,
-                "isCenterChangeLod": false,
-                "useScaleBB": false,
-                "scale": {
-                  "x": 1.0,
-                  "y": 1.0,
-                  "z": 1.0
-                },
-                "scaleBB": {
-                  "x": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
-                  },
-                  "y": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
-                  },
-                  "z": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
+              "conditionAction": {
+                "actionData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.CompareFloat+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 8,
+                    "valueA": {
+                      "useBlackboardKey": true,
+                      "value": 0.0,
+                      "blackboardKey": "shield_num"
+                    },
+                    "compare": "LE",
+                    "valueB": {
+                      "useBlackboardKey": false,
+                      "value": 0.0,
+                      "blackboardKey": ""
+                    }
                   }
-                },
-                "useLengthBB": false,
-                "lengthBB": {
-                  "useBlackboardKey": false,
-                  "value": 0.0,
-                  "blackboardKey": ""
-                },
-                "useDurationScaleBB": false,
-                "durationScaleBB": {
-                  "useBlackboardKey": false,
-                  "value": 0.0,
-                  "blackboardKey": ""
-                },
-                "releaseByAction": false,
-                "ignoreOwnerTimeScale": false,
-                "interruptTime": 0.0,
-                "terrainPrefab": false,
-                "effectPosData": [],
-                "isShowInDialog": false,
-                "isLimitEffectCount": false,
-                "limitCount": 0,
-                "protectTime": 0.0,
-                "limitTime": 0.0,
-                "limitKey": "",
-                "assetOnlyAffectModelRoot": false,
-                "isUltimateShow": false,
-                "visibleWithEntity": true,
-                "visibleWithEntityType": "Source",
-                "ignoreEntityDither": false,
-                "moveType": "Stationary",
-                "useCameraViewportAnchor": false,
-                "cameraViewportPosition": {
-                  "x": 0.5,
-                  "y": 0.5
-                },
-                "cameraAnchorDistance": 1.0,
-                "cameraScreenSizeScaleMode": "None",
-                "cameraReferenceFov": 58.0,
-                "cameraReferenceAspect": 1.0,
-                "positionRef": "Target",
-                "grounded": false,
-                "followGrounded": false,
-                "followGroundedMaxDistance": 3.0,
-                "lerpToTargetTrans": false,
-                "lerpDuration": 0.0,
-                "followHideTarget": false,
-                "visibleWhenHideTarget": false,
-                "slotIndex": 0,
-                "useWeaponMountPoint": false,
-                "mountPoint": "Spine1",
-                "useAccurateMp": false,
-                "isClothMountPoint": false,
-                "weaponIndex": 0,
-                "weaponMountPoint": "Root",
-                "showHideWithWeapon": false,
-                "offsetDir": "Self",
-                "offsetDirRevert": false,
-                "usePositionOffsetBB": false,
-                "positionOffset": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "positionOffsetBB": {
-                  "x": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
-                  },
-                  "y": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
-                  },
-                  "z": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
-                  }
-                },
-                "useTargetRotation": false,
-                "scaleWithTargetSize": false,
-                "fxSize": 0.0,
-                "unpackPosDelayFrame": 0,
-                "unpackFollowTargetOnRelease": false,
-                "rotType": "Stationary",
-                "rotRef": "Target",
-                "directionRef": "Target",
-                "rotUseWeaponMountPoint": false,
-                "rotMountPoint": "Spine1",
-                "rotWeaponIndex": 0,
-                "rotWeaponMountPoint": "Root",
-                "revertDir": false,
-                "useSelfRotationBB": false,
-                "selfRotation": {
-                  "x": 0.0,
-                  "y": 0.0,
-                  "z": 0.0
-                },
-                "selfRotationBB": {
-                  "x": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
-                  },
-                  "y": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
-                  },
-                  "z": {
-                    "useBlackboardKey": true,
-                    "value": 0.0,
-                    "blackboardKey": ""
-                  }
-                },
-                "lockYRotation": true,
-                "unpackRotDelayFrame": 0,
-                "unpackFollowTargetRotOnRelease": false,
-                "weaponVfxKey": "",
-                "weaponVfxIndex": -1,
-                "weaponVfxPersistent": false,
-                "alertType": "Decal",
-                "animateAlert": false,
-                "alertAnimateDuration": 0.0,
-                "isAlertAnimateReverse": false,
-                "angle": 0.0,
-                "hollow": 0.0,
-                "modifyType": "StartLifeTime",
-                "value": 0.0
+                ],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
               },
-              "saveEffectIdToBlackboard": "",
-              "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "succeedActions": {
+                "actionData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.CreateBuffAction+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 9,
+                    "buffs": [
+                      {
+                        "buffId": "buff_common_mini_poise_break_bigents",
+                        "assignBlackboard": false,
+                        "assignItems": [],
+                        "readIdFromBlackboard": false,
+                        "buffIdKey": ""
+                      },
+                      {
+                        "buffId": "buff_eny_0127_bigents_numshield_destory",
+                        "assignBlackboard": false,
+                        "assignItems": [],
+                        "readIdFromBlackboard": false,
+                        "buffIdKey": ""
+                      }
+                    ],
+                    "count": {
+                      "useBlackboardKey": false,
+                      "value": 1.0,
+                      "blackboardKey": ""
+                    },
+                    "targetSettings": {
+                      "targetSource": "Owner",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "buffSource": "ActionSource",
+                    "contextKey": "",
+                    "autoFinishByAction": false,
+                    "inheritSkillIdList": [],
+                    "finishWithNextSkillIfNotInherited": true,
+                    "asChildBuff": false,
+                    "inheritSourceSkillCastId": false,
+                    "inheritSourceSkillCastInfo": true,
+                    "isExtra": false,
+                    "passTargetGroupsToBuff": false,
+                    "overrideBuffIconDuration": false,
+                    "buffIconDurationSource": {
+                      "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
+                      "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
+                      "durationSourceType": "AbilityEntity",
+                      "timedMarkerId": ""
+                    }
+                  },
+                  {
+                    "$type": "Beyond.Gameplay.Core.CountShieldUIAction+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 10,
+                    "targetSetting": {
+                      "targetSource": "Owner",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "removeCountShieldUI": true,
+                    "maxCountShield": {
+                      "useBlackboardKey": false,
+                      "value": 1,
+                      "blackboardKey": ""
+                    },
+                    "curCountShield": {
+                      "useBlackboardKey": true,
+                      "value": 1,
+                      "blackboardKey": "shield_num"
+                    }
+                  },
+                  {
+                    "$type": "Beyond.Gameplay.Core.PlaySoundAction+PlaySoundActionData, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 11,
+                    "_soundEvent": "au_eny_0127_bigents_combat_shield_break",
+                    "_stopOnEnd": true,
+                    "_stopFadeDurationMs": 2500,
+                    "_canInterruptTimeMs": 0,
+                    "_intrptFadeDurationMs": 100,
+                    "_jumpToWhenPlayMs": 0,
+                    "_useTempEmitter": false,
+                    "targetSettings": {
+                      "targetSource": "Owner",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "mountPoint": "None",
+                    "followMountPoint": false,
+                    "useWeaponMountPoint": false,
+                    "weaponIndex": 0,
+                    "weaponMountPoint": "Root",
+                    "useTimeDilationPauseAndSeek": false,
+                    "timeDilationPauseThreshold": 0.7,
+                    "timeDilationSeekThreshold": 0.4,
+                    "timeDilationFadeOutDurationMs": 500,
+                    "timeDilationFadeInDurationMs": 100
+                  },
+                  {
+                    "$type": "Beyond.Gameplay.Core.EffectAction+EffectActionData, Gameplay.Beyond",
+                    "isEnable": false,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 12,
+                    "targetSettings": {
+                      "targetSource": "Owner",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "effectSource": {
+                      "targetSource": "Owner",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "useGuardLodSourceOverride": false,
+                    "guardLodSource": {
+                      "targetSource": "Target",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "isMainCharacterActive": false,
+                    "isTargetMainCharacterActive": false,
+                    "isShowBigEffect": false,
+                    "bigEffectName": "",
+                    "bigEffectTarget": {
+                      "targetSource": "Target",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "playOnHittableObjects": false,
+                    "effectActionCfg": {
+                      "fxType": "Normal",
+                      "sourceTag": "Battle",
+                      "effectName": "P_fxbat_v1d5_commone_shield_destroy_big",
+                      "guardEffect": false,
+                      "isCenterChangeLod": false,
+                      "useScaleBB": false,
+                      "scale": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                      },
+                      "scaleBB": {
+                        "x": {
+                          "useBlackboardKey": true,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": true,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": true,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "useLengthBB": false,
+                      "lengthBB": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "useDurationScaleBB": false,
+                      "durationScaleBB": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "releaseByAction": false,
+                      "ignoreOwnerTimeScale": false,
+                      "interruptTime": 0.0,
+                      "terrainPrefab": false,
+                      "effectPosData": [],
+                      "isShowInDialog": false,
+                      "isLimitEffectCount": false,
+                      "limitCount": 0,
+                      "protectTime": 0.0,
+                      "limitTime": 0.0,
+                      "limitKey": "",
+                      "assetOnlyAffectModelRoot": false,
+                      "isUltimateShow": false,
+                      "visibleWithEntity": true,
+                      "visibleWithEntityType": "Source",
+                      "ignoreEntityDither": false,
+                      "moveType": "Stationary",
+                      "useCameraViewportAnchor": false,
+                      "cameraViewportPosition": {
+                        "x": 0.5,
+                        "y": 0.5
+                      },
+                      "cameraAnchorDistance": 1.0,
+                      "cameraScreenSizeScaleMode": "None",
+                      "cameraReferenceFov": 58.0,
+                      "cameraReferenceAspect": 1.0,
+                      "positionRef": "Target",
+                      "grounded": false,
+                      "followGrounded": false,
+                      "followGroundedMaxDistance": 3.0,
+                      "lerpToTargetTrans": false,
+                      "lerpDuration": 0.0,
+                      "followHideTarget": false,
+                      "visibleWhenHideTarget": false,
+                      "slotIndex": 0,
+                      "useWeaponMountPoint": false,
+                      "mountPoint": "Spine1",
+                      "useAccurateMp": false,
+                      "isClothMountPoint": false,
+                      "weaponIndex": 0,
+                      "weaponMountPoint": "Root",
+                      "showHideWithWeapon": false,
+                      "offsetDir": "Self",
+                      "offsetDirRevert": false,
+                      "usePositionOffsetBB": false,
+                      "positionOffset": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      },
+                      "positionOffsetBB": {
+                        "x": {
+                          "useBlackboardKey": true,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": true,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": true,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "useTargetRotation": false,
+                      "scaleWithTargetSize": false,
+                      "fxSize": 0.0,
+                      "unpackPosDelayFrame": 0,
+                      "unpackFollowTargetOnRelease": false,
+                      "rotType": "Stationary",
+                      "rotRef": "Target",
+                      "directionRef": "Target",
+                      "rotUseWeaponMountPoint": false,
+                      "rotMountPoint": "Spine1",
+                      "rotWeaponIndex": 0,
+                      "rotWeaponMountPoint": "Root",
+                      "revertDir": false,
+                      "useSelfRotationBB": false,
+                      "selfRotation": {
+                        "x": 0.0,
+                        "y": 0.0,
+                        "z": 0.0
+                      },
+                      "selfRotationBB": {
+                        "x": {
+                          "useBlackboardKey": true,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": true,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": true,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lockYRotation": true,
+                      "unpackRotDelayFrame": 0,
+                      "unpackFollowTargetRotOnRelease": false,
+                      "weaponVfxKey": "",
+                      "weaponVfxIndex": -1,
+                      "weaponVfxPersistent": false,
+                      "alertType": "Decal",
+                      "animateAlert": false,
+                      "alertAnimateDuration": 0.0,
+                      "isAlertAnimateReverse": false,
+                      "angle": 0.0,
+                      "hollow": 0.0,
+                      "modifyType": "StartLifeTime",
+                      "value": 0.0
+                    },
+                    "saveEffectIdToBlackboard": "",
+                    "forceMainBody": false,
+                    "isCreateWithSourceModelActive": false,
+                    "alignSpawnPhaseToTimeline": false,
+                    "spawnPhaseAlignFrame": 0
+                  }
+                ],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              },
+              "failActions": {
+                "actionData": [],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              },
+              "alwaysNext": true
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -1638,7 +1694,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 11,
+              "serverActionIndex": 13,
               "checkType": "HasAny",
               "mask": 8960
             },
@@ -1647,28 +1703,28 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 12
+              "serverActionIndex": 14
             },
             {
               "$type": "Beyond.Gameplay.Core.Conditions.CheckHasDamageSkillCastId+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 13
+              "serverActionIndex": 15
             },
             {
               "$type": "Beyond.Gameplay.Core.SaveDamageSkillCastId+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 14
+              "serverActionIndex": 16
             },
             {
               "$type": "Beyond.Gameplay.Core.PlaySoundAction+PlaySoundActionData, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 15,
+              "serverActionIndex": 17,
               "_soundEvent": "au_eny_0127_bigents_shieldbreak",
               "_stopOnEnd": false,
               "_stopFadeDurationMs": 100,
@@ -1717,7 +1773,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 16,
+              "serverActionIndex": 18,
               "key": "shield_num",
               "value1": {
                 "useBlackboardKey": true,
@@ -1736,7 +1792,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 17,
+              "serverActionIndex": 19,
               "targetSetting": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -1779,7 +1835,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 18,
+              "serverActionIndex": 20,
               "valueA": {
                 "useBlackboardKey": true,
                 "value": 0.0,
@@ -1797,7 +1853,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 19,
+              "serverActionIndex": 21,
               "buffs": [
                 {
                   "buffId": "buff_common_enemy_numshield_zero",
@@ -1866,7 +1922,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 20,
+              "serverActionIndex": 22,
               "checkTarget": {
                 "targetSource": "Target",
                 "targetGroupKey": "",
@@ -1898,7 +1954,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 21,
+              "serverActionIndex": 23,
               "_soundEvent": "Play_au_eny_0129_slwood_block_hit",
               "_stopOnEnd": true,
               "_stopFadeDurationMs": 2500,
@@ -1947,7 +2003,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 22,
+              "serverActionIndex": 24,
               "checkType": "HasAll",
               "mask": 2097152
             },
@@ -1956,7 +2012,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 23,
+              "serverActionIndex": 25,
               "key": "shield_num",
               "value1": {
                 "useBlackboardKey": true,
@@ -1975,7 +2031,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 24,
+              "serverActionIndex": 26,
               "targetSetting": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -2018,7 +2074,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 25,
+              "serverActionIndex": 27,
               "valueA": {
                 "useBlackboardKey": true,
                 "value": 0.0,
@@ -2036,7 +2092,7 @@
               "isEnable": false,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 26,
+              "serverActionIndex": 28,
               "buffs": [
                 {
                   "buffId": "buff_common_numshield_changegeneral",
@@ -2099,7 +2155,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 27,
+              "serverActionIndex": 29,
               "buffs": [
                 {
                   "buffId": "buff_common_enemy_numshield_zero",
@@ -2168,7 +2224,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 28,
+              "serverActionIndex": 30,
               "attacker": {
                 "targetSource": "Target",
                 "targetGroupKey": "",
@@ -2248,5 +2304,6 @@
       "valueStr": "",
       "isDynamic": false
     }
-  ]
+  ],
+  "<isSpellInflictionRelated>k__BackingField": false
 }

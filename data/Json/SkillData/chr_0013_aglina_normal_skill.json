@@ -6,6 +6,7 @@
   "iconBgType": "Physical",
   "attackRangeType": "Ranged",
   "castType": "Active",
+  "normalSkillSubType": "Normal",
   "skillSpecification": "CharacterNormalSkill",
   "passiveSkillType": "AddBuff",
   "castData": {
@@ -595,6 +596,7 @@
                     "overrideRotateRate": false,
                     "rotateRate": 0.0,
                     "rotateDirType": "Free",
+                    "updateTargetPerFrame": false,
                     "ignoreImmobilized": false
                   }
                 ],
@@ -653,6 +655,7 @@
                     "overrideRotateRate": false,
                     "rotateRate": 0.0,
                     "rotateDirType": "Free",
+                    "updateTargetPerFrame": false,
                     "ignoreImmobilized": false
                   }
                 ],
@@ -1226,6 +1229,7 @@
               "overrideRotateRate": true,
               "rotateRate": 360.0,
               "rotateDirType": "Free",
+              "updateTargetPerFrame": false,
               "ignoreImmobilized": false
             }
           ],
@@ -1298,6 +1302,12 @@
               },
               "faceToMoveDir": false,
               "overrideRotateSpeed": false,
+              "limitMoveDirRotateSpeed": false,
+              "moveDirRotateSpeed": {
+                "useBlackboardKey": false,
+                "value": 90.0,
+                "blackboardKey": ""
+              },
               "disableCliffCheck": false,
               "rotateSpeed": {
                 "useBlackboardKey": false,
@@ -1314,6 +1324,19 @@
               "rootMotionScale": {
                 "useBlackboardKey": false,
                 "value": 1.0,
+                "blackboardKey": ""
+              },
+              "enableStopDistance": false,
+              "stopDistance": {
+                "useBlackboardKey": false,
+                "value": 0.0,
+                "blackboardKey": ""
+              },
+              "stopLayerMask": {},
+              "stopCheckSuperArmor": false,
+              "stopSuperArmorThreshold": {
+                "useBlackboardKey": false,
+                "value": 0,
                 "blackboardKey": ""
               },
               "useTeammateParam": false,
@@ -1463,8 +1486,12 @@
               "pauseEffectOnEnd": false,
               "inheritSourceSkillCastId": true,
               "dieWhenSourceDie": false,
+              "dieWhenTargetDie": false,
               "forceSyncInit": false,
-              "dieOnEnd": false
+              "dieOnEnd": false,
+              "attachWeaponModel": false,
+              "weaponIndex": 0,
+              "readFullPotentialExtraEffect": false
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -1513,6 +1540,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -1569,6 +1597,16 @@
                         "value": 0.0,
                         "blackboardKey": "radius"
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -1588,6 +1626,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -1678,6 +1754,7 @@
                   "alwaysStartNewCoalition": false,
                   "alwaysEndCoalition": false,
                   "updatePositionOnCoalition": true,
+                  "damageTextFollowDuration": 0.0,
                   "enablePoiseBreakTimeDilation": true,
                   "hidePoiseUIEffect": false,
                   "hideMainCharHpScreenEffect": false,
@@ -1699,6 +1776,7 @@
                   "playDefaultHitEffect": false,
                   "effectData": {
                     "fxType": "Normal",
+                    "sourceTag": "Battle",
                     "effectName": "P_aglina_normal_skill_hit",
                     "guardEffect": false,
                     "isCenterChangeLod": false,
@@ -2122,6 +2200,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -2178,6 +2257,16 @@
                         "value": 0.0,
                         "blackboardKey": "radius"
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -2197,6 +2286,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -2287,6 +2414,7 @@
                   "alwaysStartNewCoalition": false,
                   "alwaysEndCoalition": false,
                   "updatePositionOnCoalition": true,
+                  "damageTextFollowDuration": 0.0,
                   "enablePoiseBreakTimeDilation": true,
                   "hidePoiseUIEffect": false,
                   "hideMainCharHpScreenEffect": false,
@@ -2308,6 +2436,7 @@
                   "playDefaultHitEffect": false,
                   "effectData": {
                     "fxType": "Normal",
+                    "sourceTag": "Battle",
                     "effectName": "P_aglina_normal_skill_hit",
                     "guardEffect": false,
                     "isCenterChangeLod": false,
@@ -2668,6 +2797,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -2724,6 +2854,16 @@
                         "value": 0.0,
                         "blackboardKey": "radius"
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -2743,6 +2883,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -2833,6 +3011,7 @@
                   "alwaysStartNewCoalition": false,
                   "alwaysEndCoalition": false,
                   "updatePositionOnCoalition": true,
+                  "damageTextFollowDuration": 0.0,
                   "enablePoiseBreakTimeDilation": true,
                   "hidePoiseUIEffect": false,
                   "hideMainCharHpScreenEffect": false,
@@ -2854,6 +3033,7 @@
                   "playDefaultHitEffect": false,
                   "effectData": {
                     "fxType": "Normal",
+                    "sourceTag": "Battle",
                     "effectName": "P_aglina_normal_skill_hit",
                     "guardEffect": false,
                     "isCenterChangeLod": false,
@@ -3214,6 +3394,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -3270,6 +3451,16 @@
                         "value": 0.0,
                         "blackboardKey": "radius"
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -3289,6 +3480,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -3379,6 +3608,7 @@
                   "alwaysStartNewCoalition": false,
                   "alwaysEndCoalition": false,
                   "updatePositionOnCoalition": true,
+                  "damageTextFollowDuration": 0.0,
                   "enablePoiseBreakTimeDilation": true,
                   "hidePoiseUIEffect": false,
                   "hideMainCharHpScreenEffect": false,
@@ -3400,6 +3630,7 @@
                   "playDefaultHitEffect": false,
                   "effectData": {
                     "fxType": "Normal",
+                    "sourceTag": "Battle",
                     "effectName": "P_aglina_normal_skill_hit",
                     "guardEffect": false,
                     "isCenterChangeLod": false,
@@ -3760,6 +3991,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -3816,6 +4048,16 @@
                         "value": 0.0,
                         "blackboardKey": "radius"
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 2.0,
@@ -3835,6 +4077,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -4043,6 +4323,7 @@
                   "alwaysStartNewCoalition": false,
                   "alwaysEndCoalition": false,
                   "updatePositionOnCoalition": true,
+                  "damageTextFollowDuration": 0.0,
                   "enablePoiseBreakTimeDilation": true,
                   "hidePoiseUIEffect": false,
                   "hideMainCharHpScreenEffect": false,
@@ -4086,6 +4367,7 @@
                   "playDefaultHitEffect": false,
                   "effectData": {
                     "fxType": "Normal",
+                    "sourceTag": "Battle",
                     "effectName": "P_aglina_normal_skill_hit",
                     "guardEffect": false,
                     "isCenterChangeLod": false,
@@ -4261,6 +4543,7 @@
                   "alwaysStartNewCoalition": false,
                   "alwaysEndCoalition": false,
                   "updatePositionOnCoalition": true,
+                  "damageTextFollowDuration": 0.0,
                   "enablePoiseBreakTimeDilation": true,
                   "hidePoiseUIEffect": false,
                   "hideMainCharHpScreenEffect": false,
@@ -4296,6 +4579,7 @@
                   "playDefaultHitEffect": false,
                   "effectData": {
                     "fxType": "Normal",
+                    "sourceTag": "Battle",
                     "effectName": "",
                     "guardEffect": false,
                     "isCenterChangeLod": false,
@@ -4946,6 +5230,7 @@
                           "playHealEffect": true,
                           "effectData": {
                             "fxType": "Normal",
+                            "sourceTag": "Battle",
                             "effectName": "P_common_heal_01_tip",
                             "guardEffect": false,
                             "isCenterChangeLod": false,
@@ -5290,6 +5575,7 @@
                                 "playHealEffect": true,
                                 "effectData": {
                                   "fxType": "Normal",
+                                  "sourceTag": "Battle",
                                   "effectName": "P_common_heal_01_tip",
                                   "guardEffect": false,
                                   "isCenterChangeLod": false,
@@ -5523,6 +5809,7 @@
                                 "playHealEffect": true,
                                 "effectData": {
                                   "fxType": "Normal",
+                                  "sourceTag": "Battle",
                                   "effectName": "P_common_heal_01_tip",
                                   "guardEffect": false,
                                   "isCenterChangeLod": false,
@@ -5965,6 +6252,7 @@
                     "playOnHittableObjects": false,
                     "effectActionCfg": {
                       "fxType": "Normal",
+                      "sourceTag": "Battle",
                       "effectName": "P_fxbat_aglina_normal_skill_start_02_big",
                       "guardEffect": false,
                       "isCenterChangeLod": false,
@@ -6123,7 +6411,9 @@
                     },
                     "saveEffectIdToBlackboard": "",
                     "forceMainBody": false,
-                    "isCreateWithSourceModelActive": false
+                    "isCreateWithSourceModelActive": false,
+                    "alignSpawnPhaseToTimeline": false,
+                    "spawnPhaseAlignFrame": 0
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -6245,6 +6535,7 @@
                     "playOnHittableObjects": false,
                     "effectActionCfg": {
                       "fxType": "Normal",
+                      "sourceTag": "Battle",
                       "effectName": "P_aglina_normal_skill_start_02",
                       "guardEffect": false,
                       "isCenterChangeLod": false,
@@ -6403,7 +6694,9 @@
                     },
                     "saveEffectIdToBlackboard": "",
                     "forceMainBody": false,
-                    "isCreateWithSourceModelActive": false
+                    "isCreateWithSourceModelActive": false,
+                    "alignSpawnPhaseToTimeline": false,
+                    "spawnPhaseAlignFrame": 0
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -6541,6 +6834,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_aglina_normal_skill_start_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -6595,7 +6889,7 @@
                 "visibleWithEntity": true,
                 "visibleWithEntityType": "Source",
                 "ignoreEntityDither": false,
-                "moveType": "Stationary",
+                "moveType": "FollowTarget",
                 "useCameraViewportAnchor": false,
                 "cameraViewportPosition": {
                   "x": 0.5,
@@ -6699,7 +6993,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -6831,6 +7127,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_aglina_normal_skill_start_02_wep",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -6989,7 +7286,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -7153,6 +7452,7 @@
                     "playOnHittableObjects": false,
                     "effectActionCfg": {
                       "fxType": "Normal",
+                      "sourceTag": "Battle",
                       "effectName": "P_fxbat_aglina_normal_skill_start_03_big",
                       "guardEffect": false,
                       "isCenterChangeLod": false,
@@ -7311,7 +7611,9 @@
                     },
                     "saveEffectIdToBlackboard": "",
                     "forceMainBody": false,
-                    "isCreateWithSourceModelActive": false
+                    "isCreateWithSourceModelActive": false,
+                    "alignSpawnPhaseToTimeline": false,
+                    "spawnPhaseAlignFrame": 0
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -7433,6 +7735,7 @@
                     "playOnHittableObjects": false,
                     "effectActionCfg": {
                       "fxType": "Normal",
+                      "sourceTag": "Battle",
                       "effectName": "P_aglina_normal_skill_start_03",
                       "guardEffect": false,
                       "isCenterChangeLod": false,
@@ -7591,7 +7894,9 @@
                     },
                     "saveEffectIdToBlackboard": "",
                     "forceMainBody": false,
-                    "isCreateWithSourceModelActive": false
+                    "isCreateWithSourceModelActive": false,
+                    "alignSpawnPhaseToTimeline": false,
+                    "spawnPhaseAlignFrame": 0
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -7761,6 +8066,7 @@
                     "playOnHittableObjects": false,
                     "effectActionCfg": {
                       "fxType": "Normal",
+                      "sourceTag": "Battle",
                       "effectName": "P_fxbat_aglina_normal_skill_start_03_big",
                       "guardEffect": false,
                       "isCenterChangeLod": false,
@@ -7919,7 +8225,9 @@
                     },
                     "saveEffectIdToBlackboard": "",
                     "forceMainBody": false,
-                    "isCreateWithSourceModelActive": false
+                    "isCreateWithSourceModelActive": false,
+                    "alignSpawnPhaseToTimeline": false,
+                    "spawnPhaseAlignFrame": 0
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -8041,6 +8349,7 @@
                     "playOnHittableObjects": false,
                     "effectActionCfg": {
                       "fxType": "Normal",
+                      "sourceTag": "Battle",
                       "effectName": "P_aglina_normal_skill_start_03",
                       "guardEffect": false,
                       "isCenterChangeLod": false,
@@ -8199,7 +8508,9 @@
                     },
                     "saveEffectIdToBlackboard": "",
                     "forceMainBody": false,
-                    "isCreateWithSourceModelActive": false
+                    "isCreateWithSourceModelActive": false,
+                    "alignSpawnPhaseToTimeline": false,
+                    "spawnPhaseAlignFrame": 0
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -8369,6 +8680,7 @@
                     "playOnHittableObjects": false,
                     "effectActionCfg": {
                       "fxType": "Normal",
+                      "sourceTag": "Battle",
                       "effectName": "P_fxbat_aglina_normal_skill_start_03_big",
                       "guardEffect": false,
                       "isCenterChangeLod": false,
@@ -8527,7 +8839,9 @@
                     },
                     "saveEffectIdToBlackboard": "",
                     "forceMainBody": false,
-                    "isCreateWithSourceModelActive": false
+                    "isCreateWithSourceModelActive": false,
+                    "alignSpawnPhaseToTimeline": false,
+                    "spawnPhaseAlignFrame": 0
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -8649,6 +8963,7 @@
                     "playOnHittableObjects": false,
                     "effectActionCfg": {
                       "fxType": "Normal",
+                      "sourceTag": "Battle",
                       "effectName": "P_aglina_normal_skill_start_03",
                       "guardEffect": false,
                       "isCenterChangeLod": false,
@@ -8807,7 +9122,9 @@
                     },
                     "saveEffectIdToBlackboard": "",
                     "forceMainBody": false,
-                    "isCreateWithSourceModelActive": false
+                    "isCreateWithSourceModelActive": false,
+                    "alignSpawnPhaseToTimeline": false,
+                    "spawnPhaseAlignFrame": 0
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -8977,6 +9294,7 @@
                     "playOnHittableObjects": false,
                     "effectActionCfg": {
                       "fxType": "Normal",
+                      "sourceTag": "Battle",
                       "effectName": "P_fxbat_aglina_normal_skill_start_03_big",
                       "guardEffect": false,
                       "isCenterChangeLod": false,
@@ -9135,7 +9453,9 @@
                     },
                     "saveEffectIdToBlackboard": "",
                     "forceMainBody": false,
-                    "isCreateWithSourceModelActive": false
+                    "isCreateWithSourceModelActive": false,
+                    "alignSpawnPhaseToTimeline": false,
+                    "spawnPhaseAlignFrame": 0
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -9257,6 +9577,7 @@
                     "playOnHittableObjects": false,
                     "effectActionCfg": {
                       "fxType": "Normal",
+                      "sourceTag": "Battle",
                       "effectName": "P_aglina_normal_skill_start_03",
                       "guardEffect": false,
                       "isCenterChangeLod": false,
@@ -9415,7 +9736,9 @@
                     },
                     "saveEffectIdToBlackboard": "",
                     "forceMainBody": false,
-                    "isCreateWithSourceModelActive": false
+                    "isCreateWithSourceModelActive": false,
+                    "alignSpawnPhaseToTimeline": false,
+                    "spawnPhaseAlignFrame": 0
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -9553,6 +9876,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_aglina_normal_skill_start_04",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -9711,7 +10035,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -10125,6 +10451,7 @@
                       "targetContextKey": ""
                     },
                     "dir2DirectionType": "SourceToTarget",
+                    "clampToXZ": false,
                     "key": "input_angle"
                   },
                   {

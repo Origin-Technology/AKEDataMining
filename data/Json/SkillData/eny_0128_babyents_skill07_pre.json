@@ -6,6 +6,7 @@
   "iconBgType": "Physical",
   "attackRangeType": "Melee",
   "castType": "Active",
+  "normalSkillSubType": "Normal",
   "skillSpecification": "EnemyMobSkill",
   "passiveSkillType": "AddBuff",
   "castData": {
@@ -832,6 +833,7 @@
               "overrideRotateRate": false,
               "rotateRate": 0.0,
               "rotateDirType": "Free",
+              "updateTargetPerFrame": false,
               "ignoreImmobilized": false
             }
           ],
@@ -900,6 +902,7 @@
               "overrideRotateRate": true,
               "rotateRate": 300.0,
               "rotateDirType": "Free",
+              "updateTargetPerFrame": false,
               "ignoreImmobilized": false
             }
           ],
@@ -1132,6 +1135,7 @@
                   "weightedMode": 0
                 }
               ],
+              "enableScaleZWithDistanceForRealPosition": false,
               "scaleZ": {
                 "useBlackboardKey": false,
                 "value": 1.0,
@@ -1212,6 +1216,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -1268,6 +1273,16 @@
                         "value": 2.5,
                         "blackboardKey": ""
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -1287,6 +1302,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -1706,6 +1759,7 @@
                           "playOnHittableObjects": false,
                           "effectActionCfg": {
                             "fxType": "Normal",
+                            "sourceTag": "Battle",
                             "effectName": "P_fxbat_babyents_skill_07_smoke_05",
                             "guardEffect": false,
                             "isCenterChangeLod": false,
@@ -1864,7 +1918,9 @@
                           },
                           "saveEffectIdToBlackboard": "",
                           "forceMainBody": false,
-                          "isCreateWithSourceModelActive": false
+                          "isCreateWithSourceModelActive": false,
+                          "alignSpawnPhaseToTimeline": false,
+                          "spawnPhaseAlignFrame": 0
                         },
                         {
                           "$type": "Beyond.Gameplay.Core.AchieveSpecialGameEventAction+Data, Gameplay.Beyond",
@@ -2376,6 +2432,7 @@
                                 "playOnHittableObjects": false,
                                 "effectActionCfg": {
                                   "fxType": "Normal",
+                                  "sourceTag": "Battle",
                                   "effectName": "P_fxbat_babyents_skill_07_smoke_05",
                                   "guardEffect": false,
                                   "isCenterChangeLod": false,
@@ -2534,7 +2591,9 @@
                                 },
                                 "saveEffectIdToBlackboard": "",
                                 "forceMainBody": false,
-                                "isCreateWithSourceModelActive": false
+                                "isCreateWithSourceModelActive": false,
+                                "alignSpawnPhaseToTimeline": false,
+                                "spawnPhaseAlignFrame": 0
                               },
                               {
                                 "$type": "Beyond.Gameplay.Core.AchieveSpecialGameEventAction+Data, Gameplay.Beyond",
@@ -3057,6 +3116,7 @@
                                       "playOnHittableObjects": false,
                                       "effectActionCfg": {
                                         "fxType": "Normal",
+                                        "sourceTag": "Battle",
                                         "effectName": "P_fxbat_babyents_skill_07_smoke_05",
                                         "guardEffect": false,
                                         "isCenterChangeLod": false,
@@ -3215,7 +3275,9 @@
                                       },
                                       "saveEffectIdToBlackboard": "",
                                       "forceMainBody": false,
-                                      "isCreateWithSourceModelActive": false
+                                      "isCreateWithSourceModelActive": false,
+                                      "alignSpawnPhaseToTimeline": false,
+                                      "spawnPhaseAlignFrame": 0
                                     },
                                     {
                                       "$type": "Beyond.Gameplay.Core.AchieveSpecialGameEventAction+Data, Gameplay.Beyond",
@@ -3464,6 +3526,7 @@
                   "alwaysStartNewCoalition": false,
                   "alwaysEndCoalition": false,
                   "updatePositionOnCoalition": true,
+                  "damageTextFollowDuration": 0.0,
                   "enablePoiseBreakTimeDilation": true,
                   "hidePoiseUIEffect": false,
                   "hideMainCharHpScreenEffect": false,
@@ -3485,6 +3548,7 @@
                   "playDefaultHitEffect": false,
                   "effectData": {
                     "fxType": "Normal",
+                    "sourceTag": "Battle",
                     "effectName": "",
                     "guardEffect": false,
                     "isCenterChangeLod": false,
@@ -3867,6 +3931,107 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               }
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.FinishBuffAdvanced+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 49,
+              "buffOwner": {
+                "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "buffSettings": {
+                "checkType": "Id",
+                "buffIdList": [
+                  "buff_eny_0128_babyents_skill03"
+                ],
+                "tagQuery": {
+                  "queryType": "HasAny",
+                  "tags": []
+                }
+              },
+              "finishAll": true,
+              "finishLayerCnt": {
+                "useBlackboardKey": false,
+                "value": 1.0,
+                "blackboardKey": ""
+              },
+              "limitSource": false,
+              "buffSource": {
+                "targetSource": "Source",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "isFinishedEarly": false,
+              "isAbsorbed": false,
+              "finishSource": {
+                "targetSource": "Source",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              }
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3889,7 +4054,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 49,
+              "serverActionIndex": 50,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3945,11 +4110,64 @@
         "_sequenceActionData": {
           "actionData": [
             {
+              "$type": "Beyond.Gameplay.Core.ShowHideActorAction+ShowHideActorData, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 51,
+              "targetSettings": {
+                "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "showHideType": "OnlyModel",
+              "modelPartEnum": "MeshGroup1",
+              "isShow": false,
+              "affectInit": false,
+              "revertOnRelease": true
+            }
+          ],
+          "onlyExecuteWhenSourceIsMainChar": false,
+          "onlyExecuteWhenSourceIsGuard": false
+        },
+        "forceSyncAnimData": {
+          "forceSync": false,
+          "montageName": "",
+          "targetFrame": 0,
+          "playbackSpeed": 0.0
+        }
+      },
+      {
+        "_startFrame": 175,
+        "_endFrame": 655,
+        "_sequenceActionData": {
+          "actionData": [
+            {
               "$type": "Beyond.Gameplay.Core.AddTagAction+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 50,
+              "serverActionIndex": 52,
               "tagOwner": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -4014,7 +4232,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 51
+              "serverActionIndex": 53
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -4037,7 +4255,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 52,
+              "serverActionIndex": 54,
               "buffs": [
                 {
                   "buffId": "buff_eny_0128_babyents_skill03_pre",
@@ -4116,7 +4334,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 53,
+              "serverActionIndex": 55,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -4225,6 +4443,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_babyents_skill_07_roar",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -4383,7 +4602,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -4406,7 +4627,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 54,
+              "serverActionIndex": 56,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -4515,6 +4736,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_babyents_skill_04_hand_asset",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -4673,7 +4895,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -4696,7 +4920,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 55,
+              "serverActionIndex": 57,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -4805,6 +5029,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_babyents_skill_07_smoke_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -4963,7 +5188,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -4986,7 +5213,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 56,
+              "serverActionIndex": 58,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -5095,6 +5322,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_babyents_skill_07_smoke_04",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -5253,7 +5481,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -5276,7 +5506,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 57,
+              "serverActionIndex": 59,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -5385,6 +5615,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_babyents_skill_07_smoke_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -5543,7 +5774,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -5566,7 +5799,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 58,
+              "serverActionIndex": 60,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -5675,6 +5908,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_babyents_skill_05_ground_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -5833,7 +6067,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -5856,7 +6092,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 59,
+              "serverActionIndex": 61,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -5965,6 +6201,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_babyents_skill_07_smoke_02",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -6123,7 +6360,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -6146,7 +6385,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 60,
+              "serverActionIndex": 62,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -6255,6 +6494,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_babyents_skill_07_smoke_03",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -6413,7 +6653,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -6436,7 +6678,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 61,
+              "serverActionIndex": 63,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -6545,6 +6787,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_babyents_skill_07_smoke_loop",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -6703,7 +6946,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -6726,7 +6971,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 62,
+              "serverActionIndex": 64,
               "_soundEvent": "au_eny_0128_babyents_skill07_pre",
               "_stopOnEnd": false,
               "_stopFadeDurationMs": 500,
@@ -6791,7 +7036,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 63,
+              "serverActionIndex": 65,
               "_soundEvent": "au_eny_0128_babyents_skill07_pre_vo",
               "_stopOnEnd": false,
               "_stopFadeDurationMs": 500,
@@ -6856,7 +7101,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 64,
+              "serverActionIndex": 66,
               "_soundEvent": "au_eny_0128_babyents_skill07_loop",
               "_stopOnEnd": true,
               "_stopFadeDurationMs": 200,
@@ -6921,7 +7166,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 65,
+              "serverActionIndex": 67,
               "_soundEvent": "au_eny_0128_babyents_skill07_burst",
               "_stopOnEnd": false,
               "_stopFadeDurationMs": 500,
@@ -6986,7 +7231,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 66,
+              "serverActionIndex": 68,
               "_soundEvent": "au_eny_0128_babyents_skill07_end",
               "_stopOnEnd": false,
               "_stopFadeDurationMs": 500,
@@ -7051,7 +7296,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 67,
+              "serverActionIndex": 69,
               "_soundEvent": "au_eny_0128_babyents_skill07_cast_vo",
               "_stopOnEnd": false,
               "_stopFadeDurationMs": 500,

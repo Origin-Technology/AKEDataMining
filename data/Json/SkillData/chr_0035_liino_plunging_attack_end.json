@@ -6,6 +6,7 @@
   "iconBgType": "Physical",
   "attackRangeType": "Melee",
   "castType": "Active",
+  "normalSkillSubType": "Normal",
   "skillSpecification": "CharacterPlungingAttack",
   "passiveSkillType": "AddBuff",
   "castData": {
@@ -150,6 +151,7 @@
                       "posRefMP": "None",
                       "directionRef": "OwnerForward",
                       "dirRefMountPoint": "None",
+                      "useFullRotation": false,
                       "centerOffset": {
                         "x": {
                           "useBlackboardKey": false,
@@ -206,6 +208,16 @@
                         "value": 0.0,
                         "blackboardKey": ""
                       },
+                      "innerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "outerRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "height": {
                         "useBlackboardKey": false,
                         "value": 0.0,
@@ -225,6 +237,44 @@
                       },
                       "useDirection": true,
                       "castDirection": "ZForward",
+                      "lineShapeType": "Box",
+                      "lineStart": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineEnd": {
+                        "source": "ActionOwner",
+                        "contextKey": "",
+                        "mountPoint": "None"
+                      },
+                      "lineBoxSize": {
+                        "x": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "y": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        },
+                        "z": {
+                          "useBlackboardKey": false,
+                          "value": 0.0,
+                          "blackboardKey": ""
+                        }
+                      },
+                      "lineRadius": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
+                      "lineLengthOffset": {
+                        "useBlackboardKey": false,
+                        "value": 0.0,
+                        "blackboardKey": ""
+                      },
                       "enablePreview": true,
                       "hitEffectTowardsType": "TowardsAttacker"
                     }
@@ -332,6 +382,7 @@
                   "alwaysStartNewCoalition": false,
                   "alwaysEndCoalition": false,
                   "updatePositionOnCoalition": true,
+                  "damageTextFollowDuration": 0.0,
                   "enablePoiseBreakTimeDilation": true,
                   "hidePoiseUIEffect": false,
                   "hideMainCharHpScreenEffect": false,
@@ -353,6 +404,7 @@
                   "playDefaultHitEffect": false,
                   "effectData": {
                     "fxType": "Normal",
+                    "sourceTag": "Battle",
                     "effectName": "P_fxbat_liino_air_atk_hit_01",
                     "guardEffect": false,
                     "isCenterChangeLod": false,
@@ -794,6 +846,7 @@
                         "alwaysStartNewCoalition": false,
                         "alwaysEndCoalition": false,
                         "updatePositionOnCoalition": true,
+                        "damageTextFollowDuration": 0.0,
                         "enablePoiseBreakTimeDilation": true,
                         "hidePoiseUIEffect": false,
                         "hideMainCharHpScreenEffect": false,
@@ -815,6 +868,7 @@
                         "playDefaultHitEffect": false,
                         "effectData": {
                           "fxType": "Normal",
+                          "sourceTag": "Battle",
                           "effectName": "P_fxbat_liino_air_atk_hit_01",
                           "guardEffect": false,
                           "isCenterChangeLod": false,
@@ -1517,6 +1571,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_air_atk_start_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -1675,7 +1730,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -1817,6 +1874,7 @@
               "overrideHitBone": true,
               "hitMountPoint": "None",
               "hitBoneOffsetForward": "TargetForward",
+              "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
                 "x": -0.9,
                 "y": 0.0,
@@ -1829,6 +1887,8 @@
               },
               "presetPoints": [],
               "assignBlackboard": true,
+              "castSkillOnLaunch": false,
+              "skillIdOnLaunch": "",
               "castSkillOnHit": false,
               "projectileSkillId": "chr_0035_liino_plunging_attack_projhit",
               "castSkillOnBlock": false,
@@ -1995,6 +2055,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_air_atk_bullet_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -2153,7 +2214,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.LaunchProjectile+Data, Gameplay.Beyond",
@@ -2279,6 +2342,7 @@
               "overrideHitBone": true,
               "hitMountPoint": "None",
               "hitBoneOffsetForward": "TargetForward",
+              "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
                 "x": 1.1,
                 "y": 0.0,
@@ -2291,6 +2355,8 @@
               },
               "presetPoints": [],
               "assignBlackboard": true,
+              "castSkillOnLaunch": false,
+              "skillIdOnLaunch": "",
               "castSkillOnHit": false,
               "projectileSkillId": "chr_0035_liino_plunging_attack_projhit",
               "castSkillOnBlock": false,
@@ -2457,6 +2523,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_air_atk_bullet_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -2615,7 +2682,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.LaunchProjectile+Data, Gameplay.Beyond",
@@ -2741,6 +2810,7 @@
               "overrideHitBone": true,
               "hitMountPoint": "None",
               "hitBoneOffsetForward": "TargetForward",
+              "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
                 "x": -1.2,
                 "y": 0.0,
@@ -2753,6 +2823,8 @@
               },
               "presetPoints": [],
               "assignBlackboard": true,
+              "castSkillOnLaunch": false,
+              "skillIdOnLaunch": "",
               "castSkillOnHit": false,
               "projectileSkillId": "chr_0035_liino_plunging_attack_projhit",
               "castSkillOnBlock": false,
@@ -2919,6 +2991,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_air_atk_bullet_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3077,7 +3150,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.LaunchProjectile+Data, Gameplay.Beyond",
@@ -3183,6 +3258,7 @@
               "overrideHitBone": true,
               "hitMountPoint": "None",
               "hitBoneOffsetForward": "TargetForward",
+              "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
                 "x": -1.0,
                 "y": 0.0,
@@ -3195,6 +3271,8 @@
               },
               "presetPoints": [],
               "assignBlackboard": true,
+              "castSkillOnLaunch": false,
+              "skillIdOnLaunch": "",
               "castSkillOnHit": false,
               "projectileSkillId": "chr_0035_liino_plunging_attack_projhit",
               "castSkillOnBlock": false,
@@ -3361,6 +3439,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_air_atk_bullet_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3519,7 +3598,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             },
             {
               "$type": "Beyond.Gameplay.Core.LaunchProjectile+Data, Gameplay.Beyond",
@@ -3625,6 +3706,7 @@
               "overrideHitBone": true,
               "hitMountPoint": "None",
               "hitBoneOffsetForward": "TargetForward",
+              "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
                 "x": 1.2,
                 "y": 0.0,
@@ -3637,6 +3719,8 @@
               },
               "presetPoints": [],
               "assignBlackboard": true,
+              "castSkillOnLaunch": false,
+              "skillIdOnLaunch": "",
               "castSkillOnHit": false,
               "projectileSkillId": "chr_0035_liino_plunging_attack_projhit",
               "castSkillOnBlock": false,
@@ -3813,6 +3897,7 @@
               "overrideHitBone": true,
               "hitMountPoint": "None",
               "hitBoneOffsetForward": "TargetForward",
+              "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
                 "x": -1.1,
                 "y": 0.0,
@@ -3825,6 +3910,8 @@
               },
               "presetPoints": [],
               "assignBlackboard": true,
+              "castSkillOnLaunch": false,
+              "skillIdOnLaunch": "",
               "castSkillOnHit": false,
               "projectileSkillId": "chr_0035_liino_plunging_attack_projhit",
               "castSkillOnBlock": false,
@@ -4563,6 +4650,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_liino_combo_skill_end_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -4721,7 +4809,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,

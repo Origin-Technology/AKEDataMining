@@ -6,6 +6,7 @@
   "iconBgType": "Physical",
   "attackRangeType": "Melee",
   "castType": "Active",
+  "normalSkillSubType": "Normal",
   "skillSpecification": "CharacterComboSkill",
   "passiveSkillType": "AddBuff",
   "castData": {
@@ -316,6 +317,9 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
+              "useTargetMountPoint": false,
+              "targetMountPoint": "None",
+              "ownerMountPoint": "None",
               "fixAngle": {
                 "x": 0.0,
                 "y": 0.0,
@@ -840,6 +844,56 @@
                             "blackboardKey": ""
                           },
                           "limitSkillCastId": true
+                        },
+                        {
+                          "$type": "Beyond.Gameplay.Core.CheckBuffStackNumAdvanced+Data, Gameplay.Beyond",
+                          "isEnable": true,
+                          "priorityLevel": "Default",
+                          "priorityOffset": 0,
+                          "serverActionIndex": 18,
+                          "checkTarget": {
+                            "targetSource": "Target",
+                            "targetGroupKey": "",
+                            "selectorOwner": "ActionOwner",
+                            "ownerContextKey": "",
+                            "centerType": "ActionSource",
+                            "centerContextKey": "",
+                            "centerToGround": false,
+                            "selectorData": {
+                              "validatorData": [],
+                              "postProcessorData": []
+                            },
+                            "enableAdvancedDirection": false,
+                            "advancedDirection": {
+                              "directionType": "SourceForward",
+                              "sourceMountPoint": "None",
+                              "targetMountPoint": "None",
+                              "customSourceAndTarget": false,
+                              "clampToXZ": true,
+                              "invertDirection": false
+                            },
+                            "selectorDirection": "SourceForward",
+                            "target": "ActionSource",
+                            "targetContextKey": ""
+                          },
+                          "buffSettings": {
+                            "checkType": "Id",
+                            "buffIdList": [
+                              "buff_chr_0032_lizhiyan_combo_skill_seal_finish_self_dead"
+                            ],
+                            "tagQuery": {
+                              "queryType": "HasAny",
+                              "tags": []
+                            }
+                          },
+                          "buffStackNumType": "BuffCount",
+                          "compareType": "LT",
+                          "value": {
+                            "useBlackboardKey": false,
+                            "value": 1.0,
+                            "blackboardKey": ""
+                          },
+                          "limitSkillCastId": true
                         }
                       ],
                       "onlyExecuteWhenSourceIsMainChar": false,
@@ -852,7 +906,70 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 18,
+                          "serverActionIndex": 19,
+                          "buffs": [
+                            {
+                              "buffId": "buff_chr_0032_lizhiyan_combo_skill_seal_finish_self_dead",
+                              "assignBlackboard": false,
+                              "assignItems": [],
+                              "readIdFromBlackboard": false,
+                              "buffIdKey": ""
+                            }
+                          ],
+                          "count": {
+                            "useBlackboardKey": false,
+                            "value": 1.0,
+                            "blackboardKey": ""
+                          },
+                          "targetSettings": {
+                            "targetSource": "Target",
+                            "targetGroupKey": "",
+                            "selectorOwner": "ActionOwner",
+                            "ownerContextKey": "",
+                            "centerType": "ActionSource",
+                            "centerContextKey": "",
+                            "centerToGround": false,
+                            "selectorData": {
+                              "validatorData": [],
+                              "postProcessorData": []
+                            },
+                            "enableAdvancedDirection": false,
+                            "advancedDirection": {
+                              "directionType": "SourceForward",
+                              "sourceMountPoint": "None",
+                              "targetMountPoint": "None",
+                              "customSourceAndTarget": false,
+                              "clampToXZ": true,
+                              "invertDirection": false
+                            },
+                            "selectorDirection": "SourceForward",
+                            "target": "ActionSource",
+                            "targetContextKey": ""
+                          },
+                          "buffSource": "InputTarget",
+                          "contextKey": "",
+                          "autoFinishByAction": false,
+                          "inheritSkillIdList": [],
+                          "finishWithNextSkillIfNotInherited": true,
+                          "asChildBuff": false,
+                          "inheritSourceSkillCastId": false,
+                          "inheritSourceSkillCastInfo": true,
+                          "isExtra": false,
+                          "passTargetGroupsToBuff": false,
+                          "overrideBuffIconDuration": false,
+                          "buffIconDurationSource": {
+                            "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
+                            "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
+                            "durationSourceType": "AbilityEntity",
+                            "timedMarkerId": ""
+                          }
+                        },
+                        {
+                          "$type": "Beyond.Gameplay.Core.CreateBuffAction+Data, Gameplay.Beyond",
+                          "isEnable": true,
+                          "priorityLevel": "Default",
+                          "priorityOffset": 0,
+                          "serverActionIndex": 20,
                           "buffs": [
                             {
                               "buffId": "buff_chr_0032_lizhiyan_combo_skill_seal_finish_count",
@@ -915,7 +1032,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 19,
+                          "serverActionIndex": 21,
                           "abilityEntityId": "abilityentity_chr_0032_lizhiyan_combo_skill_death",
                           "setAbilityEntitySource": true,
                           "abilityEntitySource": "ActionSource",
@@ -1016,15 +1133,19 @@
                           "pauseEffectOnEnd": false,
                           "inheritSourceSkillCastId": true,
                           "dieWhenSourceDie": false,
+                          "dieWhenTargetDie": false,
                           "forceSyncInit": false,
-                          "dieOnEnd": false
+                          "dieOnEnd": false,
+                          "attachWeaponModel": false,
+                          "weaponIndex": 0,
+                          "readFullPotentialExtraEffect": false
                         },
                         {
                           "$type": "Beyond.Gameplay.Core.CreateBuffAction+Data, Gameplay.Beyond",
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 20,
+                          "serverActionIndex": 22,
                           "buffs": [
                             {
                               "buffId": "buff_chr_0032_lizhiyan_combo_skill_seal_finisher_wisd",
@@ -1136,7 +1257,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 21,
+                          "serverActionIndex": 23,
                           "conditionAction": {
                             "actionData": [],
                             "onlyExecuteWhenSourceIsMainChar": false,
@@ -1155,7 +1276,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 22,
+                          "serverActionIndex": 24,
                           "conditionAction": {
                             "actionData": [],
                             "onlyExecuteWhenSourceIsMainChar": false,
@@ -1201,7 +1322,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 23,
+              "serverActionIndex": 25,
               "buffOwner": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -1318,7 +1439,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 24,
+              "serverActionIndex": 26,
               "checkTarget": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -1354,7 +1475,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 25,
+              "serverActionIndex": 27,
               "conditionAction": {
                 "actionData": [
                   {
@@ -1362,7 +1483,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 26,
+                    "serverActionIndex": 28,
                     "valueA": {
                       "useBlackboardKey": true,
                       "value": 0.0,
@@ -1391,7 +1512,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 27,
+                    "serverActionIndex": 29,
                     "buffs": [
                       {
                         "buffId": "buff_chr_0032_lizhiyan_combo_skill_seal_finisher",
@@ -1479,7 +1600,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 28,
+                    "serverActionIndex": 30,
                     "targetSettings": {
                       "targetSource": "Source",
                       "targetGroupKey": "",
@@ -1545,7 +1666,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 29,
+              "serverActionIndex": 31,
               "owner": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -1594,7 +1715,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 30,
+              "serverActionIndex": 32,
               "checkTarget": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -1630,7 +1751,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 31,
+              "serverActionIndex": 33,
               "conditionAction": {
                 "actionData": [
                   {
@@ -1638,7 +1759,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 32,
+                    "serverActionIndex": 34,
                     "valueA": {
                       "useBlackboardKey": true,
                       "value": 0.0,
@@ -1656,272 +1777,6 @@
                 "onlyExecuteWhenSourceIsGuard": false
               },
               "succeedActions": {
-                "actionData": [
-                  {
-                    "$type": "Beyond.Gameplay.Core.CreateTimedMarker+Data, Gameplay.Beyond",
-                    "isEnable": true,
-                    "priorityLevel": "Default",
-                    "priorityOffset": 0,
-                    "serverActionIndex": 33,
-                    "targetSettings": {
-                      "targetSource": "Source",
-                      "targetGroupKey": "",
-                      "selectorOwner": "ActionOwner",
-                      "ownerContextKey": "",
-                      "centerType": "ActionSource",
-                      "centerContextKey": "",
-                      "centerToGround": false,
-                      "selectorData": {
-                        "validatorData": [],
-                        "postProcessorData": []
-                      },
-                      "enableAdvancedDirection": false,
-                      "advancedDirection": {
-                        "directionType": "SourceForward",
-                        "sourceMountPoint": "None",
-                        "targetMountPoint": "None",
-                        "customSourceAndTarget": false,
-                        "clampToXZ": true,
-                        "invertDirection": false
-                      },
-                      "selectorDirection": "SourceForward",
-                      "target": "ActionSource",
-                      "targetContextKey": ""
-                    },
-                    "markerId": {
-                      "useBlackboardKey": false,
-                      "value": "lizhiyan_combo_vul",
-                      "blackboardKey": ""
-                    },
-                    "duration": {
-                      "useBlackboardKey": false,
-                      "value": 0.1,
-                      "blackboardKey": ""
-                    },
-                    "autoFinishByAction": false,
-                    "useTimeDilationDt": false
-                  },
-                  {
-                    "$type": "Beyond.Gameplay.Core.CreateBuffAction+Data, Gameplay.Beyond",
-                    "isEnable": true,
-                    "priorityLevel": "Default",
-                    "priorityOffset": 0,
-                    "serverActionIndex": 34,
-                    "buffs": [
-                      {
-                        "buffId": "buff_chr_0032_lizhiyan_combo_skill_spell_vulnerable",
-                        "assignBlackboard": true,
-                        "assignItems": [
-                          {
-                            "targetKey": "rate",
-                            "inputValueKey": "rate_final",
-                            "useDirectValue": false,
-                            "directValueType": "Numeric",
-                            "numericValue": 0.0,
-                            "stringValue": ""
-                          },
-                          {
-                            "targetKey": "duration_vul",
-                            "inputValueKey": "duration_calc",
-                            "useDirectValue": false,
-                            "directValueType": "Numeric",
-                            "numericValue": 0.0,
-                            "stringValue": ""
-                          },
-                          {
-                            "targetKey": "atk_scale_calc",
-                            "inputValueKey": "atk_scale_calc",
-                            "useDirectValue": false,
-                            "directValueType": "Numeric",
-                            "numericValue": 0.0,
-                            "stringValue": ""
-                          },
-                          {
-                            "targetKey": "poise_final",
-                            "inputValueKey": "poise_laser",
-                            "useDirectValue": false,
-                            "directValueType": "Numeric",
-                            "numericValue": 0.0,
-                            "stringValue": ""
-                          },
-                          {
-                            "targetKey": "isWisd",
-                            "inputValueKey": "isWisd",
-                            "useDirectValue": false,
-                            "directValueType": "Numeric",
-                            "numericValue": 0.0,
-                            "stringValue": ""
-                          },
-                          {
-                            "targetKey": "atk_scale_laser1",
-                            "inputValueKey": "atk_scale_laser1",
-                            "useDirectValue": false,
-                            "directValueType": "Numeric",
-                            "numericValue": 0.0,
-                            "stringValue": ""
-                          },
-                          {
-                            "targetKey": "atk_scale_laser2",
-                            "inputValueKey": "atk_scale_laser2",
-                            "useDirectValue": false,
-                            "directValueType": "Numeric",
-                            "numericValue": 0.0,
-                            "stringValue": ""
-                          }
-                        ],
-                        "readIdFromBlackboard": false,
-                        "buffIdKey": ""
-                      }
-                    ],
-                    "count": {
-                      "useBlackboardKey": false,
-                      "value": 1.0,
-                      "blackboardKey": ""
-                    },
-                    "targetSettings": {
-                      "targetSource": "InstantSearch",
-                      "targetGroupKey": "",
-                      "selectorOwner": "ActionSource",
-                      "ownerContextKey": "",
-                      "centerType": "InputTarget",
-                      "centerContextKey": "",
-                      "centerToGround": false,
-                      "selectorData": {
-                        "finderData": {
-                          "$type": "Beyond.Gameplay.Core.Selector+HitBoxFinder+Data, Gameplay.Beyond",
-                          "checkAlive": true,
-                          "autoSetTargetFaction": true,
-                          "containsUnMarkable": false,
-                          "factionTarget": "Anti",
-                          "targetFactionType": 0,
-                          "targetObjectType": "Normal",
-                          "checkIntUnSelectableTag": true,
-                          "shapeList": [
-                            {
-                              "shapeType": "Capsule",
-                              "positionRef": "InputCenter",
-                              "posRefMP": "None",
-                              "directionRef": "OwnerForward",
-                              "dirRefMountPoint": "None",
-                              "centerOffset": {
-                                "x": {
-                                  "useBlackboardKey": false,
-                                  "value": 0.0,
-                                  "blackboardKey": ""
-                                },
-                                "y": {
-                                  "useBlackboardKey": false,
-                                  "value": 0.3,
-                                  "blackboardKey": ""
-                                },
-                                "z": {
-                                  "useBlackboardKey": false,
-                                  "value": 0.0,
-                                  "blackboardKey": ""
-                                }
-                              },
-                              "eulerAngle": {
-                                "x": {
-                                  "useBlackboardKey": false,
-                                  "value": 0.0,
-                                  "blackboardKey": ""
-                                },
-                                "y": {
-                                  "useBlackboardKey": false,
-                                  "value": 0.0,
-                                  "blackboardKey": ""
-                                },
-                                "z": {
-                                  "useBlackboardKey": false,
-                                  "value": 0.0,
-                                  "blackboardKey": ""
-                                }
-                              },
-                              "size": {
-                                "x": {
-                                  "useBlackboardKey": false,
-                                  "value": 0.0,
-                                  "blackboardKey": ""
-                                },
-                                "y": {
-                                  "useBlackboardKey": false,
-                                  "value": 0.0,
-                                  "blackboardKey": ""
-                                },
-                                "z": {
-                                  "useBlackboardKey": false,
-                                  "value": 0.0,
-                                  "blackboardKey": ""
-                                }
-                              },
-                              "radius": {
-                                "useBlackboardKey": true,
-                                "value": 0.0,
-                                "blackboardKey": "radius_early_finish"
-                              },
-                              "height": {
-                                "useBlackboardKey": false,
-                                "value": 16.0,
-                                "blackboardKey": ""
-                              },
-                              "limitAngle": false,
-                              "angle": {
-                                "useBlackboardKey": false,
-                                "value": 0.0,
-                                "blackboardKey": ""
-                              },
-                              "limitHeight": false,
-                              "maxHeight": {
-                                "useBlackboardKey": false,
-                                "value": 0.0,
-                                "blackboardKey": ""
-                              },
-                              "useDirection": true,
-                              "castDirection": "ZForward",
-                              "enablePreview": true,
-                              "hitEffectTowardsType": "TowardsAttacker"
-                            }
-                          ]
-                        },
-                        "validatorData": [],
-                        "postProcessorData": []
-                      },
-                      "enableAdvancedDirection": false,
-                      "advancedDirection": {
-                        "directionType": "SourceForward",
-                        "sourceMountPoint": "None",
-                        "targetMountPoint": "None",
-                        "customSourceAndTarget": false,
-                        "clampToXZ": true,
-                        "invertDirection": false
-                      },
-                      "selectorDirection": "SourceForward",
-                      "target": "ActionSource",
-                      "targetContextKey": ""
-                    },
-                    "buffSource": "ActionSource",
-                    "contextKey": "",
-                    "autoFinishByAction": false,
-                    "inheritSkillIdList": [],
-                    "finishWithNextSkillIfNotInherited": true,
-                    "asChildBuff": false,
-                    "inheritSourceSkillCastId": false,
-                    "inheritSourceSkillCastInfo": true,
-                    "isExtra": false,
-                    "passTargetGroupsToBuff": false,
-                    "overrideBuffIconDuration": false,
-                    "buffIconDurationSource": {
-                      "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
-                      "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
-                      "durationSourceType": "AbilityEntity",
-                      "timedMarkerId": ""
-                    }
-                  }
-                ],
-                "onlyExecuteWhenSourceIsMainChar": false,
-                "onlyExecuteWhenSourceIsGuard": false
-              },
-              "failActions": {
                 "actionData": [
                   {
                     "$type": "Beyond.Gameplay.Core.CreateTimedMarker+Data, Gameplay.Beyond",
@@ -2069,6 +1924,7 @@
                               "posRefMP": "None",
                               "directionRef": "OwnerForward",
                               "dirRefMountPoint": "None",
+                              "useFullRotation": false,
                               "centerOffset": {
                                 "x": {
                                   "useBlackboardKey": false,
@@ -2125,6 +1981,16 @@
                                 "value": 0.0,
                                 "blackboardKey": "radius_early_finish"
                               },
+                              "innerRadius": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
+                              "outerRadius": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
                               "height": {
                                 "useBlackboardKey": false,
                                 "value": 16.0,
@@ -2144,6 +2010,359 @@
                               },
                               "useDirection": true,
                               "castDirection": "ZForward",
+                              "lineShapeType": "Box",
+                              "lineStart": {
+                                "source": "ActionOwner",
+                                "contextKey": "",
+                                "mountPoint": "None"
+                              },
+                              "lineEnd": {
+                                "source": "ActionOwner",
+                                "contextKey": "",
+                                "mountPoint": "None"
+                              },
+                              "lineBoxSize": {
+                                "x": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                },
+                                "y": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                },
+                                "z": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                }
+                              },
+                              "lineRadius": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
+                              "lineLengthOffset": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
+                              "enablePreview": true,
+                              "hitEffectTowardsType": "TowardsAttacker"
+                            }
+                          ]
+                        },
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "buffSource": "ActionSource",
+                    "contextKey": "",
+                    "autoFinishByAction": false,
+                    "inheritSkillIdList": [],
+                    "finishWithNextSkillIfNotInherited": true,
+                    "asChildBuff": false,
+                    "inheritSourceSkillCastId": false,
+                    "inheritSourceSkillCastInfo": true,
+                    "isExtra": false,
+                    "passTargetGroupsToBuff": false,
+                    "overrideBuffIconDuration": false,
+                    "buffIconDurationSource": {
+                      "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
+                      "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
+                      "durationSourceType": "AbilityEntity",
+                      "timedMarkerId": ""
+                    }
+                  }
+                ],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              },
+              "failActions": {
+                "actionData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.CreateTimedMarker+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 37,
+                    "targetSettings": {
+                      "targetSource": "Source",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "markerId": {
+                      "useBlackboardKey": false,
+                      "value": "lizhiyan_combo_vul",
+                      "blackboardKey": ""
+                    },
+                    "duration": {
+                      "useBlackboardKey": false,
+                      "value": 0.1,
+                      "blackboardKey": ""
+                    },
+                    "autoFinishByAction": false,
+                    "useTimeDilationDt": false
+                  },
+                  {
+                    "$type": "Beyond.Gameplay.Core.CreateBuffAction+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 38,
+                    "buffs": [
+                      {
+                        "buffId": "buff_chr_0032_lizhiyan_combo_skill_spell_vulnerable",
+                        "assignBlackboard": true,
+                        "assignItems": [
+                          {
+                            "targetKey": "rate",
+                            "inputValueKey": "rate_final",
+                            "useDirectValue": false,
+                            "directValueType": "Numeric",
+                            "numericValue": 0.0,
+                            "stringValue": ""
+                          },
+                          {
+                            "targetKey": "duration_vul",
+                            "inputValueKey": "duration_calc",
+                            "useDirectValue": false,
+                            "directValueType": "Numeric",
+                            "numericValue": 0.0,
+                            "stringValue": ""
+                          },
+                          {
+                            "targetKey": "atk_scale_calc",
+                            "inputValueKey": "atk_scale_calc",
+                            "useDirectValue": false,
+                            "directValueType": "Numeric",
+                            "numericValue": 0.0,
+                            "stringValue": ""
+                          },
+                          {
+                            "targetKey": "poise_final",
+                            "inputValueKey": "poise_laser",
+                            "useDirectValue": false,
+                            "directValueType": "Numeric",
+                            "numericValue": 0.0,
+                            "stringValue": ""
+                          },
+                          {
+                            "targetKey": "isWisd",
+                            "inputValueKey": "isWisd",
+                            "useDirectValue": false,
+                            "directValueType": "Numeric",
+                            "numericValue": 0.0,
+                            "stringValue": ""
+                          },
+                          {
+                            "targetKey": "atk_scale_laser1",
+                            "inputValueKey": "atk_scale_laser1",
+                            "useDirectValue": false,
+                            "directValueType": "Numeric",
+                            "numericValue": 0.0,
+                            "stringValue": ""
+                          },
+                          {
+                            "targetKey": "atk_scale_laser2",
+                            "inputValueKey": "atk_scale_laser2",
+                            "useDirectValue": false,
+                            "directValueType": "Numeric",
+                            "numericValue": 0.0,
+                            "stringValue": ""
+                          }
+                        ],
+                        "readIdFromBlackboard": false,
+                        "buffIdKey": ""
+                      }
+                    ],
+                    "count": {
+                      "useBlackboardKey": false,
+                      "value": 1.0,
+                      "blackboardKey": ""
+                    },
+                    "targetSettings": {
+                      "targetSource": "InstantSearch",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionSource",
+                      "ownerContextKey": "",
+                      "centerType": "InputTarget",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "finderData": {
+                          "$type": "Beyond.Gameplay.Core.Selector+HitBoxFinder+Data, Gameplay.Beyond",
+                          "checkAlive": true,
+                          "autoSetTargetFaction": true,
+                          "containsUnMarkable": false,
+                          "factionTarget": "Anti",
+                          "targetFactionType": 0,
+                          "targetObjectType": "Normal",
+                          "checkIntUnSelectableTag": true,
+                          "shapeList": [
+                            {
+                              "shapeType": "Capsule",
+                              "positionRef": "InputCenter",
+                              "posRefMP": "None",
+                              "directionRef": "OwnerForward",
+                              "dirRefMountPoint": "None",
+                              "useFullRotation": false,
+                              "centerOffset": {
+                                "x": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                },
+                                "y": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.3,
+                                  "blackboardKey": ""
+                                },
+                                "z": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                }
+                              },
+                              "eulerAngle": {
+                                "x": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                },
+                                "y": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                },
+                                "z": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                }
+                              },
+                              "size": {
+                                "x": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                },
+                                "y": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                },
+                                "z": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                }
+                              },
+                              "radius": {
+                                "useBlackboardKey": true,
+                                "value": 0.0,
+                                "blackboardKey": "radius_early_finish"
+                              },
+                              "innerRadius": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
+                              "outerRadius": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
+                              "height": {
+                                "useBlackboardKey": false,
+                                "value": 16.0,
+                                "blackboardKey": ""
+                              },
+                              "limitAngle": false,
+                              "angle": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
+                              "limitHeight": false,
+                              "maxHeight": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
+                              "useDirection": true,
+                              "castDirection": "ZForward",
+                              "lineShapeType": "Box",
+                              "lineStart": {
+                                "source": "ActionOwner",
+                                "contextKey": "",
+                                "mountPoint": "None"
+                              },
+                              "lineEnd": {
+                                "source": "ActionOwner",
+                                "contextKey": "",
+                                "mountPoint": "None"
+                              },
+                              "lineBoxSize": {
+                                "x": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                },
+                                "y": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                },
+                                "z": {
+                                  "useBlackboardKey": false,
+                                  "value": 0.0,
+                                  "blackboardKey": ""
+                                }
+                              },
+                              "lineRadius": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
+                              "lineLengthOffset": {
+                                "useBlackboardKey": false,
+                                "value": 0.0,
+                                "blackboardKey": ""
+                              },
                               "enablePreview": true,
                               "hitEffectTowardsType": "TowardsAttacker"
                             }
@@ -2210,7 +2429,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 37,
+              "serverActionIndex": 39,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -2319,6 +2538,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_fxbat_lizhiyan_combo_skill_disappear",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -2477,7 +2697,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -2500,7 +2722,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 38,
+              "serverActionIndex": 40,
               "_soundEvent": "au_chr_0032_lizhiyan_combo_skill_seal_again",
               "_stopOnEnd": false,
               "_stopFadeDurationMs": 100,

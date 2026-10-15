@@ -1,0 +1,431 @@
+{
+  "id": "buff_chr_0036_jsspsi_train_inksoultarget",
+  "iconConfig": {
+    "_spritePath": "icon_battle_tangtang_speedup",
+    "showInHeadBarCommon": false,
+    "showInHeadBarAttached": false,
+    "showDirectlyInHeadBuff": false,
+    "showInSquadIcon": false,
+    "onlyShowForMainCharacter": false,
+    "blinkInMainCharHpBar": false,
+    "showProgressInEnemyHeadBar": false,
+    "showProgressInHpBar": false,
+    "showProgressInNormalSkillButton": false,
+    "useWeakProgressInNormalSkillButton": false,
+    "showProgressInUltimateSkillButton": false,
+    "forceRaiseIconEvent": false,
+    "iconStyleInSquad": "Default",
+    "abnormalColorType": "Physical",
+    "_orderPriorityConfig": {
+      "useDirectoryValue": false,
+      "priorityValue": 0,
+      "priorityEnum": "CommonCharBuff"
+    },
+    "showWarningBackground": false,
+    "playStrongInAnimation": false,
+    "hasCharHpBarVfxType": false,
+    "charHpBarVfxType": "Fire"
+  },
+  "hasIcon": true,
+  "ignoreTagImmune": false,
+  "useTimeDilationDt": false,
+  "onlyUseSelfTimeDilation": false,
+  "finishOnRepatriate": false,
+  "hasAddingCooldown": false,
+  "addingCooldown": {
+    "useBlackboardKey": false,
+    "value": 0.0,
+    "blackboardKey": ""
+  },
+  "ignoreCooldownWhenAdding": false,
+  "attributeModifier": {
+    "isConvertedAttribute": false,
+    "attributeModifiers": []
+  },
+  "damageModifier": [],
+  "healModifier": [],
+  "poiseModifier": [],
+  "globalModifier": [],
+  "shieldConfigs": [],
+  "applyTags": [],
+  "tagsAfterTriggerExtendBuffAction": [],
+  "lifeType": "Infinity",
+  "duration": {
+    "useBlackboardKey": true,
+    "value": 3.0,
+    "blackboardKey": "duration_speedup"
+  },
+  "triggerInterval": {
+    "useBlackboardKey": false,
+    "value": -1.0,
+    "blackboardKey": ""
+  },
+  "waitFirstTriggerInterval": false,
+  "maxTriggerCnt": {
+    "useBlackboardKey": false,
+    "value": -1,
+    "blackboardKey": "duration"
+  },
+  "stackingSettings": {
+    "identifierType": "Id",
+    "stackingType": "Stack",
+    "stackingKey": "",
+    "usePriorityKey": true,
+    "priorityKey": "ratio_speed",
+    "negatePriority": false,
+    "priority": 0.0,
+    "useMaxStackCntKey": false,
+    "maxStackCntKey": "ratio_cntmax",
+    "maxStackCnt": 1,
+    "isNeedStackEffect": false,
+    "stackEffects": []
+  },
+  "dispelConfig": {
+    "canBeDispelled": false,
+    "dispelledLevel": "Default"
+  },
+  "buffEventAction": [
+    {
+      "buffEvent": "OnBuffFinish",
+      "actions": [
+        {
+          "actionData": [
+            {
+              "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 0,
+              "conditionAction": {
+                "actionData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.CompareFloat+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 1,
+                    "valueA": {
+                      "useBlackboardKey": true,
+                      "value": 0.0,
+                      "blackboardKey": "EntityBB_havesoul"
+                    },
+                    "compare": "Equals",
+                    "valueB": {
+                      "useBlackboardKey": false,
+                      "value": 1.0,
+                      "blackboardKey": ""
+                    }
+                  }
+                ],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              },
+              "succeedActions": {
+                "actionData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.RaiseTrainLevelEvent+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 2,
+                    "eventKey": {
+                      "useBlackboardKey": true,
+                      "value": "succEvent1",
+                      "blackboardKey": "succEvent1"
+                    },
+                    "outputStringValue": false,
+                    "stringValue": {
+                      "useBlackboardKey": false,
+                      "value": "",
+                      "blackboardKey": ""
+                    },
+                    "numericValue": {
+                      "useBlackboardKey": false,
+                      "value": 0.0,
+                      "blackboardKey": ""
+                    }
+                  }
+                ],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              },
+              "failActions": {
+                "actionData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.RaiseTrainLevelEvent+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 3,
+                    "eventKey": {
+                      "useBlackboardKey": true,
+                      "value": "succEvent1",
+                      "blackboardKey": "failEvent1"
+                    },
+                    "outputStringValue": false,
+                    "stringValue": {
+                      "useBlackboardKey": false,
+                      "value": "",
+                      "blackboardKey": ""
+                    },
+                    "numericValue": {
+                      "useBlackboardKey": false,
+                      "value": 0.0,
+                      "blackboardKey": ""
+                    }
+                  }
+                ],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              },
+              "alwaysNext": true
+            }
+          ],
+          "onlyExecuteWhenSourceIsMainChar": false,
+          "onlyExecuteWhenSourceIsGuard": false
+        }
+      ]
+    }
+  ],
+  "abilityEventAction": [
+    {
+      "abilityEvent": "OnTakeDamage",
+      "actions": [
+        {
+          "actionData": [
+            {
+              "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 4,
+              "conditionAction": {
+                "actionData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.CheckDamageTransferredSource+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 5,
+                    "tagQuery": {
+                      "queryType": "HasAny",
+                      "tags": [
+                        {
+                          "tagId": -836315038
+                        }
+                      ]
+                    },
+                    "contextKey": ""
+                  }
+                ],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              },
+              "succeedActions": {
+                "actionData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.RaiseTrainLevelEvent+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 6,
+                    "eventKey": {
+                      "useBlackboardKey": true,
+                      "value": "succEvent1",
+                      "blackboardKey": "succEvent2"
+                    },
+                    "outputStringValue": false,
+                    "stringValue": {
+                      "useBlackboardKey": false,
+                      "value": "",
+                      "blackboardKey": ""
+                    },
+                    "numericValue": {
+                      "useBlackboardKey": false,
+                      "value": 0.0,
+                      "blackboardKey": ""
+                    }
+                  }
+                ],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              },
+              "failActions": {
+                "actionData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.RaiseTrainLevelEvent+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 7,
+                    "eventKey": {
+                      "useBlackboardKey": true,
+                      "value": "succEvent1",
+                      "blackboardKey": "failEvent2"
+                    },
+                    "outputStringValue": false,
+                    "stringValue": {
+                      "useBlackboardKey": false,
+                      "value": "",
+                      "blackboardKey": ""
+                    },
+                    "numericValue": {
+                      "useBlackboardKey": false,
+                      "value": 0.0,
+                      "blackboardKey": ""
+                    }
+                  }
+                ],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              },
+              "alwaysNext": true
+            }
+          ],
+          "onlyExecuteWhenSourceIsMainChar": false,
+          "onlyExecuteWhenSourceIsGuard": false
+        }
+      ]
+    },
+    {
+      "abilityEvent": "OnEnemyAfterTakeSpellInfliction",
+      "actions": [
+        {
+          "actionData": [
+            {
+              "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 8,
+              "conditionAction": {
+                "actionData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.CheckDamageTransferredSource+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 9,
+                    "tagQuery": {
+                      "queryType": "HasAny",
+                      "tags": [
+                        {
+                          "tagId": -836315038
+                        }
+                      ]
+                    },
+                    "contextKey": ""
+                  }
+                ],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              },
+              "succeedActions": {
+                "actionData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.RaiseTrainLevelEvent+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 10,
+                    "eventKey": {
+                      "useBlackboardKey": true,
+                      "value": "succEvent1",
+                      "blackboardKey": "succEvent3"
+                    },
+                    "outputStringValue": false,
+                    "stringValue": {
+                      "useBlackboardKey": false,
+                      "value": "",
+                      "blackboardKey": ""
+                    },
+                    "numericValue": {
+                      "useBlackboardKey": false,
+                      "value": 0.0,
+                      "blackboardKey": ""
+                    }
+                  }
+                ],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              },
+              "failActions": {
+                "actionData": [
+                  {
+                    "$type": "Beyond.Gameplay.Core.RaiseTrainLevelEvent+Data, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 11,
+                    "eventKey": {
+                      "useBlackboardKey": true,
+                      "value": "succEvent1",
+                      "blackboardKey": "failEvent3"
+                    },
+                    "outputStringValue": false,
+                    "stringValue": {
+                      "useBlackboardKey": false,
+                      "value": "",
+                      "blackboardKey": ""
+                    },
+                    "numericValue": {
+                      "useBlackboardKey": false,
+                      "value": 0.0,
+                      "blackboardKey": ""
+                    }
+                  }
+                ],
+                "onlyExecuteWhenSourceIsMainChar": false,
+                "onlyExecuteWhenSourceIsGuard": false
+              },
+              "alwaysNext": true
+            }
+          ],
+          "onlyExecuteWhenSourceIsMainChar": false,
+          "onlyExecuteWhenSourceIsGuard": false
+        }
+      ]
+    }
+  ],
+  "igniteEventAction": [],
+  "timelineActions": [],
+  "blackboard": [
+    {
+      "key": "succEvent1",
+      "valueDouble": 0.0,
+      "valueStr": "JsspsiInkSoul_CallSoulBackSucc",
+      "isDynamic": false
+    },
+    {
+      "key": "failEvent1",
+      "valueDouble": 0.0,
+      "valueStr": "JsspsiInkSoul_CallSoulBackFail",
+      "isDynamic": false
+    },
+    {
+      "key": "succEvent2",
+      "valueDouble": 0.0,
+      "valueStr": "JsspsiInkSoul_SkillHitInkSoulSucc",
+      "isDynamic": false
+    },
+    {
+      "key": "failEvent2",
+      "valueDouble": 0.0,
+      "valueStr": "JsspsiInkSoul_SkillHitInkSoulFail",
+      "isDynamic": false
+    },
+    {
+      "key": "succEvent3",
+      "valueDouble": 0.0,
+      "valueStr": "JsspsiInkSoul_InflictInkSoulSucc",
+      "isDynamic": false
+    },
+    {
+      "key": "failEvent3",
+      "valueDouble": 0.0,
+      "valueStr": "JsspsiInkSoul_InflictInkSoulFail",
+      "isDynamic": false
+    }
+  ],
+  "<isSpellInflictionRelated>k__BackingField": false
+}

@@ -6,6 +6,7 @@
   "iconBgType": "Physical",
   "attackRangeType": "Melee",
   "castType": "Active",
+  "normalSkillSubType": "Normal",
   "skillSpecification": "CharacterUltimateSkill",
   "passiveSkillType": "AddBuff",
   "castData": {
@@ -730,6 +731,7 @@
                     "overrideRotateRate": false,
                     "rotateRate": 0.0,
                     "rotateDirType": "Free",
+                    "updateTargetPerFrame": false,
                     "ignoreImmobilized": false
                   }
                 ],
@@ -941,6 +943,7 @@
                     "playOnHittableObjects": false,
                     "effectActionCfg": {
                       "fxType": "Normal",
+                      "sourceTag": "Battle",
                       "effectName": "P_lighting_yvonne_skill_ult",
                       "guardEffect": false,
                       "isCenterChangeLod": false,
@@ -1099,7 +1102,9 @@
                     },
                     "saveEffectIdToBlackboard": "",
                     "forceMainBody": false,
-                    "isCreateWithSourceModelActive": false
+                    "isCreateWithSourceModelActive": false,
+                    "alignSpawnPhaseToTimeline": false,
+                    "spawnPhaseAlignFrame": 0
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -1495,6 +1500,62 @@
       },
       {
         "_startFrame": 0,
+        "_endFrame": 61,
+        "_sequenceActionData": {
+          "actionData": [
+            {
+              "$type": "Beyond.Gameplay.Core.RefrainObtainUsp+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 21,
+              "targetSettings": {
+                "targetSource": "Source",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "refrainObtainUspTags": {
+                "predefinedTag": [
+                  {
+                    "tagId": 669811152
+                  }
+                ]
+              },
+              "clearUspOnEnd": false
+            }
+          ],
+          "onlyExecuteWhenSourceIsMainChar": false,
+          "onlyExecuteWhenSourceIsGuard": false
+        },
+        "forceSyncAnimData": {
+          "forceSync": false,
+          "montageName": "",
+          "targetFrame": 0,
+          "playbackSpeed": 0.0
+        }
+      },
+      {
+        "_startFrame": 0,
         "_endFrame": 57,
         "_sequenceActionData": {
           "actionData": [
@@ -1503,7 +1564,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 21,
+              "serverActionIndex": 22,
               "conditionAction": {
                 "actionData": [
                   {
@@ -1511,7 +1572,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 22,
+                    "serverActionIndex": 23,
                     "checkTarget": {
                       "targetSource": "Owner",
                       "targetGroupKey": "",
@@ -1554,7 +1615,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 23,
+                    "serverActionIndex": 24,
                     "cameraAnimKey": "UltimateSkillCamera",
                     "duration": 2.033,
                     "horizontalInheritType": "PreviousLevelCamera",
@@ -1581,7 +1642,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 24,
+                    "serverActionIndex": 25,
                     "targetSettings": {
                       "targetSource": "Source",
                       "targetGroupKey": "",
@@ -1690,6 +1751,7 @@
                     "playOnHittableObjects": false,
                     "effectActionCfg": {
                       "fxType": "Normal",
+                      "sourceTag": "Battle",
                       "effectName": "P_lighting_yvonne_skill_ult",
                       "guardEffect": false,
                       "isCenterChangeLod": false,
@@ -1848,7 +1910,9 @@
                     },
                     "saveEffectIdToBlackboard": "",
                     "forceMainBody": false,
-                    "isCreateWithSourceModelActive": false
+                    "isCreateWithSourceModelActive": false,
+                    "alignSpawnPhaseToTimeline": false,
+                    "spawnPhaseAlignFrame": 0
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -1877,7 +1941,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 25,
+              "serverActionIndex": 26,
               "abilityEntityId": "abilityentity_chr_0017_yvonne_ultimate_skill",
               "setAbilityEntitySource": true,
               "abilityEntitySource": "ActionOwner",
@@ -1985,15 +2049,19 @@
               "pauseEffectOnEnd": false,
               "inheritSourceSkillCastId": true,
               "dieWhenSourceDie": false,
+              "dieWhenTargetDie": false,
               "forceSyncInit": false,
-              "dieOnEnd": false
+              "dieOnEnd": false,
+              "attachWeaponModel": false,
+              "weaponIndex": 0,
+              "readFullPotentialExtraEffect": false
             },
             {
               "$type": "Beyond.Gameplay.Core.SpawnAbilityEntity+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 26,
+              "serverActionIndex": 27,
               "abilityEntityId": "abilityentity_chr_0017_yvonne_ultimate_skill2",
               "setAbilityEntitySource": true,
               "abilityEntitySource": "ActionOwner",
@@ -2101,15 +2169,19 @@
               "pauseEffectOnEnd": false,
               "inheritSourceSkillCastId": true,
               "dieWhenSourceDie": false,
+              "dieWhenTargetDie": false,
               "forceSyncInit": false,
-              "dieOnEnd": false
+              "dieOnEnd": false,
+              "attachWeaponModel": false,
+              "weaponIndex": 0,
+              "readFullPotentialExtraEffect": false
             },
             {
               "$type": "Beyond.Gameplay.Core.SpawnAbilityEntity+Data, Gameplay.Beyond",
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 27,
+              "serverActionIndex": 28,
               "abilityEntityId": "abilityentity_chr_0017_yvonne_ultimate_skill3",
               "setAbilityEntitySource": true,
               "abilityEntitySource": "ActionOwner",
@@ -2217,8 +2289,12 @@
               "pauseEffectOnEnd": false,
               "inheritSourceSkillCastId": true,
               "dieWhenSourceDie": false,
+              "dieWhenTargetDie": false,
               "forceSyncInit": false,
-              "dieOnEnd": false
+              "dieOnEnd": false,
+              "attachWeaponModel": false,
+              "weaponIndex": 0,
+              "readFullPotentialExtraEffect": false
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -2241,7 +2317,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 28,
+              "serverActionIndex": 29,
               "buffs": [
                 {
                   "buffId": "buff_common_damage_immune_ult_skill",
@@ -2323,7 +2399,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 29,
+              "serverActionIndex": 30,
               "weaponIndex": 0,
               "overrideIdleMountPoint": false,
               "idleMountPoint": "None",
@@ -2335,7 +2411,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 30,
+              "serverActionIndex": 31,
               "weaponIndex": 1,
               "overrideIdleMountPoint": false,
               "idleMountPoint": "None",
@@ -2363,7 +2439,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 31,
+              "serverActionIndex": 32,
               "onlyBlockInput": false
             }
           ],
@@ -2387,7 +2463,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 32,
+              "serverActionIndex": 33,
               "timeScale": 0.0,
               "timeDilationPriority": {
                 "tagId": -1742631616
@@ -2415,7 +2491,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 33
+              "serverActionIndex": 34
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -2438,7 +2514,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 34,
+              "serverActionIndex": 35,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -2547,6 +2623,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_yvonne_ultskill_01",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -2705,7 +2782,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -2728,7 +2807,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 35,
+              "serverActionIndex": 36,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -2837,6 +2916,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_yvonne_ultskill_PP",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -2995,7 +3075,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3018,7 +3100,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 36,
+              "serverActionIndex": 37,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3127,6 +3209,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_yvonne_ultskill_asset",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3285,7 +3368,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3308,7 +3393,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 37,
+              "serverActionIndex": 38,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3417,6 +3502,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_yvonne_ultskill_camera",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3575,7 +3661,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3598,7 +3686,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 38,
+              "serverActionIndex": 39,
               "targetSettings": {
                 "targetSource": "Source",
                 "targetGroupKey": "",
@@ -3707,6 +3795,7 @@
               "playOnHittableObjects": false,
               "effectActionCfg": {
                 "fxType": "Normal",
+                "sourceTag": "Battle",
                 "effectName": "P_yvonne_ultskill_start",
                 "guardEffect": false,
                 "isCenterChangeLod": false,
@@ -3865,7 +3954,9 @@
               },
               "saveEffectIdToBlackboard": "",
               "forceMainBody": false,
-              "isCreateWithSourceModelActive": false
+              "isCreateWithSourceModelActive": false,
+              "alignSpawnPhaseToTimeline": false,
+              "spawnPhaseAlignFrame": 0
             }
           ],
           "onlyExecuteWhenSourceIsMainChar": false,
@@ -3888,7 +3979,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 39,
+              "serverActionIndex": 40,
               "includeAllWeapons": false,
               "weaponIndex": 0,
               "visible": true,
@@ -3936,7 +4027,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 40,
+              "serverActionIndex": 41,
               "includeAllWeapons": false,
               "weaponIndex": 1,
               "visible": true,
@@ -3984,7 +4075,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 41,
+              "serverActionIndex": 42,
               "_triggerKey": "combat_skill_ultimate",
               "_speakerType": "Characters",
               "_canInterruptTimeMs": 0,
@@ -4038,7 +4129,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 42,
+              "serverActionIndex": 43,
               "_soundEvent": "au_chr_0017_yvonne_ultimate_skill",
               "_stopOnEnd": false,
               "_stopFadeDurationMs": 100,
