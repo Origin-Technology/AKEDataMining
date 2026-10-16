@@ -1,0 +1,110 @@
+{
+  "id": "global_buff_cc_chr_dash_recover_interval_effect",
+  "lifeType": "Infinity",
+  "duration": {
+    "useBlackboardKey": true,
+    "value": 0.0,
+    "blackboardKey": "interval"
+  },
+  "triggerInterval": {
+    "useBlackboardKey": true,
+    "value": 0.0,
+    "blackboardKey": "interval"
+  },
+  "waitFirstTriggerInterval": true,
+  "maxTriggerCnt": {
+    "useBlackboardKey": false,
+    "value": -1,
+    "blackboardKey": ""
+  },
+  "stackingSettings": {
+    "identifierType": "Id",
+    "stackingType": "Unlimited",
+    "stackingKey": "",
+    "usePriorityKey": false,
+    "priorityKey": "",
+    "negatePriority": false,
+    "priority": 0.0,
+    "maxStackCnt": 0
+  },
+  "applyIconDurationToBuffs": false,
+  "buffInputs": [],
+  "globalModifier": [],
+  "globalBuffEventAction": [
+    {
+      "globalBuffEvent": "OnBuffTrigger",
+      "actions": [
+        {
+          "actionData": [
+            {
+              "$type": "Beyond.Gameplay.Core.RecoverDashEnergy+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 0,
+              "energyNum": {
+                "useBlackboardKey": true,
+                "value": 3.0,
+                "blackboardKey": "recover_count"
+              },
+              "canRecoverWhenOverdraft": true,
+              "recoverTag": {
+                "tagId": -727577212
+              }
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.Conditions.CheckDashCount+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 2,
+              "compareType": "GE",
+              "isRatio": true,
+              "value": {
+                "useBlackboardKey": false,
+                "value": 1.0,
+                "blackboardKey": ""
+              }
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.AbilityActions.FinishGlobalBuffAction+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 0,
+              "finishParent": false,
+              "globalBuffIds": [
+                {
+                  "id": "global_buff_cc_chr_dash_recover_interval_effect"
+                }
+              ],
+              "finishAll": true,
+              "finishCount": {
+                "useBlackboardKey": false,
+                "value": 1.0,
+                "blackboardKey": ""
+              },
+              "isFinishedEarly": false
+            }
+          ],
+          "onlyExecuteWhenSourceIsMainChar": false,
+          "onlyExecuteWhenSourceIsGuard": false
+        }
+      ]
+    }
+  ],
+  "blackboard": [
+    {
+      "key": "interval",
+      "valueDouble": 10.0,
+      "valueStr": "",
+      "isDynamic": false
+    },
+    {
+      "key": "recover_count",
+      "valueDouble": 1.0,
+      "valueStr": "",
+      "isDynamic": false
+    }
+  ]
+}

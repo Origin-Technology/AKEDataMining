@@ -37,7 +37,8 @@
         "Custom2": "slot_potency_vfx_01",
         "Custom3": "slot_potency_vfx_02",
         "Custom5": "Bip001_L_Hand",
-        "Custom6": "Bip001_R_Hand"
+        "Custom6": "Bip001_R_Hand",
+        "Custom4": "faceRtIrisJoint"
       },
       "extraMountPointBundles": [],
       "subGameObjects": [
@@ -164,6 +165,9 @@
         "_sprintSpeedMultiplier": 1.0,
         "_overrideStepOffsetForSpDash": -1.0,
         "_overrideStepDownOffsetForSpDash": -1.0,
+        "_enableMountedJumpInSpDash": false,
+        "_spDashFirstStageRotationSmoothTimeOverride": -1.0,
+        "_spDashSecondStageRotationSmoothTimeOverride": -1.0,
         "_navAcceleration": 1000.0
       },
       "proxyShape": {
@@ -314,8 +318,7 @@
           "common_character_perfect_dodge",
           "chr_0027_tangtang_normal_skill",
           "chr_0027_tangtang_combo_skill",
-          "chr_0027_tangtang_ultimate_skill",
-          "chr_0027_tangtang_normal_skill_abilityentitymove"
+          "chr_0027_tangtang_ultimate_skill"
         ],
         "allPassiveSkillId": [
           "chr_0027_tangtang_passive_0"
@@ -559,6 +562,7 @@
       "overrideDeadEffect": false,
       "deadEffect": {
         "fxType": "Normal",
+        "sourceTag": "Battle",
         "effectName": "",
         "guardEffect": false,
         "isCenterChangeLod": false,
@@ -722,14 +726,9 @@
       "healthType": "Normal",
       "preloadAbilityEntities": {
         "abilityentity_chr_0027_tangtang_normal_skill_move": 2,
-        "abilityentity_chr_0027_tangtang_ultskill": 2,
-        "abilityentity_chr_0027_tangtang_normal_skill_03": 1,
-        "abilityentity_chr_0027_tangtang_normal_skill_03_02": 1,
-        "abilityentity_chr_0027_tangtang_normal_skill_03_03": 1,
-        "abilityentity_chr_0027_tangtang_normal_skill_02": 1,
-        "abilityentity_chr_0027_tangtang_normal_skill_02_02": 1,
-        "abilityentity_chr_0027_tangtang_normal_skill": 1
+        "abilityentity_chr_0027_tangtang_ultskill": 2
       },
+      "preloadBattleCgIds": {},
       "maxPotentialEffectBuffId": "buff_chr_0027_tangtang_potential_5_effect",
       "checkAllyBlockableMoveCollider": false
     },
@@ -775,62 +774,8 @@
         "attackPartPqsConfig": {},
         "attackDodgePqsConfig": {},
         "brainConfig": {
-          "strategy": {
-            "$type": "Beyond.Gameplay.AI.CharacterNormalStrategy+CharacterNormalStrategyData, Gameplay.Beyond",
-            "tickInterval": 0.1
-          },
-          "mode": {
-            "MainChar": {
-              "tag": {
-                "tagId": 328793703
-              }
-            },
-            "Follow": {
-              "tag": {
-                "tagId": -2097982019
-              }
-            },
-            "Farm": {
-              "tag": {
-                "tagId": -1190460388
-              }
-            },
-            "Battle": {
-              "tag": {
-                "tagId": -111278343
-              }
-            },
-            "CastSkill": {
-              "tag": {
-                "tagId": 1155907871
-              }
-            },
-            "Cooperate": {
-              "tag": {
-                "tagId": -1675344905
-              }
-            },
-            "Idle": {
-              "tag": {
-                "tagId": 1027170636
-              }
-            },
-            "SummonTeam": {
-              "tag": {
-                "tagId": 584998869
-              }
-            },
-            "Photo": {
-              "tag": {
-                "tagId": 115437724
-              }
-            },
-            "Scripted": {
-              "tag": {
-                "tagId": 1360895761
-              }
-            }
-          }
+          "$type": "Beyond.Gameplay.AI.CharacterNormalStrategy+CharacterNormalStrategyData, Gameplay.Beyond",
+          "tickInterval": 0.1
         },
         "aiBBPath": "Base/BB_char_normal_base"
       }
@@ -879,6 +824,7 @@
                 "weaponIndex": 0,
                 "vfxKey": "",
                 "weaponScale": 1.0,
+                "m_maxWeaponIndex": 0,
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "WepM",
                 "idleMountTarget": {
@@ -903,6 +849,7 @@
                 "weaponIndex": 1,
                 "vfxKey": "",
                 "weaponScale": 1.0,
+                "m_maxWeaponIndex": 0,
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "WepM",
                 "idleMountTarget": {
@@ -1054,6 +1001,7 @@
       "$type": "Beyond.Gameplay.CustomAbilityComponentData, Gameplay.Beyond"
     }
   ],
+  "m_componentDataCache": {},
   "animConfigPath": "Assets/Beyond/Designer/Editing/AnimationConfig/Character/anim_cfg_chr_0027_tangtang.asset",
   "bodyType": {
     "bodyType": "Girl",

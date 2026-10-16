@@ -152,6 +152,9 @@
         "_sprintSpeedMultiplier": 1.0,
         "_overrideStepOffsetForSpDash": -1.0,
         "_overrideStepDownOffsetForSpDash": -1.0,
+        "_enableMountedJumpInSpDash": false,
+        "_spDashFirstStageRotationSmoothTimeOverride": -1.0,
+        "_spDashSecondStageRotationSmoothTimeOverride": -1.0,
         "_navAcceleration": 1000.0
       },
       "proxyShape": {
@@ -244,6 +247,46 @@
             "cmdMapping": {}
           },
           {
+            "modeId": "skin_ink",
+            "defaultEnable": false,
+            "modeLayer": "default",
+            "parentModeId": "",
+            "addExtraPassiveSkill": false,
+            "extraPassiveSkillId": [],
+            "overrideMoveSpeed": false,
+            "moveSpeed": 0.0,
+            "overrideRotateRate": false,
+            "rotateRate": 0.0,
+            "isStrafing": false,
+            "moveInterruptAttack": true,
+            "overrideNormalAttackList": true,
+            "normalAttackList": [
+              "chr_0003_endminf_attack1_skin_ink",
+              "chr_0003_endminf_attack2_skin_ink",
+              "chr_0003_endminf_attack3_skin_ink",
+              "chr_0003_endminf_attack4_skin_ink",
+              "chr_0003_endminf_attack5_skin_ink"
+            ],
+            "blownStartHeight": 0.0,
+            "applyAnimBool": false,
+            "animBoolName": "",
+            "overrideStateClip": false,
+            "overrideClipMapping": {},
+            "overrideAnimCfg": false,
+            "animCfgPath": "",
+            "overrideModelKey": false,
+            "modelKey": "",
+            "mountPointDefIndex": 0,
+            "overrideWeaponVisibilityProfile": false,
+            "weaponVisibilityProfile": {
+              "slots": []
+            },
+            "overrideCmdMapping": true,
+            "cmdMapping": {
+              "Attack": "chr_0003_endminf_attack1_skin_ink"
+            }
+          },
+          {
             "modeId": "windMove",
             "defaultEnable": false,
             "modeLayer": "windMove",
@@ -288,7 +331,12 @@
           "chr_0003_endminf_plunging_attack_end",
           "chr_0003_endminf_dash_attack",
           "chr_0003_endminf_power_attack",
-          "chr_0003_endminf_power_attack2"
+          "chr_0003_endminf_power_attack2",
+          "chr_0003_endminf_attack1_skin_ink",
+          "chr_0003_endminf_attack2_skin_ink",
+          "chr_0003_endminf_attack3_skin_ink",
+          "chr_0003_endminf_attack4_skin_ink",
+          "chr_0003_endminf_attack5_skin_ink"
         ],
         "allActiveSkillId": [
           "chr_0003_endminf_ultimate_skill",
@@ -546,6 +594,7 @@
       "overrideDeadEffect": false,
       "deadEffect": {
         "fxType": "Normal",
+        "sourceTag": "Battle",
         "effectName": "",
         "guardEffect": false,
         "isCenterChangeLod": false,
@@ -708,6 +757,7 @@
       "hitFlashAsset": "",
       "healthType": "Normal",
       "preloadAbilityEntities": {},
+      "preloadBattleCgIds": {},
       "maxPotentialEffectBuffId": "",
       "checkAllyBlockableMoveCollider": false
     },
@@ -753,62 +803,8 @@
         "attackPartPqsConfig": {},
         "attackDodgePqsConfig": {},
         "brainConfig": {
-          "strategy": {
-            "$type": "Beyond.Gameplay.AI.CharacterNormalStrategy+CharacterNormalStrategyData, Gameplay.Beyond",
-            "tickInterval": 0.1
-          },
-          "mode": {
-            "MainChar": {
-              "tag": {
-                "tagId": 328793703
-              }
-            },
-            "Follow": {
-              "tag": {
-                "tagId": -2097982019
-              }
-            },
-            "Farm": {
-              "tag": {
-                "tagId": -1190460388
-              }
-            },
-            "Battle": {
-              "tag": {
-                "tagId": -111278343
-              }
-            },
-            "CastSkill": {
-              "tag": {
-                "tagId": 1155907871
-              }
-            },
-            "Cooperate": {
-              "tag": {
-                "tagId": -1675344905
-              }
-            },
-            "Idle": {
-              "tag": {
-                "tagId": 1027170636
-              }
-            },
-            "SummonTeam": {
-              "tag": {
-                "tagId": 584998869
-              }
-            },
-            "Photo": {
-              "tag": {
-                "tagId": 115437724
-              }
-            },
-            "Scripted": {
-              "tag": {
-                "tagId": 1360895761
-              }
-            }
-          }
+          "$type": "Beyond.Gameplay.AI.CharacterNormalStrategy+CharacterNormalStrategyData, Gameplay.Beyond",
+          "tickInterval": 0.1
         },
         "aiBBPath": "Base/BB_char_normal_base"
       }
@@ -857,6 +853,7 @@
                 "weaponIndex": 0,
                 "vfxKey": "",
                 "weaponScale": 1.0,
+                "m_maxWeaponIndex": 0,
                 "showWhenIdle": true,
                 "legacyIdleMountPoint": "WepM",
                 "idleMountTarget": {
@@ -1008,6 +1005,7 @@
       "$type": "Beyond.Gameplay.CustomAbilityComponentData, Gameplay.Beyond"
     }
   ],
+  "m_componentDataCache": {},
   "animConfigPath": "Assets/Beyond/Designer/Editing/AnimationConfig/Character/anim_cfg_chr_0003_endminf.asset",
   "bodyType": {
     "bodyType": "Girl",

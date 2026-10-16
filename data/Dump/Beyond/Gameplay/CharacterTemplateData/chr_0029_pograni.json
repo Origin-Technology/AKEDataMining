@@ -164,6 +164,9 @@
         "_sprintSpeedMultiplier": 1.0,
         "_overrideStepOffsetForSpDash": -1.0,
         "_overrideStepDownOffsetForSpDash": -1.0,
+        "_enableMountedJumpInSpDash": false,
+        "_spDashFirstStageRotationSmoothTimeOverride": -1.0,
+        "_spDashSecondStageRotationSmoothTimeOverride": -1.0,
         "_navAcceleration": 1000.0
       },
       "proxyShape": {
@@ -548,6 +551,8 @@
                         "passTargetGroupsToBuff": false,
                         "overrideBuffIconDuration": false,
                         "buffIconDurationSource": {
+                          "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
+                          "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
                           "durationSourceType": "AbilityEntity",
                           "timedMarkerId": ""
                         }
@@ -647,6 +652,8 @@
                               "passTargetGroupsToBuff": false,
                               "overrideBuffIconDuration": false,
                               "buffIconDurationSource": {
+                                "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
+                                "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
                                 "durationSourceType": "AbilityEntity",
                                 "timedMarkerId": ""
                               }
@@ -746,6 +753,8 @@
                                     "passTargetGroupsToBuff": false,
                                     "overrideBuffIconDuration": false,
                                     "buffIconDurationSource": {
+                                      "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
+                                      "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
                                       "durationSourceType": "AbilityEntity",
                                       "timedMarkerId": ""
                                     }
@@ -813,6 +822,8 @@
                                     "passTargetGroupsToBuff": false,
                                     "overrideBuffIconDuration": false,
                                     "buffIconDurationSource": {
+                                      "m_abilityEntityTypeInfo": "当ActionOwner是AbilityEntity时，Buff图标倒计时显示Owner的剩余时间",
+                                      "m_timedMarkerInfo": "选择ActionOwner身上的一个TimedMarker作为Buff图标倒计时显示的来源",
                                       "durationSourceType": "AbilityEntity",
                                       "timedMarkerId": ""
                                     }
@@ -969,6 +980,7 @@
       "overrideDeadEffect": false,
       "deadEffect": {
         "fxType": "Normal",
+        "sourceTag": "Battle",
         "effectName": "",
         "guardEffect": false,
         "isCenterChangeLod": false,
@@ -1133,6 +1145,7 @@
       "preloadAbilityEntities": {
         "abilityentity_chr_0029_pograni_ultimate_skill": 4
       },
+      "preloadBattleCgIds": {},
       "maxPotentialEffectBuffId": "buff_chr_0029_pograni_potential_5_effect",
       "checkAllyBlockableMoveCollider": false
     },
@@ -1178,62 +1191,8 @@
         "attackPartPqsConfig": {},
         "attackDodgePqsConfig": {},
         "brainConfig": {
-          "strategy": {
-            "$type": "Beyond.Gameplay.AI.CharacterNormalStrategy+CharacterNormalStrategyData, Gameplay.Beyond",
-            "tickInterval": 0.1
-          },
-          "mode": {
-            "MainChar": {
-              "tag": {
-                "tagId": 328793703
-              }
-            },
-            "Follow": {
-              "tag": {
-                "tagId": -2097982019
-              }
-            },
-            "Farm": {
-              "tag": {
-                "tagId": -1190460388
-              }
-            },
-            "Battle": {
-              "tag": {
-                "tagId": -111278343
-              }
-            },
-            "CastSkill": {
-              "tag": {
-                "tagId": 1155907871
-              }
-            },
-            "Cooperate": {
-              "tag": {
-                "tagId": -1675344905
-              }
-            },
-            "Idle": {
-              "tag": {
-                "tagId": 1027170636
-              }
-            },
-            "SummonTeam": {
-              "tag": {
-                "tagId": 584998869
-              }
-            },
-            "Photo": {
-              "tag": {
-                "tagId": 115437724
-              }
-            },
-            "Scripted": {
-              "tag": {
-                "tagId": 1360895761
-              }
-            }
-          }
+          "$type": "Beyond.Gameplay.AI.CharacterNormalStrategy+CharacterNormalStrategyData, Gameplay.Beyond",
+          "tickInterval": 0.1
         },
         "aiBBPath": "Base/BB_char_normal_base"
       }
@@ -1282,6 +1241,7 @@
                 "weaponIndex": 0,
                 "vfxKey": "",
                 "weaponScale": 1.0,
+                "m_maxWeaponIndex": 0,
                 "showWhenIdle": true,
                 "legacyIdleMountPoint": "WepM",
                 "idleMountTarget": {
@@ -1306,6 +1266,7 @@
                 "weaponIndex": 10,
                 "vfxKey": "",
                 "weaponScale": 1.0,
+                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0035",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "WepL",
                 "idleMountTarget": {
@@ -1342,6 +1303,7 @@
                 "weaponIndex": 11,
                 "vfxKey": "",
                 "weaponScale": 1.0,
+                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0033_2",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "Custom1",
                 "idleMountTarget": {
@@ -1378,6 +1340,7 @@
                 "weaponIndex": 12,
                 "vfxKey": "",
                 "weaponScale": 1.0,
+                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0033_2",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "Custom2",
                 "idleMountTarget": {
@@ -1414,6 +1377,7 @@
                 "weaponIndex": 13,
                 "vfxKey": "",
                 "weaponScale": 1.0,
+                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0033_2",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "Custom3",
                 "idleMountTarget": {
@@ -1450,6 +1414,7 @@
                 "weaponIndex": 14,
                 "vfxKey": "",
                 "weaponScale": 1.0,
+                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0033_2",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "Custom4",
                 "idleMountTarget": {
@@ -1486,6 +1451,7 @@
                 "weaponIndex": 15,
                 "vfxKey": "",
                 "weaponScale": 1.0,
+                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0033",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "Custom5",
                 "idleMountTarget": {
@@ -1522,6 +1488,7 @@
                 "weaponIndex": 16,
                 "vfxKey": "",
                 "weaponScale": 1.0,
+                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0033",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "Custom6",
                 "idleMountTarget": {
@@ -1558,6 +1525,7 @@
                 "weaponIndex": 17,
                 "vfxKey": "",
                 "weaponScale": 1.0,
+                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0033",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "Custom7",
                 "idleMountTarget": {
@@ -1594,6 +1562,7 @@
                 "weaponIndex": 18,
                 "vfxKey": "",
                 "weaponScale": 1.0,
+                "_weaponPath": "Gameplay/Prefabs/Weapons/wpn_misc_0033",
                 "showWhenIdle": false,
                 "legacyIdleMountPoint": "Custom8",
                 "idleMountTarget": {
@@ -1757,6 +1726,7 @@
       "$type": "Beyond.Gameplay.CustomAbilityComponentData, Gameplay.Beyond"
     }
   ],
+  "m_componentDataCache": {},
   "animConfigPath": "Assets/Beyond/Designer/Editing/AnimationConfig/Character/anim_cfg_chr_0029_pograni.asset",
   "bodyType": {
     "bodyType": "Gentleman",
