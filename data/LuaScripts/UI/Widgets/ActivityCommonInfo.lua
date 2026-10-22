@@ -1,0 +1,364 @@
+local UIWidgetBase = require_ex('Common/Core/UIWidgetBase')
+
+ActivityCommonInfo = HL.Class('ActivityCommonInfo', UIWidgetBase)
+
+ActivityCommonInfo.m_tagCells = HL.Field(HL.Any)
+
+ActivityCommonInfo.m_activityId = HL.Field(HL.String) << ""
+
+ActivityCommonInfo.m_rewardCells = HL.Field(HL.Any)
+
+ActivityCommonInfo.m_goToBtnDetailCallBack = HL.Field(HL.Any)
+
+ActivityCommonInfo.m_jumpBtnCallBack = HL.Field(HL.Any)
+
+ActivityCommonInfo.m_skipReceive = HL.Field(HL.Any)
+
+ActivityCommonInfo.m_endMissionQuestId = HL.Field(HL.String) << ""
+ActivityCommonInfo.m_state = HL.Field(HL.Any)
+
+
+ActivityCommonInfo._OnFirstTimeInit = HL.Override() << function(self)
+    
+end
+
+ActivityCommonInfo.InitActivityCommonInfo = HL.Method(HL.Table) << function(self, args)
+    self:_FirstTimeInit()
+    self.m_activityId = args.activityId
+    self.m_jumpBtnCallBack = args.jumpBtnCallBack
+    self.m_skipReceive = args.skipReceive
+    local activitySystem = GameInstance.player.activitySystem
+
+    local _, activityData = Tables.activityTable:TryGetValue(self.m_activityId)
+    local activity = activitySystem:GetActivity(self.m_activityId)
+    if not activityData or not activity then
+        logger.error('Activity not found: %s', self.m_activityId)
+        self.view.gameObject:SetActive(false)
+        return
+    end
+
+    
+    self.view.infoNode.txtName.text = activityData.name
+    self.view.infoNode.detailsTxt:SetAndResolveTextStyle(activityData.desc)
+    if not args.skipTimeCountDown then
+        if activity.endTime == 0 then
+            self.view.infoNode.countDownText.text = Language.LUA_ACTIVITY_PERMANENT_TEXT
+            self.view.residentTagCell.gameObject:SetActive(not ActivityUtils.isActivityRecommended(activityData))
+        else
+            self.view.infoNode.countDownWidget:InitCountDownText(activity.endTime, args.timeOnComplete, args.timeFormatFunc)
+            self.view.residentTagCell.gameObject:SetActive(false)
+        end
+    end
+
+    
+    local tagIds = activityData.tagIds
+    self.m_tagCells = UIUtils.genCellCache(self.view.tagCell)
+    self.m_tagCells:Refresh(#tagIds, function(cell, index)
+        local csIndex = CSIndex(index)
+        local _,tagInfo = Tables.activityTagTable:TryGetValue(tagIds[csIndex])
+        cell.tagTxt.text = tagInfo.name
+    end)
+
+    
+    self.m_rewardCells = UIUtils.genCellCache(self.view.rewardItem)
+    if self.view.config.SHOW_REWARDS then
+        self:UpdateRewardInfo()
+    end
+
+    
+    self.view.infoNode.descriptionBtn.onClick:AddListener(function()
+        ActivityUtils.openDescriptionPopup(self.m_activityId)        
+    end)
+
+    
+    local state
+    if not self.view.config.SHOW_BUTTONS then
+        state = "None"
+    elseif not activity.isUnlocked then
+        state = "Reminder"
+    elseif activity.status == GEnums.ActivityStatus.IntroMission then
+        state = "IntroMission"
+    else
+        state = "Detail"
+    end
+
+    self.m_state = state
+
+    self.view.gotoNode.stateController:SetState(state)
+    if state == "Reminder" then
+        self.view.gotoNode.reminderJumpBtn.onClick:AddListener(function()
+            ActivityUtils.GameEventLogActivityVisit(self.m_activityId, "unlockReminderButton", "visit_unlock_reminder")
+            UIManager:Open(PanelId.ActivityStartReminderPopup,{
+                activityId = self.m_activityId,
+            })
+        end)
+    elseif state == "Detail" then
+        local detailJumpId = activityData.detailJumpId
+        local hasDetailJump = detailJumpId ~= nil and detailJumpId ~= ""
+        local hasWebJump, webJumpInfo = Tables.activityWebTable:TryGetValue(activityData.id)
+        if hasDetailJump or hasWebJump then
+            self.view.gotoNode.btnDetail.onClick:AddListener(function()
+                if self.m_goToBtnDetailCallBack then
+                    self.m_goToBtnDetailCallBack()
+                end
+                ActivityUtils.GameEventLogActivityVisit(self.m_activityId, "gotoActivityHudButton", "visit_activity")
+                if self.m_jumpBtnCallBack then
+                    self.m_jumpBtnCallBack()
+                    return
+                end
+                local normalJump = hasDetailJump and Tables.systemJumpTable:TryGetValue(detailJumpId)
+                
+                if normalJump then
+                    Utils.jumpToSystem(detailJumpId)
+                elseif hasWebJump then
+                    
+                    if webJumpInfo.disableAudio then
+                        CS.Beyond.Gameplay.Audio.Utils.AudioControlUtil.Webview.SetMute(true)
+                        CS.Beyond.SDK.SDKUtils.OpenHGWebPortalSDK(webJumpInfo.jumpId,"","ON_ACTIVITY_WEB_UNMUTE")
+                    else
+                        CS.Beyond.SDK.SDKUtils.OpenHGWebPortalSDK(webJumpInfo.jumpId,"",nil)
+                    end
+                end
+            end)
+        end
+    elseif state == "IntroMission" then
+        self.view.gotoNode.btnIntroMissionlRedDot:InitRedDot("ActivityIntroMission", self.m_activityId)
+        self.view.gotoNode.btnIntroMission.onClick:AddListener(function()
+            ActivityUtils.GameEventLogActivityVisit(self.m_activityId, "IntroMissionButton", "visit_intro_mission")
+            local success = Tables.systemJumpTable:TryGetValue(activityData.introMissionJumpId)
+            if success then
+                Utils.jumpToSystem(activityData.introMissionJumpId)
+                ActivityUtils.setFalseIntroMissionActivity(self.m_activityId)
+            else
+                logger.error("no such jumpId")
+            end
+        end)
+    end
+
+    self:_RefreshUIMedal(args)
+    self:_InitCompleteTaskBtn(activityData)
+    self:_InitCalendarNode()
+
+    
+    if DeviceInfo.usingController then
+        self.view.gotoNode.scrollViewRewards.onIsFocusedChange:AddListener(function(isFocused)
+            if not isFocused then
+                Notify(MessageConst.HIDE_ITEM_TIPS)
+            end
+        end)
+    end
+
+    
+    self:RegisterMessage(MessageConst.ON_ACTIVITY_UPDATED, function(updateArgs)
+        local id = unpack(updateArgs)
+        if id == self.m_activityId and GameInstance.player.activitySystem:GetActivity(id) then
+            self:_Refresh()
+        end
+    end)
+
+    
+    self:RegisterMessage(MessageConst.ON_ACTIVITY_WEB_UNMUTE, function(_)
+        CS.Beyond.Gameplay.Audio.Utils.AudioControlUtil.Webview.SetMute(false)
+    end)
+
+    
+    self:RegisterMessage(MessageConst.ON_CONDITIONAL_MULTI_STAGE_UPDATE, function(stageArgs)
+        local id = unpack(stageArgs)
+        if id == self.m_activityId then
+            self:_InitCalendarNode()
+        end
+    end)
+
+    
+    self:RegisterMessage(MessageConst.ON_QUEST_STATE_CHANGE, function(questArgs)
+        local questId = unpack(questArgs)
+        if questId == self.m_endMissionQuestId then
+            self:_RefreshCompleteTaskBtn()
+        end
+    end)
+end
+
+
+ActivityCommonInfo._RefreshUIMedal = HL.Method(HL.Any) << function(self, args)
+    local medal = self.view.gotoNode.bgTitle02
+    if medal == nil then
+        return
+    end
+
+    local hasAchievement, achievementData = Tables.activityAchievementDataTable:TryGetValue(self.m_activityId)
+    if not hasAchievement or not args.showMedal then
+        medal.gameObject:SetActive(false)
+        return
+    end
+
+    medal.gameObject:SetActive(true)
+    medal.dungeonMedalCell:InitCommonMedalNode(achievementData.achievementId)
+end
+
+ActivityCommonInfo.m_rewardId = HL.Field(HL.String) << ""
+ActivityCommonInfo.UpdateGoToBtnDetailCallBack = HL.Method(HL.Any) << function(self, callback)
+    self.m_goToBtnDetailCallBack = callback
+end
+
+ActivityCommonInfo._Refresh = HL.Method() << function(self)
+    
+    self:UpdateRewardInfo(self.m_rewardId)
+end
+
+ActivityCommonInfo.UpdateRewardInfo = HL.Method(HL.Opt(HL.String)) << function(self, rewardId)
+    local _, activityData = Tables.activityTable:TryGetValue(self.m_activityId)
+    if not rewardId then
+        rewardId = activityData.rewardId
+    end
+
+    if rewardId and not string.isEmpty(rewardId) then
+        self.m_rewardId = rewardId
+        local _, rewardTableData = Tables.rewardTable:TryGetValue(rewardId)
+        local rewardBundles = UIUtils.getRewardItems(rewardId)
+
+        local sortedItems = {}
+        for i = 1, #rewardBundles do
+            local bundle = rewardBundles[i]
+            local itemData = Tables.itemTable[bundle.id]
+            table.insert(sortedItems, {
+                bundle = bundle,
+                originalIndex = i,
+                rarity = itemData and itemData.rarity or 0,
+                sortId1 = itemData and itemData.sortId1 or 0,
+                sortId2 = itemData and itemData.sortId2 or 0,
+            })
+        end
+        table.sort(sortedItems, Utils.genSortFunction({"rarity", "sortId1", "sortId2"}))
+
+        self.m_rewardCells:Refresh(#sortedItems, function(cell, index)
+            local sortedItem = sortedItems[index]
+            cell:InitItem(sortedItem.bundle, function()
+                cell:ShowTips()
+            end)
+            cell:SetExtraInfo({
+                tipsPosType = UIConst.UI_TIPS_POS_TYPE.LeftMid,
+                tipsPosTransform = self.view.scrollViewRewards,
+                isSideTips = true,
+                onBeforeJump = function()
+                    if DeviceInfo.usingController then
+                        self.view.gotoNode.scrollViewRewards:ManuallyStopFocus()
+                    end
+                end
+            })
+            
+            
+            
+            local isVisible = rewardTableData and rewardTableData.itemBundleVisibleList and rewardTableData.itemBundleVisibleList[CSIndex(sortedItem.originalIndex)] or 0
+            if isVisible == 1 then
+                cell.view.countNode.gameObject:SetActive(true)
+            else
+                cell.view.countNode.gameObject:SetActive(false)
+            end
+        end)
+    end
+
+    
+    if not self.m_skipReceive then
+        local activity = GameInstance.player.activitySystem:GetActivity(self.m_activityId)
+        local receiveAll = activity and activity.receiveAllReward and not self.view.config.HIDE_RECEIVE_ALL
+        self.view.gotoNode.receiveAllNode.gameObject:SetActive(receiveAll)
+        self.view.gotoNode.notReceiveAllNode.gameObject:SetActive(not receiveAll)
+    end
+end
+
+ActivityCommonInfo.UpdateDescTxt = HL.Method(HL.String) << function(self, desc)
+    self.view.infoNode.detailsTxt:SetAndResolveTextStyle(desc)
+end
+
+
+ActivityCommonInfo._InitCompleteTaskBtn = HL.Method(HL.Any) << function(self, activityData)
+    local completeTaskBtn = self.view.leftBtnGroupNode.completeTaskBtn
+
+    local endMissionQuestId = activityData and activityData.endMissionQuestId or ""
+    if string.isEmpty(endMissionQuestId) then
+        completeTaskBtn.gameObject:SetActive(false)
+        return
+    end
+
+    self.m_endMissionQuestId = endMissionQuestId
+
+    completeTaskBtn.button.onClick:AddListener(function()
+        self:_OnCompleteTaskBtnClick()
+    end)
+
+    completeTaskBtn.redDot:InitRedDot("ActivityCompleteTask", self.m_activityId)
+
+    self:_RefreshCompleteTaskBtn()
+end
+
+ActivityCommonInfo._RefreshCompleteTaskBtn = HL.Method() << function(self)
+    if string.isEmpty(self.m_endMissionQuestId) then
+        return
+    end
+
+    local questState = GameInstance.player.mission:GetQuestState(self.m_endMissionQuestId)
+    local isProcessing = questState == CS.Beyond.Gameplay.MissionSystem.QuestState.Processing
+    local isCompleted = questState == CS.Beyond.Gameplay.MissionSystem.QuestState.Completed
+
+    local shouldShow = isProcessing or isCompleted
+    self.view.leftBtnGroupNode.completeTaskBtn.gameObject:SetActive(shouldShow)
+
+    if not shouldShow then
+        return
+    end
+    self.view.leftBtnGroupNode.completeTaskBtn.completeState.gameObject:SetActive(isCompleted)
+end
+
+ActivityCommonInfo._OnCompleteTaskBtnClick = HL.Method() << function(self)
+    local questState = GameInstance.player.mission:GetQuestState(self.m_endMissionQuestId)
+    local isCompleted = questState == CS.Beyond.Gameplay.MissionSystem.QuestState.Completed
+
+    if isCompleted then
+        Notify(MessageConst.SHOW_TOAST, Language.LUA_ACTIVITY_COMPLETE_TASK_FINISHED)
+        return
+    end
+
+    ActivityUtils.setFalseEndMissionActivity(self.m_activityId)
+
+    local missionId = GameInstance.player.mission:GetMissionIdByQuestId(self.m_endMissionQuestId)
+    if not string.isEmpty(missionId) then
+        PhaseManager:OpenPhase(PhaseId.Mission, { autoSelect = missionId })
+    end
+end
+
+
+
+
+ActivityCommonInfo._InitCalendarNode = HL.Method() << function(self)
+    local calendarNode = self.view.activityCalendarNode
+    if calendarNode == nil then
+        return
+    end
+
+    local haveCfg = Tables.activityConditionalMultiStageTable:TryGetValue(self.m_activityId)
+    if not haveCfg then
+        calendarNode.gameObject:SetActive(false)
+        return
+    end
+
+    local activityData = GameInstance.player.activitySystem:GetActivity(self.m_activityId)
+    if not activityData then
+        calendarNode.gameObject:SetActive(false)
+        return
+    end
+
+    local hasDisplayCfg, displayCfg = Tables.activityAchievementDataTable:TryGetValue(self.m_activityId)
+    if not hasDisplayCfg or not displayCfg.showCalendar then
+        calendarNode.gameObject:SetActive(false)
+        return
+    end
+
+    calendarNode.gameObject:SetActive(true)
+    calendarNode:InitActivityCalendarNode(self.m_activityId)
+end
+
+
+
+HL.Commit(ActivityCommonInfo)
+return ActivityCommonInfo
+

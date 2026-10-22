@@ -1,0 +1,322 @@
+local uiCtrl = require_ex('UI/Panels/Base/UICtrl')
+local PANEL_ID = PanelId.SeasonTowerDungeonEntry
+local PHASE_ID = PhaseId.SeasonTowerDungeonEntry
+local INSTRUCTION_BOOK_ID = "seasontower_level"
+
+local INSTRUCTION_BOOK_POPUP_TYPE = "SeasonTowerInstructionBook"
+local QUICK_SELECT_FORBIDDEN_TYPE = "SeasonTowerDungeonEntryQuickSelect"
+local MEDAL_STATES = { [1] = "BronzeMedal", [2] = "SilverMedal", [3] = "GoldMedal" }
+
+SeasonTowerDungeonEntryCtrl = HL.Class('SeasonTowerDungeonEntryCtrl', uiCtrl.UICtrl)
+
+SeasonTowerDungeonEntryCtrl.m_system = HL.Field(CS.Beyond.Gameplay.SeasonTowerSystem)
+
+SeasonTowerDungeonEntryCtrl.m_originalDungeonId = HL.Field(HL.String) << ""
+SeasonTowerDungeonEntryCtrl.m_dungeonId = HL.Field(HL.String) << ""
+SeasonTowerDungeonEntryCtrl.m_gameGroupId = HL.Field(HL.String) << ""
+SeasonTowerDungeonEntryCtrl.m_gameGroupIds = HL.Field(HL.Userdata)
+SeasonTowerDungeonEntryCtrl.m_tabCache = HL.Field(HL.Forward("UIListCache"))
+
+SeasonTowerDungeonEntryCtrl.m_gameIds = HL.Field(HL.Table)
+
+SeasonTowerDungeonEntryCtrl.m_selectedIndex = HL.Field(HL.Number) << 0
+SeasonTowerDungeonEntryCtrl.m_starNum = HL.Field(HL.Number) << 0
+
+SeasonTowerDungeonEntryCtrl.m_enterDungeonCallback = HL.Field(HL.Function)
+
+SeasonTowerDungeonEntryCtrl.s_messages = HL.StaticField(HL.Table) << {
+}
+
+SeasonTowerDungeonEntryCtrl.OnCreate = HL.Override(HL.Any) << function(self, arg)
+    self.m_system = GameInstance.player.seasonTowerSystem
+    if arg.dungeonId then
+        self.m_dungeonId = arg.dungeonId
+        self.m_gameGroupId = Tables.gameMechanicTable[arg.dungeonId].gameGroupId
+    else
+        self.m_gameGroupId = arg.levelId
+    end
+
+    if GameInstance.dungeonManager.inDungeon then
+        self.m_originalDungeonId = self.m_dungeonId
+        PhaseManager:AddPhaseForbiddenConfig(QUICK_SELECT_FORBIDDEN_TYPE, {
+            [PhaseId.CharFormation] = {
+                forbid = false
+            },
+        })
+    end
+
+    self.m_dungeonId = ""
+
+    self.m_gameGroupIds = Tables.seasonTowerTable[self.m_system.currentSeasonId].weeks[self.m_system.currentWeekId].includeGameIdList
+
+    self.m_tabCache = UIUtils.genCellCache(self.view.dungeonTab)
+    local defaultTabIndex = 0
+    for i = 0, self.m_gameGroupIds.Count - 1 do
+        if self.m_gameGroupIds[i] == self.m_gameGroupId then
+            defaultTabIndex = i
+            break
+        end
+    end
+    self.m_tabCache:Refresh(self.m_gameGroupIds.Count, function(cell, index)
+        local csIndex = index - 1
+        local groupId = self.m_gameGroupIds[csIndex]
+        local groupData = Tables.gameMechanicGroupTable[groupId]
+        cell.nameTxt.text = groupData.gameGroupName
+        cell.toggle.onValueChanged:RemoveAllListeners()
+        cell.toggle.isOn = (csIndex == defaultTabIndex)
+        cell.toggle.onValueChanged:AddListener(function(isOn)
+            if isOn then
+                self:_OnSelectGameGroup(csIndex)
+            end
+        end)
+    end)
+
+    self.m_enterDungeonCallback = function(enterDungeonId)
+        if GameInstance.dungeonManager.inDungeon then
+            LuaSystemManager.uiRestoreSystem:ModifyRequest(self.m_originalDungeonId, enterDungeonId)
+        else
+            LuaSystemManager.uiRestoreSystem:AddRequest(enterDungeonId)
+        end
+    end
+    self.view.seasonTowerDungeonEntryInfo:InitDungeonCommonInfo({
+        enterDungeonCallback = self.m_enterDungeonCallback,
+        enterConfirmCallback = function()
+            if SeasonTowerUtils.getShouldRefresh() then
+                Notify(MessageConst.SHOW_POP_UP, {
+                    content = Language.LUA_SEASON_TOWER_UPDATE_NOTIFY,
+                    hideCancel = true,
+                    onConfirm = function()
+                        if GameInstance.dungeonManager.inDungeon then
+                            GameInstance.dungeonManager:LeaveDungeon()
+                            return
+                        end
+                        PhaseManager:GoToPhase(PhaseId.SeasonTowerMainHud)
+                    end})
+                return false
+            elseif SeasonTowerUtils.isClosed() then
+                Notify(MessageConst.SHOW_POP_UP, {
+                    content = Language.LUA_SEASON_TOWER_CLOSED_NOTIFY,
+                    hideCancel = true,
+                    onConfirm = function()
+                        if GameInstance.dungeonManager.inDungeon then
+                            GameInstance.dungeonManager:LeaveDungeon()
+                            return
+                        end
+                        PhaseManager:ExitPhaseFastTo(PhaseId.Level, true)
+                    end
+                })
+            end
+            return true
+        end,
+    })
+
+    self.view.btnClose.onClick:AddListener(function()
+        if GameInstance.dungeonManager.inDungeon then
+            LuaSystemManager.uiRestoreSystem:RemovePhaseFromRequest(self.m_originalDungeonId, PHASE_ID)
+            GameInstance.dungeonManager:LeaveDungeon()
+        end
+        PhaseManager:PopPhase(PHASE_ID)
+    end)
+
+    self.view.tipsButton.onClick:AddListener(function()
+        UIManager:Open(PanelId.InstructionBook, INSTRUCTION_BOOK_ID)
+    end)
+
+    self.view.selectBtn1.onClick:AddListener(function() self:_OnSelectBtn(1) end)
+    self.view.selectBtn2.onClick:AddListener(function() self:_OnSelectBtn(2) end)
+    self.view.selectBtn3.onClick:AddListener(function() self:_OnSelectBtn(3) end)
+
+    if DeviceInfo.usingController then
+        self.view.controllerHintPlaceholder:InitControllerHintPlaceholder({ self.view.inputGroup.groupId })
+        self.view.selectBtn1.naviGroup.onDefaultNaviFailed:AddListener(function(dir)
+            self:_OnDifficultyListNaviFailed(dir)
+        end)
+    end
+    
+    self:_OnSelectGameGroup(defaultTabIndex)
+
+    
+    self:_TryRecoverPopupState(arg and arg.popupState or nil)
+    
+    UIUtils.bindHyperlinkPopup(self, "DungeonEntry", self.view.inputGroup.groupId)
+end
+
+SeasonTowerDungeonEntryCtrl._OnDifficultyListNaviFailed = HL.Method(CS.UnityEngine.UI.NaviDirection) << function(self, dir)
+    if not DeviceInfo.usingController then
+        return
+    end
+    if dir ~= CS.UnityEngine.UI.NaviDirection.Up and dir ~= CS.UnityEngine.UI.NaviDirection.Down then
+        return
+    end
+
+    
+    local firstTarget
+    local lastTarget
+    for index = 1, 3 do
+        local target = self.view["selectBtn" .. index]
+        if target.enableControllerNavi and target:IsActive() and target:IsInteractable() then
+            firstTarget = firstTarget or target
+            lastTarget = target
+        end
+    end
+    if not firstTarget or firstTarget == lastTarget then
+        return
+    end
+
+    local currentTarget = InputManagerInst.controllerNaviManager.curTarget
+    if dir == CS.UnityEngine.UI.NaviDirection.Up and currentTarget == firstTarget then
+        self:SetNaviTarget(lastTarget)
+    elseif dir == CS.UnityEngine.UI.NaviDirection.Down and currentTarget == lastTarget then
+        self:SetNaviTarget(firstTarget)
+    end
+end
+
+SeasonTowerDungeonEntryCtrl.OnClose = HL.Override() << function(self)
+    PhaseManager:RemovePhaseForbiddenConfig(QUICK_SELECT_FORBIDDEN_TYPE)
+end
+
+SeasonTowerDungeonEntryCtrl._OnSelectGameGroup = HL.Method(HL.Number) << function(self, index)
+    self.m_gameGroupId = self.m_gameGroupIds[index]
+    local groupData = Tables.gameMechanicGroupTable[self.m_gameGroupId]
+    self.m_gameIds = {}
+    for i = 0, groupData.includeGameMechanicIds.Count - 1 do
+        table.insert(self.m_gameIds, groupData.includeGameMechanicIds[i])
+    end
+
+    local levelCfg = Tables.seasonTowerGameGroupTable[self.m_gameGroupId]
+    self.view.monsterImg:LoadSprite(UIConst.UI_SPRITE_SEASONTOWER, levelCfg.iconBanner)
+
+    self.view.nameTxt.text = groupData.gameGroupName
+    
+    local defaultIndex = 1
+    if self.m_dungeonId and not string.isEmpty(self.m_dungeonId) then
+        for i, gameId in ipairs(self.m_gameIds) do
+            if gameId == self.m_dungeonId then
+                defaultIndex = i
+                break
+            end
+        end
+    else
+        for i, gameId in ipairs(self.m_gameIds) do
+            if not DungeonUtils.isDungeonUnlock(gameId) then
+                break
+            end
+            defaultIndex = i
+        end
+    end
+    self.m_dungeonId = ""
+
+    local res, levelData = self.m_system.weekRecord.levelRecords:TryGetValue(self.m_gameGroupId)
+    self.m_starNum = levelData and levelData.starNum or 0
+    self.view.starList:InitStarGroupWithState(3, self.m_starNum,
+        levelData.completeTask and "03" or "02", "01")
+
+    self:_SelectGame(defaultIndex)
+    
+    if DeviceInfo.usingController then
+        self:SetNaviTarget(self.view[("selectBtn" .. self.m_selectedIndex)])
+    end
+end
+
+SeasonTowerDungeonEntryCtrl._OnSelectBtn = HL.Method(HL.Number) << function(self, index)
+    if index == self.m_selectedIndex then
+        return
+    end
+    if index > #self.m_gameIds then
+        return
+    end
+    self:_SelectGame(index)
+end
+
+SeasonTowerDungeonEntryCtrl._SelectGame = HL.Method(HL.Number) << function(self, index)
+    if index < 1 or index > #self.m_gameIds then
+        return
+    end
+
+    self.m_selectedIndex = index
+    self:_RefreshSelectBtns()
+
+    local gameId = self.m_gameIds[index]
+    self.view.seasonTowerDungeonEntryInfo:RefreshDungeonInfo(gameId)
+
+    local res, achieveInfo = self.m_system.levelAchieve:TryGetValue(self.m_gameGroupId)
+    if res and achieveInfo.rewardedStarNum >= index then
+        self.view.rewardTipsNode.gameObject:SetActive(true)
+        self.view.rewardTipsNode:SetState(MEDAL_STATES[index])
+    else
+        self.view.rewardTipsNode.gameObject:SetActive(false)
+    end
+end
+
+SeasonTowerDungeonEntryCtrl._RefreshSelectBtns = HL.Method() << function(self)
+    local btnList = { self.view.selectBtn1, self.view.selectBtn2, self.view.selectBtn3 }
+    local stateList = { self.view.selectBtnState1, self.view.selectBtnState2, self.view.selectBtnState3 }
+
+    for i = 1, 3 do
+        local gameId = self.m_gameIds[i]
+        if gameId then
+            btnList[i].gameObject:SetActive(true)
+            local isUnlock = DungeonUtils.isDungeonUnlock(gameId)
+            local isPassed = (i <= self.m_starNum)
+            if not isUnlock then
+                stateList[i]:SetState("Lock")
+            elseif isPassed then
+                stateList[i]:SetState("Done")
+            else
+                stateList[i]:SetState("Nrl")
+            end
+            if i == self.m_selectedIndex then
+                stateList[i]:SetState("Select")
+            else
+                stateList[i]:SetState("Unselect")
+            end
+        else
+            btnList[i].gameObject:SetActive(false)
+        end
+    end
+end
+
+SeasonTowerDungeonEntryCtrl.GetCurPhaseStateArg = HL.Override().Return(HL.Any) << function(self)
+    return {
+        levelId = self.m_gameGroupId,
+        dungeonId = self.m_gameIds[self.m_selectedIndex],
+        popupState = self:_GetRecoverPopupStateArg(),
+    }
+end
+
+
+SeasonTowerDungeonEntryCtrl._GetRecoverPopupStateArg = HL.Method().Return(HL.Opt(HL.Any)) << function(self)
+    if PhaseManager:GetTopPhaseId() ~= PHASE_ID then
+        return
+    end
+    
+    local commonInfoPopupState = self.view.seasonTowerDungeonEntryInfo:GetRecoverPopupStateArg()
+    if commonInfoPopupState ~= nil then
+        return commonInfoPopupState
+    end
+    
+    local isOpen, instructionCtrl = UIManager:IsOpen(PanelId.InstructionBook)
+    if isOpen and instructionCtrl.id == INSTRUCTION_BOOK_ID then
+        return {
+            popupType = INSTRUCTION_BOOK_POPUP_TYPE,
+        }
+    end
+end
+
+SeasonTowerDungeonEntryCtrl._TryRecoverPopupState = HL.Method(HL.Opt(HL.Any)) << function(self, popupState)
+    if popupState == nil or string.isEmpty(popupState.popupType) then
+        return
+    end
+    if popupState.popupType == INSTRUCTION_BOOK_POPUP_TYPE then
+        local isOpen, instructionCtrl = UIManager:IsOpen(PanelId.InstructionBook)
+        if isOpen and instructionCtrl.id == INSTRUCTION_BOOK_ID then
+            return
+        end
+        UIManager:Open(PanelId.InstructionBook, INSTRUCTION_BOOK_ID)
+        return
+    end
+    
+    self.view.seasonTowerDungeonEntryInfo:TryRecoverPopupState(popupState)
+end
+
+HL.Commit(SeasonTowerDungeonEntryCtrl)

@@ -1,0 +1,219 @@
+
+local uiCtrl = require_ex('UI/Panels/Base/UICtrl')
+local PANEL_ID = PanelId.BombAim
+local THROW_REQUEST_KEEP_TIME = 0.5
+BombAimCtrl = HL.Class('BombAimCtrl', uiCtrl.UICtrl)
+
+BombAimCtrl.m_isInitAim = HL.Field(HL.Boolean) << false
+
+BombAimCtrl.m_isHit = HL.Field(HL.Boolean) << false
+
+BombAimCtrl.m_controllerTriggerSettingHandlerId = HL.Field(HL.Number) << -1
+
+BombAimCtrl.m_isControllerTriggerUsingVibration = HL.Field(HL.Boolean) << false
+
+BombAimCtrl.m_throwRequestTime = HL.Field(HL.Number) << -1
+
+
+
+
+
+
+BombAimCtrl.s_messages = HL.StaticField(HL.Table) << {
+    [MessageConst.ON_SYNC_AIM_POS] = '_OnSyncAimPos',
+    [MessageConst.HIDE_BOMB_AIM] = '_OnHideBombAim',
+    [MessageConst.ON_CHANGE_INPUT_DEVICE_TYPE_FINISHED] = '_OnChangeInputDeviceTypeFinished',
+}
+
+
+BombAimCtrl.OnCreate = HL.Override(HL.Any) << function(self, arg)
+    self:BindInputPlayerAction("common_cancel_alter", function()
+        self:_TryCancel()
+    end)
+
+    self:BindInputPlayerAction("battle_throw_mode_throw_show_only", function()
+        self:_OnThrowInput()
+    end)
+
+    self.view.closeBtn.onClick:AddListener(function()
+        self:_TryCancel()
+    end)
+end
+
+BombAimCtrl.OnShow = HL.Override() << function(self)
+    if DeviceInfo.usingController then
+        self:_ToggleControllerTriggerSetting(true)
+    end
+end
+
+BombAimCtrl.OnHide = HL.Override() << function(self)
+    if DeviceInfo.usingController then
+        self:_ToggleControllerTriggerSetting(false)
+    end
+end
+
+BombAimCtrl._OnShowBombAim = HL.StaticMethod() << function()
+    local bombAimPanel = UIManager:AutoOpen(PANEL_ID)
+    bombAimPanel.m_isInitAim = false;
+    bombAimPanel.m_throwRequestTime = -1
+    bombAimPanel.view.animationWrapper:PlayWithTween("bombaimfar_in")
+    Notify(MessageConst.GENERAL_ABILITY_CHANGE_KEY_BINDING, {true, "Bomb"})
+    if DeviceInfo.usingController then
+        bombAimPanel:_ToggleControllerTriggerSetting(true)
+    end
+end
+
+BombAimCtrl._OnHideBombAim = HL.Method() << function(self)
+    self:Hide()
+    self.m_isHit = false
+    self.m_throwRequestTime = -1
+    Notify(MessageConst.GENERAL_ABILITY_CHANGE_KEY_BINDING, {false, "Bomb"})
+    self:_ToggleControllerTriggerSetting(false)
+    
+    UIManager:ShowWithKey(PanelId.BattleAction, "Bomb")
+    
+    GameInstance.player.forbidSystem:SetForbid(ForbidType.ForbidMainHudTopBtns, "Bomb", false)
+end
+
+BombAimCtrl._OnSyncAimPos = HL.Method(HL.Any) << function(self, args)
+    local pos, isHit = unpack(args)
+    if isHit ~= self.m_isHit or self.m_isInitAim == false then
+        self.m_isInitAim = true;
+        self.m_isHit = isHit
+        if self.m_isHit then
+            self.view.animationWrapper:PlayWithTween("bombaimfar_change", function()
+                self.view.animationWrapper:PlayWithTween("bombaim_loop")
+            end)
+        else
+            self.view.animationWrapper:PlayWithTween("bombaim_change", function()
+                self.view.animationWrapper:PlayWithTween("bombaimfar_loop")
+            end)
+        end
+    end
+    local uiPos = UIUtils.objectPosToUI(pos, self.uiCamera, self.view.transform)
+    self.view.aimImage.anchoredPosition = uiPos
+    self.view.aimImageFar.anchoredPosition = uiPos
+end
+
+BombAimCtrl._ToggleControllerTriggerSetting = HL.Method(HL.Boolean, HL.Opt(HL.Boolean)) << function(self, active)
+    local oldHandlerId = self.m_controllerTriggerSettingHandlerId
+    self.m_isControllerTriggerUsingVibration = active
+    if active then
+        local cmd = CS.Plugins.LibScePad.TriggerEffectCommandUnion()
+        cmd.mask = CS.Plugins.LibScePad.TriggerMask.R2
+        cmd.mode = CS.Plugins.LibScePad.ScePadTriggerEffectMode.SCE_PAD_TRIGGER_EFFECT_MODE_MULTIPLE_POSITION_FEEDBACK
+        local vibration = CS.Plugins.LibScePad.TriggerMultiPositionFeedbackEffect()
+        vibration.strength0 = 6
+        vibration.strength1 = 7
+        vibration.strength2 = 8
+        vibration.strength3 = 6
+        vibration.strength4 = 3
+        vibration.strength5 = 2
+        vibration.strength6 = 1
+        vibration.strength7 = 1
+        vibration.strength8 = 0
+        vibration.strength9 = 0
+        cmd.multiPositionFeedback = vibration
+        self.m_controllerTriggerSettingHandlerId = GameInstance.audioManager.gamePad.scePad:SetTriggerEffect(cmd)
+    else
+        self.m_controllerTriggerSettingHandlerId = -1
+    end
+    
+    if oldHandlerId >= 0 then
+        GameInstance.audioManager.gamePad.scePad:EndTriggerEffect(oldHandlerId)
+    end
+end
+
+BombAimCtrl._OnChangeInputDeviceTypeFinished = HL.Method(HL.Table) << function(self, args)
+    if self.m_isClosed then
+        return
+    end
+
+    if not self:IsShow() then
+        return
+    end
+
+    Notify(MessageConst.GENERAL_ABILITY_CHANGE_KEY_BINDING, {true, "Bomb"})
+
+    local inputType = args.inputType
+    if inputType == DeviceInfo.InputType.Controller then
+        self:_ToggleControllerTriggerSetting(true)
+        UIManager:HideWithKey(PanelId.BattleAction, "Bomb")
+        GameInstance.player.forbidSystem:SetForbid(ForbidType.ForbidMainHudTopBtns, "Bomb", true)
+    else
+        self:_ToggleControllerTriggerSetting(false)
+        UIManager:ShowWithKey(PanelId.BattleAction, "Bomb")
+        GameInstance.player.forbidSystem:SetForbid(ForbidType.ForbidMainHudTopBtns, "Bomb", false)
+    end
+end
+
+BombAimCtrl._OnThrowInput = HL.Method() << function(self)
+    if not GameWorld.battle.inThrowMode or InputManager.cursorVisible then
+        return
+    end
+    local mainCharacter = GameInstance.playerController.mainCharacter
+    if mainCharacter == nil then
+        return
+    end
+    local instigatorCtrl = mainCharacter.interactiveInstigatorCtrl
+    if instigatorCtrl == nil or not instigatorCtrl.isPicking then
+        return
+    end
+    self.m_throwRequestTime = Time.unscaledTime
+    instigatorCtrl:CastThrowSkill()
+end
+
+BombAimCtrl._IsThrowRequestPending = HL.Method().Return(HL.Boolean) << function(self)
+    if self.m_throwRequestTime < 0 then
+        return false
+    end
+    return Time.unscaledTime - self.m_throwRequestTime < THROW_REQUEST_KEEP_TIME
+end
+
+BombAimCtrl._IsCastingThrowSkill = HL.Method().Return(HL.Boolean) << function(self)
+    local mainCharacter = GameInstance.playerController.mainCharacter
+    if mainCharacter == nil then
+        return false
+    end
+    local instigatorCtrl = mainCharacter.interactiveInstigatorCtrl
+    if instigatorCtrl == nil or mainCharacter.abilityCom == nil then
+        return false
+    end
+    local curSkill = mainCharacter.abilityCom.curSkill
+    if curSkill == nil then
+        return false
+    end
+    local throwSkillId = instigatorCtrl.throwData.skillId
+    if throwSkillId == nil or throwSkillId == "" then
+        return false
+    end
+    return curSkill.skillId == throwSkillId
+end
+
+BombAimCtrl._TryCancel = HL.Method() << function(self)
+    if self:_IsThrowRequestPending() or self:_IsCastingThrowSkill() then
+        return
+    end
+    self:_OnCancel()
+end
+
+BombAimCtrl._OnCancel = HL.Method() << function(self)
+    if GameInstance.playerController.mainCharacter == nil then
+        return
+    end
+    self:_ToggleControllerTriggerSetting(false)
+    GameInstance.playerController.mainCharacter.interactiveInstigatorCtrl:ClearPickupItem()
+end
+
+BombAimCtrl.OnClose = HL.Override() << function(self)
+    self:_ToggleControllerTriggerSetting(false)
+    self:_OnCancel()
+    
+    Notify(MessageConst.GENERAL_ABILITY_CHANGE_KEY_BINDING, {false, "Bomb"})
+    
+    UIManager:ShowWithKey(PanelId.BattleAction, "Bomb")
+    
+    GameInstance.player.forbidSystem:SetForbid(ForbidType.ForbidMainHudTopBtns, "Bomb", false)
+end
+
+HL.Commit(BombAimCtrl)
