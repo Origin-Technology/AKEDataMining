@@ -10,6 +10,7 @@
     "blinkInMainCharHpBar": false,
     "showProgressInEnemyHeadBar": false,
     "showProgressInHpBar": false,
+    "showStackCountInMainCharHpBar": false,
     "showProgressInNormalSkillButton": false,
     "useWeakProgressInNormalSkillButton": false,
     "showProgressInUltimateSkillButton": false,
@@ -46,6 +47,7 @@
   "healModifier": [],
   "poiseModifier": [],
   "globalModifier": [],
+  "atbGainModifier": [],
   "shieldConfigs": [],
   "applyTags": [],
   "tagsAfterTriggerExtendBuffAction": [],
@@ -138,7 +140,8 @@
                     "selectorOwnerContextKey": "",
                     "selectorData": {
                       "finderData": {
-                        "$type": "Beyond.Gameplay.Core.Selector+AllEnemyFinder+Data, Gameplay.Beyond"
+                        "$type": "Beyond.Gameplay.Core.Selector+AllEnemyFinder+Data, Gameplay.Beyond",
+                        "includeIndividualParts": false
                       },
                       "validatorData": [
                         {
@@ -218,7 +221,8 @@
                     "selectorOwnerContextKey": "",
                     "selectorData": {
                       "finderData": {
-                        "$type": "Beyond.Gameplay.Core.Selector+AllEnemyFinder+Data, Gameplay.Beyond"
+                        "$type": "Beyond.Gameplay.Core.Selector+AllEnemyFinder+Data, Gameplay.Beyond",
+                        "includeIndividualParts": false
                       },
                       "validatorData": [
                         {
@@ -1456,11 +1460,29 @@
               "failActions": {
                 "actionData": [
                   {
-                    "$type": "Beyond.Gameplay.Core.FindTargetAction+FindTargetActionData, Gameplay.Beyond",
+                    "$type": "Beyond.Gameplay.Core.CompareFloat+Data, Gameplay.Beyond",
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
                     "serverActionIndex": 28,
+                    "valueA": {
+                      "useBlackboardKey": true,
+                      "value": 0.0,
+                      "blackboardKey": "EntityBB_soulback"
+                    },
+                    "compare": "Equals",
+                    "valueB": {
+                      "useBlackboardKey": false,
+                      "value": 0.0,
+                      "blackboardKey": ""
+                    }
+                  },
+                  {
+                    "$type": "Beyond.Gameplay.Core.FindTargetAction+FindTargetActionData, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 29,
                     "targetGroupKey": "soul_display",
                     "center": "ActionSource",
                     "centerContextKey": "",
@@ -1507,7 +1529,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 29,
+                    "serverActionIndex": 30,
                     "projectileId": "projectile_chr_0036_jsspsi_normal_skill_inkboom",
                     "projectileSource": {
                       "targetSource": "Owner",
@@ -1630,6 +1652,9 @@
                     },
                     "overrideHitBone": true,
                     "hitMountPoint": "VBHit",
+                    "useWeaponHitMp": false,
+                    "hitWeaponIndex": 0,
+                    "hitWeaponMp": "Root",
                     "hitBoneOffsetForward": "TargetForward",
                     "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
                     "hitBoneFixedOffset": {
@@ -1687,7 +1712,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 30,
+                    "serverActionIndex": 31,
                     "targetSettings": {
                       "targetSource": "Context",
                       "targetGroupKey": "soul_display",
@@ -1724,7 +1749,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 31,
+                    "serverActionIndex": 32,
                     "owner": {
                       "targetSource": "Context",
                       "targetGroupKey": "soul_display",
@@ -1757,7 +1782,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 32,
+                    "serverActionIndex": 33,
                     "key": "EntityBB_normal_skill_id",
                     "operation": "Assign",
                     "directValue": true,
@@ -1810,7 +1835,7 @@
               "isEnable": false,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 33,
+              "serverActionIndex": 34,
               "key": "EntityBB_normal_skill_id",
               "operation": "Assign",
               "directValue": true,

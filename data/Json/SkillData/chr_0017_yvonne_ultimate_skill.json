@@ -69,7 +69,11 @@
   "overrideHittableObjAttackRange": false,
   "hittableAttackRange": 0.0,
   "skillTags": {
-    "predefinedTag": []
+    "predefinedTag": [
+      {
+        "tagId": -1574541266
+      }
+    ]
   },
   "tagDuringAttach": {
     "predefinedTag": []
@@ -284,6 +288,7 @@
                   "targetContextKey": ""
                 }
               ],
+              "countAsControlled": false,
               "useTimeScaleForSkillCdTick": false,
               "influenceSkillCdTime": {
                 "useBlackboardKey": false,
@@ -827,7 +832,55 @@
                     "affectedByTimeScale": false,
                     "checkCollisionOnEnd": false,
                     "checkCollisionTime": -1.0,
-                    "endByInput": false
+                    "endByInput": false,
+                    "useControllerLifetimeImpulse": false,
+                    "controllerLifetimeImpulseDefinition": {
+                      "cameraShake2D": true,
+                      "impulseChannel": 1,
+                      "impulseType": "Legacy",
+                      "impulseShape": "Custom",
+                      "customImpulseShape": [],
+                      "impulseDuration": 0.2,
+                      "rawSignalPath": "",
+                      "amplitudeGain": 1.0,
+                      "frequencyGain": 1.0,
+                      "repeatMode": "Loop",
+                      "randomize": true,
+                      "timeEnvelope": {
+                        "m_AttackShape": [],
+                        "m_DecayShape": [
+                          {
+                            "time": 0.0,
+                            "value": 1.0,
+                            "inTangent": 0.0,
+                            "outTangent": 0.0,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          },
+                          {
+                            "time": 1.0,
+                            "value": 0.0,
+                            "inTangent": 0.0,
+                            "outTangent": 0.0,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          }
+                        ],
+                        "m_AttackTime": 0.0,
+                        "m_SustainTime": 0.2,
+                        "m_DecayTime": 0.7,
+                        "m_ScaleWithImpact": false,
+                        "m_HoldForever": false
+                      },
+                      "dissipationDistance": 100.0,
+                      "dissipationRate": 0.0,
+                      "impactRadius": 100.0,
+                      "directionMode": "Fixed",
+                      "dissipationMode": "ExponentialDecay",
+                      "propagationSpeed": 343.0
+                    }
                   },
                   {
                     "$type": "Beyond.Gameplay.Core.EffectAction+EffectActionData, Gameplay.Beyond",
@@ -913,6 +966,7 @@
                     },
                     "isMainCharacterActive": false,
                     "isTargetMainCharacterActive": false,
+                    "stopPostProcessWhenHidden": false,
                     "isShowBigEffect": false,
                     "bigEffectName": "",
                     "bigEffectTarget": {
@@ -1500,62 +1554,6 @@
       },
       {
         "_startFrame": 0,
-        "_endFrame": 61,
-        "_sequenceActionData": {
-          "actionData": [
-            {
-              "$type": "Beyond.Gameplay.Core.RefrainObtainUsp+Data, Gameplay.Beyond",
-              "isEnable": true,
-              "priorityLevel": "Default",
-              "priorityOffset": 0,
-              "serverActionIndex": 21,
-              "targetSettings": {
-                "targetSource": "Source",
-                "targetGroupKey": "",
-                "selectorOwner": "ActionOwner",
-                "ownerContextKey": "",
-                "centerType": "ActionSource",
-                "centerContextKey": "",
-                "centerToGround": false,
-                "selectorData": {
-                  "validatorData": [],
-                  "postProcessorData": []
-                },
-                "enableAdvancedDirection": false,
-                "advancedDirection": {
-                  "directionType": "SourceForward",
-                  "sourceMountPoint": "None",
-                  "targetMountPoint": "None",
-                  "customSourceAndTarget": false,
-                  "clampToXZ": true,
-                  "invertDirection": false
-                },
-                "selectorDirection": "SourceForward",
-                "target": "ActionSource",
-                "targetContextKey": ""
-              },
-              "refrainObtainUspTags": {
-                "predefinedTag": [
-                  {
-                    "tagId": 669811152
-                  }
-                ]
-              },
-              "clearUspOnEnd": false
-            }
-          ],
-          "onlyExecuteWhenSourceIsMainChar": false,
-          "onlyExecuteWhenSourceIsGuard": false
-        },
-        "forceSyncAnimData": {
-          "forceSync": false,
-          "montageName": "",
-          "targetFrame": 0,
-          "playbackSpeed": 0.0
-        }
-      },
-      {
-        "_startFrame": 0,
         "_endFrame": 57,
         "_sequenceActionData": {
           "actionData": [
@@ -1564,7 +1562,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 22,
+              "serverActionIndex": 21,
               "conditionAction": {
                 "actionData": [
                   {
@@ -1572,7 +1570,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 23,
+                    "serverActionIndex": 22,
                     "checkTarget": {
                       "targetSource": "Owner",
                       "targetGroupKey": "",
@@ -1615,7 +1613,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 24,
+                    "serverActionIndex": 23,
                     "cameraAnimKey": "UltimateSkillCamera",
                     "duration": 2.033,
                     "horizontalInheritType": "PreviousLevelCamera",
@@ -1635,14 +1633,62 @@
                     "affectedByTimeScale": false,
                     "checkCollisionOnEnd": false,
                     "checkCollisionTime": -1.0,
-                    "endByInput": false
+                    "endByInput": false,
+                    "useControllerLifetimeImpulse": false,
+                    "controllerLifetimeImpulseDefinition": {
+                      "cameraShake2D": true,
+                      "impulseChannel": 1,
+                      "impulseType": "Legacy",
+                      "impulseShape": "Custom",
+                      "customImpulseShape": [],
+                      "impulseDuration": 0.2,
+                      "rawSignalPath": "",
+                      "amplitudeGain": 1.0,
+                      "frequencyGain": 1.0,
+                      "repeatMode": "Loop",
+                      "randomize": true,
+                      "timeEnvelope": {
+                        "m_AttackShape": [],
+                        "m_DecayShape": [
+                          {
+                            "time": 0.0,
+                            "value": 1.0,
+                            "inTangent": 0.0,
+                            "outTangent": 0.0,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          },
+                          {
+                            "time": 1.0,
+                            "value": 0.0,
+                            "inTangent": 0.0,
+                            "outTangent": 0.0,
+                            "inWeight": 0.0,
+                            "outWeight": 0.0,
+                            "weightedMode": 0
+                          }
+                        ],
+                        "m_AttackTime": 0.0,
+                        "m_SustainTime": 0.2,
+                        "m_DecayTime": 0.7,
+                        "m_ScaleWithImpact": false,
+                        "m_HoldForever": false
+                      },
+                      "dissipationDistance": 100.0,
+                      "dissipationRate": 0.0,
+                      "impactRadius": 100.0,
+                      "directionMode": "Fixed",
+                      "dissipationMode": "ExponentialDecay",
+                      "propagationSpeed": 343.0
+                    }
                   },
                   {
                     "$type": "Beyond.Gameplay.Core.EffectAction+EffectActionData, Gameplay.Beyond",
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 25,
+                    "serverActionIndex": 24,
                     "targetSettings": {
                       "targetSource": "Source",
                       "targetGroupKey": "",
@@ -1721,6 +1767,7 @@
                     },
                     "isMainCharacterActive": false,
                     "isTargetMainCharacterActive": false,
+                    "stopPostProcessWhenHidden": false,
                     "isShowBigEffect": false,
                     "bigEffectName": "",
                     "bigEffectTarget": {
@@ -1933,6 +1980,62 @@
       },
       {
         "_startFrame": 0,
+        "_endFrame": 61,
+        "_sequenceActionData": {
+          "actionData": [
+            {
+              "$type": "Beyond.Gameplay.Core.RefrainObtainUsp+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 25,
+              "targetSettings": {
+                "targetSource": "Source",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "refrainObtainUspTags": {
+                "predefinedTag": [
+                  {
+                    "tagId": 669811152
+                  }
+                ]
+              },
+              "clearUspOnEnd": false
+            }
+          ],
+          "onlyExecuteWhenSourceIsMainChar": false,
+          "onlyExecuteWhenSourceIsGuard": false
+        },
+        "forceSyncAnimData": {
+          "forceSync": false,
+          "montageName": "",
+          "targetFrame": 0,
+          "playbackSpeed": 0.0
+        }
+      },
+      {
+        "_startFrame": 0,
         "_endFrame": 3,
         "_sequenceActionData": {
           "actionData": [
@@ -2010,6 +2113,8 @@
                 "y": 0.5999601,
                 "z": -0.1865895
               },
+              "useBornPosOffsetDirection": false,
+              "bornPosOffsetDirection": "TargetForward",
               "checkNavmeshAreaName": false,
               "forbiddenAreaNames": [],
               "attachToClosestMeshPoint": false,
@@ -2050,6 +2155,7 @@
               "inheritSourceSkillCastId": true,
               "dieWhenSourceDie": false,
               "dieWhenTargetDie": false,
+              "inheritSourceTimeScale": false,
               "forceSyncInit": false,
               "dieOnEnd": false,
               "attachWeaponModel": false,
@@ -2130,6 +2236,8 @@
                 "y": 0.549356,
                 "z": -1.078521
               },
+              "useBornPosOffsetDirection": false,
+              "bornPosOffsetDirection": "TargetForward",
               "checkNavmeshAreaName": false,
               "forbiddenAreaNames": [],
               "attachToClosestMeshPoint": false,
@@ -2170,6 +2278,7 @@
               "inheritSourceSkillCastId": true,
               "dieWhenSourceDie": false,
               "dieWhenTargetDie": false,
+              "inheritSourceTimeScale": false,
               "forceSyncInit": false,
               "dieOnEnd": false,
               "attachWeaponModel": false,
@@ -2250,6 +2359,8 @@
                 "y": 0.5000816,
                 "z": -0.8414581
               },
+              "useBornPosOffsetDirection": false,
+              "bornPosOffsetDirection": "TargetForward",
               "checkNavmeshAreaName": false,
               "forbiddenAreaNames": [],
               "attachToClosestMeshPoint": false,
@@ -2290,6 +2401,7 @@
               "inheritSourceSkillCastId": true,
               "dieWhenSourceDie": false,
               "dieWhenTargetDie": false,
+              "inheritSourceTimeScale": false,
               "forceSyncInit": false,
               "dieOnEnd": false,
               "attachWeaponModel": false,
@@ -2593,6 +2705,7 @@
               },
               "isMainCharacterActive": false,
               "isTargetMainCharacterActive": false,
+              "stopPostProcessWhenHidden": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
               "bigEffectTarget": {
@@ -2886,6 +2999,7 @@
               },
               "isMainCharacterActive": false,
               "isTargetMainCharacterActive": false,
+              "stopPostProcessWhenHidden": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
               "bigEffectTarget": {
@@ -3179,6 +3293,7 @@
               },
               "isMainCharacterActive": false,
               "isTargetMainCharacterActive": false,
+              "stopPostProcessWhenHidden": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
               "bigEffectTarget": {
@@ -3472,6 +3587,7 @@
               },
               "isMainCharacterActive": false,
               "isTargetMainCharacterActive": false,
+              "stopPostProcessWhenHidden": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
               "bigEffectTarget": {
@@ -3765,6 +3881,7 @@
               },
               "isMainCharacterActive": false,
               "isTargetMainCharacterActive": false,
+              "stopPostProcessWhenHidden": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
               "bigEffectTarget": {
@@ -4187,41 +4304,6 @@
     ],
     "passiveEventActions": []
   },
-  "uiRangeHints": [
-    {
-      "targetFaction": "Bad",
-      "selectAll": false,
-      "shapeData": {
-        "shape": "Sector",
-        "fixedExtent": false,
-        "centerBaseIsEndPoint": false,
-        "restrictEndPointInRange": false,
-        "useCenterOffsetKey": false,
-        "centerOffset": {
-          "x": 0.0,
-          "y": 0.0
-        },
-        "centerOffsetXKey": "",
-        "centerOffsetZKey": "",
-        "useExtentKey": false,
-        "extent": {
-          "x": 0.0,
-          "y": 0.0
-        },
-        "extentXKey": "",
-        "extentZKey": "",
-        "useWidthKey": false,
-        "width": 0.0,
-        "widthKey": "",
-        "useRadiusKey": true,
-        "radius": 0.0,
-        "radiusKey": "radius",
-        "useAngleKey": true,
-        "angle": 0.0,
-        "angleKey": "angle"
-      }
-    }
-  ],
   "buffs": [],
   "toggleBuffs": [],
   "cardAttributeModifier": {

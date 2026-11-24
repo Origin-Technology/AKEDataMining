@@ -10,6 +10,7 @@
     "blinkInMainCharHpBar": false,
     "showProgressInEnemyHeadBar": false,
     "showProgressInHpBar": false,
+    "showStackCountInMainCharHpBar": false,
     "showProgressInNormalSkillButton": false,
     "useWeakProgressInNormalSkillButton": false,
     "showProgressInUltimateSkillButton": false,
@@ -46,6 +47,7 @@
   "healModifier": [],
   "poiseModifier": [],
   "globalModifier": [],
+  "atbGainModifier": [],
   "shieldConfigs": [],
   "applyTags": [
     {
@@ -521,6 +523,7 @@
               },
               "isMainCharacterActive": false,
               "isTargetMainCharacterActive": false,
+              "stopPostProcessWhenHidden": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
               "bigEffectTarget": {
@@ -1100,6 +1103,9 @@
               },
               "overrideHitBone": false,
               "hitMountPoint": "VBHit",
+              "useWeaponHitMp": false,
+              "hitWeaponIndex": 0,
+              "hitWeaponMp": "Root",
               "hitBoneOffsetForward": "TargetForward",
               "hitBoneProjectileOffsetDirectionMode": "FixedAtLaunch",
               "hitBoneFixedOffset": {
@@ -1288,6 +1294,7 @@
               },
               "isMainCharacterActive": false,
               "isTargetMainCharacterActive": false,
+              "stopPostProcessWhenHidden": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
               "bigEffectTarget": {
@@ -1565,6 +1572,7 @@
               },
               "isMainCharacterActive": false,
               "isTargetMainCharacterActive": false,
+              "stopPostProcessWhenHidden": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
               "bigEffectTarget": {
@@ -2380,6 +2388,7 @@
                           },
                           "isMainCharacterActive": false,
                           "isTargetMainCharacterActive": false,
+                          "stopPostProcessWhenHidden": false,
                           "isShowBigEffect": false,
                           "bigEffectName": "",
                           "bigEffectTarget": {
@@ -2855,7 +2864,8 @@
                 "target": "ActionSource",
                 "targetContextKey": ""
               },
-              "objectTypeMask": "Character"
+              "objectTypeMask": "Character",
+              "treatPartAsOriginalType": false
             },
             {
               "$type": "Beyond.Gameplay.Core.SaveDamageContext+Data, Gameplay.Beyond",
@@ -3043,6 +3053,7 @@
               },
               "isMainCharacterActive": false,
               "isTargetMainCharacterActive": false,
+              "stopPostProcessWhenHidden": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
               "bigEffectTarget": {
@@ -3320,6 +3331,7 @@
               },
               "isMainCharacterActive": false,
               "isTargetMainCharacterActive": false,
+              "stopPostProcessWhenHidden": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
               "bigEffectTarget": {
@@ -3597,6 +3609,7 @@
               },
               "isMainCharacterActive": false,
               "isTargetMainCharacterActive": false,
+              "stopPostProcessWhenHidden": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
               "bigEffectTarget": {
@@ -4632,7 +4645,8 @@
                       "centerToGround": false,
                       "selectorData": {
                         "finderData": {
-                          "$type": "Beyond.Gameplay.Core.Selector+AllEnemyFinder+Data, Gameplay.Beyond"
+                          "$type": "Beyond.Gameplay.Core.Selector+AllEnemyFinder+Data, Gameplay.Beyond",
+                          "includeIndividualParts": false
                         },
                         "validatorData": [],
                         "postProcessorData": []
@@ -4681,6 +4695,8 @@
                       "y": 0.0,
                       "z": 0.0
                     },
+                    "useBornPosOffsetDirection": false,
+                    "bornPosOffsetDirection": "TargetForward",
                     "checkNavmeshAreaName": false,
                     "forbiddenAreaNames": [],
                     "attachToClosestMeshPoint": false,
@@ -4738,6 +4754,7 @@
                     "inheritSourceSkillCastId": true,
                     "dieWhenSourceDie": false,
                     "dieWhenTargetDie": false,
+                    "inheritSourceTimeScale": false,
                     "forceSyncInit": true,
                     "dieOnEnd": false,
                     "attachWeaponModel": false,
@@ -5479,7 +5496,8 @@
                       "target": "ActionSource",
                       "targetContextKey": ""
                     },
-                    "objectTypeMask": "Character"
+                    "objectTypeMask": "Character",
+                    "treatPartAsOriginalType": false
                   }
                 ],
                 "onlyExecuteWhenSourceIsMainChar": false,
@@ -5595,6 +5613,65 @@
           "onlyExecuteWhenSourceIsGuard": false
         }
       ]
+    },
+    {
+      "abilityEvent": "OnBeforeSetHpDirectly",
+      "actions": [
+        {
+          "actionData": [
+            {
+              "$type": "Beyond.Gameplay.Core.ModifyDynamicBlackboard+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 94,
+              "key": "kill_damage",
+              "operation": "Assign",
+              "directValue": true,
+              "value": {
+                "useBlackboardKey": false,
+                "value": 0.0,
+                "blackboardKey": ""
+              },
+              "calculationTarget": {
+                "targetSource": "Owner",
+                "targetGroupKey": "",
+                "selectorOwner": "ActionOwner",
+                "ownerContextKey": "",
+                "centerType": "ActionSource",
+                "centerContextKey": "",
+                "centerToGround": false,
+                "selectorData": {
+                  "validatorData": [],
+                  "postProcessorData": []
+                },
+                "enableAdvancedDirection": false,
+                "advancedDirection": {
+                  "directionType": "SourceForward",
+                  "sourceMountPoint": "None",
+                  "targetMountPoint": "None",
+                  "customSourceAndTarget": false,
+                  "clampToXZ": true,
+                  "invertDirection": false
+                },
+                "selectorDirection": "SourceForward",
+                "target": "ActionSource",
+                "targetContextKey": ""
+              },
+              "calculateType": "HpRatio"
+            },
+            {
+              "$type": "Beyond.Gameplay.Core.RefreshBuffAttrModifierValue+Data, Gameplay.Beyond",
+              "isEnable": true,
+              "priorityLevel": "Default",
+              "priorityOffset": 0,
+              "serverActionIndex": 95
+            }
+          ],
+          "onlyExecuteWhenSourceIsMainChar": false,
+          "onlyExecuteWhenSourceIsGuard": false
+        }
+      ]
     }
   ],
   "igniteEventAction": [],
@@ -5609,7 +5686,7 @@
             "isEnable": false,
             "priorityLevel": "Default",
             "priorityOffset": 0,
-            "serverActionIndex": 94,
+            "serverActionIndex": 96,
             "targetSettings": {
               "targetSource": "Owner",
               "targetGroupKey": "",
@@ -5688,6 +5765,7 @@
             },
             "isMainCharacterActive": false,
             "isTargetMainCharacterActive": false,
+            "stopPostProcessWhenHidden": false,
             "isShowBigEffect": false,
             "bigEffectName": "",
             "bigEffectTarget": {
@@ -5886,7 +5964,7 @@
             "isEnable": true,
             "priorityLevel": "Default",
             "priorityOffset": 0,
-            "serverActionIndex": 95,
+            "serverActionIndex": 97,
             "targetSettings": {
               "targetSource": "Owner",
               "targetGroupKey": "",
@@ -5965,6 +6043,7 @@
             },
             "isMainCharacterActive": false,
             "isTargetMainCharacterActive": false,
+            "stopPostProcessWhenHidden": false,
             "isShowBigEffect": false,
             "bigEffectName": "",
             "bigEffectTarget": {
@@ -6163,7 +6242,7 @@
             "isEnable": false,
             "priorityLevel": "Default",
             "priorityOffset": 0,
-            "serverActionIndex": 96,
+            "serverActionIndex": 98,
             "targetSettings": {
               "targetSource": "Owner",
               "targetGroupKey": "",
@@ -6242,6 +6321,7 @@
             },
             "isMainCharacterActive": false,
             "isTargetMainCharacterActive": false,
+            "stopPostProcessWhenHidden": false,
             "isShowBigEffect": false,
             "bigEffectName": "",
             "bigEffectTarget": {

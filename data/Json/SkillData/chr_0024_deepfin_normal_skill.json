@@ -751,6 +751,7 @@
                           },
                           "isMainCharacterActive": false,
                           "isTargetMainCharacterActive": false,
+                          "stopPostProcessWhenHidden": false,
                           "isShowBigEffect": false,
                           "bigEffectName": "",
                           "bigEffectTarget": {
@@ -3614,11 +3615,60 @@
               "actionOnTick": {
                 "actionData": [
                   {
-                    "$type": "Beyond.Gameplay.Core.DamageAction+DamageActionData, Gameplay.Beyond",
+                    "$type": "Beyond.Gameplay.Core.SaveBuffStackNumAdvanced+Data, Gameplay.Beyond",
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
                     "serverActionIndex": 63,
+                    "checkTarget": {
+                      "targetSource": "Target",
+                      "targetGroupKey": "",
+                      "selectorOwner": "ActionOwner",
+                      "ownerContextKey": "",
+                      "centerType": "ActionSource",
+                      "centerContextKey": "",
+                      "centerToGround": false,
+                      "selectorData": {
+                        "validatorData": [],
+                        "postProcessorData": []
+                      },
+                      "enableAdvancedDirection": false,
+                      "advancedDirection": {
+                        "directionType": "SourceForward",
+                        "sourceMountPoint": "None",
+                        "targetMountPoint": "None",
+                        "customSourceAndTarget": false,
+                        "clampToXZ": true,
+                        "invertDirection": false
+                      },
+                      "selectorDirection": "SourceForward",
+                      "target": "ActionSource",
+                      "targetContextKey": ""
+                    },
+                    "buffSettings": {
+                      "checkType": "Tag",
+                      "buffIdList": [
+                        ""
+                      ],
+                      "tagQuery": {
+                        "queryType": "HasAny",
+                        "tags": [
+                          {
+                            "tagId": 1570888476
+                          }
+                        ]
+                      }
+                    },
+                    "buffStackNumType": "BuffCount",
+                    "limitSkillCastId": false,
+                    "key": "infliction_num"
+                  },
+                  {
+                    "$type": "Beyond.Gameplay.Core.DamageAction+DamageActionData, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 64,
                     "alwaysNext": true,
                     "attacker": "ActionSource",
                     "targetSettings": {
@@ -3704,6 +3754,7 @@
                           }
                         },
                         "takeAtkSnapshot": false,
+                        "snapshotBlackboardKey": "",
                         "damageProcessors": [],
                         "ignorePoiseImmune": false,
                         "reduceDamageForGuard": false,
@@ -3908,6 +3959,7 @@
                           "blackboardKey": ""
                         },
                         "takeAtkSnapshot": false,
+                        "snapshotBlackboardKey": "",
                         "damageProcessors": [],
                         "poiseCalculation": {
                           "$type": "Beyond.Gameplay.Core.DefiniteValueCalculation, Gameplay.Beyond",
@@ -4119,11 +4171,137 @@
                     }
                   },
                   {
+                    "$type": "Beyond.Gameplay.Core.IfElseAction+IfElseActionData, Gameplay.Beyond",
+                    "isEnable": true,
+                    "priorityLevel": "Default",
+                    "priorityOffset": 0,
+                    "serverActionIndex": 65,
+                    "conditionAction": {
+                      "actionData": [
+                        {
+                          "$type": "Beyond.Gameplay.Core.Conditions.CheckEntityNum+Data, Gameplay.Beyond",
+                          "isEnable": true,
+                          "priorityLevel": "Default",
+                          "priorityOffset": 0,
+                          "serverActionIndex": 66,
+                          "checkTarget": {
+                            "targetSource": "Target",
+                            "targetGroupKey": "",
+                            "selectorOwner": "ActionOwner",
+                            "ownerContextKey": "",
+                            "centerType": "ActionSource",
+                            "centerContextKey": "",
+                            "centerToGround": false,
+                            "selectorData": {
+                              "validatorData": [],
+                              "postProcessorData": []
+                            },
+                            "enableAdvancedDirection": false,
+                            "advancedDirection": {
+                              "directionType": "SourceForward",
+                              "sourceMountPoint": "None",
+                              "targetMountPoint": "None",
+                              "customSourceAndTarget": false,
+                              "clampToXZ": true,
+                              "invertDirection": false
+                            },
+                            "selectorDirection": "SourceForward",
+                            "target": "ActionSource",
+                            "targetContextKey": ""
+                          },
+                          "minNum": 1,
+                          "containsHittableTarget": false,
+                          "compareType": "GE",
+                          "excludeDeadEntity": true,
+                          "storeKey": ""
+                        }
+                      ],
+                      "onlyExecuteWhenSourceIsMainChar": false,
+                      "onlyExecuteWhenSourceIsGuard": false
+                    },
+                    "succeedActions": {
+                      "actionData": [],
+                      "onlyExecuteWhenSourceIsMainChar": false,
+                      "onlyExecuteWhenSourceIsGuard": false
+                    },
+                    "failActions": {
+                      "actionData": [
+                        {
+                          "$type": "Beyond.Gameplay.Core.TriggerFakeBuffConsumeEvent+Data, Gameplay.Beyond",
+                          "isEnable": true,
+                          "priorityLevel": "Default",
+                          "priorityOffset": 0,
+                          "serverActionIndex": 67,
+                          "eventSource": {
+                            "targetSource": "Source",
+                            "targetGroupKey": "",
+                            "selectorOwner": "ActionOwner",
+                            "ownerContextKey": "",
+                            "centerType": "ActionSource",
+                            "centerContextKey": "",
+                            "centerToGround": false,
+                            "selectorData": {
+                              "validatorData": [],
+                              "postProcessorData": []
+                            },
+                            "enableAdvancedDirection": false,
+                            "advancedDirection": {
+                              "directionType": "SourceForward",
+                              "sourceMountPoint": "None",
+                              "targetMountPoint": "None",
+                              "customSourceAndTarget": false,
+                              "clampToXZ": true,
+                              "invertDirection": false
+                            },
+                            "selectorDirection": "SourceForward",
+                            "target": "ActionSource",
+                            "targetContextKey": ""
+                          },
+                          "buffOwner": {
+                            "targetSource": "Target",
+                            "targetGroupKey": "",
+                            "selectorOwner": "ActionOwner",
+                            "ownerContextKey": "",
+                            "centerType": "ActionSource",
+                            "centerContextKey": "",
+                            "centerToGround": false,
+                            "selectorData": {
+                              "validatorData": [],
+                              "postProcessorData": []
+                            },
+                            "enableAdvancedDirection": false,
+                            "advancedDirection": {
+                              "directionType": "SourceForward",
+                              "sourceMountPoint": "None",
+                              "targetMountPoint": "None",
+                              "customSourceAndTarget": false,
+                              "clampToXZ": true,
+                              "invertDirection": false
+                            },
+                            "selectorDirection": "SourceForward",
+                            "target": "ActionSource",
+                            "targetContextKey": ""
+                          },
+                          "buffId": "buff_common_energy_shard_attached_cryst",
+                          "layerCount": {
+                            "useBlackboardKey": true,
+                            "value": 1,
+                            "blackboardKey": "infliction_num"
+                          },
+                          "eventType": "Consume"
+                        }
+                      ],
+                      "onlyExecuteWhenSourceIsMainChar": false,
+                      "onlyExecuteWhenSourceIsGuard": false
+                    },
+                    "alwaysNext": true
+                  },
+                  {
                     "$type": "Beyond.Gameplay.Core.EnemyHurtAnimAction+Data, Gameplay.Beyond",
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 64,
+                    "serverActionIndex": 68,
                     "attacker": {
                       "targetSource": "Source",
                       "targetGroupKey": "",
@@ -4258,7 +4436,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 65,
+                    "serverActionIndex": 69,
                     "conditionAction": {
                       "actionData": [
                         {
@@ -4266,7 +4444,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 66,
+                          "serverActionIndex": 70,
                           "checkTarget": {
                             "targetSource": "Target",
                             "targetGroupKey": "tar",
@@ -4309,7 +4487,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 67,
+                          "serverActionIndex": 71,
                           "affectType": "Both",
                           "curveKey": "char_hard_stop",
                           "useDirectCurve": false,
@@ -4390,10 +4568,10 @@
           "onlyExecuteWhenSourceIsGuard": false
         },
         "forceSyncAnimData": {
-          "forceSync": false,
-          "montageName": "",
-          "targetFrame": 0,
-          "playbackSpeed": 0.0
+          "forceSync": true,
+          "montageName": "Skill01",
+          "targetFrame": 27,
+          "playbackSpeed": 1.0
         }
       },
       {
@@ -4406,7 +4584,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 68,
+              "serverActionIndex": 72,
               "conditionAction": {
                 "actionData": [
                   {
@@ -4414,7 +4592,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 69,
+                    "serverActionIndex": 73,
                     "checkTarget": {
                       "targetSource": "Context",
                       "targetGroupKey": "tar",
@@ -4457,7 +4635,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 70,
+                    "serverActionIndex": 74,
                     "buffs": [
                       {
                         "buffId": "buff_common_obtain_ultimate_sp",
@@ -4547,7 +4725,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 71,
+              "serverActionIndex": 75,
               "targetSettings": {
                 "targetSource": "Context",
                 "targetGroupKey": "tar",
@@ -4584,7 +4762,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 72,
+                    "serverActionIndex": 76,
                     "conditionAction": {
                       "actionData": [
                         {
@@ -4592,7 +4770,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 73,
+                          "serverActionIndex": 77,
                           "checkTarget": {
                             "targetSource": "Target",
                             "targetGroupKey": "tar",
@@ -4645,7 +4823,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 74,
+                          "serverActionIndex": 78,
                           "checkTarget": {
                             "targetSource": "Target",
                             "targetGroupKey": "",
@@ -4694,7 +4872,7 @@
                           "isEnable": true,
                           "priorityLevel": "Default",
                           "priorityOffset": 0,
-                          "serverActionIndex": 75,
+                          "serverActionIndex": 79,
                           "source": {
                             "targetSource": "Source",
                             "targetGroupKey": "",
@@ -4800,7 +4978,8 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 76,
+              "serverActionIndex": 80,
+              "onlyWhenActionSourceIsMainChar": false,
               "realCameraShake2D": false,
               "targetSettings": {
                 "targetSource": "Target",
@@ -4905,7 +5084,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 77,
+              "serverActionIndex": 81,
               "conditionAction": {
                 "actionData": [
                   {
@@ -4913,7 +5092,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 78,
+                    "serverActionIndex": 82,
                     "checkTarget": {
                       "targetSource": "Source",
                       "targetGroupKey": "",
@@ -4956,7 +5135,7 @@
                     "isEnable": true,
                     "priorityLevel": "Default",
                     "priorityOffset": 0,
-                    "serverActionIndex": 79,
+                    "serverActionIndex": 83,
                     "targetSettings": {
                       "targetSource": "Source",
                       "targetGroupKey": "",
@@ -5035,6 +5214,7 @@
                     },
                     "isMainCharacterActive": false,
                     "isTargetMainCharacterActive": false,
+                    "stopPostProcessWhenHidden": false,
                     "isShowBigEffect": false,
                     "bigEffectName": "",
                     "bigEffectTarget": {
@@ -5255,7 +5435,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 80,
+              "serverActionIndex": 84,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -5334,6 +5514,7 @@
               },
               "isMainCharacterActive": false,
               "isTargetMainCharacterActive": false,
+              "stopPostProcessWhenHidden": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
               "bigEffectTarget": {
@@ -5548,7 +5729,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 81,
+              "serverActionIndex": 85,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -5627,6 +5808,7 @@
               },
               "isMainCharacterActive": false,
               "isTargetMainCharacterActive": false,
+              "stopPostProcessWhenHidden": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
               "bigEffectTarget": {
@@ -5841,7 +6023,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 82,
+              "serverActionIndex": 86,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -5920,6 +6102,7 @@
               },
               "isMainCharacterActive": false,
               "isTargetMainCharacterActive": false,
+              "stopPostProcessWhenHidden": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
               "bigEffectTarget": {
@@ -6134,7 +6317,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 83,
+              "serverActionIndex": 87,
               "targetSettings": {
                 "targetSource": "Owner",
                 "targetGroupKey": "",
@@ -6213,6 +6396,7 @@
               },
               "isMainCharacterActive": false,
               "isTargetMainCharacterActive": false,
+              "stopPostProcessWhenHidden": false,
               "isShowBigEffect": false,
               "bigEffectName": "",
               "bigEffectTarget": {
@@ -6427,7 +6611,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 84,
+              "serverActionIndex": 88,
               "includeAllWeapons": false,
               "weaponIndex": 0,
               "visible": false,
@@ -6475,7 +6659,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 85,
+              "serverActionIndex": 89,
               "includeAllWeapons": false,
               "weaponIndex": 0,
               "visible": true,
@@ -6523,7 +6707,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 86,
+              "serverActionIndex": 90,
               "includeAllWeapons": false,
               "weaponIndex": 11,
               "visible": true,
@@ -6571,7 +6755,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 87,
+              "serverActionIndex": 91,
               "includeAllWeapons": false,
               "weaponIndex": 11,
               "visible": false,
@@ -6619,7 +6803,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 88,
+              "serverActionIndex": 92,
               "_triggerKey": "combat_skill_nor",
               "_speakerType": "Characters",
               "_canInterruptTimeMs": 0,
@@ -6673,7 +6857,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 89,
+              "serverActionIndex": 93,
               "_soundEvent": "au_chr_0024_deepfin_normal_skill_exp",
               "_stopOnEnd": true,
               "_stopFadeDurationMs": 300,
@@ -6738,7 +6922,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 90,
+              "serverActionIndex": 94,
               "_soundEvent": "au_chr_0024_deepfin_normal_skill",
               "_stopOnEnd": true,
               "_stopFadeDurationMs": 500,
@@ -6803,7 +6987,7 @@
               "isEnable": true,
               "priorityLevel": "Default",
               "priorityOffset": 0,
-              "serverActionIndex": 91,
+              "serverActionIndex": 95,
               "_soundEvent": "au_chr_0024_deepfin_normal_skill_foley",
               "_stopOnEnd": true,
               "_stopFadeDurationMs": 100,
@@ -6861,41 +7045,6 @@
     ],
     "passiveEventActions": []
   },
-  "uiRangeHints": [
-    {
-      "targetFaction": "Bad",
-      "selectAll": false,
-      "shapeData": {
-        "shape": "Arrow",
-        "fixedExtent": false,
-        "centerBaseIsEndPoint": false,
-        "restrictEndPointInRange": false,
-        "useCenterOffsetKey": false,
-        "centerOffset": {
-          "x": 0.0,
-          "y": 0.0
-        },
-        "centerOffsetXKey": "",
-        "centerOffsetZKey": "",
-        "useExtentKey": false,
-        "extent": {
-          "x": 0.0,
-          "y": 0.0
-        },
-        "extentXKey": "",
-        "extentZKey": "",
-        "useWidthKey": false,
-        "width": 1.0,
-        "widthKey": "",
-        "useRadiusKey": false,
-        "radius": 0.0,
-        "radiusKey": "",
-        "useAngleKey": false,
-        "angle": 0.0,
-        "angleKey": ""
-      }
-    }
-  ],
   "buffs": [],
   "toggleBuffs": [],
   "cardAttributeModifier": {
@@ -7001,6 +7150,12 @@
     },
     {
       "key": "count",
+      "valueDouble": 0.0,
+      "valueStr": "",
+      "isDynamic": true
+    },
+    {
+      "key": "infliction_num",
       "valueDouble": 0.0,
       "valueStr": "",
       "isDynamic": true
